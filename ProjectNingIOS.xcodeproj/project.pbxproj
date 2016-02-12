@@ -14,6 +14,8 @@
 		914431A01C6E2353003FB63E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9144319F1C6E2353003FB63E /* Assets.xcassets */; };
 		914431A31C6E2353003FB63E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914431A11C6E2353003FB63E /* LaunchScreen.storyboard */; };
 		914431AE1C6E2353003FB63E /* ProjectNingIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431AD1C6E2353003FB63E /* ProjectNingIOSTests.m */; };
+		914431BB1C6E240E003FB63E /* PNService.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431BA1C6E240E003FB63E /* PNService.m */; };
+		914431BE1C6E250B003FB63E /* PNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431BD1C6E250B003FB63E /* PNUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		914431A91C6E2353003FB63E /* ProjectNingIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectNingIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		914431AD1C6E2353003FB63E /* ProjectNingIOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectNingIOSTests.m; sourceTree = "<group>"; };
 		914431AF1C6E2353003FB63E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		914431B91C6E240E003FB63E /* PNService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNService.h; sourceTree = "<group>"; };
+		914431BA1C6E240E003FB63E /* PNService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNService.m; sourceTree = "<group>"; };
+		914431BC1C6E250B003FB63E /* PNUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNUser.h; sourceTree = "<group>"; };
+		914431BD1C6E250B003FB63E /* PNUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,7 @@
 		914431921C6E2353003FB63E /* ProjectNingIOS */ = {
 			isa = PBXGroup;
 			children = (
+				914431B81C6E23E9003FB63E /* PNService */,
 				914431961C6E2353003FB63E /* AppDelegate.h */,
 				914431971C6E2353003FB63E /* AppDelegate.m */,
 				914431991C6E2353003FB63E /* ViewController.h */,
@@ -109,6 +116,17 @@
 				914431AF1C6E2353003FB63E /* Info.plist */,
 			);
 			path = ProjectNingIOSTests;
+			sourceTree = "<group>";
+		};
+		914431B81C6E23E9003FB63E /* PNService */ = {
+			isa = PBXGroup;
+			children = (
+				914431B91C6E240E003FB63E /* PNService.h */,
+				914431BA1C6E240E003FB63E /* PNService.m */,
+				914431BC1C6E250B003FB63E /* PNUser.h */,
+				914431BD1C6E250B003FB63E /* PNUser.m */,
+			);
+			name = PNService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,8 +230,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9144319B1C6E2353003FB63E /* ViewController.m in Sources */,
+				914431BB1C6E240E003FB63E /* PNService.m in Sources */,
 				914431981C6E2353003FB63E /* AppDelegate.m in Sources */,
 				914431951C6E2353003FB63E /* main.m in Sources */,
+				914431BE1C6E250B003FB63E /* PNUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +422,7 @@
 				914431B41C6E2353003FB63E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		914431B51C6E2353003FB63E /* Build configuration list for PBXNativeTarget "ProjectNingIOSTests" */ = {
 			isa = XCConfigurationList;
@@ -410,6 +431,7 @@
 				914431B71C6E2353003FB63E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

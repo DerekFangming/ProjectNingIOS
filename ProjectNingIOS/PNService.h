@@ -1,16 +1,14 @@
 //
-//  ViewController.h
+//  PNService.h
 //  ProjectNingIOS
 //
 //  Created by NingFangming on 2/12/16.
 //  Copyright © 2016 fangming. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "PNService.h"
+#import <Foundation/Foundation.h>
+#import "PNUser.h"
 
-@interface ViewController : UIViewController
-
+@interface PNService : NSObject
 
 @end
-
