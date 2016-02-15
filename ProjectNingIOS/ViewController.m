@@ -18,7 +18,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    PNUser *user = [[PNUser alloc] initWithUsername:@"username" andPassword:@"passs"];
+    
+//    [user registerUserWithUsername:@"a"
+//                       andPassword:@"b"
+//                           response:^(PNUser *user, NSError *error) {
+//        NSLog([NSString stringWithFormat:@"cuccess and user name is %@", user.username]);
+//    }];
+    
+    NSLog(@"%d", [[NSTimeZone localTimeZone] secondsFromGMT] / 3600);
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
