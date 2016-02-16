@@ -24,8 +24,14 @@
 //                           response:^(PNUser *user, NSError *error) {
 //        NSLog([NSString stringWithFormat:@"cuccess and user name is %@", user.username]);
 //    }];
+    NSDate * now = [NSDate date];
     
-    NSLog(@"%d", [[NSTimeZone localTimeZone] secondsFromGMT] / 3600);
+    NSLog(@"%@", now);
+    
+    ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
+    NSDate *theDate = [formatter dateFromString:@"2016-02-15T17:33:45.472Z"];
+    
+    NSLog(@"%@", theDate);
     
     
 }

@@ -32,6 +32,7 @@
     
     NSMutableDictionary *saltParameters = [NSMutableDictionary dictionary];
     [saltParameters setObject:loginUsername forKey:@"username"];
+    [saltParameters setObject:[NSNumber numberWithInt:[[NSTimeZone localTimeZone] secondsFromGMT] / 3600] forKey:@"offset"];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];

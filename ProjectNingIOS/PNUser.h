@@ -10,6 +10,7 @@
 #import <CommonCrypto/CommonDigest.h>
 
 #import "AFNetworking.h"
+#import "PNDateFormater.h"
 
 //typedef void (^PNBlock)(BOOL success);
 
@@ -22,6 +23,9 @@
 }
 
 @property (nonatomic, readonly) NSString *username;
+@property (nonatomic, readonly) NSString *accessToken;
+@property (nonatomic, readonly) NSDate *expDate;
+@property (nonatomic, readonly) BOOL emailConfirmed;
 
 
 -(id) initWithUsername:(NSString *)username andPassword :(NSString *)password;

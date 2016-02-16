@@ -20,6 +20,7 @@
 		914431E31C6E75A0003FB63E /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431DB1C6E75A0003FB63E /* AFURLRequestSerialization.m */; };
 		914431E41C6E75A0003FB63E /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431DD1C6E75A0003FB63E /* AFURLResponseSerialization.m */; };
 		914431E71C70DABA003FB63E /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431E61C70DABA003FB63E /* AFURLSessionManager.m */; };
+		914431EA1C7244B7003FB63E /* PNDateFormater.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431E91C7244B7003FB63E /* PNDateFormater.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		914431DD1C6E75A0003FB63E /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		914431DE1C6E75A0003FB63E /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		914431E61C70DABA003FB63E /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		914431E81C7244B7003FB63E /* PNDateFormater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNDateFormater.h; sourceTree = "<group>"; };
+		914431E91C7244B7003FB63E /* PNDateFormater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNDateFormater.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +142,8 @@
 				914431BA1C6E240E003FB63E /* PNService.m */,
 				914431BC1C6E250B003FB63E /* PNUser.h */,
 				914431BD1C6E250B003FB63E /* PNUser.m */,
+				914431E81C7244B7003FB63E /* PNDateFormater.h */,
+				914431E91C7244B7003FB63E /* PNDateFormater.m */,
 			);
 			name = PNService;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 				9144319B1C6E2353003FB63E /* ViewController.m in Sources */,
 				914431BB1C6E240E003FB63E /* PNService.m in Sources */,
 				914431981C6E2353003FB63E /* AppDelegate.m in Sources */,
+				914431EA1C7244B7003FB63E /* PNDateFormater.m in Sources */,
 				914431E41C6E75A0003FB63E /* AFURLResponseSerialization.m in Sources */,
 				914431E01C6E75A0003FB63E /* AFHTTPSessionManager.m in Sources */,
 				914431951C6E2353003FB63E /* main.m in Sources */,
