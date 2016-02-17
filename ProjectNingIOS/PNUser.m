@@ -12,17 +12,41 @@
 
 @implementation PNUser
 
--(id) initWithUsername:(NSString *)username andPassword :(NSString *)password{
-    self = [super init];
-    if(self){
-        self->password = @"haha";
-        _username = username;
-    }
-    return self;
+
++ (instancetype)currentUser {
+    
+    static PNUser *sharedInstance = nil;
+    
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[PNUser alloc] init];
+    });
+    return sharedInstance;
 }
 
+//+ (instancetype)initWithUsername:(NSString *) username
+//                        andToken:(NSString *) token
+//                          andExp:(NSDate *)exp
+//               andEmailConfirmed:(BOOL) emailCondirmed{
+//    static PNUser *sharedInstance = nil;
+//    static dispatch_once_t onceToken;
+//    
+//    dispatch_once(&onceToken, ^{
+//        sharedInstance = [[PNUser alloc] init];
+//    });
+//    return sharedInstance;
+//}
+//
+//-(id) initWithUsername:(NSString *)usernamei andPassword :(NSString *)password{
+//    PNUser *user = [PNUser currentUser];
+//    user->temp = @"readonly!";
+//    return user;
+//}
 
--(void) registerUserWithUsername:(NSString *)loginUsername
+
+
++(void) registerUserWithUsername:(NSString *)loginUsername
                      andPassword:(NSString *)loginPassword
                         response:(void (^)(PNUser *, NSError *))response{
     
@@ -52,7 +76,15 @@
                        progress:nil
                         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                             if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
+                                ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
                                 
+                                PNUser *user = [PNUser currentUser];
+                                user->username = [responseObject objectForKey:@"username"];
+                                user->accessToken = [responseObject objectForKey:@"accessToken"];
+                                user->expDate = [formatter dateFromString:[responseObject objectForKey:@"expire"]];
+                                user->emailConfirmed = [[responseObject objectForKey:@"emailConfirmed"] isEqualToString:@"true"];
+                                
+                                response(user, nil);
                             }else{
                                 NSMutableDictionary* details = [NSMutableDictionary dictionary];
                                 [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
@@ -71,11 +103,23 @@
                   response(nil, error);
               }
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-              response(nil, error);
+              int code = [[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode];
+              if (code == 404) {
+                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
+                  [details setValue:@"Server is not started. Please contact me at synfm123@gmail.com" forKey:NSLocalizedDescriptionKey];
+                  response(nil, [NSError errorWithDomain:@"PN" code:404 userInfo:details]);
+              }else if(code == 500){
+                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
+                  [details setValue:@"Internal server error. Please contact me at synfm123@gmail.com" forKey:NSLocalizedDescriptionKey];
+                  response(nil, [NSError errorWithDomain:@"PN" code:500 userInfo:details]);
+              }else{
+                  response(nil, error);
+              }
+              
           }];
 }
 
-- (NSString *) getMd5:(NSString *) input
++ (NSString *) getMd5:(NSString *) input
 {
     const char *cStr = [input UTF8String];
     unsigned char digest[CC_MD5_DIGEST_LENGTH];
@@ -88,5 +132,18 @@
     
     return  output;
 }
+
+- (NSString *) username{
+    return self->username;
+}
+
+- (NSDate *) expDate{
+    return self->expDate;
+}
+
+- (BOOL) emailConfirmed{
+    return self->emailConfirmed;
+}
+
 
 @end

@@ -19,19 +19,12 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
-//    [user registerUserWithUsername:@"a"
-//                       andPassword:@"b"
-//                           response:^(PNUser *user, NSError *error) {
-//        NSLog([NSString stringWithFormat:@"cuccess and user name is %@", user.username]);
-//    }];
-    NSDate * now = [NSDate date];
+    [PNUser registerUserWithUsername:@"synfm123@gmail.com"
+                       andPassword:@"flash"
+                           response:^(PNUser *user, NSError *error) {
+    }];
     
-    NSLog(@"%@", now);
     
-    ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
-    NSDate *theDate = [formatter dateFromString:@"2016-02-15T17:33:45.472Z"];
-    
-    NSLog(@"%@", theDate);
     
     
 }

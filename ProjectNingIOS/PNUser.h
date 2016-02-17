@@ -12,27 +12,26 @@
 #import "AFNetworking.h"
 #import "PNDateFormater.h"
 
-//typedef void (^PNBlock)(BOOL success);
-
-//PNUser *(^PNBlock)(int) = ^(int num) {
-//    return @"Test";
-//};
 
 @interface PNUser : NSObject{
-    NSString *password;
+    @protected NSString *username;
+    @protected NSString *accessToken;
+    @protected NSDate *expDate;
+    @protected BOOL emailConfirmed;
 }
 
-@property (nonatomic, readonly) NSString *username;
-@property (nonatomic, readonly) NSString *accessToken;
-@property (nonatomic, readonly) NSDate *expDate;
-@property (nonatomic, readonly) BOOL emailConfirmed;
+
++ (instancetype)currentUser;
 
 
--(id) initWithUsername:(NSString *)username andPassword :(NSString *)password;
-
--(void) registerUserWithUsername:(NSString *)loginUsername
++ (void) registerUserWithUsername:(NSString *)loginUsername
                      andPassword:(NSString *)loginPassword
                         response:(void (^)(PNUser *, NSError *))response;
 
+- (NSString *) username;
+
+- (NSDate *) expDate;
+
+- (BOOL) emailConfirmed;
 
 @end
