@@ -20,8 +20,8 @@ Several properties can also be accessed by calling the following methods on an u
 #### Register
 Calling the flowwing method will request a registration from the server.
 ```objc
-[PNUser registerUserWithUsername:@"synfm123@gmail.com"
-                       andPassword:@"flash"
+[PNUser registerUserWithUsername:@"something@domain.com"
+                       andPassword:@"password"
                            response:^(PNUser *user, NSError *error) {
     }];
 ```
