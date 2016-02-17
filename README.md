@@ -5,6 +5,18 @@ To use this SDK, please import PNService.h in your .h file to access all the met
 
 ## Users
 
+#### Current user
+Current user can be accessed any time by calling this method.
+```objc
+PNUser *user = [PNUser currentUser];
+```
+Several properties can also be accessed by calling the following methods on an user object.
+```obj
+[user username]
+[user emailConfirmed]
+[user expDate]
+```
+
 #### Register
 Calling the flowwing method will request a registration from the server.
 ```objc
@@ -22,14 +34,4 @@ If the error is nil. the register process is completed. You can then do whatever
 
 #### Login
 
-#### Current user
-Current user can be accessed any time by calling this method.
-```objc
-PNUser *user = [PNUser currentUser];
-```
-Several properties can also be accessed by calling the following methods on an user object.
-```obj
-[user username]
-[user emailConfirmed]
-[user expDate]
-```
+
