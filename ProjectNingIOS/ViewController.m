@@ -22,8 +22,10 @@
     [PNUser registerUserWithUsername:@"synfm123@gmail.com"
                        andPassword:@"flash"
                            response:^(PNUser *user, NSError *error) {
+                               
     }];
     
+    PNUser *user = [PNUser currentUser];
     
     
     
