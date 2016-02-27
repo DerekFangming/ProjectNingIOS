@@ -19,13 +19,14 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
-    [PNUser registerUserWithUsername:@"synfm123@gmail.com"
+    [PNUser loginUserWithUsername:@"synfm123@gmail.com"
                        andPassword:@"flash"
                            response:^(PNUser *user, NSError *error) {
-                               
+                               NSLog([user username]);
+                               NSLog(@"%@", [user expDate]);
     }];
     
-    PNUser *user = [PNUser currentUser];
+
     
     
     

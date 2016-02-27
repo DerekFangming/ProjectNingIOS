@@ -44,6 +44,8 @@
                    andPassword:(NSString *)loginPassword
                       response:(void (^)(PNUser *, NSError *))response;
 
++ (void) logout :(PNUser *) user;
+
 /**
     Method to retrieve the username of a user object
  */
