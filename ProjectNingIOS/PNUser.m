@@ -148,7 +148,8 @@
     
 }
 
-+ (void) logout :(PNUser *) user{
++ (void) logoutCurrentUser{
+    PNUser *user = [PNUser currentUser];
     user->username = nil;
     user->accessToken = nil;
     user->expDate = nil;

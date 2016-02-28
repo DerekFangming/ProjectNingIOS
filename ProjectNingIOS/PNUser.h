@@ -44,7 +44,10 @@
                    andPassword:(NSString *)loginPassword
                       response:(void (^)(PNUser *, NSError *))response;
 
-+ (void) logout :(PNUser *) user;
+/**
+    Method to log out a user. Remove all the infomation of singleton current user.
+ */
++ (void) logoutCurrentUser;
 
 /**
     Method to retrieve the username of a user object

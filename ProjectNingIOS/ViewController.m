@@ -26,6 +26,8 @@
                                NSLog(@"%@", [user expDate]);
     }];
     
+    [PNUser logoutCurrentUser];
+    
 
     
     
