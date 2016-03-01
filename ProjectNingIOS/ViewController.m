@@ -12,18 +12,30 @@
 
 @end
 
+
 @implementation ViewController
+
+@synthesize username;
+@synthesize password;
+@synthesize registerBtn;
+@synthesize loginBtn;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
     
     
     [PNUser loginUserWithUsername:@"synfm123@gmail.com"
                        andPassword:@"flash"
                            response:^(PNUser *user, NSError *error) {
                                NSLog([user username]);
-                               NSLog(@"%@", [user expDate]);
+                               NSLog(@"%@", [error localizedDescription]);
     }];
     
     [PNUser logoutCurrentUser];
@@ -32,6 +44,11 @@
     
     
     
+}
+
+-(void)dismissKeyboard {
+    [username resignFirstResponder];
+    [password resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {

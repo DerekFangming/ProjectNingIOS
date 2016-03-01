@@ -88,6 +88,12 @@
                             <constraint firstItem="Pbh-Ik-oQ2" firstAttribute="top" secondItem="PF6-LK-9Th" secondAttribute="bottom" constant="8" id="vEt-9K-VQR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginBtn" destination="lBC-xy-5gu" id="UNP-nU-Phv"/>
+                        <outlet property="password" destination="vOn-zF-juV" id="aWI-pZ-5Pf"/>
+                        <outlet property="registerBtn" destination="uul-SS-nKC" id="VSd-UR-NiX"/>
+                        <outlet property="username" destination="Pbh-Ik-oQ2" id="F1I-1j-lsk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
