@@ -17,6 +17,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *registerBtn;
 @property (strong, nonatomic) IBOutlet UIButton *loginBtn;
 
+-(IBAction)registerClicked:(id)sender;
+-(IBAction)loginClicked:(id)sender;
 
 @end
 

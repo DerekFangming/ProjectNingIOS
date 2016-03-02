@@ -40,11 +40,19 @@
     
     [PNUser logoutCurrentUser];
     
-
-    
-    
-    
 }
+
+#pragma - mark Login and register
+
+-(IBAction)registerClicked:(id)sender{
+    NSLog(@"register");
+}
+
+-(IBAction)loginClicked:(id)sender{
+    NSLog(@"login");
+}
+
+#pragma - mark Delegate and default methods
 
 -(void)dismissKeyboard {
     [username resignFirstResponder];
