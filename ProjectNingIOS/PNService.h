@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PNUser.h"
+#import "PNImage.h"
 
 @interface PNService : NSObject
 

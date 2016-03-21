@@ -37,6 +37,7 @@
 		914431E41C6E75A0003FB63E /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431DD1C6E75A0003FB63E /* AFURLResponseSerialization.m */; };
 		914431E71C70DABA003FB63E /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431E61C70DABA003FB63E /* AFURLSessionManager.m */; };
 		914431EA1C7244B7003FB63E /* PNDateFormater.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431E91C7244B7003FB63E /* PNDateFormater.m */; };
+		91C532C31C9C68D0003E0CCB /* PNImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C532C21C9C68D0003E0CCB /* PNImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,8 @@
 		914431E61C70DABA003FB63E /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		914431E81C7244B7003FB63E /* PNDateFormater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNDateFormater.h; sourceTree = "<group>"; };
 		914431E91C7244B7003FB63E /* PNDateFormater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNDateFormater.m; sourceTree = "<group>"; };
+		91C532C11C9C68D0003E0CCB /* PNImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNImage.h; sourceTree = "<group>"; };
+		91C532C21C9C68D0003E0CCB /* PNImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNImage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +253,8 @@
 				914431BD1C6E250B003FB63E /* PNUser.m */,
 				914431E81C7244B7003FB63E /* PNDateFormater.h */,
 				914431E91C7244B7003FB63E /* PNDateFormater.m */,
+				91C532C11C9C68D0003E0CCB /* PNImage.h */,
+				91C532C21C9C68D0003E0CCB /* PNImage.m */,
 			);
 			name = PNService;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 				912D2D741C86A26A0039AEF5 /* RightMenuViewController.m in Sources */,
 				912D2D731C86A26A0039AEF5 /* LeftMenuViewController.m in Sources */,
 				912D2D611C86A0120039AEF5 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
+				91C532C31C9C68D0003E0CCB /* PNImage.m in Sources */,
 				914431E01C6E75A0003FB63E /* AFHTTPSessionManager.m in Sources */,
 				914431951C6E2353003FB63E /* main.m in Sources */,
 				912D2D751C86A26A0039AEF5 /* HomeViewController.m in Sources */,
