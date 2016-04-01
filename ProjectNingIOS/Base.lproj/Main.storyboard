@@ -33,7 +33,7 @@
                                     <constraint firstAttribute="width" constant="79" id="iW9-1q-ZOn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94f-5W-qyG">
@@ -43,7 +43,7 @@
                                     <constraint firstAttribute="height" constant="21" id="ith-Qu-JeR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uul-SS-nKC">
@@ -184,169 +184,13 @@
                     <view key="view" contentMode="scaleToFill" id="Ofh-lz-srB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dbI-Rz-pcC">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obH-0d-gI6">
-                                        <rect key="frame" x="3" y="14" width="76" height="30"/>
-                                        <state key="normal" title="Push">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="L3Y-ZN-g19" kind="push" id="aQb-z0-bgg"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Slide out animation during switch" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGr-1x-nJe">
-                                        <rect key="frame" x="14" y="64" width="150" height="51"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvL-M0-fbx">
-                                        <rect key="frame" x="227" y="14" width="89" height="30"/>
-                                        <state key="normal" title="Bounce Me">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="bounceMenu:" destination="84R-kT-nX4" eventType="touchUpInside" id="Flr-75-xKv"/>
-                                        </connections>
-                                    </button>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iib-A5-6Ga">
-                                        <rect key="frame" x="223" y="74" width="51" height="31"/>
-                                        <connections>
-                                            <action selector="slideOutAnimationSwitchChanged:" destination="84R-kT-nX4" eventType="valueChanged" id="O0i-VB-Pe2"/>
-                                        </connections>
-                                    </switch>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Limit swipe gesture to sides" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9he-r7-WRS">
-                                        <rect key="frame" x="14" y="238" width="150" height="51"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rhD-Rl-wuP">
-                                        <rect key="frame" x="223" y="248" width="51" height="31"/>
-                                        <connections>
-                                            <action selector="limitPanGestureSwitchChanged:" destination="84R-kT-nX4" eventType="valueChanged" id="CsE-Qg-75U"/>
-                                        </connections>
-                                    </switch>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zi-GI-NJx">
-                                        <rect key="frame" x="82" y="14" width="141" height="30"/>
-                                        <state key="normal" title="Change Animation">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="changeAnimationSelected:" destination="84R-kT-nX4" eventType="touchUpInside" id="0hZ-ms-IzB"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shadow" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2m-rC-gVL">
-                                        <rect key="frame" x="14" y="130" width="150" height="38"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GbD-jK-8L1">
-                                        <rect key="frame" x="223" y="131" width="51" height="31"/>
-                                        <connections>
-                                            <action selector="shadowSwitchSelected:" destination="84R-kT-nX4" eventType="valueChanged" id="Wtl-Tb-eke"/>
-                                        </connections>
-                                    </switch>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe Gesture" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTs-Yg-8lK">
-                                        <rect key="frame" x="14" y="184" width="150" height="38"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dAI-lH-Pl8">
-                                        <rect key="frame" x="223" y="187" width="51" height="31"/>
-                                        <connections>
-                                            <action selector="enablePanGestureSelected:" destination="84R-kT-nX4" eventType="valueChanged" id="ex5-aO-doR"/>
-                                        </connections>
-                                    </switch>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Portrait slide offset" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ees-j5-vC2">
-                                        <rect key="frame" x="9" y="303" width="150" height="32"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gMU-e4-9Sf">
-                                        <rect key="frame" x="9" y="344" width="301" height="29"/>
-                                        <segments>
-                                            <segment title="60 pixels"/>
-                                            <segment title="120 pixels"/>
-                                            <segment title="200 pixels"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="portraitSlideOffsetChanged:" destination="84R-kT-nX4" eventType="valueChanged" id="FJj-AI-fnb"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Landscape slide offset" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dwk-Z5-Ljl">
-                                        <rect key="frame" x="9" y="379" width="203" height="32"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dsB-46-IDB">
-                                        <rect key="frame" x="9" y="421" width="301" height="29"/>
-                                        <segments>
-                                            <segment title="60 pixels"/>
-                                            <segment title="120 pixels"/>
-                                            <segment title="200 pixels"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="landscapeSlideOffsetChanged:" destination="84R-kT-nX4" eventType="valueChanged" id="wEC-sC-xzh"/>
-                                        </connections>
-                                    </segmentedControl>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="Jar-oD-ojQ"/>
-                    <connections>
-                        <outlet property="landscapeSlideOffsetSegment" destination="dsB-46-IDB" id="X1r-FQ-aEs"/>
-                        <outlet property="limitPanGestureSwitch" destination="rhD-Rl-wuP" id="CRs-eA-qqI"/>
-                        <outlet property="panGestureSwitch" destination="dAI-lH-Pl8" id="aeK-e8-A5c"/>
-                        <outlet property="portraitSlideOffsetSegment" destination="gMU-e4-9Sf" id="ePs-uT-jvt"/>
-                        <outlet property="scrollView" destination="dbI-Rz-pcC" id="TfS-uW-nlK"/>
-                        <outlet property="shadowSwitch" destination="GbD-jK-8L1" id="gAz-ec-CPw"/>
-                        <outlet property="slideOutAnimationSwitch" destination="Iib-A5-6Ga" id="obf-Rz-L8V"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8H-Uo-Au6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1272" y="-222"/>
-        </scene>
-        <!--No Menu-->
-        <scene sceneID="l1g-IC-Qpa">
-            <objects>
-                <viewController id="L3Y-ZN-g19" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="max-Or-Lnd"/>
-                        <viewControllerLayoutGuide type="bottom" id="d1E-pt-QNL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8p1-gs-ziw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="No Menu" id="OZi-Yn-lOL">
-                        <barButtonItem key="rightBarButtonItem" id="o2r-vu-hzO">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="A1S-0w-Xdq">
-                                <rect key="frame" x="485" y="8" width="95" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Seg 1"/>
-                                    <segment title="Seg 2"/>
-                                </segments>
-                            </segmentedControl>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zg4-BK-uzQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2055" y="-222"/>
         </scene>
         <!--Login-->
         <scene sceneID="GyY-MU-nf4">
@@ -389,7 +233,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginClicked:" destination="0DO-aD-DXu" eventType="touchUpInside" id="cSA-r9-Rmi"/>
-                                    <segue destination="84R-kT-nX4" kind="push" id="0IW-eU-for"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -408,6 +251,7 @@
                         <outlet property="loginBtn" destination="ElD-mV-G0k" id="Hlr-Cu-kMg"/>
                         <segue destination="iPW-cI-2gN" kind="push" identifier="FakeSegue" id="KFz-0g-OkQ"/>
                         <segue destination="bRD-NV-saN" kind="push" identifier="FakeSegue33" id="d0c-8I-p5E"/>
+                        <segue destination="84R-kT-nX4" kind="push" identifier="loginSegue" id="yJr-mQ-Rwd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lxn-Rl-I8L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -425,30 +269,6 @@
                     <view key="view" contentMode="scaleToFill" id="GEH-MO-8EG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KjD-7M-UfT">
-                                <rect key="frame" x="92" y="178" width="153" height="30"/>
-                                <state key="normal" title="Push To Another PAge">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="XdR-tj-Vvi" kind="push" identifier="RightMenuOnlySegue" id="DEj-UA-etb"/>
-                                </connections>
-                            </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vzo-yU-StX">
-                                <rect key="frame" x="85" y="111" width="151" height="29"/>
-                                <segments>
-                                    <segment title="random"/>
-                                    <segment title="?"/>
-                                </segments>
-                            </segmentedControl>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ace-DK-A7q">
-                                <rect key="frame" x="37" y="260" width="216" height="31"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="37" y="260" width="216" height="31"/>
-                                </variation>
-                            </slider>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="yI9-eu-pW4"/>
@@ -477,7 +297,7 @@
                                             <rect key="frame" x="15" y="0.0" width="550" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -517,7 +337,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friend Info goes here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pN-X1-x5h">
                                 <rect key="frame" x="107" y="43" width="163" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

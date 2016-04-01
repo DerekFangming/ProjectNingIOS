@@ -50,6 +50,7 @@
 
 -(IBAction)loginClicked:(id)sender{
     NSLog(@"login");
+    [self performSegueWithIdentifier:@"loginSegue" sender:nil];
 }
 
 #pragma - mark Delegate and default methods
