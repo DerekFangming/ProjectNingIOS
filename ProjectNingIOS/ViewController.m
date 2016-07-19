@@ -49,8 +49,39 @@
 }
 
 -(IBAction)loginClicked:(id)sender{
-    NSLog(@"login");
+//    [PNUser loginUserWithUsername:username.text
+//                      andPassword:password.text
+//                         response:^(PNUser *user, NSError *error) {
+//                             if(error == nil){
+//                                 [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+//                             }else{
+//                                 UIAlertController * alert=   [UIAlertController
+//                                                               alertControllerWithTitle:@"My Title"
+//                                                               message:@"Enter User Credentials"
+//                                                               preferredStyle:UIAlertControllerStyleAlert];
+//                                 
+//                                 UIAlertAction* yesButton = [UIAlertAction
+//                                                             actionWithTitle:@"Yes, please"
+//                                                             style:UIAlertActionStyleDefault
+//                                                             handler:^(UIAlertAction * action) {
+//                                                                 //Handle your yes please button action here
+//                                                             }];
+//                                 
+//                                 UIAlertAction* noButton = [UIAlertAction
+//                                                            actionWithTitle:@"No, thanks"
+//                                                            style:UIAlertActionStyleDefault
+//                                                            handler:^(UIAlertAction * action) {
+//                                                                //Handle no, thanks button
+//                                                            }];
+//                                 
+//                                 [alert addAction:yesButton];
+//                                 [alert addAction:noButton];
+//                                 
+//                                 [self presentViewController:alert animated:YES completion:nil];
+//                             }
+//                         }];
     [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+    
 }
 
 #pragma - mark Delegate and default methods
