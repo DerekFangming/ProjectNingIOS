@@ -20,5 +20,7 @@
 //@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 
 @property (strong, nonatomic) IBOutlet UIImageView *avatarView;
+@property (strong, nonatomic) IBOutlet UIButton *acceptBtn;
+@property (strong, nonatomic) IBOutlet UIButton *denyBtn;
 
 @end

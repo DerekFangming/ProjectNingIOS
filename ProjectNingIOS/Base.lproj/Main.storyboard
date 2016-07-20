@@ -192,16 +192,36 @@
                                     <constraint firstAttribute="height" constant="300" id="yqq-9x-Uho"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEa-rK-jU3">
+                                <rect key="frame" x="150" y="445" width="125" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="Akd-LZ-hCe"/>
+                                    <constraint firstAttribute="height" constant="125" id="b6F-NC-Lzg"/>
+                                </constraints>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vfd-40-EMd">
+                                <rect key="frame" x="325" y="445" width="125" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="H6u-yj-6OP"/>
+                                    <constraint firstAttribute="height" constant="125" id="V2G-2z-WF6"/>
+                                </constraints>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Vfd-40-EMd" firstAttribute="top" secondItem="LmG-2g-PZ7" secondAttribute="bottom" constant="44" id="0eQ-YY-LJ0"/>
+                            <constraint firstItem="cEa-rK-jU3" firstAttribute="top" secondItem="LmG-2g-PZ7" secondAttribute="bottom" constant="44" id="1yT-ar-nVF"/>
                             <constraint firstItem="LmG-2g-PZ7" firstAttribute="centerX" secondItem="Ofh-lz-srB" secondAttribute="centerX" id="bb6-rN-0Yy"/>
+                            <constraint firstItem="Vfd-40-EMd" firstAttribute="centerX" secondItem="Ofh-lz-srB" secondAttribute="centerX" constant="87.5" id="hh4-Zb-t7i"/>
+                            <constraint firstItem="cEa-rK-jU3" firstAttribute="centerX" secondItem="Ofh-lz-srB" secondAttribute="centerX" constant="-87.5" id="tPW-rV-WQo"/>
                             <constraint firstItem="LmG-2g-PZ7" firstAttribute="top" secondItem="jGQ-9j-Vuw" secondAttribute="bottom" constant="37" id="yA2-Ki-aQN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="Jar-oD-ojQ"/>
                     <connections>
+                        <outlet property="acceptBtn" destination="cEa-rK-jU3" id="vna-Je-ER1"/>
                         <outlet property="avatarView" destination="LmG-2g-PZ7" id="kgA-ld-54W"/>
+                        <outlet property="denyBtn" destination="Vfd-40-EMd" id="6Hr-iI-3Ik"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8H-Uo-Au6" userLabel="First Responder" sceneMemberID="firstResponder"/>
