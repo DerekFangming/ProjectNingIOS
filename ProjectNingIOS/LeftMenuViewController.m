@@ -64,15 +64,15 @@
 			break;
 			
 		case 1:
-			cell.textLabel.text = @"Profile";
-			break;
-			
-		case 2:
 			cell.textLabel.text = @"Friends";
 			break;
 			
+		case 2:
+			cell.textLabel.text = @"Chat";
+			break;
+			
 		case 3:
-			cell.textLabel.text = @"Sign Out";
+			cell.textLabel.text = @"Profile";
 			break;
 	}
 	
@@ -95,17 +95,20 @@
 			break;
 			
 		case 1:
-			vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"ProfileViewController"];
-			break;
-			
-		case 2:
 			vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"FriendsViewController"];
 			break;
 			
+		case 2:
+            [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+            [[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
+            return;
+			break;
+			
 		case 3:
-			[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-			[[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
-			return;
+            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"ProfileViewController"];
+//			[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+//			[[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
+//			return;
 			break;
 	}
 	
