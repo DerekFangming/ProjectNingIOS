@@ -218,6 +218,7 @@
 		914431921C6E2353003FB63E /* ProjectNingIOS */ = {
 			isa = PBXGroup;
 			children = (
+				9170BBE21D3F07F500FFD3E8 /* Images */,
 				912D2D661C86A2510039AEF5 /* ViewControllers */,
 				912D2D4C1C869F870039AEF5 /* SlideController */,
 				914431B81C6E23E9003FB63E /* PNService */,
@@ -225,12 +226,6 @@
 				914431971C6E2353003FB63E /* AppDelegate.m */,
 				914431991C6E2353003FB63E /* ViewController.h */,
 				9144319A1C6E2353003FB63E /* ViewController.m */,
-				912D2D791C86A4050039AEF5 /* rightMenu.jpg */,
-				912D2D7A1C86A4050039AEF5 /* leftMenu.jpg */,
-				9170BBDA1D3F045D00FFD3E8 /* acceptBtnClicked.png */,
-				9170BBDB1D3F045D00FFD3E8 /* acceptBtn.png */,
-				9170BBDE1D3F052E00FFD3E8 /* denyBtnClicked.png */,
-				9170BBDF1D3F052E00FFD3E8 /* denyBtn.png */,
 				9170BBD41D3DCA0900FFD3E8 /* 1.png */,
 				9144319C1C6E2353003FB63E /* Main.storyboard */,
 				9144319F1C6E2353003FB63E /* Assets.xcassets */,
@@ -288,6 +283,19 @@
 				914431E61C70DABA003FB63E /* AFURLSessionManager.m */,
 			);
 			name = HTTPHelper;
+			sourceTree = "<group>";
+		};
+		9170BBE21D3F07F500FFD3E8 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				912D2D791C86A4050039AEF5 /* rightMenu.jpg */,
+				912D2D7A1C86A4050039AEF5 /* leftMenu.jpg */,
+				9170BBDA1D3F045D00FFD3E8 /* acceptBtnClicked.png */,
+				9170BBDB1D3F045D00FFD3E8 /* acceptBtn.png */,
+				9170BBDE1D3F052E00FFD3E8 /* denyBtnClicked.png */,
+				9170BBDF1D3F052E00FFD3E8 /* denyBtn.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
