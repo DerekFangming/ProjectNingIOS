@@ -182,5 +182,9 @@
     return self->emailConfirmed;
 }
 
+-(NSString *) accessToken{
+    return self->accessToken;
+}
+
 
 @end

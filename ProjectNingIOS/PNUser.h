@@ -64,4 +64,9 @@
  */
 - (BOOL) emailConfirmed;
 
+/**
+ Method to retrieve the accessToken of a user object
+ */
+-(NSString *) accessToken;
+
 @end
