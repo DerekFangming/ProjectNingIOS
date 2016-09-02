@@ -156,6 +156,16 @@
     user->accessToken = nil;
 }
 
++ (NSError *) checkUserLoginStatus{
+    PNUser *user = [PNUser currentUser];
+    if(user->accessToken == nil){
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:@"No user logged in" forKey:NSLocalizedDescriptionKey];
+        return [NSError errorWithDomain:@"PN" code:200 userInfo:details];
+    }
+    return nil;
+}
+
 + (NSString *) getMd5:(NSString *) input
 {
     const char *cStr = [input UTF8String];

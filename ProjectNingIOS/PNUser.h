@@ -50,22 +50,29 @@
 + (void) logoutCurrentUser;
 
 /**
+    Method to check if there is currently user logged in
+    Return friendly error if no user logged in
+    Return nil if there is a current user
+ */
++ (NSError *) checkUserLoginStatus;
+
+/**
     Method to retrieve the username of a user object
  */
 - (NSString *) username;
 
 /**
- Method to retrieve the session expiration date of a user object
+    Method to retrieve the session expiration date of a user object
  */
 - (NSDate *) expDate;
 
 /**
- Method to check if the email of the user is confirmed
+    Method to check if the email of the user is confirmed
  */
 - (BOOL) emailConfirmed;
 
 /**
- Method to retrieve the accessToken of a user object
+    Method to retrieve the accessToken of a user object
  */
 -(NSString *) accessToken;
 
