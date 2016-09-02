@@ -22,8 +22,28 @@
     
 }
 
-- (void) uploadImage:(UIImage *) img{
++ (void) uploadImage:(UIImage *) img
+              inType:(NSString *) type
+            response:(void (^)(NSError *))response{
+    [self uploadImage:img inType:type withTitle:@"Others" response:response];
+}
+
++ (void) uploadImage:(UIImage *) img
+              inType:(NSString *) type
+           withTitle:(NSString *) title
+            response:(void (^)(NSError *))response{
+    NSError *error = [PNUser checkUserLoginStatus];
+    if(error != nil){
+        response(error);
+    }
     
+    PNUser *user = [PNUser currentUser];
+    NSString *baseURL = @"http://fmning.com:8080/projectNing/";
+    NSString *pathForSalt = @"upload_image";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:title forKey:@"title"];
 }
 
 @end

@@ -8,11 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h> 
+#import "PNUser.h"
 
 @interface PNImage : NSObject
 
 + (instancetype)imageManager;
 
-- (void) uploadImage:(UIImage *) img;
++ (void) uploadImage:(UIImage *) img
+              inType:(NSString *) type
+            response:(void (^)(NSError *))response;
+
++ (void) uploadImage:(UIImage *) img
+              inType:(NSString *) type
+           withTitle:(NSString *) title
+            response:(void (^)(NSError *))response;
 
 @end
