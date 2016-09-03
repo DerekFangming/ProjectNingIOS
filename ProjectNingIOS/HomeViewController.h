@@ -3,7 +3,7 @@
 #import "SlideNavigationController.h"
 #import "SlideNavigationContorllerAnimatorScaleAndFade.h"
 
-#import "PNImage.h"
+#import "PNService.h"
 
 @interface HomeViewController : UIViewController
 //

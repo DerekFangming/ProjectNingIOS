@@ -158,6 +158,7 @@
 
 + (NSError *) checkUserLoginStatus{
     PNUser *user = [PNUser currentUser];
+    //NSLog(user->accessToken); // TODO CHECK SESSION TIMEOUT
     if(user->accessToken == nil){
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"No user logged in" forKey:NSLocalizedDescriptionKey];
