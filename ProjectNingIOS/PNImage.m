@@ -39,11 +39,35 @@
     
     PNUser *user = [PNUser currentUser];
     NSString *baseURL = @"http://fmning.com:8080/projectNing/";
-    NSString *pathForSalt = @"upload_image";
+    NSString *pathForImgUpload = @"upload_image";
+    
+    NSData *imageData = UIImagePNGRepresentation(img);;
+    NSString *base64 = [imageData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:type forKey:@"type"];
     [parameters setObject:title forKey:@"title"];
+    [parameters setObject:base64 forKey:@"image"];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager POST:pathForImgUpload
+       parameters:parameters
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              if (![[responseObject objectForKey:@"error"] isEqualToString:@""]) {
+                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
+                  [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
+                  NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
+                  response(error);
+              }
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              response(error);
+              
+          }];
 }
 
 @end
