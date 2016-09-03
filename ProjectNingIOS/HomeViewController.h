@@ -1,15 +1,9 @@
-//
-//  HomeViewController.h
-//  SlideMenu
-//
-//  Created by Aryan Gh on 4/24/13.
-//  Copyright (c) 2013 Aryan Ghassemi. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "SlideNavigationController.h"
 #import "SlideNavigationContorllerAnimatorScaleAndFade.h"
+
+#import "PNImage.h"
 
 @interface HomeViewController : UIViewController
 //

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10109" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0SJ-jw-Kv8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0SJ-jw-Kv8">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Left Menu View Controller-->
@@ -99,6 +99,9 @@
                                     <constraint firstAttribute="width" constant="125" id="Akd-LZ-hCe"/>
                                     <constraint firstAttribute="height" constant="125" id="b6F-NC-Lzg"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="acceptBtnClick" destination="84R-kT-nX4" eventType="touchUpInside" id="TyC-sm-PNm"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vfd-40-EMd">
                                 <rect key="frame" x="325" y="445" width="125" height="125"/>
@@ -106,6 +109,9 @@
                                     <constraint firstAttribute="width" constant="125" id="H6u-yj-6OP"/>
                                     <constraint firstAttribute="height" constant="125" id="V2G-2z-WF6"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="denyBtnClick" destination="84R-kT-nX4" eventType="touchUpInside" id="sp9-dU-QoB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.94631032569999995" alpha="1" colorSpace="calibratedWhite"/>
@@ -122,7 +128,7 @@
                     <connections>
                         <outlet property="acceptBtn" destination="cEa-rK-jU3" id="vna-Je-ER1"/>
                         <outlet property="avatarView" destination="LmG-2g-PZ7" id="kgA-ld-54W"/>
-                        <outlet property="denyBtn" destination="Vfd-40-EMd" id="6Hr-iI-3Ik"/>
+                        <outlet property="denyBtn" destination="Vfd-40-EMd" id="6Km-sD-hrY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8H-Uo-Au6" userLabel="First Responder" sceneMemberID="firstResponder"/>

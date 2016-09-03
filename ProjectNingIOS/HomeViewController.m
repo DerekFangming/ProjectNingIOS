@@ -47,4 +47,26 @@
 
 #pragma mark - IBActions -
 
+- (IBAction)acceptBtnClick {
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    CGRect rect = [keyWindow bounds];
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [keyWindow.layer renderInContext:context];
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    [PNImage uploadImage:img inType:@"Others" response:^(NSError *error) {
+        if (error == nil){
+            NSLog(@"ok");
+        }else{
+            NSLog([error localizedDescription]);
+        }
+    }];
+}
+
+- (IBAction)denyBtnClick {
+    
+}
+
 @end
