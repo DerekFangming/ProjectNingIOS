@@ -1,7 +1,7 @@
 # ProjectNingIOS
 SDK project and a sample app built over the SDK.
 
-To use this SDK, please import PNService.h in your .h file to access all the methodes in the SDK
+To use this SDK, please import PNService.h in your .h file to access all the methodes in the SDK.
 
 ## Users
 
@@ -15,6 +15,11 @@ Several properties can also be accessed by calling the following methods on an u
 [user username]
 [user emailConfirmed]
 [user expDate]
+[user accessToken]
+```
+This method can be used to check if there is currently a logged in user or not. It will return nil if there is, or a NSError with a friendly error message.
+```obj
+[PNUser checkUserLoginStatus]
 ```
 
 #### Register
@@ -40,6 +45,39 @@ Calling the flowwing method will request a registration from the server.
                     response:^(PNUser *user, NSError *error) {
 }];
 ```
-The result checking are the same as register process
+The result checking are the same as register process.
 
-### Log out
+#### Log out
+Calling the following method will logout the current user.
+```obj
+[PNUser logoutCurrentUser];
+```
+
+## Images
+
+#### Upload Image
+The following method will upload an image without need of a title.
+```obj
+[PNImage uploadImage:UIImage
+              inType:@"sampleImageType"
+            response:^(NSError *error){
+}];
+```
+
+The following method will upload an image with a user defined title.
+```obj
+[PNImage uploadImage:UIImage
+              inType:@"sampleImageType"
+           withTitle:@"sampleImageTitle"
+            response:^(NSError *error){
+}];
+```
+Note that these two image upload methods need a logged in user to upload. Also, the 'user defined' title is adjusted by the server for now.
+
+#### Delete Image
+The following method will delete an image on server by image id
+```obj
+[PNImage deleteImage:NSNumber
+            response:^(NSError *error){
+}];
+```
