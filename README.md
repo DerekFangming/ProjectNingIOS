@@ -49,7 +49,7 @@ The result checking are the same as register process.
 
 #### Log out
 Calling the following method will logout the current user.
-```obj
+```objc
 [PNUser logoutCurrentUser];
 ```
 
@@ -57,7 +57,7 @@ Calling the following method will logout the current user.
 
 #### Upload Image
 The following method will upload an image without need of a title.
-```obj
+```objc
 [PNImage uploadImage:UIImage
               inType:@"sampleImageType"
             response:^(NSError *error){
@@ -65,7 +65,7 @@ The following method will upload an image without need of a title.
 ```
 
 The following method will upload an image with a user defined title.
-```obj
+```objc
 [PNImage uploadImage:UIImage
               inType:@"sampleImageType"
            withTitle:@"sampleImageTitle"
@@ -76,7 +76,7 @@ Note that these two image upload methods need a logged in user to upload. Also, 
 
 #### Delete Image
 The following method will delete an image on server by image id
-```obj
+```objc
 [PNImage deleteImage:NSNumber
             response:^(NSError *error){
 }];
