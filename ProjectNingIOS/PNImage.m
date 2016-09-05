@@ -72,4 +72,41 @@
           }];
 }
 
++ (void) deleteImage:(NSNumber *) imageId
+            response:(void (^)(NSError *))response{
+    NSError *error = [PNUser checkUserLoginStatus];
+    if(error != nil){
+        response(error);
+    }
+    
+    PNUser *user = [PNUser currentUser];
+    NSString *baseURL = @"http://fmning.com:8080/projectNing/";
+    NSString *pathForDeleteImg = @"delete_image";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:imageId forKey:@"imageId"];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager POST:pathForDeleteImg
+       parameters:parameters
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              if (![[responseObject objectForKey:@"error"] isEqualToString:@""]) {
+                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
+                  [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
+                  NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
+                  response(error);
+              }else{
+                  response(nil);
+              }
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              response(error);
+              
+          }];
+}
+
 @end

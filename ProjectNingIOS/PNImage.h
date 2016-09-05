@@ -23,4 +23,7 @@
            withTitle:(NSString *) title
             response:(void (^)(NSError *))response;
 
++ (void) deleteImage:(NSNumber *) imageId
+            response:(void (^)(NSError *))response;
+
 @end
