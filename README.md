@@ -11,14 +11,14 @@ Current user can be accessed any time by calling this method.
 PNUser *user = [PNUser currentUser];
 ```
 Several properties can also be accessed by calling the following methods on an user object.
-```obj
+```objc
 [user username]
 [user emailConfirmed]
 [user expDate]
 [user accessToken]
 ```
 This method can be used to check if there is currently a logged in user or not. It will return nil if there is, or a NSError with a friendly error message.
-```obj
+```objc
 [PNUser checkUserLoginStatus]
 ```
 
