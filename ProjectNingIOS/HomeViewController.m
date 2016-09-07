@@ -56,9 +56,9 @@
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    [PNImage uploadImage:img inType:@"Others" response:^(NSError *error) {
-        if (error == nil){
-            NSLog(@"ok");
+    [PNImage deleteImage:[NSNumber numberWithInt:11] response:^(NSError *error) {
+        if(error == nil){
+            NSLog(@"Ok");
         }else{
             NSLog([error localizedDescription]);
         }

@@ -109,4 +109,40 @@
           }];
 }
 
++(void) getImageIdListByType:(NSString *) type
+                    response:(void (^)(NSMutableArray *list, NSError *error))response{
+    NSError *error = [PNUser checkUserLoginStatus];
+    if(error != nil){
+        response(nil, error);
+    }
+    
+    PNUser *user = [PNUser currentUser];
+    NSString *baseURL = @"http://fmning.com:8080/projectNing/";
+    NSString *pathForDeleteImg = @"get_image_ids_by_type";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:type forKey:@"type"];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager POST:pathForDeleteImg
+       parameters:parameters
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
+                  NSMutableArray *result = [[NSMutableArray alloc] init];
+                  result = [NSJSONSerialization JSONObjectWithData:[responseObject objectForKey:@"idList"] options:NSJSONReadingMutableContainers error:nil];
+              }else{
+                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
+                  [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
+                  NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
+                  response(nil, error);
+              }
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              response(nil, error);
+              
+          }];}
 @end

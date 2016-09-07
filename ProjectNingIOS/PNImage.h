@@ -26,4 +26,6 @@
 + (void) deleteImage:(NSNumber *) imageId
             response:(void (^)(NSError *))response;
 
++(void) getImageIdListByType:(NSString *) type
+                    response:(void (^)(NSMutableArray *list, NSError *error))response;
 @end
