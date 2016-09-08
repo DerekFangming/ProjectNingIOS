@@ -134,7 +134,8 @@
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
                   NSMutableArray *result = [[NSMutableArray alloc] init];
-                  result = [NSJSONSerialization JSONObjectWithData:[responseObject objectForKey:@"idList"] options:NSJSONReadingMutableContainers error:nil];
+                  result = [responseObject objectForKey:@"idList"];
+                  response(result, nil);
               }else{
                   NSMutableDictionary* details = [NSMutableDictionary dictionary];
                   [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
