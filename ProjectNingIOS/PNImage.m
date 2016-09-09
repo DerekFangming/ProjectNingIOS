@@ -72,8 +72,8 @@
           }];
 }
 
-+ (void) deleteImage:(NSNumber *) imageId
-            response:(void (^)(NSError *))response{
++ (void) deleteImageWithId:(NSNumber *) imageId
+                  response:(void (^)(NSError *))response{
     NSError *error = [PNUser checkUserLoginStatus];
     if(error != nil){
         response(error);
@@ -145,5 +145,46 @@
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               response(nil, error);
               
-          }];}
+          }];
+}
+
++ (void) downloadImageWithId:(NSNumber *) imageId
+                    response:(void (^)(UIImage *, NSError *))response{
+    NSError *error = [PNUser checkUserLoginStatus];
+    if(error != nil){
+        response(nil, error);
+    }
+    
+    PNUser *user = [PNUser currentUser];
+    NSString *baseURL = @"http://fmning.com:8080/projectNing/";
+    NSString *pathForDeleteImg = @"download_image_by_id";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:imageId forKey:@"imageId"];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager POST:pathForDeleteImg
+       parameters:parameters
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
+                  NSData* imgData = [[NSData alloc] initWithBase64EncodedString:[responseObject objectForKey:@"image"] options:0];
+                  UIImage* image = [UIImage imageWithData:imgData];
+                  response(image, nil);
+              }else{
+                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
+                  [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
+                  NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
+                  response(nil, error);
+              }
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              response(nil, error);
+              
+          }];
+}
+
 @end

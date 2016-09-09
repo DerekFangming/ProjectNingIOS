@@ -38,16 +38,24 @@
 /**
 	Delete an image on server.
 	Note that you need to be the creator of that image to delete it.
-	@param imageId the id of the image to be deleted
+	@param imageId the Id of the image to be deleted
  */
-+ (void) deleteImage:(NSNumber *) imageId
-            response:(void (^)(NSError *))response;
++ (void) deleteImageWithId:(NSNumber *) imageId
+                  response:(void (^)(NSError *))response;
 
 /**
 	Get a list of IDs for images with the specific type.
 	Note that only images created by you with that type will get retrieved
 	@param type the type name of the images
  */
-+(void) getImageIdListByType:(NSString *) type
-                    response:(void (^)(NSMutableArray *list, NSError *error))response;
++ (void) getImageIdListByType:(NSString *) type
+                     response:(void (^)(NSMutableArray *, NSError *))response;
+
+/**
+	Download image from server with a given Id
+	Note that you need to be the creator of that image to delete it
+	@param imageId the Id of the image to be deleted
+ */
++ (void) downloadImageWithId:(NSNumber *) imageId
+                    response:(void (^)(UIImage *, NSError *))response;
 @end
