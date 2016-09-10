@@ -10,4 +10,15 @@
 
 @implementation PNStranger
 
+- (id)initWithAvatar:(UIImage *) newAvatar andUserId:(NSNumber *) newUserId{
+    self = [super init];
+    
+    if(self){
+        avatar = newAvatar;
+        userId = newUserId;
+    }
+    
+    return self;
+}
+
 @end

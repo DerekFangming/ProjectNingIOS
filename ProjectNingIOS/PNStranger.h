@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface PNStranger : NSObject
+@interface PNStranger : NSObject{
+    @protected UIImage *avatar;
+    @protected NSNumber *userId;
+}
 
 @end
