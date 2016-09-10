@@ -63,10 +63,20 @@
     //        NSLog([error localizedDescription]);
     //    }
     //}];
-    
+    /*
     [PNImage getImageIdListByType:@"Others" response:^(NSMutableArray *list, NSError *error) {
         if(error == nil){
             NSLog(@"%@",list);
+        }else{
+            NSLog([error localizedDescription]);
+        }
+    }];
+     */
+    NSLog(@"Click!");
+    [PNImage downloadImageWithId:[NSNumber numberWithInt:5] response:^(UIImage * img, NSError *error) {
+        if(error == nil){
+            NSLog(@"Done");
+            [avatarView setImage:img];
         }else{
             NSLog([error localizedDescription]);
         }
