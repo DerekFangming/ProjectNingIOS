@@ -14,4 +14,6 @@
     @protected NSNumber *userId;
 }
 
+- (id)initWithAvatar:(UIImage *) newAvatar andUserId:(NSNumber *) newUserId;
+
 @end

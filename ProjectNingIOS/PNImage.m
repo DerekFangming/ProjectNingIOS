@@ -118,7 +118,7 @@
     
     PNUser *user = [PNUser currentUser];
     NSString *baseURL = @"http://fmning.com:8080/projectNing/";
-    NSString *pathForDeleteImg = @"get_image_ids_by_type";
+    NSString *pathForImgIdList = @"get_image_ids_by_type";
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:[user accessToken] forKey:@"accessToken"];
@@ -128,7 +128,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    [manager POST:pathForDeleteImg
+    [manager POST:pathForImgIdList
        parameters:parameters
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -157,7 +157,7 @@
     
     PNUser *user = [PNUser currentUser];
     NSString *baseURL = @"http://fmning.com:8080/projectNing/";
-    NSString *pathForDeleteImg = @"download_image_by_id";
+    NSString *pathForDownloadImg = @"download_image_by_id";
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:[user accessToken] forKey:@"accessToken"];
@@ -167,7 +167,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    [manager POST:pathForDeleteImg
+    [manager POST:pathForDownloadImg
        parameters:parameters
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -175,6 +175,53 @@
                   NSData* imgData = [[NSData alloc] initWithBase64EncodedString:[responseObject objectForKey:@"image"] options:0];
                   UIImage* image = [UIImage imageWithData:imgData];
                   response(image, nil);
+              }else{
+                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
+                  [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
+                  NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
+                  response(nil, error);
+              }
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              response(nil, error);
+              
+          }];
+}
+
++ (void) getNextAvatarWithAction:(NSString *) action
+            forCurrentUserWithId:(NSNumber *) userId
+                        response:(void (^)(PNStranger *, NSError *))response{
+    NSError *error = [PNUser checkUserLoginStatus];
+    if(error != nil){
+        response(nil, error);
+    }
+    
+    PNUser *user = [PNUser currentUser];
+    NSString *baseURL = @"http://fmning.com:8080/projectNing/";
+    NSString *pathForNextAvatar = @"get_next_avatar";
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    if (action != nil && userId != nil) {
+        [parameters setObject:action forKey:@"action"];
+        [parameters setObject:userId forKey:@"userId"];
+    }
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager POST:pathForNextAvatar
+       parameters:parameters
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
+                  NSData* imgData = [[NSData alloc] initWithBase64EncodedString:[responseObject objectForKey:@"image"] options:0];
+                  UIImage* image = [UIImage imageWithData:imgData];
+                  
+                  PNStranger *stranger = [[PNStranger alloc]
+                                          initWithAvatar:image
+                                               andUserId:[NSNumber numberWithInt:[[responseObject objectForKey:@""] intValue]]];
+                  response(stranger, nil);
               }else{
                   NSMutableDictionary* details = [NSMutableDictionary dictionary];
                   [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];

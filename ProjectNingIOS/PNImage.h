@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "PNUser.h"
+#import "PNStranger.h"
 
 @interface PNImage : NSObject
 
@@ -58,4 +59,13 @@
  */
 + (void) downloadImageWithId:(NSNumber *) imageId
                     response:(void (^)(UIImage *, NSError *))response;
+
+/**
+    Get avatar of the next user. There may not be available users
+    @param action the action for currect user when requesting for a new one
+    @param userId the id of the current user
+ */
++ (void) getNextAvatarWithAction:(NSString *) action
+            forCurrentUserWithId:(NSNumber *) userId
+                        response:(void (^)(PNStranger *, NSError *))response;
 @end
