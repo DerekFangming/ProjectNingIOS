@@ -67,5 +67,5 @@
  */
 + (void) getNextAvatarWithAction:(NSString *) action
             forCurrentUserWithId:(NSNumber *) userId
-                        response:(void (^)(PNStranger *, NSError *))response;
+                        response:(void (^)(PNStranger *, bool, NSError *))response;
 @end
