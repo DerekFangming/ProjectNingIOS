@@ -16,4 +16,8 @@
 
 - (id)initWithAvatar:(UIImage *) newAvatar andUserId:(NSNumber *) newUserId;
 
+- (UIImage *) avatar;
+
+-(NSNumber *) userId;
+
 @end

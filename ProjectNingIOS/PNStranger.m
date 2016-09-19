@@ -21,4 +21,12 @@
     return self;
 }
 
+- (UIImage *) avatar{
+    return self->avatar;
+}
+
+- (NSNumber *) userId{
+    return self->userId;
+}
+
 @end
