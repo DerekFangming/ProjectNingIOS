@@ -222,8 +222,7 @@
                                           initWithAvatar:image
                                                andUserId:
                                           [NSNumber numberWithInt:[[responseObject objectForKey:@"userId"] intValue]]];
-                  
-                  response(stranger, [[responseObject objectForKey:@"userId"] isEqualToString:@""], nil);
+                  response(stranger, [responseObject objectForKey:@"status"], nil);
               }else{
                   NSMutableDictionary* details = [NSMutableDictionary dictionary];
                   [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
