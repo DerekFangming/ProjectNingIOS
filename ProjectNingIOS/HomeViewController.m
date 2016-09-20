@@ -73,6 +73,7 @@
     }];
      */
     NSLog(@"Click!");
+    /*
     [PNImage downloadImageWithId:[NSNumber numberWithInt:5] response:^(UIImage * img, NSError *error) {
         if(error == nil){
             NSLog(@"Done");
@@ -80,6 +81,16 @@
         }else{
             NSLog([error localizedDescription]);
         }
+    }];*/
+    [PNImage getNextAvatarWithAction:nil
+                forCurrentUserWithId:nil
+                            response:^(PNStranger * strange, bool status, NSError *error) {
+                                if(error == nil){
+                                    NSLog(@"Done");
+                                    [avatarView setImage:[strange avatar]];
+                                }else{
+                                    NSLog([error localizedDescription]);
+                                }
     }];
 }
 
