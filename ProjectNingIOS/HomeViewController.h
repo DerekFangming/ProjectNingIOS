@@ -4,8 +4,11 @@
 #import "SlideNavigationContorllerAnimatorScaleAndFade.h"
 
 #import "PNService.h"
+#import "Utils.h"
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController{
+    UIImageView *activityIndicatorImage;
+}
 //
 //@property (nonatomic, strong) IBOutlet UISwitch *limitPanGestureSwitch;
 //@property (nonatomic, strong) IBOutlet UISwitch *slideOutAnimationSwitch;

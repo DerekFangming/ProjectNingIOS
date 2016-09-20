@@ -31,6 +31,7 @@
     [denyBtn setImage:[UIImage imageNamed:@"denyBtnClicked.png"] forState: UIControlStateHighlighted];
     [denyBtn setImage:[UIImage imageNamed:@"denyBtn.png"] forState: UIControlStateNormal];
     
+    activityIndicatorImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"loading.png"]];
 }
 
 #pragma mark - SlideNavigationController Methods -
@@ -73,6 +74,8 @@
     }];
      */
     NSLog(@"Click!");
+    [avatarView setImage:[UIImage imageNamed:@"loading.png"]];
+    
     /*
     [PNImage downloadImageWithId:[NSNumber numberWithInt:5] response:^(UIImage * img, NSError *error) {
         if(error == nil){
