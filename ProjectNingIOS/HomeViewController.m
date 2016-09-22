@@ -74,8 +74,8 @@
     }];
      */
     NSLog(@"Click!");
-    [avatarView setImage:[UIImage imageNamed:@"loading.png"]];
-    
+    [self disableAllBtns];
+    [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
     /*
     [PNImage downloadImageWithId:[NSNumber numberWithInt:5] response:^(UIImage * img, NSError *error) {
         if(error == nil){
@@ -91,6 +91,8 @@
                                 if(error == nil){
                                     NSLog(@"Done");
                                     [avatarView setImage:[strange avatar]];
+                                    [self enableAllBtns];
+                                    [GMDCircleLoader hideFromView:self.view animated:YES];
                                 }else{
                                     NSLog([error localizedDescription]);
                                 }
@@ -99,6 +101,18 @@
 
 - (IBAction)denyBtnClick {
     
+}
+
+#pragma mark - Button controls -
+
+- (void)disableAllBtns {
+    [acceptBtn setEnabled:NO];
+    [denyBtn setEnabled:NO];
+}
+
+- (void)enableAllBtns {
+    [acceptBtn setEnabled:YES];
+    [denyBtn setEnabled:YES];
 }
 
 @end

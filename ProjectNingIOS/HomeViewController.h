@@ -5,6 +5,7 @@
 
 #import "PNService.h"
 #import "Utils.h"
+#import "GMDCircleLoader.h"
 
 @interface HomeViewController : UIViewController{
     UIImageView *activityIndicatorImage;
