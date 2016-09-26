@@ -34,8 +34,8 @@
     [PNUser loginUserWithUsername:@"synfm123@gmail.com"
                        andPassword:@"flash"
                            response:^(PNUser *user, NSError *error) {
-                               NSLog([user username]);
-                               NSLog(@"%@", [error localizedDescription]);
+                               //NSLog([user username]);
+                               //NSLog(@"%@", [error localizedDescription]);
     }];
     
     [PNUser logoutCurrentUser];

@@ -31,6 +31,20 @@
     [denyBtn setImage:[UIImage imageNamed:@"denyBtnClicked.png"] forState: UIControlStateHighlighted];
     [denyBtn setImage:[UIImage imageNamed:@"denyBtn.png"] forState: UIControlStateNormal];
     
+    //Init first stranger
+    [self disableAllBtns];
+    [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
+    [PNImage getNextAvatarWithAction:nil
+                forCurrentUserWithId:nil
+                            response:^(PNStranger * strange, bool status, NSError *error) {
+                                if(error == nil){
+                                    [avatarView setImage:[strange avatar]];
+                                    [self enableAllBtns];
+                                    [GMDCircleLoader hideFromView:self.view animated:YES];
+                                }else if ([[error localizedDescription] isEqualToString:@"The resources do not exist"]){
+                                    NSLog([error localizedDescription]);
+                                }
+                            }];
     
 }
 
