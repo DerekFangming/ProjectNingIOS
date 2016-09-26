@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F651D834F1B004DB409 /* PNStranger.m */; };
-		87ED6F6A1D919827004DB409 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 87ED6F691D919827004DB409 /* loading.png */; };
 		87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F6C1D9199AF004DB409 /* Utils.m */; };
 		87ED6F741D9314C2004DB409 /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F731D9314C2004DB409 /* GMDCircleLoader.m */; };
 		912D2D4F1C869FC30039AEF5 /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D2D4E1C869FC30039AEF5 /* SlideNavigationController.m */; };
@@ -62,7 +61,6 @@
 /* Begin PBXFileReference section */
 		87ED6F641D834F1B004DB409 /* PNStranger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNStranger.h; sourceTree = "<group>"; };
 		87ED6F651D834F1B004DB409 /* PNStranger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNStranger.m; sourceTree = "<group>"; };
-		87ED6F691D919827004DB409 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		87ED6F6B1D9199AF004DB409 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		87ED6F6C1D9199AF004DB409 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		87ED6F721D9314C2004DB409 /* GMDCircleLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMDCircleLoader.h; sourceTree = "<group>"; };
@@ -313,7 +311,6 @@
 		9170BBE21D3F07F500FFD3E8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				87ED6F691D919827004DB409 /* loading.png */,
 				912D2D791C86A4050039AEF5 /* rightMenu.jpg */,
 				912D2D7A1C86A4050039AEF5 /* leftMenu.jpg */,
 				9170BBDA1D3F045D00FFD3E8 /* acceptBtnClicked.png */,
@@ -416,7 +413,6 @@
 				912D2D551C86A0010039AEF5 /* menu-button@2x.png in Resources */,
 				912D2D7C1C86A4050039AEF5 /* leftMenu.jpg in Resources */,
 				9144319E1C6E2353003FB63E /* Main.storyboard in Resources */,
-				87ED6F6A1D919827004DB409 /* loading.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,9 +7,7 @@
 #import "Utils.h"
 #import "GMDCircleLoader.h"
 
-@interface HomeViewController : UIViewController{
-    UIImageView *activityIndicatorImage;
-}
+@interface HomeViewController : UIViewController
 //
 //@property (nonatomic, strong) IBOutlet UISwitch *limitPanGestureSwitch;
 //@property (nonatomic, strong) IBOutlet UISwitch *slideOutAnimationSwitch;
