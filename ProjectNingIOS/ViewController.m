@@ -38,7 +38,7 @@
                                //NSLog(@"%@", [error localizedDescription]);
     }];
     
-    [PNUser logoutCurrentUser];
+    [PNUser logoutCurrentUser];// reminder: This does not work because of the async
     
 }
 
