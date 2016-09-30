@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PNUser.h"
 #import "PNImage.h"
+#import "PNAlertHelper.h"
 
 @interface PNService : NSObject
 

@@ -34,6 +34,7 @@
     //Init first stranger
     [self disableAllBtns];
     [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
+    [UIAlertController showAlertWithTitle:@"Test" andMessage:@"Message body!" from:self];
     [PNImage getNextAvatarWithAction:nil
                 forCurrentUserWithId:nil
                             response:^(PNStranger * strange, bool status, NSError *error) {
