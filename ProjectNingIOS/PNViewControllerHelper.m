@@ -60,12 +60,8 @@
     if(source)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-            main();
-        });
-        
-        [NSThread mainThread:^{
             [source presentViewController:newVC animated:YES completion:nil];
-        }];
+        });
     }
 }
 
