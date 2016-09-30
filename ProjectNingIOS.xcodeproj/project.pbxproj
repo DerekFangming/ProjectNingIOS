@@ -10,6 +10,8 @@
 		87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F651D834F1B004DB409 /* PNStranger.m */; };
 		87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F6C1D9199AF004DB409 /* Utils.m */; };
 		87ED6F741D9314C2004DB409 /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F731D9314C2004DB409 /* GMDCircleLoader.m */; };
+		87ED6F781D9CAB53004DB409 /* PNAlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F771D9CAB53004DB409 /* PNAlertHelper.m */; };
+		87ED6F7B1D9CAEF9004DB409 /* PNViewControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F7A1D9CAEF9004DB409 /* PNViewControllerHelper.m */; };
 		912D2D4F1C869FC30039AEF5 /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D2D4E1C869FC30039AEF5 /* SlideNavigationController.m */; };
 		912D2D541C86A0010039AEF5 /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 912D2D521C86A0010039AEF5 /* menu-button.png */; };
 		912D2D551C86A0010039AEF5 /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912D2D531C86A0010039AEF5 /* menu-button@2x.png */; };
@@ -65,6 +67,10 @@
 		87ED6F6C1D9199AF004DB409 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		87ED6F721D9314C2004DB409 /* GMDCircleLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMDCircleLoader.h; sourceTree = "<group>"; };
 		87ED6F731D9314C2004DB409 /* GMDCircleLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMDCircleLoader.m; sourceTree = "<group>"; };
+		87ED6F761D9CAB53004DB409 /* PNAlertHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNAlertHelper.h; sourceTree = "<group>"; };
+		87ED6F771D9CAB53004DB409 /* PNAlertHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNAlertHelper.m; sourceTree = "<group>"; };
+		87ED6F791D9CAEF9004DB409 /* PNViewControllerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNViewControllerHelper.h; sourceTree = "<group>"; };
+		87ED6F7A1D9CAEF9004DB409 /* PNViewControllerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNViewControllerHelper.m; sourceTree = "<group>"; };
 		912D2D4D1C869FC30039AEF5 /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationController.h; sourceTree = "<group>"; };
 		912D2D4E1C869FC30039AEF5 /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationController.m; sourceTree = "<group>"; };
 		912D2D521C86A0010039AEF5 /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
@@ -288,6 +294,10 @@
 				91C532C21C9C68D0003E0CCB /* PNImage.m */,
 				87ED6F641D834F1B004DB409 /* PNStranger.h */,
 				87ED6F651D834F1B004DB409 /* PNStranger.m */,
+				87ED6F761D9CAB53004DB409 /* PNAlertHelper.h */,
+				87ED6F771D9CAB53004DB409 /* PNAlertHelper.m */,
+				87ED6F791D9CAEF9004DB409 /* PNViewControllerHelper.h */,
+				87ED6F7A1D9CAEF9004DB409 /* PNViewControllerHelper.m */,
 			);
 			name = PNService;
 			sourceTree = "<group>";
@@ -434,6 +444,7 @@
 				912D2D4F1C869FC30039AEF5 /* SlideNavigationController.m in Sources */,
 				914431E71C70DABA003FB63E /* AFURLSessionManager.m in Sources */,
 				914431E31C6E75A0003FB63E /* AFURLRequestSerialization.m in Sources */,
+				87ED6F781D9CAB53004DB409 /* PNAlertHelper.m in Sources */,
 				912D2D771C86A26A0039AEF5 /* ProfileViewController.m in Sources */,
 				912D2D621C86A0120039AEF5 /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				9144319B1C6E2353003FB63E /* ViewController.m in Sources */,
@@ -441,6 +452,7 @@
 				914431BB1C6E240E003FB63E /* PNService.m in Sources */,
 				912D2D631C86A0120039AEF5 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				914431981C6E2353003FB63E /* AppDelegate.m in Sources */,
+				87ED6F7B1D9CAEF9004DB409 /* PNViewControllerHelper.m in Sources */,
 				914431EA1C7244B7003FB63E /* PNDateFormater.m in Sources */,
 				914431E41C6E75A0003FB63E /* AFURLResponseSerialization.m in Sources */,
 				87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */,
