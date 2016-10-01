@@ -11,17 +11,19 @@
 
 @interface UIAlertController (Helpers)
 
-+(void)showAlertWithTitle:(NSString*)title
-               andMessage:(NSString*)message
+/**
+ */
++(void)showErrorAlertWithErrorMessage:(NSString *)message
+                                 from:(UIViewController *)controller;
+
++(void)showAlertWithTitle:(NSString *)title
+               andMessage:(NSString *)message
                      from:(UIViewController*)controller;
 
-
-
-
-+(void)showDialogWithTitle:(NSString*)title
-                andMessage:(NSString*)message
-                      from:(UIViewController*)controller
-                andActions:(NSArray<NSString*>*)buttonTitles
++(void)showDialogWithTitle:(NSString *)title
+                andMessage:(NSString *)message
+                      from:(UIViewController *)controller
+                andActions:(NSArray<NSString *> *)buttonTitles
          completionHandler:(void (^)(NSInteger selected))handler;
 
 

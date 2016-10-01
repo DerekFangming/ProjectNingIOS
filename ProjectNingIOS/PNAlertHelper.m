@@ -10,15 +10,16 @@
 
 @implementation UIAlertController (Helpers)
 
-+(void)showAlertWithTitle:(NSString*)title andMessage:(NSString*)message from:(UIViewController*)controller
-{
-    [self showDialogWithTitle:title andMessage:message from:controller andActions:@[@"OK"] completionHandler:^(NSInteger selected) {
-        
-    }];
++(void)showErrorAlertWithErrorMessage:(NSString *)message
+                                 from:(UIViewController *)controller{
+    [self showAlertWithTitle:@"Error" andMessage:message from:controller];
 }
 
-+(void)showDialogWithTitle:(NSString*)title andMessage:(NSString*)message from:(UIViewController*)controller andActions:(NSArray<NSString*>*)buttonTitles completionHandler:(void (^)(NSInteger selected))handler
-{
++(void)showAlertWithTitle:(NSString*)title andMessage:(NSString*)message from:(UIViewController*)controller{
+    [self showDialogWithTitle:title andMessage:message from:controller andActions:@[@"OK"] completionHandler:^(NSInteger selected) {}];
+}
+
++(void)showDialogWithTitle:(NSString*)title andMessage:(NSString*)message from:(UIViewController*)controller andActions:(NSArray<NSString*>*)buttonTitles completionHandler:(void (^)(NSInteger selected))handler{
     if(!controller)
     {
         controller = [UIViewController topViewController];
