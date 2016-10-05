@@ -18,6 +18,6 @@
 
 - (UIImage *) avatar;
 
--(NSNumber *) userId;
+- (NSNumber *) userId;
 
 @end

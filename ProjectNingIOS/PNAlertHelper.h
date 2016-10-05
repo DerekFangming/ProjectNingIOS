@@ -16,7 +16,7 @@
     @param message the error message
     @param controller the controller to display the alert
  */
-+(void)showErrorAlertWithErrorMessage:(NSString *)message
++ (void)showErrorAlertWithErrorMessage:(NSString *)message
                                  from:(UIViewController *)controller;
 
 /**
@@ -25,7 +25,7 @@
     @param message the error message
     @param controller the controller to display the alert
  */
-+(void)showAlertWithTitle:(NSString *)title
++ (void)showAlertWithTitle:(NSString *)title
                andMessage:(NSString *)message
                      from:(UIViewController*)controller;
 
@@ -37,7 +37,7 @@
     @param burronTitles an array of strings containing button texts
     @param handler the complete handler block
  */
-+(void)showDialogWithTitle:(NSString *)title
++ (void)showDialogWithTitle:(NSString *)title
                 andMessage:(NSString *)message
                       from:(UIViewController *)controller
                 andActions:(NSArray<NSString *> *)buttonTitles

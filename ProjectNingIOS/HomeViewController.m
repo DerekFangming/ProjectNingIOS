@@ -1,5 +1,6 @@
 #import "HomeViewController.h"
 #import "LeftMenuViewController.h"
+//import "xiao bao bei.h"
 
 @implementation HomeViewController
 
@@ -38,15 +39,15 @@
     [PNImage getNextAvatarWithAction:nil
                 forCurrentUserWithId:nil
                             response:^(PNStranger * strange, bool status, NSError *error) {
+                                [self enableAllBtns];
+                                [GMDCircleLoader hideFromView:self.view animated:YES];
                                 if(error == nil){
                                     [avatarView setImage:[strange avatar]];
-                                    [self enableAllBtns];
-                                    [GMDCircleLoader hideFromView:self.view animated:YES];
                                 }else if ([[error localizedDescription] isEqualToString:@"The resources do not exist"]){
-                                    NSLog([error localizedDescription]);
+                                    [UIAlertController showErrorAlertWithErrorMessage:NO_NEW_STRANGER_MSG from:self];
                                 }
                             }];
-    
+    //i love shanshan ~
 }
 
 #pragma mark - SlideNavigationController Methods -
