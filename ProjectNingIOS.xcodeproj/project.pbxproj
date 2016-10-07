@@ -12,6 +12,7 @@
 		87ED6F741D9314C2004DB409 /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F731D9314C2004DB409 /* GMDCircleLoader.m */; };
 		87ED6F781D9CAB53004DB409 /* PNAlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F771D9CAB53004DB409 /* PNAlertHelper.m */; };
 		87ED6F7B1D9CAEF9004DB409 /* PNViewControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F7A1D9CAEF9004DB409 /* PNViewControllerHelper.m */; };
+		87ED6F7D1DA73430004DB409 /* defaultAvatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87ED6F7C1DA73430004DB409 /* defaultAvatar.jpg */; };
 		912D2D4F1C869FC30039AEF5 /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D2D4E1C869FC30039AEF5 /* SlideNavigationController.m */; };
 		912D2D541C86A0010039AEF5 /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 912D2D521C86A0010039AEF5 /* menu-button.png */; };
 		912D2D551C86A0010039AEF5 /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912D2D531C86A0010039AEF5 /* menu-button@2x.png */; };
@@ -42,7 +43,6 @@
 		914431E41C6E75A0003FB63E /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431DD1C6E75A0003FB63E /* AFURLResponseSerialization.m */; };
 		914431E71C70DABA003FB63E /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431E61C70DABA003FB63E /* AFURLSessionManager.m */; };
 		914431EA1C7244B7003FB63E /* PNDateFormater.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431E91C7244B7003FB63E /* PNDateFormater.m */; };
-		9170BBD51D3DCA0900FFD3E8 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9170BBD41D3DCA0900FFD3E8 /* 1.png */; };
 		9170BBDC1D3F045D00FFD3E8 /* acceptBtnClicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 9170BBDA1D3F045D00FFD3E8 /* acceptBtnClicked.png */; };
 		9170BBDD1D3F045D00FFD3E8 /* acceptBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 9170BBDB1D3F045D00FFD3E8 /* acceptBtn.png */; };
 		9170BBE01D3F052E00FFD3E8 /* denyBtnClicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 9170BBDE1D3F052E00FFD3E8 /* denyBtnClicked.png */; };
@@ -71,6 +71,7 @@
 		87ED6F771D9CAB53004DB409 /* PNAlertHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNAlertHelper.m; sourceTree = "<group>"; };
 		87ED6F791D9CAEF9004DB409 /* PNViewControllerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNViewControllerHelper.h; sourceTree = "<group>"; };
 		87ED6F7A1D9CAEF9004DB409 /* PNViewControllerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNViewControllerHelper.m; sourceTree = "<group>"; };
+		87ED6F7C1DA73430004DB409 /* defaultAvatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = defaultAvatar.jpg; sourceTree = "<group>"; };
 		912D2D4D1C869FC30039AEF5 /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationController.h; sourceTree = "<group>"; };
 		912D2D4E1C869FC30039AEF5 /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationController.m; sourceTree = "<group>"; };
 		912D2D521C86A0010039AEF5 /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
@@ -128,7 +129,6 @@
 		914431E61C70DABA003FB63E /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		914431E81C7244B7003FB63E /* PNDateFormater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNDateFormater.h; sourceTree = "<group>"; };
 		914431E91C7244B7003FB63E /* PNDateFormater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNDateFormater.m; sourceTree = "<group>"; };
-		9170BBD41D3DCA0900FFD3E8 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		9170BBDA1D3F045D00FFD3E8 /* acceptBtnClicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = acceptBtnClicked.png; sourceTree = "<group>"; };
 		9170BBDB1D3F045D00FFD3E8 /* acceptBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = acceptBtn.png; sourceTree = "<group>"; };
 		9170BBDE1D3F052E00FFD3E8 /* denyBtnClicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = denyBtnClicked.png; sourceTree = "<group>"; };
@@ -253,7 +253,6 @@
 				914431971C6E2353003FB63E /* AppDelegate.m */,
 				914431991C6E2353003FB63E /* ViewController.h */,
 				9144319A1C6E2353003FB63E /* ViewController.m */,
-				9170BBD41D3DCA0900FFD3E8 /* 1.png */,
 				9144319C1C6E2353003FB63E /* Main.storyboard */,
 				9144319F1C6E2353003FB63E /* Assets.xcassets */,
 				914431A11C6E2353003FB63E /* LaunchScreen.storyboard */,
@@ -321,6 +320,7 @@
 		9170BBE21D3F07F500FFD3E8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				87ED6F7C1DA73430004DB409 /* defaultAvatar.jpg */,
 				912D2D791C86A4050039AEF5 /* rightMenu.jpg */,
 				912D2D7A1C86A4050039AEF5 /* leftMenu.jpg */,
 				9170BBDA1D3F045D00FFD3E8 /* acceptBtnClicked.png */,
@@ -414,12 +414,12 @@
 				912D2D541C86A0010039AEF5 /* menu-button.png in Resources */,
 				9170BBDD1D3F045D00FFD3E8 /* acceptBtn.png in Resources */,
 				9170BBDC1D3F045D00FFD3E8 /* acceptBtnClicked.png in Resources */,
-				9170BBD51D3DCA0900FFD3E8 /* 1.png in Resources */,
 				9170BBE11D3F052E00FFD3E8 /* denyBtn.png in Resources */,
 				914431A31C6E2353003FB63E /* LaunchScreen.storyboard in Resources */,
 				914431A01C6E2353003FB63E /* Assets.xcassets in Resources */,
 				9170BBE01D3F052E00FFD3E8 /* denyBtnClicked.png in Resources */,
 				912D2D7B1C86A4050039AEF5 /* rightMenu.jpg in Resources */,
+				87ED6F7D1DA73430004DB409 /* defaultAvatar.jpg in Resources */,
 				912D2D551C86A0010039AEF5 /* menu-button@2x.png in Resources */,
 				912D2D7C1C86A4050039AEF5 /* leftMenu.jpg in Resources */,
 				9144319E1C6E2353003FB63E /* Main.storyboard in Resources */,

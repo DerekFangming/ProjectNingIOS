@@ -20,7 +20,7 @@
     }];
     
     //Setting up avatar image view
-    [avatarView setImage:[UIImage imageNamed:@"1.png"]];
+    [avatarView setImage:[UIImage imageNamed:@"defaultAvatar.jpg"]];
     [[avatarView layer] setShadowOffset:CGSizeMake(10, 10)];
     [[avatarView layer] setShadowRadius:5.0];
     [[avatarView layer] setShadowOpacity:0.6];
@@ -35,7 +35,7 @@
     //Init first stranger
     [self disableAllBtns];
     [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
-    [UIAlertController showAlertWithTitle:@"Test" andMessage:@"Message body!" from:self];
+    //[UIAlertController showAlertWithTitle:@"Test" andMessage:@"Message body!" from:self];
     [PNImage getNextAvatarWithAction:nil
                 forCurrentUserWithId:nil
                             response:^(PNStranger * strange, bool status, NSError *error) {
@@ -43,8 +43,8 @@
                                 [GMDCircleLoader hideFromView:self.view animated:YES];
                                 if(error == nil){
                                     [avatarView setImage:[strange avatar]];
-                                }else if ([[error localizedDescription] isEqualToString:@"The resources do not exist"]){
-                                    [UIAlertController showErrorAlertWithErrorMessage:NO_NEW_STRANGER_MSG from:self];
+                                }else{
+                                    [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
                                 }
                             }];
     //i love shanshan ~
