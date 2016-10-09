@@ -106,7 +106,7 @@
                                 [self enableAllBtns];
                                 [GMDCircleLoader hideFromView:self.view animated:YES];
                                 if(error == nil){
-                                    NSLog(@"Done");
+                                    currentStranger = stranger;
                                     [avatarView setImage:[stranger avatar]];
                                 }else{
                                     [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
