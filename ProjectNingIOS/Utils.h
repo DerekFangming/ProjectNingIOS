@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
 
-#define NO_NEW_STRANGER_MSG @"There are no more new users. Please try again later."
+#define ACCEPT_ACTION @"friend"
+#define DENY_ACTION   @"deny"
 
 @interface Utils : NSObject
 

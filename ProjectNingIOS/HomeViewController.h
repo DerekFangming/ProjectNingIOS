@@ -7,7 +7,9 @@
 #import "Utils.h"
 #import "GMDCircleLoader.h"
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController{
+    PNStranger *currentStranger;
+}
 //
 //@property (nonatomic, strong) IBOutlet UISwitch *limitPanGestureSwitch;
 //@property (nonatomic, strong) IBOutlet UISwitch *slideOutAnimationSwitch;

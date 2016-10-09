@@ -35,14 +35,14 @@
     //Init first stranger
     [self disableAllBtns];
     [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
-    //[UIAlertController showAlertWithTitle:@"Test" andMessage:@"Message body!" from:self];
     [PNImage getNextAvatarWithAction:nil
                 forCurrentUserWithId:nil
-                            response:^(PNStranger * strange, bool status, NSError *error) {
+                            response:^(PNStranger * stranger, bool status, NSError *error) {
                                 [self enableAllBtns];
                                 [GMDCircleLoader hideFromView:self.view animated:YES];
                                 if(error == nil){
-                                    [avatarView setImage:[strange avatar]];
+                                    currentStranger = stranger;
+                                    [avatarView setImage:[stranger avatar]];
                                 }else{
                                     [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
                                 }
@@ -89,7 +89,6 @@
         }
     }];
      */
-    NSLog(@"Click!");
     [self disableAllBtns];
     [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
     /*
@@ -101,16 +100,16 @@
             NSLog([error localizedDescription]);
         }
     }];*/
-    [PNImage getNextAvatarWithAction:nil
-                forCurrentUserWithId:nil
-                            response:^(PNStranger * strange, bool status, NSError *error) {
+    [PNImage getNextAvatarWithAction:ACCEPT_ACTION
+                forCurrentUserWithId:[currentStranger userId]
+                            response:^(PNStranger * stranger, bool status, NSError *error) {
+                                [self enableAllBtns];
+                                [GMDCircleLoader hideFromView:self.view animated:YES];
                                 if(error == nil){
                                     NSLog(@"Done");
-                                    [avatarView setImage:[strange avatar]];
-                                    [self enableAllBtns];
-                                    [GMDCircleLoader hideFromView:self.view animated:YES];
+                                    [avatarView setImage:[stranger avatar]];
                                 }else{
-                                    NSLog([error localizedDescription]);
+                                    [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
                                 }
     }];
 }
