@@ -115,7 +115,20 @@
 }
 
 - (IBAction)denyBtnClick {
-    
+    [self disableAllBtns];
+    [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
+    [PNImage getNextAvatarWithAction:DENY_ACTION
+                forCurrentUserWithId:[currentStranger userId]
+                            response:^(PNStranger * stranger, bool status, NSError *error) {
+                                [self enableAllBtns];
+                                [GMDCircleLoader hideFromView:self.view animated:YES];
+                                if(error == nil){
+                                    currentStranger = stranger;
+                                    [avatarView setImage:[stranger avatar]];
+                                }else{
+                                    [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
+                                }
+                            }];
 }
 
 #pragma mark - Button controls -
