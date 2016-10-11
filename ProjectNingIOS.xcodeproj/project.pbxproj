@@ -13,6 +13,7 @@
 		87ED6F781D9CAB53004DB409 /* PNAlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F771D9CAB53004DB409 /* PNAlertHelper.m */; };
 		87ED6F7B1D9CAEF9004DB409 /* PNViewControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F7A1D9CAEF9004DB409 /* PNViewControllerHelper.m */; };
 		87ED6F7D1DA73430004DB409 /* defaultAvatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87ED6F7C1DA73430004DB409 /* defaultAvatar.jpg */; };
+		87ED6F7F1DADA739004DB409 /* refreshBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 87ED6F7E1DADA739004DB409 /* refreshBtn.png */; };
 		912D2D4F1C869FC30039AEF5 /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D2D4E1C869FC30039AEF5 /* SlideNavigationController.m */; };
 		912D2D541C86A0010039AEF5 /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 912D2D521C86A0010039AEF5 /* menu-button.png */; };
 		912D2D551C86A0010039AEF5 /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912D2D531C86A0010039AEF5 /* menu-button@2x.png */; };
@@ -72,6 +73,7 @@
 		87ED6F791D9CAEF9004DB409 /* PNViewControllerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNViewControllerHelper.h; sourceTree = "<group>"; };
 		87ED6F7A1D9CAEF9004DB409 /* PNViewControllerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNViewControllerHelper.m; sourceTree = "<group>"; };
 		87ED6F7C1DA73430004DB409 /* defaultAvatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = defaultAvatar.jpg; sourceTree = "<group>"; };
+		87ED6F7E1DADA739004DB409 /* refreshBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refreshBtn.png; sourceTree = "<group>"; };
 		912D2D4D1C869FC30039AEF5 /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationController.h; sourceTree = "<group>"; };
 		912D2D4E1C869FC30039AEF5 /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationController.m; sourceTree = "<group>"; };
 		912D2D521C86A0010039AEF5 /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		9170BBE21D3F07F500FFD3E8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				87ED6F7E1DADA739004DB409 /* refreshBtn.png */,
 				87ED6F7C1DA73430004DB409 /* defaultAvatar.jpg */,
 				912D2D791C86A4050039AEF5 /* rightMenu.jpg */,
 				912D2D7A1C86A4050039AEF5 /* leftMenu.jpg */,
@@ -419,6 +422,7 @@
 				914431A01C6E2353003FB63E /* Assets.xcassets in Resources */,
 				9170BBE01D3F052E00FFD3E8 /* denyBtnClicked.png in Resources */,
 				912D2D7B1C86A4050039AEF5 /* rightMenu.jpg in Resources */,
+				87ED6F7F1DADA739004DB409 /* refreshBtn.png in Resources */,
 				87ED6F7D1DA73430004DB409 /* defaultAvatar.jpg in Resources */,
 				912D2D551C86A0010039AEF5 /* menu-button@2x.png in Resources */,
 				912D2D7C1C86A4050039AEF5 /* leftMenu.jpg in Resources */,

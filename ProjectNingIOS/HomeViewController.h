@@ -20,5 +20,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *avatarView;
 @property (strong, nonatomic) IBOutlet UIButton *acceptBtn;
 @property (strong, nonatomic) IBOutlet UIButton *denyBtn;
+@property (weak, nonatomic) IBOutlet UIButton *refreshBtn;
 
 @end

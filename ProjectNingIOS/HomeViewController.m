@@ -7,6 +7,7 @@
 @synthesize avatarView;
 @synthesize acceptBtn;
 @synthesize denyBtn;
+@synthesize refreshBtn;
 
 - (void)viewDidLoad
 {
@@ -31,6 +32,8 @@
     [acceptBtn setImage:[UIImage imageNamed:@"acceptBtn.png"] forState: UIControlStateNormal];
     [denyBtn setImage:[UIImage imageNamed:@"denyBtnClicked.png"] forState: UIControlStateHighlighted];
     [denyBtn setImage:[UIImage imageNamed:@"denyBtn.png"] forState: UIControlStateNormal];
+    [refreshBtn setImage:[UIImage imageNamed:@"refreshBtn.png"] forState: UIControlStateNormal];
+    [refreshBtn setHidden:YES];
     
     //Init first stranger
     [self disableAllBtns];
@@ -44,6 +47,8 @@
                                     currentStranger = stranger;
                                     [avatarView setImage:[stranger avatar]];
                                 }else{
+                                    [refreshBtn setHidden:NO];
+                                    [self disableAllBtns];
                                     [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
                                 }
                             }];
@@ -129,6 +134,10 @@
                                     [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
                                 }
                             }];
+}
+
+- (IBAction)refreshBtnClick {
+    NSLog(@"ok");
 }
 
 #pragma mark - Button controls -
