@@ -137,7 +137,23 @@
 }
 
 - (IBAction)refreshBtnClick {
-    NSLog(@"ok");
+    [refreshBtn setHidden:YES];
+    [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
+    [PNImage getNextAvatarWithAction:nil
+                forCurrentUserWithId:nil
+                            response:^(PNStranger * stranger, bool status, NSError *error) {
+                                [self enableAllBtns];
+                                [GMDCircleLoader hideFromView:self.view animated:YES];
+                                if(error == nil){
+                                    [self enableAllBtns];
+                                    currentStranger = stranger;
+                                    [avatarView setImage:[stranger avatar]];
+                                }else{
+                                    [refreshBtn setHidden:NO];
+                                    [self disableAllBtns];
+                                    [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
+                                }
+                            }];
 }
 
 #pragma mark - Button controls -
