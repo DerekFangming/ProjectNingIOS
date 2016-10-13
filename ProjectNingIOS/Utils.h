@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
 
-#define ACCEPT_ACTION @"friend"
-#define DENY_ACTION   @"deny"
+#define ACCEPT_ACTION     @"friend"
+#define DENY_ACTION       @"deny"
 
 @interface Utils : NSObject
 

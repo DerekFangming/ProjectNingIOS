@@ -20,6 +20,15 @@
                                  from:(UIViewController *)controller;
 
 /**
+ Show confirm message showing connected status with stranger. Title is fixed
+ @param name the name of the stranger
+ @param controller the controller to display the alert
+ */
++ (void)showFriendConfirmAlertForStranger:(NSString *)name
+                                     from:(UIViewController *)controller
+                        completionHandler:(void (^)(NSInteger selected))handler;
+
+/**
     Show alert with customized title and error message
     @param title the title of the alert
     @param message the error message

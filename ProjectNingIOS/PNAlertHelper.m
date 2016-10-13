@@ -15,8 +15,24 @@
     [self showAlertWithTitle:@"Error" andMessage:message from:controller];
 }
 
++ (void)showFriendConfirmAlertForStranger:(NSString *)name
+                                     from:(UIViewController *)controller
+                        completionHandler:(void (^)(NSInteger selected))handler{
+    NSString * msg = [[@"You becomes " stringByAppendingString:name] stringByAppendingString:@"'s friend! Say hello now!"];
+    
+    [self showDialogWithTitle:@"Congratulation!"
+                   andMessage:msg
+                         from:controller
+                   andActions:@[@"Later", @"Chat now"]
+            completionHandler:handler];
+}
+
 +(void)showAlertWithTitle:(NSString*)title andMessage:(NSString*)message from:(UIViewController*)controller{
-    [self showDialogWithTitle:title andMessage:message from:controller andActions:@[@"OK"] completionHandler:^(NSInteger selected) {}];
+    [self showDialogWithTitle:title
+                   andMessage:message
+                         from:controller
+                   andActions:@[@"Ok"]
+            completionHandler:^(NSInteger selected) {}];
 }
 
 +(void)showDialogWithTitle:(NSString*)title andMessage:(NSString*)message from:(UIViewController*)controller andActions:(NSArray<NSString*>*)buttonTitles completionHandler:(void (^)(NSInteger selected))handler{

@@ -49,9 +49,14 @@
                                 }else{
                                     [refreshBtn setHidden:NO];
                                     [self disableAllBtns];
-                                    [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
+                                    //[UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
                                 }
                             }];
+    [UIAlertController showFriendConfirmAlertForStranger:@"Andy" from:self completionHandler:^(NSInteger selected) {
+        if(selected ==1){
+            // Chat!
+        }
+    }];
     //i love shanshan ~
 }
 
@@ -95,6 +100,8 @@
                                 [self enableAllBtns];
                                 [GMDCircleLoader hideFromView:self.view animated:YES];
                                 if(error == nil){
+                                    
+                                    
                                     currentStranger = stranger;
                                     [avatarView setImage:[stranger avatar]];
                                 }else{
