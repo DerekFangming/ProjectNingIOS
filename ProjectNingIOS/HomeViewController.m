@@ -55,6 +55,15 @@
     [UIAlertController showFriendConfirmAlertForStranger:@"Andy" from:self completionHandler:^(NSInteger selected) {
         if(selected ==1){
             // Chat!
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+            UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"FriendsViewController"];
+            static Menu menu = MenuLeft;
+            [[SlideNavigationController sharedInstance] openMenu:menu withCompletion:^{
+                [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc
+                                                                         withSlideOutAnimation:YES
+                                                                                 andCompletion:nil];
+            }];
+            
         }
     }];
     //i love shanshan ~

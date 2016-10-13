@@ -7,6 +7,8 @@
 #import "Utils.h"
 #import "GMDCircleLoader.h"
 
+#import "FriendsViewController.h"
+
 @interface HomeViewController : UIViewController{
     PNStranger *currentStranger;
 }
