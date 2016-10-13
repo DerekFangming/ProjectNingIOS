@@ -70,41 +70,8 @@
 #pragma mark - IBActions -
 
 - (IBAction)acceptBtnClick {
-//    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-//    CGRect rect = [keyWindow bounds];
-//    UIGraphicsBeginImageContext(rect.size);
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    [keyWindow.layer renderInContext:context];
-//    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-    
-    //[PNImage deleteImage:[NSNumber numberWithInt:11] response:^(NSError *error) {
-    //    if(error == nil){
-    //        NSLog(@"Ok");
-    //    }else{
-    //        NSLog([error localizedDescription]);
-    //    }
-    //}];
-    /*
-    [PNImage getImageIdListByType:@"Others" response:^(NSMutableArray *list, NSError *error) {
-        if(error == nil){
-            NSLog(@"%@",list);
-        }else{
-            NSLog([error localizedDescription]);
-        }
-    }];
-     */
     [self disableAllBtns];
     [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
-    /*
-    [PNImage downloadImageWithId:[NSNumber numberWithInt:5] response:^(UIImage * img, NSError *error) {
-        if(error == nil){
-            NSLog(@"Done");
-            [avatarView setImage:img];
-        }else{
-            NSLog([error localizedDescription]);
-        }
-    }];*/
     [PNImage getNextAvatarWithAction:ACCEPT_ACTION
                 forCurrentUserWithId:[currentStranger userId]
                             response:^(PNStranger * stranger, bool status, NSError *error) {
