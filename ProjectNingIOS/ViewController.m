@@ -80,7 +80,13 @@
 //                                 [self presentViewController:alert animated:YES completion:nil];
 //                             }
 //                         }];
-    [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+    //[self performSegueWithIdentifier:@"loginSegue" sender:nil];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"FriendsViewController"];
+    
+    [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc
+                                                          withSlideOutAnimation:YES
+                                                                  andCompletion:nil];
     
 }
 

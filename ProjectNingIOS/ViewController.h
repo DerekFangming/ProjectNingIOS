@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PNService.h"
 
+#import "SlideNavigationController.h"
+
 
 @interface ViewController : UIViewController
 
