@@ -14,6 +14,7 @@
 		87ED6F7B1D9CAEF9004DB409 /* PNViewControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F7A1D9CAEF9004DB409 /* PNViewControllerHelper.m */; };
 		87ED6F7D1DA73430004DB409 /* defaultAvatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87ED6F7C1DA73430004DB409 /* defaultAvatar.jpg */; };
 		87ED6F7F1DADA739004DB409 /* refreshBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 87ED6F7E1DADA739004DB409 /* refreshBtn.png */; };
+		87ED6F831DBE8031004DB409 /* VCHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F821DBE8031004DB409 /* VCHolder.m */; };
 		912D2D4F1C869FC30039AEF5 /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D2D4E1C869FC30039AEF5 /* SlideNavigationController.m */; };
 		912D2D541C86A0010039AEF5 /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 912D2D521C86A0010039AEF5 /* menu-button.png */; };
 		912D2D551C86A0010039AEF5 /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912D2D531C86A0010039AEF5 /* menu-button@2x.png */; };
@@ -74,6 +75,8 @@
 		87ED6F7A1D9CAEF9004DB409 /* PNViewControllerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNViewControllerHelper.m; sourceTree = "<group>"; };
 		87ED6F7C1DA73430004DB409 /* defaultAvatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = defaultAvatar.jpg; sourceTree = "<group>"; };
 		87ED6F7E1DADA739004DB409 /* refreshBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refreshBtn.png; sourceTree = "<group>"; };
+		87ED6F811DBE8031004DB409 /* VCHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHolder.h; sourceTree = "<group>"; };
+		87ED6F821DBE8031004DB409 /* VCHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHolder.m; sourceTree = "<group>"; };
 		912D2D4D1C869FC30039AEF5 /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationController.h; sourceTree = "<group>"; };
 		912D2D4E1C869FC30039AEF5 /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationController.m; sourceTree = "<group>"; };
 		912D2D521C86A0010039AEF5 /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
@@ -164,6 +167,8 @@
 				87ED6F731D9314C2004DB409 /* GMDCircleLoader.m */,
 				87ED6F6B1D9199AF004DB409 /* Utils.h */,
 				87ED6F6C1D9199AF004DB409 /* Utils.m */,
+				87ED6F811DBE8031004DB409 /* VCHolder.h */,
+				87ED6F821DBE8031004DB409 /* VCHolder.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -461,6 +466,7 @@
 				914431E41C6E75A0003FB63E /* AFURLResponseSerialization.m in Sources */,
 				87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */,
 				912D2D781C86A26A0039AEF5 /* ProfileDetailViewController.m in Sources */,
+				87ED6F831DBE8031004DB409 /* VCHolder.m in Sources */,
 				912D2D641C86A0120039AEF5 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				912D2D741C86A26A0039AEF5 /* RightMenuViewController.m in Sources */,
 				912D2D731C86A26A0039AEF5 /* LeftMenuViewController.m in Sources */,
