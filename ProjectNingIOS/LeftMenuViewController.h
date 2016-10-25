@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#import "VCHolder.h"
 #import "SlideNavigationController.h"
 
 @interface LeftMenuViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) BOOL slideOutAnimationEnabled;
+@property (nonatomic, assign) NSInteger currentTab;
 
 @end

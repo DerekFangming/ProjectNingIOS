@@ -82,9 +82,9 @@
 //                         }];
     //[self performSegueWithIdentifier:@"loginSegue" sender:nil];
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"FriendsViewController"];
+    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"HomeViewController"];
     
-    [VCHolder sharedInstance];
+    [[VCHolder sharedInstance] setHomeVC:vc];
     
     [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc
                                                           withSlideOutAnimation:YES

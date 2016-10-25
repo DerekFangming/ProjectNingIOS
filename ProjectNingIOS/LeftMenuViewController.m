@@ -32,6 +32,12 @@
 	
 	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"leftMenu.jpg"]];
 	self.tableView.backgroundView = imageView;
+    
+    /*
+     0 ... Home view controller
+     1 ... Friend view controller
+     */
+    self.currentTab = 0;
 }
 
 #pragma mark - UITableView Delegate & Datasrouce -
@@ -91,10 +97,11 @@
 	switch (indexPath.row)
 	{
 		case 0:
-			vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"HomeViewController"];
+            vc = [[VCHolder sharedInstance] getHomeVC];
 			break;
 			
 		case 1:
+            [self preserveVCState];
 			vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"FriendsViewController"];
 			break;
 			
@@ -115,6 +122,19 @@
 	[[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc
 															 withSlideOutAnimation:self.slideOutAnimationEnabled
 																	 andCompletion:nil];
+}
+
+- (void) preserveVCState{
+    
+    switch (self.currentTab) {
+        case 0:
+            [[VCHolder sharedInstance] setHomeVC:[[SlideNavigationController sharedInstance] visibleViewController]];
+            break;
+            
+        case 1:
+            
+            break;
+    }
 }
 
 @end
