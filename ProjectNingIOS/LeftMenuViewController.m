@@ -94,6 +94,8 @@
 	
 	UIViewController *vc ;
 	
+    [self preserveVCState];
+    
 	switch (indexPath.row)
 	{
 		case 0:
@@ -101,8 +103,12 @@
 			break;
 			
 		case 1:
-            [self preserveVCState];
-			vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"FriendsViewController"];
+            if([[VCHolder sharedInstance] getFriendVC] == nil){
+                vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"FriendsViewController"];
+                [[VCHolder sharedInstance] setFriendVC:vc];
+            }else{
+                vc = [[VCHolder sharedInstance] getFriendVC];
+            }
 			break;
 			
 		case 2:
@@ -118,6 +124,8 @@
 //			return;
 			break;
 	}
+    
+    self.currentTab = indexPath.row;
 	
 	[[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc
 															 withSlideOutAnimation:self.slideOutAnimationEnabled
@@ -132,7 +140,7 @@
             break;
             
         case 1:
-            
+            [[VCHolder sharedInstance] setFriendVC:[[SlideNavigationController sharedInstance] visibleViewController]];
             break;
     }
 }
