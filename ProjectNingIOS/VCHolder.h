@@ -11,6 +11,7 @@
 
 @interface VCHolder : NSObject{
     UIViewController *homeViewController;
+    UIViewController *friendViewController;
 }
 
 + (instancetype)sharedInstance;
@@ -18,5 +19,9 @@
 - (UIViewController *)getHomeVC;
 
 - (void) setHomeVC:(UIViewController *) homeVC;
+
+- (UIViewController *)getFriendVC;
+
+- (void) setFriendVC:(UIViewController *) friendVC;
 
 @end

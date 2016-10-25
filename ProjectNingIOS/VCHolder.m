@@ -30,4 +30,12 @@
     homeViewController = homeVC;
 }
 
+- (UIViewController *)getFriendVC{
+    return friendViewController;
+}
+
+- (void) setFriendVC:(UIViewController *) friendVC{
+    friendViewController = friendVC;
+}
+
 @end
