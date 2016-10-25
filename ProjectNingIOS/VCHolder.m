@@ -22,4 +22,12 @@
     return sharedInstance;
 }
 
+- (UIViewController *)getHomeVC{
+    return homeViewController;
+}
+
+- (void) setHomeVC:(UIViewController *) homeVC{
+    homeViewController = homeVC;
+}
+
 @end

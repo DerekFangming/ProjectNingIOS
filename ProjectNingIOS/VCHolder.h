@@ -15,4 +15,8 @@
 
 + (instancetype)sharedInstance;
 
+- (UIViewController *)getHomeVC;
+
+- (void) setHomeVC:(UIViewController *) homeVC;
+
 @end

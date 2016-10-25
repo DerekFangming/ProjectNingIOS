@@ -84,6 +84,8 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"FriendsViewController"];
     
+    [VCHolder sharedInstance];
+    
     [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc
                                                           withSlideOutAnimation:YES
                                                                   andCompletion:nil];
