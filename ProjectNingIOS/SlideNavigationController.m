@@ -223,8 +223,10 @@ static SlideNavigationController *singletonInstance;
 			[self setViewControllers:@[viewController]];
 		}
 		else {
-			[super popToRootViewControllerAnimated:NO];
-			[super pushViewController:viewController animated:NO];
+            [self setViewControllers:@[viewController]];
+            // Have to do so to preserve current VC state?
+            //[super popToRootViewControllerAnimated:NO];
+			//[super pushViewController:viewController animated:NO];
 		}
 		
 		if (closeMenuBeforeCallingCompletion)
