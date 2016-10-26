@@ -22,7 +22,7 @@
     return sharedInstance;
 }
 
-- (UIViewController *)getHomeVC{
+- (UIViewController *)getHomeVCFromVC: (NSInteger) VCIndicator{
     return homeViewController;
 }
 

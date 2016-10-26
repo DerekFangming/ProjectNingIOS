@@ -11,6 +11,9 @@
 
 #define ACCEPT_ACTION     @"friend"
 #define DENY_ACTION       @"deny"
+#define NULL_VC           -1
+#define HOME_VC           0
+#define FRIEND_VC         1
 
 @interface Utils : NSObject
 

@@ -56,7 +56,13 @@
         if(selected ==1){
             // Chat!
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-            UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"FriendsViewController"];
+            UIViewController *vc;
+            if([[VCHolder sharedInstance] getFriendVC] == nil){
+                vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"FriendsViewController"];
+                [[VCHolder sharedInstance] setFriendVC:vc];
+            }else{
+                vc = [[VCHolder sharedInstance] getFriendVC];
+            }
             static Menu menu = MenuLeft;
             [[SlideNavigationController sharedInstance] openMenu:menu withCompletion:^{
                 [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc
