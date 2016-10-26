@@ -10,20 +10,17 @@
 #import <UIKit/UIKit.h>
 
 #import "Utils.h"
+#import "SlideNavigationController.h"
 
 @interface VCHolder : NSObject{
+    NSInteger currentVC;
+    
     UIViewController *homeViewController;
     UIViewController *friendViewController;
 }
 
 + (instancetype)sharedInstance;
 
-- (UIViewController *)getHomeVCFromVC: (NSInteger) VCIndicator;
-
-- (void) setHomeVC:(UIViewController *) homeVC;
-
-- (UIViewController *)getFriendVC;
-
-- (void) setFriendVC:(UIViewController *) friendVC;
+- (UIViewController *)getVC:(NSInteger) VCIndicator;
 
 @end

@@ -15,6 +15,5 @@
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) BOOL slideOutAnimationEnabled;
-@property (nonatomic, assign) NSInteger currentTab;
 
 @end

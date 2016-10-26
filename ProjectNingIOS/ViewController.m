@@ -81,10 +81,7 @@
 //                             }
 //                         }];
     //[self performSegueWithIdentifier:@"loginSegue" sender:nil];
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"HomeViewController"];
-    
-    [[VCHolder sharedInstance] setHomeVC:vc];
+    UIViewController *vc = [[VCHolder sharedInstance] getVC:HOME_VC];
     
     [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc
                                                           withSlideOutAnimation:YES

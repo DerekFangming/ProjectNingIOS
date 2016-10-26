@@ -18,12 +18,68 @@
     
     dispatch_once(&onceToken, ^{
         sharedInstance = [[VCHolder alloc] init];
+        sharedInstance -> currentVC = NULL_VC;
     });
     return sharedInstance;
 }
 
-- (UIViewController *)getHomeVCFromVC: (NSInteger) VCIndicator{
-    return homeViewController;
+- (UIViewController *)getVC:(NSInteger) VCIndicator{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    UIViewController *vc;
+    
+    if(currentVC != NULL_VC){
+        [self preserveVCState];
+    }else{
+        homeViewController = [mainStoryboard instantiateViewControllerWithIdentifier: @"HomeViewController"];
+        currentVC = HOME_VC;
+        return homeViewController;
+    }
+    
+    switch (VCIndicator)
+    {
+        case HOME_VC:
+            vc = homeViewController;
+            break;
+            
+        case FRIEND_VC:
+            if(friendViewController == nil){
+                vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"FriendsViewController"];
+                friendViewController = vc;
+            }else{
+                vc = friendViewController;
+            }
+            break;
+            
+        case 2:
+            //[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+            //[[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
+            //return;
+            break;
+            
+        case 3:
+            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"ProfileViewController"];
+            //			[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+            //			[[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
+            //			return;
+            break;
+    }
+    currentVC = VCIndicator;
+    return vc;
+}
+
+- (void) preserveVCState{
+    
+    UIViewController *vc = [[SlideNavigationController sharedInstance] visibleViewController];
+    
+    switch (currentVC) {
+        case HOME_VC:
+            homeViewController = vc;
+            break;
+            
+        case FRIEND_VC:
+            friendViewController = vc;
+            break;
+    }
 }
 
 - (void) setHomeVC:(UIViewController *) homeVC{
