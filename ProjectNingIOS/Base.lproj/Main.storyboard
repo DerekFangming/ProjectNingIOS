@@ -222,9 +222,9 @@
                         <outlet property="password" destination="dbq-RU-6GE" id="AZG-LK-pPo"/>
                         <outlet property="registerBtn" destination="Yl0-sy-d1e" id="T3R-i7-82r"/>
                         <outlet property="username" destination="aeV-zV-pap" id="bfS-SP-vjA"/>
-                        <segue destination="iPW-cI-2gN" kind="push" identifier="FakeSegue" id="KFz-0g-OkQ"/>
-                        <segue destination="bRD-NV-saN" kind="push" identifier="FakeSegue33" id="d0c-8I-p5E"/>
-                        <segue destination="84R-kT-nX4" kind="push" identifier="loginSegue" id="yJr-mQ-Rwd"/>
+                        <segue destination="iPW-cI-2gN" kind="show" identifier="profileSegue" id="KFz-0g-OkQ"/>
+                        <segue destination="bRD-NV-saN" kind="show" identifier="friendSegue" id="d0c-8I-p5E"/>
+                        <segue destination="84R-kT-nX4" kind="show" identifier="homeSegue" id="yJr-mQ-Rwd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lxn-Rl-I8L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -372,7 +372,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="UgA-7n-nUi" kind="push" id="b2W-zH-4gZ"/>
+                                    <segue destination="UgA-7n-nUi" kind="show" id="b2W-zH-4gZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
