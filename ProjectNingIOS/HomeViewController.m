@@ -49,23 +49,23 @@
                                 }else{
                                     [refreshBtn setHidden:NO];
                                     [self disableAllBtns];
-                                    //[UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
+                                    [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
                                 }
                             }];
-    [UIAlertController showFriendConfirmAlertForStranger:@"Andy" from:self completionHandler:^(NSInteger selected) {
-        if(selected ==1){
-            // Chat!
-            UIViewController *vc = [[VCHolder sharedInstance] getVC:HOME_VC];
-            
-            static Menu menu = MenuLeft;
-            [[SlideNavigationController sharedInstance] openMenu:menu withCompletion:^{
-                [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc
-                                                                         withSlideOutAnimation:YES
-                                                                                 andCompletion:nil];
-            }];
-            
-        }
-    }];
+//    [UIAlertController showFriendConfirmAlertForStranger:@"Andy" from:self completionHandler:^(NSInteger selected) {
+//        if(selected ==1){
+//            // Chat!
+//            UIViewController *vc = [[VCHolder sharedInstance] getVC:FRIEND_VC];
+//            
+//            static Menu menu = MenuLeft;
+//            [[SlideNavigationController sharedInstance] openMenu:menu withCompletion:^{
+//                [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc
+//                                                                         withSlideOutAnimation:YES
+//                                                                                 andCompletion:nil];
+//            }];
+//            
+//        }
+//    }];
     //i love shanshan ~
 }
 
