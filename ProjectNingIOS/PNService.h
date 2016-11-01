@@ -10,6 +10,7 @@
 #import "PNUser.h"
 #import "PNImage.h"
 #import "PNAlertHelper.h"
+#import "PNRelationship.h"
 
 @interface PNService : NSObject
 

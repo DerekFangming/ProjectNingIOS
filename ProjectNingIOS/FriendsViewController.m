@@ -12,9 +12,7 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"1");
 	[super viewDidLoad];
-    NSLog(@"2");
 }
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
@@ -24,13 +22,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"3");
 	return 20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"4");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell"];
     if(indexPath.row <9){
         cell.textLabel.text = [NSString stringWithFormat:@"Friend %ld", (long)indexPath.row];
