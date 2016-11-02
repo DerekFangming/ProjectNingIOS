@@ -13,7 +13,15 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-    
+    [PNRelationship getDetailedFriendListWithResponse:^(NSDictionary *newFriendList, NSError *error) {
+        if(error == nil){
+            friendList = newFriendList;
+            friendListTitles = [[newFriendList allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+            [self.tableView reloadData];
+        }else{
+            [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];            
+        }
+    }];
 }
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
@@ -21,19 +29,33 @@
 	return YES;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [friendListTitles count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [friendListTitles objectAtIndex:section];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 20;
+    NSString *sectionTitle = [friendListTitles objectAtIndex:section];
+    NSArray *sectionFriends = [friendList objectForKey:sectionTitle];
+    return [sectionFriends count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"friendCell"];
-    if(indexPath.row <9){
-        cell.textLabel.text = [NSString stringWithFormat:@"Friend %ld", (long)indexPath.row];
-    }else{
-        cell.textLabel.text = [NSString stringWithFormat:@"Priend %ld", (long)indexPath.row];
-    }
+    
+    NSString *sectionTitle = [friendListTitles objectAtIndex:indexPath.section];
+    NSArray *sectionFriends = [friendList objectForKey:sectionTitle];
+    NSString *name = [[sectionFriends objectAtIndex:indexPath.row] objectForKey:@"name"];
+    
+    cell.textLabel.text = name;
+    
 	return cell;
 }
 

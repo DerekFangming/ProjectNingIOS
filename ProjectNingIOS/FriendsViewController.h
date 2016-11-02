@@ -11,6 +11,9 @@
 #import "SlideNavigationController.h"
 #import "PNService.h"
 
-@interface FriendsViewController : UITableViewController <SlideNavigationControllerDelegate>
+@interface FriendsViewController : UITableViewController <SlideNavigationControllerDelegate>{
+    NSDictionary *friendList;
+    NSArray *friendListTitles;
+}
 
 @end

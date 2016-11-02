@@ -27,10 +27,18 @@
        parameters:parameters
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-              //
+              if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
+                  NSDictionary *result = [responseObject objectForKey:@"friendList"];
+                  response(result, nil);
+              }else{
+                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
+                  [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
+                  NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
+                  response(nil, error);
+              }
           }
           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-              //
+              response(nil, error);
           }];
 }
 
