@@ -36,7 +36,7 @@
     [refreshBtn setHidden:YES];
     
     //Init first stranger
-    [self disableAllBtns];
+    [self disableAllBtns];/*
     [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
     [PNImage getNextAvatarWithAction:nil
                 forCurrentUserWithId:nil
@@ -51,7 +51,7 @@
                                     [self disableAllBtns];
                                     [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
                                 }
-                            }];
+                            }];*/
 //    [UIAlertController showFriendConfirmAlertForStranger:@"Andy" from:self completionHandler:^(NSInteger selected) {
 //        if(selected ==1){
 //            // Chat!
