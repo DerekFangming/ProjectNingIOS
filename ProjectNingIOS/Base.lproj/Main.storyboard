@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Left Menu View Controller-->
@@ -350,7 +351,7 @@
         <scene sceneID="mIz-Ix-FnG">
             <objects>
                 <tableViewController storyboardIdentifier="FriendsViewController" title="Friends" id="bRD-NV-saN" customClass="FriendsViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iX1-gE-pJb">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="46" sectionHeaderHeight="22" sectionFooterHeight="22" id="iX1-gE-pJb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -363,23 +364,41 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="qvL-ZT-msX" style="IBUITableViewCellStyleDefault" id="5YK-Bb-D3u">
-                                <rect key="frame" x="0.0" y="130" width="600" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="40" id="5YK-Bb-D3u" customClass="FriendTableCell">
+                                <rect key="frame" x="0.0" y="130" width="600" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5YK-Bb-D3u" id="fKm-a1-5Dh">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="39"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qvL-ZT-msX">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YOM-AP-1KU">
+                                            <rect key="frame" x="15" y="2" width="35" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="IwI-yd-8VQ"/>
+                                                <constraint firstAttribute="width" constant="35" id="aEQ-7M-hOE"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGK-iP-fvl">
+                                            <rect key="frame" x="66" y="9" width="270" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="270" id="3H6-19-FZh"/>
+                                                <constraint firstAttribute="height" constant="21" id="CXO-wM-bbI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="bGK-iP-fvl" firstAttribute="centerY" secondItem="fKm-a1-5Dh" secondAttribute="centerY" id="7UY-dt-tfU"/>
+                                        <constraint firstItem="YOM-AP-1KU" firstAttribute="leading" secondItem="fKm-a1-5Dh" secondAttribute="leadingMargin" constant="7" id="9rf-B1-tUq"/>
+                                        <constraint firstItem="YOM-AP-1KU" firstAttribute="centerY" secondItem="fKm-a1-5Dh" secondAttribute="centerY" id="FRy-XN-Ju3"/>
+                                        <constraint firstItem="bGK-iP-fvl" firstAttribute="leading" secondItem="YOM-AP-1KU" secondAttribute="trailing" constant="16" id="Iuz-fd-lzl"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="avatar" destination="fKm-a1-5Dh" id="9qB-a4-S34"/>
+                                    <outlet property="name" destination="bGK-iP-fvl" id="WEg-qO-mXr"/>
                                     <segue destination="UgA-7n-nUi" kind="show" id="b2W-zH-4gZ"/>
                                 </connections>
                             </tableViewCell>

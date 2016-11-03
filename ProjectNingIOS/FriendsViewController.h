@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "SlideNavigationController.h"
+#import "FriendTableCell.h"
 #import "PNService.h"
 
 @interface FriendsViewController : UITableViewController <SlideNavigationControllerDelegate>{

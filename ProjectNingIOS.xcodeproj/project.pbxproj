@@ -17,6 +17,7 @@
 		87ED6F831DBE8031004DB409 /* VCHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F821DBE8031004DB409 /* VCHolder.m */; };
 		87ED6F861DC817C8004DB409 /* PNRelationship.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F851DC817C8004DB409 /* PNRelationship.m */; };
 		87ED6F891DC81F4B004DB409 /* PNUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F881DC81F4B004DB409 /* PNUtils.m */; };
+		87ED6F8C1DCAB96A004DB409 /* FriendTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F8B1DCAB96A004DB409 /* FriendTableCell.m */; };
 		912D2D4F1C869FC30039AEF5 /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D2D4E1C869FC30039AEF5 /* SlideNavigationController.m */; };
 		912D2D541C86A0010039AEF5 /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 912D2D521C86A0010039AEF5 /* menu-button.png */; };
 		912D2D551C86A0010039AEF5 /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912D2D531C86A0010039AEF5 /* menu-button@2x.png */; };
@@ -83,6 +84,8 @@
 		87ED6F851DC817C8004DB409 /* PNRelationship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNRelationship.m; sourceTree = "<group>"; };
 		87ED6F871DC81F4B004DB409 /* PNUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNUtils.h; sourceTree = "<group>"; };
 		87ED6F881DC81F4B004DB409 /* PNUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNUtils.m; sourceTree = "<group>"; };
+		87ED6F8A1DCAB96A004DB409 /* FriendTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableCell.h; sourceTree = "<group>"; };
+		87ED6F8B1DCAB96A004DB409 /* FriendTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableCell.m; sourceTree = "<group>"; };
 		912D2D4D1C869FC30039AEF5 /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationController.h; sourceTree = "<group>"; };
 		912D2D4E1C869FC30039AEF5 /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationController.m; sourceTree = "<group>"; };
 		912D2D521C86A0010039AEF5 /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
@@ -175,6 +178,8 @@
 				87ED6F6C1D9199AF004DB409 /* Utils.m */,
 				87ED6F811DBE8031004DB409 /* VCHolder.h */,
 				87ED6F821DBE8031004DB409 /* VCHolder.m */,
+				87ED6F8A1DCAB96A004DB409 /* FriendTableCell.h */,
+				87ED6F8B1DCAB96A004DB409 /* FriendTableCell.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 				914431BB1C6E240E003FB63E /* PNService.m in Sources */,
 				912D2D631C86A0120039AEF5 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				87ED6F861DC817C8004DB409 /* PNRelationship.m in Sources */,
+				87ED6F8C1DCAB96A004DB409 /* FriendTableCell.m in Sources */,
 				914431981C6E2353003FB63E /* AppDelegate.m in Sources */,
 				87ED6F7B1D9CAEF9004DB409 /* PNViewControllerHelper.m in Sources */,
 				914431EA1C7244B7003FB63E /* PNDateFormater.m in Sources */,

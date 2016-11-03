@@ -15,7 +15,7 @@
 	[super viewDidLoad];
     
     self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    //[self.tableView registerClass:[FriendTableCell class] forCellReuseIdentifier:@"Cell"];
     
     [PNRelationship getDetailedFriendListWithResponse:^(NSDictionary *newFriendList, NSError *error) {
         if(error == nil){
@@ -52,20 +52,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"cao");
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    FriendTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    //NSString *sectionTitle = [friendListTitles objectAtIndex:indexPath.section];
-    //NSArray *sectionFriends = [friendList objectForKey:sectionTitle];
-    //NSString *name = [[sectionFriends objectAtIndex:indexPath.row] objectForKey:@"name"];
+    NSString *sectionTitle = [friendListTitles objectAtIndex:indexPath.section];
+    NSArray *sectionFriends = [friendList objectForKey:sectionTitle];
+    NSString *name = [[sectionFriends objectAtIndex:indexPath.row] objectForKey:@"name"];
     
     if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[FriendTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
         NSLog(@"fck");
     }
     
-    cell.textLabel.text = @"a";
-    NSLog(@"done");
+    cell.name.text = name;
 	return cell;
 }
 
