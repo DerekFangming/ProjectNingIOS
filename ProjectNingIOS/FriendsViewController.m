@@ -52,7 +52,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FriendTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    FriendTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     NSString *sectionTitle = [friendListTitles objectAtIndex:indexPath.section];
     NSArray *sectionFriends = [friendList objectForKey:sectionTitle];
