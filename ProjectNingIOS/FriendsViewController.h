@@ -13,7 +13,7 @@
 #import "PNService.h"
 
 @interface FriendsViewController : UITableViewController <SlideNavigationControllerDelegate>{
-    NSDictionary *friendList;
+    NSMutableDictionary *friendList;
     NSArray *friendListTitles;
 }
 

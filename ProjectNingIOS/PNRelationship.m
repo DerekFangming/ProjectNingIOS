@@ -10,7 +10,7 @@
 
 @implementation PNRelationship
 
-+ (void) getDetailedFriendListWithResponse:(void (^)(NSDictionary *,NSError *))response{
++ (void) getDetailedFriendListWithResponse:(void (^)(NSArray *,NSError *))response{
     NSError *error = [PNUser checkUserLoginStatus];
     if(error != nil){
         response(nil, error);
@@ -28,7 +28,15 @@
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
-                  NSDictionary *result = [responseObject objectForKey:@"friendList"];
+                  NSArray *friendList = [responseObject objectForKey:@"friendList"];
+                  NSMutableArray *result = [[NSMutableArray alloc] init];
+                  
+                  for(NSDictionary *d in friendList){
+                      PNFriend *friend = [[PNFriend alloc] initWithName:[d objectForKey:@"name"]
+                                                                  andId:[d objectForKey:@"id"]];
+                      [result addObject:friend];
+                  }
+                  
                   response(result, nil);
               }else{
                   NSMutableDictionary* details = [NSMutableDictionary dictionary];

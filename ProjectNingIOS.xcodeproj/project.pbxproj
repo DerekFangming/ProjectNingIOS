@@ -18,6 +18,7 @@
 		87ED6F861DC817C8004DB409 /* PNRelationship.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F851DC817C8004DB409 /* PNRelationship.m */; };
 		87ED6F891DC81F4B004DB409 /* PNUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F881DC81F4B004DB409 /* PNUtils.m */; };
 		87ED6F8C1DCAB96A004DB409 /* FriendTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F8B1DCAB96A004DB409 /* FriendTableCell.m */; };
+		87ED6F8F1DCC00C7004DB409 /* PNFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F8E1DCC00C7004DB409 /* PNFriend.m */; };
 		912D2D4F1C869FC30039AEF5 /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D2D4E1C869FC30039AEF5 /* SlideNavigationController.m */; };
 		912D2D541C86A0010039AEF5 /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 912D2D521C86A0010039AEF5 /* menu-button.png */; };
 		912D2D551C86A0010039AEF5 /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912D2D531C86A0010039AEF5 /* menu-button@2x.png */; };
@@ -86,6 +87,8 @@
 		87ED6F881DC81F4B004DB409 /* PNUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNUtils.m; sourceTree = "<group>"; };
 		87ED6F8A1DCAB96A004DB409 /* FriendTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableCell.h; sourceTree = "<group>"; };
 		87ED6F8B1DCAB96A004DB409 /* FriendTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableCell.m; sourceTree = "<group>"; };
+		87ED6F8D1DCC00C7004DB409 /* PNFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNFriend.h; sourceTree = "<group>"; };
+		87ED6F8E1DCC00C7004DB409 /* PNFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNFriend.m; sourceTree = "<group>"; };
 		912D2D4D1C869FC30039AEF5 /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationController.h; sourceTree = "<group>"; };
 		912D2D4E1C869FC30039AEF5 /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationController.m; sourceTree = "<group>"; };
 		912D2D521C86A0010039AEF5 /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
@@ -303,6 +306,8 @@
 				914431D21C6E7592003FB63E /* HTTPHelper */,
 				914431BC1C6E250B003FB63E /* PNUser.h */,
 				914431BD1C6E250B003FB63E /* PNUser.m */,
+				914431B91C6E240E003FB63E /* PNService.h */,
+				914431BA1C6E240E003FB63E /* PNService.m */,
 				914431E81C7244B7003FB63E /* PNDateFormater.h */,
 				914431E91C7244B7003FB63E /* PNDateFormater.m */,
 				91C532C11C9C68D0003E0CCB /* PNImage.h */,
@@ -317,6 +322,8 @@
 				87ED6F851DC817C8004DB409 /* PNRelationship.m */,
 				87ED6F871DC81F4B004DB409 /* PNUtils.h */,
 				87ED6F881DC81F4B004DB409 /* PNUtils.m */,
+				87ED6F8D1DCC00C7004DB409 /* PNFriend.h */,
+				87ED6F8E1DCC00C7004DB409 /* PNFriend.m */,
 			);
 			name = PNService;
 			sourceTree = "<group>";
@@ -324,8 +331,6 @@
 		914431D21C6E7592003FB63E /* HTTPHelper */ = {
 			isa = PBXGroup;
 			children = (
-				914431B91C6E240E003FB63E /* PNService.h */,
-				914431BA1C6E240E003FB63E /* PNService.m */,
 				914431D31C6E75A0003FB63E /* AFHTTPSessionManager.h */,
 				914431D41C6E75A0003FB63E /* AFHTTPSessionManager.m */,
 				914431D51C6E75A0003FB63E /* AFNetworking.h */,
@@ -466,6 +471,7 @@
 			files = (
 				912D2D761C86A26A0039AEF5 /* FriendsViewController.m in Sources */,
 				912D2D4F1C869FC30039AEF5 /* SlideNavigationController.m in Sources */,
+				87ED6F8F1DCC00C7004DB409 /* PNFriend.m in Sources */,
 				914431E71C70DABA003FB63E /* AFURLSessionManager.m in Sources */,
 				914431E31C6E75A0003FB63E /* AFURLRequestSerialization.m in Sources */,
 				87ED6F781D9CAB53004DB409 /* PNAlertHelper.m in Sources */,

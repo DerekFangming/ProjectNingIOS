@@ -10,9 +10,10 @@
 
 #import "PNUser.h"
 #import "PNUtils.h"
+#import "PNFriend.h"
 
 @interface PNRelationship : NSObject
 
-+ (void) getDetailedFriendListWithResponse:(void (^)(NSDictionary *,NSError *))response;
++ (void) getDetailedFriendListWithResponse:(void (^)(NSArray *,NSError *))response;
 
 @end

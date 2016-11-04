@@ -15,12 +15,24 @@
 	[super viewDidLoad];
     
     self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
-    //[self.tableView registerClass:[FriendTableCell class] forCellReuseIdentifier:@"Cell"];
     
-    [PNRelationship getDetailedFriendListWithResponse:^(NSDictionary *newFriendList, NSError *error) {
+    [PNRelationship getDetailedFriendListWithResponse:^(NSArray *newFriendList, NSError *error) {
         if(error == nil){
-            friendList = newFriendList;
-            friendListTitles = [[newFriendList allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+            friendList = [[NSMutableDictionary alloc] init];
+            
+            for(PNFriend *f in newFriendList){
+                NSString *index = [f.name substringToIndex:1];
+                NSMutableArray *list = [friendList objectForKey:index];
+                if(list == nil) {
+                    NSMutableArray *newList = [[NSMutableArray alloc] init];
+                    [newList addObject:f];
+                    [friendList setObject:newList forKey:index];
+                }else{
+                    [list addObject:f];
+                    [friendList setObject:list forKey:index];
+                }
+            }
+            friendListTitles = [[friendList allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
             [self.tableView reloadData];
         }else{
             [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];            
@@ -56,14 +68,14 @@
     
     NSString *sectionTitle = [friendListTitles objectAtIndex:indexPath.section];
     NSArray *sectionFriends = [friendList objectForKey:sectionTitle];
-    NSString *name = [[sectionFriends objectAtIndex:indexPath.row] objectForKey:@"name"];
+    PNFriend *friend = [sectionFriends objectAtIndex:indexPath.row];
     
     if(cell == nil) {
         cell = [[FriendTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
         NSLog(@"fck");
     }
     
-    cell.name.text = name;
+    cell.name.text = friend.name;
 	return cell;
 }
 

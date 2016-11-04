@@ -11,6 +11,7 @@
 #import "PNImage.h"
 #import "PNAlertHelper.h"
 #import "PNRelationship.h"
+#import "PNFriend.h"
 
 @interface PNService : NSObject
 
