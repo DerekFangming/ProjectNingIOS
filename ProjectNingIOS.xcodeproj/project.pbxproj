@@ -19,6 +19,7 @@
 		87ED6F891DC81F4B004DB409 /* PNUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F881DC81F4B004DB409 /* PNUtils.m */; };
 		87ED6F8C1DCAB96A004DB409 /* FriendTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F8B1DCAB96A004DB409 /* FriendTableCell.m */; };
 		87ED6F8F1DCC00C7004DB409 /* PNFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F8E1DCC00C7004DB409 /* PNFriend.m */; };
+		87ED6F911DCFB325004DB409 /* ff.png in Resources */ = {isa = PBXBuildFile; fileRef = 87ED6F901DCFB325004DB409 /* ff.png */; };
 		912D2D4F1C869FC30039AEF5 /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912D2D4E1C869FC30039AEF5 /* SlideNavigationController.m */; };
 		912D2D541C86A0010039AEF5 /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 912D2D521C86A0010039AEF5 /* menu-button.png */; };
 		912D2D551C86A0010039AEF5 /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912D2D531C86A0010039AEF5 /* menu-button@2x.png */; };
@@ -89,6 +90,7 @@
 		87ED6F8B1DCAB96A004DB409 /* FriendTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableCell.m; sourceTree = "<group>"; };
 		87ED6F8D1DCC00C7004DB409 /* PNFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNFriend.h; sourceTree = "<group>"; };
 		87ED6F8E1DCC00C7004DB409 /* PNFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNFriend.m; sourceTree = "<group>"; };
+		87ED6F901DCFB325004DB409 /* ff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ff.png; sourceTree = "<group>"; };
 		912D2D4D1C869FC30039AEF5 /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationController.h; sourceTree = "<group>"; };
 		912D2D4E1C869FC30039AEF5 /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationController.m; sourceTree = "<group>"; };
 		912D2D521C86A0010039AEF5 /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				87ED6F7C1DA73430004DB409 /* defaultAvatar.jpg */,
 				912D2D791C86A4050039AEF5 /* rightMenu.jpg */,
 				912D2D7A1C86A4050039AEF5 /* leftMenu.jpg */,
+				87ED6F901DCFB325004DB409 /* ff.png */,
 				9170BBDA1D3F045D00FFD3E8 /* acceptBtnClicked.png */,
 				9170BBDB1D3F045D00FFD3E8 /* acceptBtn.png */,
 				9170BBDE1D3F052E00FFD3E8 /* denyBtnClicked.png */,
@@ -442,6 +445,7 @@
 				912D2D541C86A0010039AEF5 /* menu-button.png in Resources */,
 				9170BBDD1D3F045D00FFD3E8 /* acceptBtn.png in Resources */,
 				9170BBDC1D3F045D00FFD3E8 /* acceptBtnClicked.png in Resources */,
+				87ED6F911DCFB325004DB409 /* ff.png in Resources */,
 				9170BBE11D3F052E00FFD3E8 /* denyBtn.png in Resources */,
 				914431A31C6E2353003FB63E /* LaunchScreen.storyboard in Resources */,
 				914431A01C6E2353003FB63E /* Assets.xcassets in Resources */,

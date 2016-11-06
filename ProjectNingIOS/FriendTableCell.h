@@ -10,7 +10,7 @@
 
 @interface FriendTableCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UIView *avatar;
+@property (strong, nonatomic) IBOutlet UIImageView *avatar;
 
 @property (strong, nonatomic) IBOutlet UILabel *name;
 

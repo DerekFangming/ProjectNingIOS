@@ -355,7 +355,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" id="eCV-2P-jw1">
+                        <searchBar key="tableHeaderView" contentMode="redraw" barStyle="black" searchBarStyle="minimal" id="eCV-2P-jw1">
                             <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -397,7 +397,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="avatar" destination="fKm-a1-5Dh" id="9qB-a4-S34"/>
+                                    <outlet property="avatar" destination="YOM-AP-1KU" id="g7a-XJ-EzC"/>
                                     <outlet property="name" destination="bGK-iP-fvl" id="WEg-qO-mXr"/>
                                     <segue destination="UgA-7n-nUi" kind="show" id="b2W-zH-4gZ"/>
                                 </connections>
