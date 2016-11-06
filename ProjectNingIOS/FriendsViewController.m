@@ -18,20 +18,8 @@
     
     [PNRelationship getDetailedFriendListWithResponse:^(NSArray *newFriendList, NSError *error) {
         if(error == nil){
-            friendList = [[NSMutableDictionary alloc] init];
+            friendList = [self processFriendListToDictionary:newFriendList];
             
-            for(PNFriend *f in newFriendList){
-                NSString *index = [f.name substringToIndex:1];
-                NSMutableArray *list = [friendList objectForKey:index];
-                if(list == nil) {
-                    NSMutableArray *newList = [[NSMutableArray alloc] init];
-                    [newList addObject:f];
-                    [friendList setObject:newList forKey:index];
-                }else{
-                    [list addObject:f];
-                    [friendList setObject:list forKey:index];
-                }
-            }
             friendListTitles = [[friendList allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
             [self.tableView reloadData];
         }else{
@@ -89,6 +77,26 @@
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
     return [friendListTitles indexOfObject:title];
+}
+
+#pragma mark - List data processing -
+
+- (NSMutableDictionary *) processFriendListToDictionary :(NSArray *)newFriendList{
+    NSMutableDictionary * result = [[NSMutableDictionary alloc] init];
+    
+    for(PNFriend *f in newFriendList){
+        NSString *index = [f.name substringToIndex:1];
+        NSMutableArray *list = [result objectForKey:index];
+        if(list == nil) {
+            NSMutableArray *newList = [[NSMutableArray alloc] init];
+            [newList addObject:f];
+            [result setObject:newList forKey:index];
+        }else{
+            [list addObject:f];
+            [result setObject:list forKey:index];
+        }
+    }
+    return result;
 }
 
 @end
