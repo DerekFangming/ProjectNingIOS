@@ -26,6 +26,17 @@
             [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];            
         }
     }];
+    
+    // set up search bar
+    self.searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
+    //self.searchController.searchBar.scopeButtonTitles = [[NSArray alloc]initWithObjects:@"scopeA", @"scopeB", nil];
+    self.searchController.searchBar.delegate = self;
+    self.searchController.searchResultsUpdater = self;
+    [self.searchController.searchBar sizeToFit];
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.definesPresentationContext = YES;
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    
 }
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
@@ -33,10 +44,24 @@
 	return YES;
 }
 
+#pragma mark - Section and list handling -
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        return [searchResultsTitles count];
+    if (self.searchController.active) {
+        if([searchResultsTitles count] == 0){
+            UILabel *noDataLabel         = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, self.tableView.bounds.size.height)];
+            noDataLabel.text             = @"No data available";
+            noDataLabel.textColor        = [UIColor blackColor];
+            noDataLabel.textAlignment    = NSTextAlignmentCenter;
+            self.tableView.backgroundView = noDataLabel;
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+            return 0;
+        }else{
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+            self.tableView.backgroundView = nil;
+            return [searchResultsTitles count];
+        }
     }else{
         return [friendListTitles count];
     }
@@ -44,7 +69,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (self.searchController.active) {
         return [searchResultsTitles objectAtIndex:section];
     }else{
         return [friendListTitles objectAtIndex:section];
@@ -53,7 +78,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (self.searchController.active) {
         NSString *sectionTitle = [searchResultsTitles objectAtIndex:section];
         NSArray *sectionFriends = [searchResults objectForKey:sectionTitle];
         return [sectionFriends count];
@@ -65,11 +90,31 @@
     
 }
 
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    if (self.searchController.active) {
+        return searchResultsTitles;
+    }else{
+        return friendListTitles;
+    }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    if (self.searchController.active) {
+        return [searchResultsTitles indexOfObject:title];
+    }else{
+        return [friendListTitles indexOfObject:title];
+    }
+}
+
+#pragma mark - Cell handling -
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FriendTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell"];
     PNFriend *friend;
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (self.searchController.active) {
         NSString *sectionTitle = [searchResultsTitles objectAtIndex:indexPath.section];
         NSArray *sectionFriends = [searchResults objectForKey:sectionTitle];
         friend = [sectionFriends objectAtIndex:indexPath.row];
@@ -82,44 +127,31 @@
     
     if(cell == nil) {
         cell = [[FriendTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-        cell.textLabel.text = @"FCK";
-        NSLog(@"fck");
     }
     
     cell.name.text = friend.name;
     [cell.avatar setImage:[UIImage imageNamed:@"ff.png"]];
-	return cell;
-}
-
-
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        return searchResultsTitles;
-    }else{
-        return friendListTitles;
-    }
-}
-
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
-{
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        return [searchResultsTitles indexOfObject:title];
-    }else{
-        return [friendListTitles indexOfObject:title];
-    }
+    return cell;
 }
 
 #pragma mark - Search bar methods -
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-{
-    [self filterContentForSearchText:searchString
-                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
-                                      objectAtIndex:[self.searchDisplayController.searchBar
-                                                     selectedScopeButtonIndex]]];
-    
-    return YES;
+- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope{
+    [self updateSearchResultsForSearchController:self.searchController];
+}
+
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+    NSString *searchString = self.searchController.searchBar.text;
+    //NSInteger scope = self.searchController.searchBar.selectedScopeButtonIndex;
+    //if(scope == 0 ) {...}else{...}
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchString];
+    if([searchString isEqualToString:@""]){
+        searchResults = [self processFriendListToDictionary:friendArray];
+    }else{
+        searchResults = [self processFriendListToDictionary: [friendArray filteredArrayUsingPredicate:resultPredicate]];
+    }
+        searchResultsTitles = [[searchResults allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    [self.tableView reloadData];
 }
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope

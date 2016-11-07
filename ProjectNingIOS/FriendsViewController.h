@@ -12,12 +12,14 @@
 #import "FriendTableCell.h"
 #import "PNService.h"
 
-@interface FriendsViewController : UITableViewController <SlideNavigationControllerDelegate>{
+@interface FriendsViewController : UITableViewController <SlideNavigationControllerDelegate, UISearchBarDelegate,UISearchResultsUpdating>{
     NSArray *friendArray;
     NSMutableDictionary *friendList;
     NSArray *friendListTitles;
     NSMutableDictionary *searchResults;
     NSArray *searchResultsTitles;
 }
+
+@property (strong, nonatomic) UISearchController *searchController;
 
 @end
