@@ -27,7 +27,7 @@
         }
     }];
     
-    // set up search bar
+    //Set up search bar
     self.searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
     //self.searchController.searchBar.scopeButtonTitles = [[NSArray alloc]initWithObjects:@"scopeA", @"scopeB", nil];
     self.searchController.searchBar.delegate = self;
@@ -36,6 +36,14 @@
     self.searchController.dimsBackgroundDuringPresentation = NO;
     self.definesPresentationContext = YES;
     self.tableView.tableHeaderView = self.searchController.searchBar;
+    
+    //Set up pull refresh
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    //self.refreshControl.backgroundColor = [UIColor purpleColor];
+    //self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(reloadFriendList)
+                  forControlEvents:UIControlEventValueChanged];
     
 }
 
@@ -179,6 +187,22 @@
         }
     }
     return result;
+}
+
+#pragma mark - Pull refresh method -
+
+- (void) reloadFriendList{
+    [PNRelationship getDetailedFriendListWithResponse:^(NSArray *newFriendList, NSError *error) {
+        if(error == nil){
+            friendArray = newFriendList;
+            friendList = [self processFriendListToDictionary:newFriendList];
+            friendListTitles = [[friendList allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+        }else{
+            [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
+        }
+    }];
 }
 
 @end
