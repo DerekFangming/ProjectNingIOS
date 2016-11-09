@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "PNUser.h"
 #import "PNStranger.h"
+#import "PNUtils.h"
 
 @interface PNImage : NSObject
 

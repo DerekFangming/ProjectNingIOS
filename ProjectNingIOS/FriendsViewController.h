@@ -18,6 +18,8 @@
     NSArray *friendListTitles;
     NSMutableDictionary *searchResults;
     NSArray *searchResultsTitles;
+    
+    NSMutableDictionary *imageCache;
 }
 
 @property (strong, nonatomic) UISearchController *searchController;

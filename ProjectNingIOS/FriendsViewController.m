@@ -138,7 +138,7 @@
     }
     
     cell.name.text = friend.name;
-    [cell.avatar setImage:[UIImage imageNamed:@"ff.png"]];
+    [cell.avatar setImage:friend.avatar];
     return cell;
 }
 
