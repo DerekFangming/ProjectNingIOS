@@ -188,10 +188,10 @@
 }
 
 + (void) getAvatarForUser:(NSNumber *) userId
-                 response:(void (^)(PNStranger *, bool, NSError *))response{
+                 response:(void (^)(UIImage *, NSError *))response{
     NSError *error = [PNUser checkUserLoginStatus];
     if(error != nil){
-        response(nil, nil, error);
+        response(nil, error);
     }
     
     PNUser *user = [PNUser currentUser];
@@ -212,19 +212,15 @@
                   NSData* imgData = [[NSData alloc] initWithBase64EncodedString:[responseObject objectForKey:@"image"] options:0];
                   UIImage* image = [UIImage imageWithData:imgData];
                   
-                  PNStranger *stranger = [[PNStranger alloc]
-                                          initWithAvatar:image
-                                          andUserId:
-                                          [NSNumber numberWithInt:[[responseObject objectForKey:@"userId"] intValue]]];
-                  response(stranger, [responseObject objectForKey:@"status"], nil);
+                  response(image, nil);
               }else{
                   NSMutableDictionary* details = [NSMutableDictionary dictionary];
                   [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
                   NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
-                  response(nil, nil, error);
+                  response(nil, error);
               }
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-              response(nil, nil, error);
+              response(nil, error);
               
           }];
 }

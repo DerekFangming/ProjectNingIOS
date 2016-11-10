@@ -62,6 +62,12 @@
                     response:(void (^)(UIImage *, NSError *))response;
 
 /**
+    Get avatar of a user by user id
+    @param userId the Id of this user
+ */
++ (void) getAvatarForUser:(NSNumber *) userId
+                 response:(void (^)(UIImage *, NSError *))response;
+/**
     Get avatar of the next user. There may not be available users
     @param action the action for currect user when requesting for a new one
     @param userId the id of the current user
