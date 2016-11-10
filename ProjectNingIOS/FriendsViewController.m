@@ -138,7 +138,18 @@
     }
     
     cell.name.text = friend.name;
-    [cell.avatar setImage:friend.avatar];
+    cell.avatar.contentMode = UIViewContentModeScaleAspectFit;
+    if(friend.avatar == nil){
+        [PNImage getAvatarForUser:friend.userId
+                         response:^(UIImage *img, NSError *err) {
+                             //Cache image for syncing into friend array, which is used in searching
+                             [imageCache setObject:img forKey:friend.userId];
+                             [cell.avatar setImage:img];
+                         }];
+    }else{
+        [cell.avatar setImage:friend.avatar];
+    }
+    
     return cell;
 }
 

@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ProjectNingIOS/PNImage.m"
-            timestampString = "497729105.569752"
+            timestampString = "500434070.972622"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
             landmarkName = "+getNextAvatarWithAction:forCurrentUserWithId:response:"
             landmarkType = "5">
          </BreakpointContent>
