@@ -122,13 +122,15 @@
 {
     FriendTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell"];
     PNFriend *friend;
+    NSString *sectionTitle;
+    NSMutableArray *sectionFriends;
     if (self.searchController.active) {
-        NSString *sectionTitle = [searchResultsTitles objectAtIndex:indexPath.section];
-        NSArray *sectionFriends = [searchResults objectForKey:sectionTitle];
+        sectionTitle = [searchResultsTitles objectAtIndex:indexPath.section];
+        sectionFriends = [searchResults objectForKey:sectionTitle];
         friend = [sectionFriends objectAtIndex:indexPath.row];
     }else{
-        NSString *sectionTitle = [friendListTitles objectAtIndex:indexPath.section];
-        NSArray *sectionFriends = [friendList objectForKey:sectionTitle];
+        sectionTitle = [friendListTitles objectAtIndex:indexPath.section];
+        sectionFriends = [friendList objectForKey:sectionTitle];
         friend = [sectionFriends objectAtIndex:indexPath.row];
     }
     
@@ -140,13 +142,23 @@
     cell.name.text = friend.name;
     cell.avatar.contentMode = UIViewContentModeScaleAspectFit;
     if(friend.avatar == nil){
+        NSLog(@"new Load");
         [PNImage getAvatarForUser:friend.userId
                          response:^(UIImage *img, NSError *err) {
+                             if(err != nil){
+                                 img = [UIImage imageNamed:@"defaultAvatar.jpg"];
+                             }
                              //Cache image for syncing into friend array, which is used in searching
                              [imageCache setObject:img forKey:friend.userId];
+                             //Store image locally and avoid loading them everytime a cell is returned
+                             friend.avatar = img;
+                             [sectionFriends setObject:friend atIndexedSubscript:indexPath.row];
+                             [friendList setObject:sectionFriends forKey:sectionTitle];
+                             //Set image for this cell
                              [cell.avatar setImage:img];
                          }];
     }else{
+        NSLog(@"cached");
         [cell.avatar setImage:friend.avatar];
     }
     
