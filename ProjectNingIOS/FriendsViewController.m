@@ -128,10 +128,12 @@
         sectionTitle = [searchResultsTitles objectAtIndex:indexPath.section];
         sectionFriends = [searchResults objectForKey:sectionTitle];
         friend = [sectionFriends objectAtIndex:indexPath.row];
+        NSLog(@"search!");
     }else{
         sectionTitle = [friendListTitles objectAtIndex:indexPath.section];
         sectionFriends = [friendList objectForKey:sectionTitle];
         friend = [sectionFriends objectAtIndex:indexPath.row];
+        NSLog(@"load!");
     }
     
     
