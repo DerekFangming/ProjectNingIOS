@@ -1,17 +1,14 @@
 //
-//  FriendsDetailViewController.h
+//  FriendsEmbedViewController.h
 //  ProjectNingIOS
 //
-//  Created by NingFangming on 11/11/16.
+//  Created by NingFangming on 11/12/16.
 //  Copyright © 2016 fangming. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-#import "PNService.h"
-#import "FriendsEmbedViewController.h"
-
-@interface FriendsDetailViewController : UIViewController
+@interface FriendsEmbedViewController : UITableViewController
 
 @property (nonatomic, strong) NSNumber *userId;
 @property (nonatomic, strong) NSString *name;
