@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "SlideNavigationController.h"
+#import "FriendsDetailViewController.h"
 #import "FriendTableCell.h"
 #import "PNService.h"
 

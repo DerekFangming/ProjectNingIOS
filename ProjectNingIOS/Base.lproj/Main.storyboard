@@ -399,7 +399,7 @@
                                 <connections>
                                     <outlet property="avatar" destination="YOM-AP-1KU" id="g7a-XJ-EzC"/>
                                     <outlet property="name" destination="bGK-iP-fvl" id="WEg-qO-mXr"/>
-                                    <segue destination="UgA-7n-nUi" kind="show" id="b2W-zH-4gZ"/>
+                                    <segue destination="UgA-7n-nUi" kind="show" identifier="friendDetailSegue" id="b2W-zH-4gZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -433,7 +433,7 @@
         <!--Friends-->
         <scene sceneID="XwE-yj-0Qg">
             <objects>
-                <viewController title="Friends" id="UgA-7n-nUi" sceneMemberID="viewController">
+                <viewController title="Friends" id="UgA-7n-nUi" customClass="FriendsDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="N2e-Wl-sEc"/>
                         <viewControllerLayoutGuide type="bottom" id="ZMc-qy-av0"/>

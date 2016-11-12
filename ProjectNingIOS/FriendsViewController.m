@@ -128,12 +128,12 @@
         sectionTitle = [searchResultsTitles objectAtIndex:indexPath.section];
         sectionFriends = [searchResults objectForKey:sectionTitle];
         friend = [sectionFriends objectAtIndex:indexPath.row];
-        NSLog(@"search!");
+        //NSLog(@"search!");
     }else{
         sectionTitle = [friendListTitles objectAtIndex:indexPath.section];
         sectionFriends = [friendList objectForKey:sectionTitle];
         friend = [sectionFriends objectAtIndex:indexPath.row];
-        NSLog(@"load!");
+        //NSLog(@"load!");
     }
     
     
@@ -144,7 +144,7 @@
     cell.name.text = friend.name;
     cell.avatar.contentMode = UIViewContentModeScaleAspectFit;
     if(friend.avatar == nil){
-        NSLog(@"new Load");
+        //NSLog(@"new Load");
         [PNImage getAvatarForUser:friend.userId
                          response:^(UIImage *img, NSError *err) {
                              if(err != nil){
@@ -160,7 +160,7 @@
                              [cell.avatar setImage:img];
                          }];
     }else{
-        NSLog(@"cached");
+        //NSLog(@"cached");
         [cell.avatar setImage:friend.avatar];
     }
     
@@ -228,6 +228,29 @@
             [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
         }
     }];
+}
+
+#pragma mark - Prepare for friend detail segue -
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"friendDetailSegue"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        PNFriend *friend;
+        NSString *sectionTitle;
+        NSMutableArray *sectionFriends;
+        if (self.searchController.active) {
+            sectionTitle = [searchResultsTitles objectAtIndex:indexPath.section];
+            sectionFriends = [searchResults objectForKey:sectionTitle];
+            friend = [sectionFriends objectAtIndex:indexPath.row];
+        }else{
+            sectionTitle = [friendListTitles objectAtIndex:indexPath.section];
+            sectionFriends = [friendList objectForKey:sectionTitle];
+            friend = [sectionFriends objectAtIndex:indexPath.row];
+        }
+        FriendsDetailViewController *destViewController = segue.destinationViewController;
+        destViewController.name = friend.name;
+    }
 }
 
 @end

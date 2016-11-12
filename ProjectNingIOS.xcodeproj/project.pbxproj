@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		871D68751DD69BAD00728AD6 /* FriendsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 871D68741DD69BAD00728AD6 /* FriendsDetailViewController.m */; };
 		87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F651D834F1B004DB409 /* PNStranger.m */; };
 		87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F6C1D9199AF004DB409 /* Utils.m */; };
 		87ED6F741D9314C2004DB409 /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F731D9314C2004DB409 /* GMDCircleLoader.m */; };
@@ -68,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		871D68731DD69BAD00728AD6 /* FriendsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsDetailViewController.h; sourceTree = "<group>"; };
+		871D68741DD69BAD00728AD6 /* FriendsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsDetailViewController.m; sourceTree = "<group>"; };
 		87ED6F641D834F1B004DB409 /* PNStranger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNStranger.h; sourceTree = "<group>"; };
 		87ED6F651D834F1B004DB409 /* PNStranger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNStranger.m; sourceTree = "<group>"; };
 		87ED6F6B1D9199AF004DB409 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
@@ -238,6 +241,8 @@
 				912D2D6C1C86A26A0039AEF5 /* HomeViewController.m */,
 				912D2D6D1C86A26A0039AEF5 /* FriendsViewController.h */,
 				912D2D6E1C86A26A0039AEF5 /* FriendsViewController.m */,
+				871D68731DD69BAD00728AD6 /* FriendsDetailViewController.h */,
+				871D68741DD69BAD00728AD6 /* FriendsDetailViewController.m */,
 				912D2D6F1C86A26A0039AEF5 /* ProfileViewController.h */,
 				912D2D701C86A26A0039AEF5 /* ProfileViewController.m */,
 				912D2D711C86A26A0039AEF5 /* ProfileDetailViewController.h */,
@@ -480,6 +485,7 @@
 				914431E31C6E75A0003FB63E /* AFURLRequestSerialization.m in Sources */,
 				87ED6F781D9CAB53004DB409 /* PNAlertHelper.m in Sources */,
 				912D2D771C86A26A0039AEF5 /* ProfileViewController.m in Sources */,
+				871D68751DD69BAD00728AD6 /* FriendsDetailViewController.m in Sources */,
 				912D2D621C86A0120039AEF5 /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				9144319B1C6E2353003FB63E /* ViewController.m in Sources */,
 				912D2D651C86A0120039AEF5 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
