@@ -13,5 +13,6 @@
 @property (nonatomic, strong) NSNumber *userId;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) UIImage *avatar;
+@property (weak, nonatomic) IBOutlet UIImageView *friendDetailAvatar;
 
 @end

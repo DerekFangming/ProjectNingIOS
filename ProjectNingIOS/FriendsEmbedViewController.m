@@ -16,8 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"static loaded!!!");
-    NSLog(self.name);
+    
+    [self.friendDetailAvatar setImage: self.avatar];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
