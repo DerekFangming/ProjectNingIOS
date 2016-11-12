@@ -1,3 +1,11 @@
+//
+//  HomeViewController.h
+//  ProjectNingIOS
+//
+//  Created by NingFangming on 6/11/16.
+//  Copyright © 2016 fangming. All rights reserved.
+//
+
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "SlideNavigationController.h"

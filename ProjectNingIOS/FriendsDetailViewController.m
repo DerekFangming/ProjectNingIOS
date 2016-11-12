@@ -2,7 +2,7 @@
 //  FriendsDetailViewController.m
 //  ProjectNingIOS
 //
-//  Created by Cyan Xie on 11/11/16.
+//  Created by NingFangming on 11/11/16.
 //  Copyright © 2016 fangming. All rights reserved.
 //
 

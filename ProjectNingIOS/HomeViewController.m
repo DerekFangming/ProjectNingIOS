@@ -1,3 +1,11 @@
+//
+//  HomeViewController.m
+//  ProjectNingIOS
+//
+//  Created by NingFangming on 6/11/16.
+//  Copyright © 2016 fangming. All rights reserved.
+//
+
 #import "HomeViewController.h"
 #import "LeftMenuViewController.h"
 //import "xiao bao bei.h"

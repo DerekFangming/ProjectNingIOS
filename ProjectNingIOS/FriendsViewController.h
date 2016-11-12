@@ -1,9 +1,9 @@
 //
 //  FriendsViewController.h
-//  SlideMenu
+//  ProjectNingIOS
 //
-//  Created by Aryan Ghassemi on 12/31/13.
-//  Copyright (c) 2013 Aryan Ghassemi. All rights reserved.
+//  Created by NingFangming on 6/11/16.
+//  Copyright © 2016 fangming. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -19,8 +19,6 @@
     NSArray *friendListTitles;
     NSMutableDictionary *searchResults;
     NSArray *searchResultsTitles;
-    
-    NSMutableDictionary *imageCache;
 }
 
 @property (strong, nonatomic) UISearchController *searchController;

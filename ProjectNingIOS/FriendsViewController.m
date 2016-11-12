@@ -1,9 +1,9 @@
 //
 //  FriendsViewController.m
-//  SlideMenu
+//  ProjectNingIOS
 //
-//  Created by Aryan Ghassemi on 12/31/13.
-//  Copyright (c) 2013 Aryan Ghassemi. All rights reserved.
+//  Created by NingFangming on 6/11/16.
+//  Copyright © 2016 fangming. All rights reserved.
 //
 
 #import "FriendsViewController.h"
@@ -151,7 +151,7 @@
                                  img = [UIImage imageNamed:@"defaultAvatar.jpg"];
                              }
                              //Cache image for syncing into friend array, which is used in searching
-                             [imageCache setObject:img forKey:friend.userId];
+                             //[imageCache setObject:img forKey:friend.userId]; --- Why not needed? ... Search already has image
                              //Store image locally and avoid loading them everytime a cell is returned
                              friend.avatar = img;
                              [sectionFriends setObject:friend atIndexedSubscript:indexPath.row];
@@ -248,8 +248,10 @@
             sectionFriends = [friendList objectForKey:sectionTitle];
             friend = [sectionFriends objectAtIndex:indexPath.row];
         }
-        FriendsDetailViewController *destViewController = segue.destinationViewController;
-        destViewController.name = friend.name;
+        FriendsDetailViewController *destVC = segue.destinationViewController;
+        destVC.userId = friend.userId;
+        destVC.name = friend.name;
+        destVC.avatar = friend.avatar;
     }
 }
 
