@@ -473,8 +473,8 @@
                                                         <constraint firstAttribute="height" constant="60" id="m7b-2B-Eb1"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gF4-qz-0hJ">
-                                                    <rect key="frame" x="100" y="16" width="250" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gF4-qz-0hJ">
+                                                    <rect key="frame" x="100" y="13" width="250" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="df0-cU-KQp"/>
                                                         <constraint firstAttribute="height" constant="21" id="uQj-Wc-SJJ"/>
@@ -483,7 +483,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdF-lz-A87">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nick name : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdF-lz-A87">
                                                     <rect key="frame" x="100" y="53" width="250" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="Jrd-lD-fv7"/>
@@ -493,8 +493,8 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smu-Tk-9wE">
-                                                    <rect key="frame" x="100" y="38" width="250" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smu-Tk-9wE">
+                                                    <rect key="frame" x="100" y="36" width="250" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="42F-8i-mXS"/>
                                                         <constraint firstAttribute="height" constant="18" id="H28-md-3Qz"/>
@@ -505,9 +505,9 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="gF4-qz-0hJ" firstAttribute="centerY" secondItem="ERu-Lj-DE5" secondAttribute="centerY" constant="-13" id="3va-cg-kTM"/>
+                                                <constraint firstItem="gF4-qz-0hJ" firstAttribute="centerY" secondItem="ERu-Lj-DE5" secondAttribute="centerY" constant="-16" id="3va-cg-kTM"/>
                                                 <constraint firstItem="9se-mj-H9o" firstAttribute="leading" secondItem="ERu-Lj-DE5" secondAttribute="leadingMargin" constant="12" id="Be6-go-yyK"/>
-                                                <constraint firstItem="smu-Tk-9wE" firstAttribute="centerY" secondItem="ERu-Lj-DE5" secondAttribute="centerY" constant="7.5" id="Tih-uI-oQa"/>
+                                                <constraint firstItem="smu-Tk-9wE" firstAttribute="centerY" secondItem="ERu-Lj-DE5" secondAttribute="centerY" constant="5" id="Tih-uI-oQa"/>
                                                 <constraint firstItem="gF4-qz-0hJ" firstAttribute="leading" secondItem="9se-mj-H9o" secondAttribute="trailing" constant="20" id="X0N-BN-PuI"/>
                                                 <constraint firstItem="9se-mj-H9o" firstAttribute="centerY" secondItem="ERu-Lj-DE5" secondAttribute="centerY" id="Zmc-Fq-Kgf"/>
                                                 <constraint firstItem="smu-Tk-9wE" firstAttribute="leading" secondItem="9se-mj-H9o" secondAttribute="trailing" constant="20" id="jwH-w7-gJN"/>
@@ -518,7 +518,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Section-2" id="bSQ-Fm-QJC">
+                            <tableViewSection headerTitle="   " id="bSQ-Fm-QJC">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Uh0-ug-wji">
                                         <rect key="frame" x="0.0" y="136" width="600" height="44"/>
@@ -554,6 +554,9 @@
                     </tableView>
                     <connections>
                         <outlet property="friendDetailAvatar" destination="9se-mj-H9o" id="tz9-cw-MlW"/>
+                        <outlet property="friendDisplayedName" destination="gF4-qz-0hJ" id="U8V-aA-1O2"/>
+                        <outlet property="friendNickName" destination="OdF-lz-A87" id="hSF-F6-kpd"/>
+                        <outlet property="friendUserId" destination="smu-Tk-9wE" id="N6Z-Eg-gze"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5IG-yt-c3A" userLabel="First Responder" sceneMemberID="firstResponder"/>

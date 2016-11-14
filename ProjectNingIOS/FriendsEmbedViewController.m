@@ -16,8 +16,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    //Set up basic fields
+    [self.friendUserId setText:[self.friendUserId.text stringByAppendingString:[self.userId stringValue]]];
     [self.friendDetailAvatar setImage: self.avatar];
+    
+    //Set up name field
+    NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
+    attachment.image = [UIImage imageNamed:@"male.png"];
+    attachment.bounds = CGRectMake(0, -1, 15, 15);
+    
+    NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:attachment];
+    
+    NSMutableAttributedString *myString= [[NSMutableAttributedString alloc] initWithString:self.name];
+    [myString appendAttributedString:attachmentString];
+    
+    self.friendDisplayedName.attributedText = myString;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
