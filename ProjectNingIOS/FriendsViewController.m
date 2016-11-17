@@ -225,6 +225,7 @@
             [self.tableView reloadData];
             [self.refreshControl endRefreshing];
         }else{
+            [self.refreshControl endRefreshing];
             [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
         }
     }];
