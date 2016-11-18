@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		871D68751DD69BAD00728AD6 /* FriendsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 871D68741DD69BAD00728AD6 /* FriendsDetailViewController.m */; };
-		871D68781DD771B000728AD6 /* FriendsEmbedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 871D68771DD771B000728AD6 /* FriendsEmbedViewController.m */; };
 		87C9F3411DD9279500734504 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F33F1DD9279500734504 /* male.png */; };
 		87C9F3421DD9279500734504 /* demail.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F3401DD9279500734504 /* demail.png */; };
 		87C9F3461DDE9F0300734504 /* FriendDetailTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */; };
@@ -74,8 +73,6 @@
 /* Begin PBXFileReference section */
 		871D68731DD69BAD00728AD6 /* FriendsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsDetailViewController.h; sourceTree = "<group>"; };
 		871D68741DD69BAD00728AD6 /* FriendsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsDetailViewController.m; sourceTree = "<group>"; };
-		871D68761DD771B000728AD6 /* FriendsEmbedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsEmbedViewController.h; sourceTree = "<group>"; };
-		871D68771DD771B000728AD6 /* FriendsEmbedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsEmbedViewController.m; sourceTree = "<group>"; };
 		87C9F33F1DD9279500734504 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
 		87C9F3401DD9279500734504 /* demail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demail.png; sourceTree = "<group>"; };
 		87C9F3441DDE9F0300734504 /* FriendDetailTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendDetailTableCell.h; sourceTree = "<group>"; };
@@ -253,8 +250,6 @@
 				912D2D6E1C86A26A0039AEF5 /* FriendsViewController.m */,
 				871D68731DD69BAD00728AD6 /* FriendsDetailViewController.h */,
 				871D68741DD69BAD00728AD6 /* FriendsDetailViewController.m */,
-				871D68761DD771B000728AD6 /* FriendsEmbedViewController.h */,
-				871D68771DD771B000728AD6 /* FriendsEmbedViewController.m */,
 				912D2D6F1C86A26A0039AEF5 /* ProfileViewController.h */,
 				912D2D701C86A26A0039AEF5 /* ProfileViewController.m */,
 				912D2D711C86A26A0039AEF5 /* ProfileDetailViewController.h */,
@@ -509,7 +504,6 @@
 				87ED6F861DC817C8004DB409 /* PNRelationship.m in Sources */,
 				87ED6F8C1DCAB96A004DB409 /* FriendTableCell.m in Sources */,
 				914431981C6E2353003FB63E /* AppDelegate.m in Sources */,
-				871D68781DD771B000728AD6 /* FriendsEmbedViewController.m in Sources */,
 				87ED6F7B1D9CAEF9004DB409 /* PNViewControllerHelper.m in Sources */,
 				914431EA1C7244B7003FB63E /* PNDateFormater.m in Sources */,
 				914431E41C6E75A0003FB63E /* AFURLResponseSerialization.m in Sources */,

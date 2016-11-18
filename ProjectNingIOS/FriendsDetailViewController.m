@@ -72,6 +72,20 @@
             cell = [[FriendDetailTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"friendOverviewCell"];
         }
         [cell.friendDetailAvatar setImage:self.avatar];
+        [cell.friendUserId setText:[cell.friendUserId.text stringByAppendingString:[self.userId stringValue]]];
+        
+        //Set up name field
+        NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
+        attachment.image = [UIImage imageNamed:@"male.png"];
+        attachment.bounds = CGRectMake(0, -1, 15, 15);
+        
+        NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:attachment];
+        
+        NSMutableAttributedString *myString= [[NSMutableAttributedString alloc] initWithString:self.name];
+        [myString appendAttributedString:attachmentString];
+        
+        cell.friendDisplayedName.attributedText = myString;
+        
         return cell;
     }else{
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailCell"];
