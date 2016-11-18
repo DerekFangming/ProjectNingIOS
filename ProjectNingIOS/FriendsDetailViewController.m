@@ -8,31 +8,90 @@
 
 #import "FriendsDetailViewController.h"
 
-@interface FriendsDetailViewController ()
-
-@end
-
 @implementation FriendsDetailViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    [super viewDidLoad];/*
     // Do any additional setup after loading the view.
-    NSLog(@"Loaded");
-    NSLog(_name);
+    [self.friendUserId setText:[self.friendUserId.text stringByAppendingString:[self.userId stringValue]]];
+    [self.friendDetailAvatar setImage: self.avatar];
+    
+    //Set up name field
+    NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
+    attachment.image = [UIImage imageNamed:@"male.png"];
+    attachment.bounds = CGRectMake(0, -1, 15, 15);
+    
+    NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:attachment];
+    
+    NSMutableAttributedString *myString= [[NSMutableAttributedString alloc] initWithString:self.name];
+    [myString appendAttributedString:attachmentString];
+    
+    self.friendDisplayedName.attributedText = myString;*/
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section ==1 && indexPath.row == 0)
+    {
+        NSLog(@"1");
+    }else if(indexPath.section ==1 && indexPath.row == 1){
+        NSLog(@"2");
+    }
 }
 
+#pragma make - Section and list handling -
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"friendEmbedSegue"]) {
-        FriendsEmbedViewController *destVC = segue.destinationViewController;
-        destVC.userId = self.userId;
-        destVC.name = self.name;
-        destVC.avatar = self.avatar;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"  ";
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if(section == 1){
+        return 12;
+    }else{
+        return 1;
+    }
+    
+}
+
+#pragma mark - Table cell handling -
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if(indexPath.section == 0 && indexPath.row == 0){
+        FriendDetailTableCell * cell;
+        cell = [tableView dequeueReusableCellWithIdentifier:@"friendOverviewCell"];
+        if(cell == nil) {
+            cell = [[FriendDetailTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"friendOverviewCell"];
+        }
+        [cell.friendDetailAvatar setImage:self.avatar];
+        return cell;
+    }else{
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailCell"];
+        
+        if(cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detailCell"];
+        }
+        
+        return cell;
+    }
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section ==0 && indexPath.row == 0)
+    {
+        return 80;
+    }else{
+        return 45;
     }
 }
 

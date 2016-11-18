@@ -48,22 +48,34 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if(section == 1){
+        return 12;
+    }else{
+        return 1;
+    }
+    
 }
 
-
-
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell;
+    if(indexPath.section == 0 && indexPath.row == 0){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"friendOverviewCell"];
+    }else{
+        cell = [tableView dequeueReusableCellWithIdentifier:@"detailCell"];
+    }
     
-    // Configure the cell...
+    
+    if(cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detailCell"];
+    }
+
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

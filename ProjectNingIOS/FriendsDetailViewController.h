@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 
 #import "PNService.h"
-#import "FriendsEmbedViewController.h"
+#import "FriendDetailTableCell.h"
 
-@interface FriendsDetailViewController : UIViewController
+@interface FriendsDetailViewController : UITableViewController
 
 @property (nonatomic, strong) NSNumber *userId;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) UIImage *avatar;
+
+
+
 
 @end

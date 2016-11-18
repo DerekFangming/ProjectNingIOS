@@ -11,6 +11,7 @@
 		871D68781DD771B000728AD6 /* FriendsEmbedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 871D68771DD771B000728AD6 /* FriendsEmbedViewController.m */; };
 		87C9F3411DD9279500734504 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F33F1DD9279500734504 /* male.png */; };
 		87C9F3421DD9279500734504 /* demail.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F3401DD9279500734504 /* demail.png */; };
+		87C9F3461DDE9F0300734504 /* FriendDetailTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */; };
 		87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F651D834F1B004DB409 /* PNStranger.m */; };
 		87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F6C1D9199AF004DB409 /* Utils.m */; };
 		87ED6F741D9314C2004DB409 /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F731D9314C2004DB409 /* GMDCircleLoader.m */; };
@@ -77,6 +78,8 @@
 		871D68771DD771B000728AD6 /* FriendsEmbedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsEmbedViewController.m; sourceTree = "<group>"; };
 		87C9F33F1DD9279500734504 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
 		87C9F3401DD9279500734504 /* demail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demail.png; sourceTree = "<group>"; };
+		87C9F3441DDE9F0300734504 /* FriendDetailTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendDetailTableCell.h; sourceTree = "<group>"; };
+		87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDetailTableCell.m; sourceTree = "<group>"; };
 		87ED6F641D834F1B004DB409 /* PNStranger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNStranger.h; sourceTree = "<group>"; };
 		87ED6F651D834F1B004DB409 /* PNStranger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNStranger.m; sourceTree = "<group>"; };
 		87ED6F6B1D9199AF004DB409 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
@@ -193,6 +196,8 @@
 				87ED6F821DBE8031004DB409 /* VCHolder.m */,
 				87ED6F8A1DCAB96A004DB409 /* FriendTableCell.h */,
 				87ED6F8B1DCAB96A004DB409 /* FriendTableCell.m */,
+				87C9F3441DDE9F0300734504 /* FriendDetailTableCell.h */,
+				87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -492,6 +497,7 @@
 				87ED6F8F1DCC00C7004DB409 /* PNFriend.m in Sources */,
 				914431E71C70DABA003FB63E /* AFURLSessionManager.m in Sources */,
 				914431E31C6E75A0003FB63E /* AFURLRequestSerialization.m in Sources */,
+				87C9F3461DDE9F0300734504 /* FriendDetailTableCell.m in Sources */,
 				87ED6F781D9CAB53004DB409 /* PNAlertHelper.m in Sources */,
 				912D2D771C86A26A0039AEF5 /* ProfileViewController.m in Sources */,
 				871D68751DD69BAD00728AD6 /* FriendsDetailViewController.m in Sources */,
