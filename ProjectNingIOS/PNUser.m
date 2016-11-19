@@ -32,19 +32,15 @@
                      andPassword:(NSString *)loginPassword
                         response:(void (^)(PNUser *, NSError *))response{
     
-    NSString *baseURL = @"http://fmning.com:8080/projectNing/";
-    NSString *pathForSalt = @"register_for_salt";
-    NSString *pathForRegister = @"register";
-    
     NSMutableDictionary *saltParameters = [NSMutableDictionary dictionary];
     [saltParameters setObject:loginUsername forKey:@"username"];
     [saltParameters setObject:[NSNumber numberWithInt:[[NSTimeZone localTimeZone] secondsFromGMT] / 3600] forKey:@"offset"];
     
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    [manager POST:pathForSalt
+    [manager POST:pathForSaltRegistration
        parameters:saltParameters
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -53,7 +49,7 @@
                   [parameters setObject:loginUsername forKey:@"username"];
                   [parameters setObject:[self getMd5:[NSString stringWithFormat:@"%@%@", loginPassword, [responseObject objectForKey:@"salt"]]]
                                  forKey:@"password"];
-                  [manager POST:pathForRegister
+                  [manager POST:pathForUserRegistration
                      parameters:parameters
                        progress:nil
                         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -93,18 +89,15 @@
 + (void) loginUserWithUsername:(NSString *)loginUsername
                    andPassword:(NSString *)loginPassword
                       response:(void (^)(PNUser *, NSError *))response{
-    NSString *baseURL = @"http://fmning.com:8080/projectNing/";
-    NSString *pathForSalt = @"login_for_salt";
-    NSString *pathForLogin = @"login";
     
     NSMutableDictionary *saltParameters = [NSMutableDictionary dictionary];
     [saltParameters setObject:loginUsername forKey:@"username"];
     
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    [manager POST:pathForSalt
+    [manager POST:pathForSaltLogin
        parameters:saltParameters
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -113,7 +106,7 @@
                   [parameters setObject:loginUsername forKey:@"username"];
                   [parameters setObject:[self getMd5:[NSString stringWithFormat:@"%@%@", loginPassword, [responseObject objectForKey:@"salt"]]]
                                  forKey:@"password"];
-                  [manager POST:pathForLogin
+                  [manager POST:pathForUserLogin
                      parameters:parameters
                        progress:nil
                         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -148,6 +141,36 @@
     
 }
 
++ (void) getDetailInfoForUser:(NSNumber *)userId
+                     response:(void (^)(NSDictionary *, NSError *))response{
+    
+    NSMutableDictionary *saltParameters = [NSMutableDictionary dictionary];
+    [saltParameters setObject:userId forKey:@"userId"];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager POST:pathForGettingUserDetail
+       parameters:saltParameters
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
+                  NSMutableDictionary * result = responseObject;
+                  [result removeObjectForKey:@"error"];
+                  response(result, nil);
+                  
+              }else{
+                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
+                  [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
+                  NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
+                  response(nil, error);
+              }
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              response(nil, error);
+          }];
+    
+}
 + (void) logoutCurrentUser{
     PNUser *user = [PNUser currentUser];
     user->username = nil;

@@ -11,6 +11,7 @@
 
 #import "AFNetworking.h"
 #import "PNDateFormater.h"
+#import "PNUtils.h"
 
 
 @interface PNUser : NSObject{
@@ -43,6 +44,9 @@
 + (void) loginUserWithUsername:(NSString *)loginUsername
                    andPassword:(NSString *)loginPassword
                       response:(void (^)(PNUser *, NSError *))response;
+
++ (void) getDetailInfoForUser:(NSNumber *)userId
+                     response:(void (^)(NSDictionary *, NSError *))response;
 
 /**
     Method to log out a user. Remove all the infomation of singleton current user.
