@@ -16,6 +16,9 @@
     
     self.friendDetails = [[NSMutableArray alloc] init];
     
+    //self.tableView.backgroundColor = [UIColor lightTextColor];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     [PNUser getDetailInfoForUser:self.userId
                         response:^(NSDictionary *details, NSError *err) {
                             if(err == nil){
@@ -24,12 +27,19 @@
                                 }else{
                                     self.nickname = [@"Nickname : " stringByAppendingString:[details objectForKey:@"nickname"]];
                                 }
-                                
-                                
+                                if(![[details objectForKey:@"name"] isEqualToString:@""])
+                                    [self.friendDetails addObject:[@"Name        " stringByAppendingString:[details objectForKey:@"name"]]];
+                                if(![[details objectForKey:@"age"] isEqual:@0])
+                                    [self.friendDetails addObject:[@"Age            " stringByAppendingString:[[details objectForKey:@"age"] stringValue]]];
+                                if(![[details objectForKey:@"location"] isEqualToString:@""])
+                                    [self.friendDetails addObject:[@"Location    " stringByAppendingString:[details objectForKey:@"location"]]];
+                                if(![[details objectForKey:@"whatsUp"] isEqualToString:@""])
+                                    [self.friendDetails addObject:[@"What's up  " stringByAppendingString:[details objectForKey:@"whatsUp"]]];
+                                [self.tableView reloadData];
                             }else if([[err localizedDescription] isEqualToString:NO_DETAIL_ERR_MSG]){
-                                
+                                NSLog(@"No details");
                             }else{
-                                
+                                [UIAlertController showErrorAlertWithErrorMessage:[err localizedDescription] from:self];
                             }
                         }];
                          
@@ -49,18 +59,18 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"  ";
+    return @" ";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(section == 1){
-        return 12;
+    if(section == 2){
+        return [self.friendDetails count];
     }else{
         return 1;
     }
@@ -93,12 +103,23 @@
         cell.friendDisplayedName.attributedText = myString;
         
         return cell;
+    }else if (indexPath.section == 1){
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailCell"];
+        
+        if(cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detailCell"];
+        }
+        
+        return cell;
     }else{
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailCell"];
         
         if(cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detailCell"];
         }
+        
+        //cell.textLabel.numberOfLines = 0;
+        cell.textLabel.text = [self.friendDetails objectAtIndex:indexPath.row];
         
         return cell;
     }
@@ -107,7 +128,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section ==0 && indexPath.row == 0)
+    if (indexPath.section == 0 && indexPath.row == 0)
     {
         return 80;
     }else{

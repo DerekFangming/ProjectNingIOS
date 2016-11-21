@@ -144,21 +144,27 @@
 + (void) getDetailInfoForUser:(NSNumber *)userId
                      response:(void (^)(NSDictionary *, NSError *))response{
     
-    NSMutableDictionary *saltParameters = [NSMutableDictionary dictionary];
-    [saltParameters setObject:userId forKey:@"userId"];
+    NSError *error = [self checkUserLoginStatus];
+    if(error != nil){
+        response(nil, error);
+    }
+    
+    PNUser *user = [PNUser currentUser];
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:userId forKey:@"userId"];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
     [manager POST:pathForGettingUserDetail
-       parameters:saltParameters
+       parameters:parameters
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
-                  NSMutableDictionary * result = responseObject;
-                  [result removeObjectForKey:@"error"];
-                  response(result, nil);
+                  response(responseObject, nil);
                   
               }else{
                   NSMutableDictionary* details = [NSMutableDictionary dictionary];

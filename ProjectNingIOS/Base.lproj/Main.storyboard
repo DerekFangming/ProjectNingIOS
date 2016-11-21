@@ -502,7 +502,7 @@
                                     <outlet property="friendUserId" destination="smu-Tk-9wE" id="cBt-AX-daw"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" id="Cgn-aj-BLe">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="detailCell" id="Cgn-aj-BLe">
                                 <rect key="frame" x="0.0" y="172" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cgn-aj-BLe" id="BCW-Lb-eRb">
