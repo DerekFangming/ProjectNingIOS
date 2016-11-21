@@ -11,22 +11,28 @@
 @implementation FriendsDetailViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];/*
+    [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.friendUserId setText:[self.friendUserId.text stringByAppendingString:[self.userId stringValue]]];
-    [self.friendDetailAvatar setImage: self.avatar];
     
-    //Set up name field
-    NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
-    attachment.image = [UIImage imageNamed:@"male.png"];
-    attachment.bounds = CGRectMake(0, -1, 15, 15);
+    self.friendDetails = [[NSMutableArray alloc] init];
     
-    NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:attachment];
-    
-    NSMutableAttributedString *myString= [[NSMutableAttributedString alloc] initWithString:self.name];
-    [myString appendAttributedString:attachmentString];
-    
-    self.friendDisplayedName.attributedText = myString;*/
+    [PNUser getDetailInfoForUser:self.userId
+                        response:^(NSDictionary *details, NSError *err) {
+                            if(err == nil){
+                                if([[details objectForKey:@"nickname"] isEqualToString:@""]){
+                                    self.nickname = @"";
+                                }else{
+                                    self.nickname = [@"Nickname : " stringByAppendingString:[details objectForKey:@"nickname"]];
+                                }
+                                
+                                
+                            }else if([[err localizedDescription] isEqualToString:NO_DETAIL_ERR_MSG]){
+                                
+                            }else{
+                                
+                            }
+                        }];
+                         
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -81,7 +87,7 @@
         
         NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:attachment];
         
-        NSMutableAttributedString *myString= [[NSMutableAttributedString alloc] initWithString:self.name];
+        NSMutableAttributedString *myString= [[NSMutableAttributedString alloc] initWithString:self.displayedName];
         [myString appendAttributedString:attachmentString];
         
         cell.friendDisplayedName.attributedText = myString;

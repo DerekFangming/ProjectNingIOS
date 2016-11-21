@@ -251,7 +251,7 @@
         }
         FriendsDetailViewController *destVC = segue.destinationViewController;
         destVC.userId = friend.userId;
-        destVC.name = friend.name;
+        destVC.displayedName = friend.name;
         destVC.avatar = friend.avatar;
     }
 }
