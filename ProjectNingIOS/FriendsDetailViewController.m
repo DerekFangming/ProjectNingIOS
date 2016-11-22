@@ -27,6 +27,7 @@
                                 }else{
                                     self.nickname = [@"Nickname : " stringByAppendingString:[details objectForKey:@"nickname"]];
                                 }
+                                self.gender = [details objectForKey:@"gender"];
                                 if(![[details objectForKey:@"name"] isEqualToString:@""])
                                     [self.friendDetails addObject:[@"Name        " stringByAppendingString:[details objectForKey:@"name"]]];
                                 if(![[details objectForKey:@"age"] isEqual:@0])
@@ -89,11 +90,16 @@
         }
         [cell.friendDetailAvatar setImage:self.avatar];
         [cell.friendUserId setText:[cell.friendUserId.text stringByAppendingString:[self.userId stringValue]]];
+        [cell.friendNickName setText:self.nickname];
         
         //Set up name field
         NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
-        attachment.image = [UIImage imageNamed:@"male.png"];
         attachment.bounds = CGRectMake(0, -1, 15, 15);
+        if([self.gender isEqualToString:@"M"]){
+            attachment.image = [UIImage imageNamed:@"male.png"];
+        }else if([self.gender isEqualToString:@"F"]){
+            attachment.image = [UIImage imageNamed:@"female.png"];
+        }
         
         NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:attachment];
         

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		871D68751DD69BAD00728AD6 /* FriendsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 871D68741DD69BAD00728AD6 /* FriendsDetailViewController.m */; };
 		87C9F3411DD9279500734504 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F33F1DD9279500734504 /* male.png */; };
-		87C9F3421DD9279500734504 /* demail.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F3401DD9279500734504 /* demail.png */; };
+		87C9F3421DD9279500734504 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F3401DD9279500734504 /* female.png */; };
 		87C9F3461DDE9F0300734504 /* FriendDetailTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */; };
 		87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F651D834F1B004DB409 /* PNStranger.m */; };
 		87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F6C1D9199AF004DB409 /* Utils.m */; };
@@ -74,7 +74,7 @@
 		871D68731DD69BAD00728AD6 /* FriendsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsDetailViewController.h; sourceTree = "<group>"; };
 		871D68741DD69BAD00728AD6 /* FriendsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsDetailViewController.m; sourceTree = "<group>"; };
 		87C9F33F1DD9279500734504 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
-		87C9F3401DD9279500734504 /* demail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demail.png; sourceTree = "<group>"; };
+		87C9F3401DD9279500734504 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female.png; sourceTree = "<group>"; };
 		87C9F3441DDE9F0300734504 /* FriendDetailTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendDetailTableCell.h; sourceTree = "<group>"; };
 		87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDetailTableCell.m; sourceTree = "<group>"; };
 		87ED6F641D834F1B004DB409 /* PNStranger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNStranger.h; sourceTree = "<group>"; };
@@ -366,7 +366,7 @@
 				912D2D791C86A4050039AEF5 /* rightMenu.jpg */,
 				912D2D7A1C86A4050039AEF5 /* leftMenu.jpg */,
 				87C9F33F1DD9279500734504 /* male.png */,
-				87C9F3401DD9279500734504 /* demail.png */,
+				87C9F3401DD9279500734504 /* female.png */,
 				9170BBDA1D3F045D00FFD3E8 /* acceptBtnClicked.png */,
 				9170BBDB1D3F045D00FFD3E8 /* acceptBtn.png */,
 				9170BBDE1D3F052E00FFD3E8 /* denyBtnClicked.png */,
@@ -463,7 +463,7 @@
 				914431A01C6E2353003FB63E /* Assets.xcassets in Resources */,
 				9170BBE01D3F052E00FFD3E8 /* denyBtnClicked.png in Resources */,
 				912D2D7B1C86A4050039AEF5 /* rightMenu.jpg in Resources */,
-				87C9F3421DD9279500734504 /* demail.png in Resources */,
+				87C9F3421DD9279500734504 /* female.png in Resources */,
 				87ED6F7F1DADA739004DB409 /* refreshBtn.png in Resources */,
 				87ED6F7D1DA73430004DB409 /* defaultAvatar.jpg in Resources */,
 				87C9F3411DD9279500734504 /* male.png in Resources */,

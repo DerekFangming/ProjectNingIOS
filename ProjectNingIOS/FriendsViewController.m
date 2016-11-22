@@ -121,7 +121,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FriendTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    FriendTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"friendCell"];
     PNFriend *friend;
     NSString *sectionTitle;
     NSMutableArray *sectionFriends;
@@ -139,7 +139,7 @@
     
     
     if(cell == nil) {
-        cell = [[FriendTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[FriendTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"friendCell"];
     }
     
     cell.name.text = friend.name;
