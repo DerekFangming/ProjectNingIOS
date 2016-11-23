@@ -110,10 +110,10 @@
         
         return cell;
     }else if (indexPath.section == 1){
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailCell"];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentsCell"];
         
         if(cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detailCell"];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentsCell"];
         }
         
         return cell;
@@ -134,9 +134,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0 && indexPath.row == 0)
+    if (indexPath.section == 0)
     {
         return 80;
+    }else if (indexPath.section == 1){
+        return 70;
     }else{
         return 45;
     }

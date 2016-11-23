@@ -502,8 +502,32 @@
                                     <outlet property="friendUserId" destination="smu-Tk-9wE" id="cBt-AX-daw"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="momentsCell" rowHeight="70" id="ZHi-s8-AMh">
+                                <rect key="frame" x="0.0" y="172" width="600" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZHi-s8-AMh" id="FDS-zO-WDd">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="69"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LLLLLLL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loh-sa-eDz">
+                                            <rect key="frame" x="17" y="24" width="65" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="65" id="NHS-zh-sm6"/>
+                                                <constraint firstAttribute="height" constant="21" id="nK1-Yk-G24"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="loh-sa-eDz" firstAttribute="leading" secondItem="FDS-zO-WDd" secondAttribute="leadingMargin" constant="9" id="LcL-xl-GCV"/>
+                                        <constraint firstItem="loh-sa-eDz" firstAttribute="centerY" secondItem="FDS-zO-WDd" secondAttribute="centerY" id="lPw-H8-XOC"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="detailCell" id="Cgn-aj-BLe">
-                                <rect key="frame" x="0.0" y="172" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="242" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cgn-aj-BLe" id="BCW-Lb-eRb">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
