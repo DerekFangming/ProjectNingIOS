@@ -75,8 +75,8 @@
 		871D68741DD69BAD00728AD6 /* FriendsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendsDetailViewController.m; path = ViewControllers/FriendsDetailViewController.m; sourceTree = "<group>"; };
 		87C9F33F1DD9279500734504 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = male.png; path = Images/male.png; sourceTree = "<group>"; };
 		87C9F3401DD9279500734504 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = female.png; path = Images/female.png; sourceTree = "<group>"; };
-		87C9F3441DDE9F0300734504 /* FriendDetailTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendDetailTableCell.h; sourceTree = "<group>"; };
-		87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDetailTableCell.m; sourceTree = "<group>"; };
+		87C9F3441DDE9F0300734504 /* FriendDetailTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendDetailTableCell.h; path = ViewControllers/TableCells/FriendDetailTableCell.h; sourceTree = "<group>"; };
+		87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendDetailTableCell.m; path = ViewControllers/TableCells/FriendDetailTableCell.m; sourceTree = "<group>"; };
 		87E5BFDD1DE7FF6200632391 /* RightMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RightMenuViewController.m; path = ViewControllers/RightMenuViewController.m; sourceTree = "<group>"; };
 		87ED6F641D834F1B004DB409 /* PNStranger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNStranger.h; sourceTree = "<group>"; };
 		87ED6F651D834F1B004DB409 /* PNStranger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNStranger.m; sourceTree = "<group>"; };
@@ -96,8 +96,8 @@
 		87ED6F851DC817C8004DB409 /* PNRelationship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNRelationship.m; sourceTree = "<group>"; };
 		87ED6F871DC81F4B004DB409 /* PNUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNUtils.h; sourceTree = "<group>"; };
 		87ED6F881DC81F4B004DB409 /* PNUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNUtils.m; sourceTree = "<group>"; };
-		87ED6F8A1DCAB96A004DB409 /* FriendTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableCell.h; sourceTree = "<group>"; };
-		87ED6F8B1DCAB96A004DB409 /* FriendTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableCell.m; sourceTree = "<group>"; };
+		87ED6F8A1DCAB96A004DB409 /* FriendTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendTableCell.h; path = ViewControllers/TableCells/FriendTableCell.h; sourceTree = "<group>"; };
+		87ED6F8B1DCAB96A004DB409 /* FriendTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendTableCell.m; path = ViewControllers/TableCells/FriendTableCell.m; sourceTree = "<group>"; };
 		87ED6F8D1DCC00C7004DB409 /* PNFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNFriend.h; sourceTree = "<group>"; };
 		87ED6F8E1DCC00C7004DB409 /* PNFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNFriend.m; sourceTree = "<group>"; };
 		912D2D4D1C869FC30039AEF5 /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationController.h; sourceTree = "<group>"; };
@@ -185,6 +185,10 @@
 		87E5BFD91DE7F97300632391 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
+				87ED6F8A1DCAB96A004DB409 /* FriendTableCell.h */,
+				87ED6F8B1DCAB96A004DB409 /* FriendTableCell.m */,
+				87C9F3441DDE9F0300734504 /* FriendDetailTableCell.h */,
+				87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */,
 			);
 			name = TableCells;
 			sourceTree = "<group>";
@@ -198,10 +202,6 @@
 				87ED6F6C1D9199AF004DB409 /* Utils.m */,
 				87ED6F811DBE8031004DB409 /* VCHolder.h */,
 				87ED6F821DBE8031004DB409 /* VCHolder.m */,
-				87ED6F8A1DCAB96A004DB409 /* FriendTableCell.h */,
-				87ED6F8B1DCAB96A004DB409 /* FriendTableCell.m */,
-				87C9F3441DDE9F0300734504 /* FriendDetailTableCell.h */,
-				87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
