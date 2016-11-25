@@ -60,7 +60,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -117,7 +117,7 @@
         }
         
         return cell;
-    }else{
+    }else if (indexPath.section == 2){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailCell"];
         
         if(cell == nil) {
@@ -126,6 +126,14 @@
         
         //cell.textLabel.numberOfLines = 0;
         cell.textLabel.text = [self.friendDetails objectAtIndex:indexPath.row];
+        
+        return cell;
+    }else{
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatBtnCell"];
+        
+        if(cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chatBtnCell"];
+        }
         
         return cell;
     }
