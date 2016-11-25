@@ -463,21 +463,21 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdF-lz-A87">
-                                            <rect key="frame" x="100" y="53" width="250" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smu-Tk-9wE">
+                                            <rect key="frame" x="100" y="36" width="250" height="18"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="18" id="Jrd-lD-fv7"/>
-                                                <constraint firstAttribute="width" constant="250" id="bba-U1-x5U"/>
+                                                <constraint firstAttribute="width" constant="250" id="42F-8i-mXS"/>
+                                                <constraint firstAttribute="height" constant="18" id="H28-md-3Qz"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smu-Tk-9wE">
-                                            <rect key="frame" x="100" y="36" width="250" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdF-lz-A87">
+                                            <rect key="frame" x="100" y="53" width="250" height="18"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="250" id="42F-8i-mXS"/>
-                                                <constraint firstAttribute="height" constant="18" id="H28-md-3Qz"/>
+                                                <constraint firstAttribute="height" constant="18" id="Jrd-lD-fv7"/>
+                                                <constraint firstAttribute="width" constant="250" id="bba-U1-x5U"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

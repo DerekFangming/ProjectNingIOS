@@ -89,7 +89,7 @@
             cell = [[FriendDetailTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"friendOverviewCell"];
         }
         [cell.friendDetailAvatar setImage:self.avatar];
-        [cell.friendUserId setText:[cell.friendUserId.text stringByAppendingString:[self.userId stringValue]]];
+        [cell.friendUserId setText:[@"ID : " stringByAppendingString:[self.userId stringValue]]];
         [cell.friendNickName setText:self.nickname];
         
         //Set up name field
