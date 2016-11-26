@@ -11,6 +11,7 @@
 #import "PNService.h"
 #import "Utils.h"
 #import "FriendDetailTableCell.h"
+#import "ChatBtnTableCell.h"
 
 @interface FriendsDetailViewController : UITableViewController
 

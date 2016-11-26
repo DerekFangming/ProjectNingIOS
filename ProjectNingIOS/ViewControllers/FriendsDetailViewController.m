@@ -16,8 +16,8 @@
     
     self.friendDetails = [[NSMutableArray alloc] init];
     
-    //self.tableView.backgroundColor = [UIColor lightTextColor];
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.backgroundColor = [UIColor colorWithRed:247 green:247 blue:247 alpha:1];
+    //self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [PNUser getDetailInfoForUser:self.userId
                         response:^(NSDictionary *details, NSError *err) {
@@ -129,11 +129,15 @@
         
         return cell;
     }else{
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatBtnCell"];
+        ChatBtnTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatBtnCell"];
         
         if(cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chatBtnCell"];
+            cell = [[ChatBtnTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chatBtnCell"];
         }
+        
+        cell.separatorInset = UIEdgeInsetsMake(0.0f, 10000.0f, 0.0f, 0.0f);
+        [cell setBackgroundColor:[UIColor colorWithRed:247 green:247 blue:247 alpha:1]];
+        [cell.chatBtn setBackgroundImage:[self imageWithColor:[UIColor grayColor]] forState:UIControlStateHighlighted];
         
         return cell;
     }
@@ -150,6 +154,28 @@
     }else{
         return 45;
     }
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section
+{
+    //Set the background color of the View
+    view.tintColor = [UIColor blueColor];
+}
+
+#pragma  mark - Table cell helpers -
+
+- (UIImage *)imageWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 @end

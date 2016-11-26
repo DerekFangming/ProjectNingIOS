@@ -534,7 +534,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatBtnCell" id="2sW-Ct-NbO">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="chatBtnCell" id="2sW-Ct-NbO" customClass="ChatBtnTableCell">
                                 <rect key="frame" x="0.0" y="286" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2sW-Ct-NbO" id="LsN-XJ-XJf">
@@ -548,6 +548,7 @@
                                             <state key="normal" title="Chat"/>
                                         </button>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="1YH-So-QwF" firstAttribute="top" secondItem="LsN-XJ-XJf" secondAttribute="topMargin" constant="-8" id="8xQ-z9-tF5"/>
                                         <constraint firstItem="1YH-So-QwF" firstAttribute="leading" secondItem="LsN-XJ-XJf" secondAttribute="leadingMargin" constant="25" id="ApA-IW-DFN"/>
@@ -555,6 +556,9 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="1YH-So-QwF" secondAttribute="trailing" constant="25" id="PX6-q1-5Le"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="chatBtn" destination="1YH-So-QwF" id="5gD-ff-ApW"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>

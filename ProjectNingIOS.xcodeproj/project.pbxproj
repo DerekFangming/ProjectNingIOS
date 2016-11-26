@@ -12,6 +12,7 @@
 		87C9F3421DD9279500734504 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F3401DD9279500734504 /* female.png */; };
 		87C9F3461DDE9F0300734504 /* FriendDetailTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */; };
 		87E5BFDE1DE7FF6200632391 /* RightMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFDD1DE7FF6200632391 /* RightMenuViewController.m */; };
+		87E5BFE11DE8ADF800632391 /* ChatBtnTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFE01DE8ADF800632391 /* ChatBtnTableCell.m */; };
 		87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F651D834F1B004DB409 /* PNStranger.m */; };
 		87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F6C1D9199AF004DB409 /* Utils.m */; };
 		87ED6F741D9314C2004DB409 /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F731D9314C2004DB409 /* GMDCircleLoader.m */; };
@@ -78,6 +79,8 @@
 		87C9F3441DDE9F0300734504 /* FriendDetailTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendDetailTableCell.h; path = ViewControllers/TableCells/FriendDetailTableCell.h; sourceTree = "<group>"; };
 		87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendDetailTableCell.m; path = ViewControllers/TableCells/FriendDetailTableCell.m; sourceTree = "<group>"; };
 		87E5BFDD1DE7FF6200632391 /* RightMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RightMenuViewController.m; path = ViewControllers/RightMenuViewController.m; sourceTree = "<group>"; };
+		87E5BFDF1DE8ADF800632391 /* ChatBtnTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChatBtnTableCell.h; path = ViewControllers/TableCells/ChatBtnTableCell.h; sourceTree = "<group>"; };
+		87E5BFE01DE8ADF800632391 /* ChatBtnTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatBtnTableCell.m; path = ViewControllers/TableCells/ChatBtnTableCell.m; sourceTree = "<group>"; };
 		87ED6F641D834F1B004DB409 /* PNStranger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNStranger.h; path = PNService/PNStranger.h; sourceTree = "<group>"; };
 		87ED6F651D834F1B004DB409 /* PNStranger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNStranger.m; path = PNService/PNStranger.m; sourceTree = "<group>"; };
 		87ED6F6B1D9199AF004DB409 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Helpers/Utils.h; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 		87E5BFD91DE7F97300632391 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
+				87E5BFDF1DE8ADF800632391 /* ChatBtnTableCell.h */,
+				87E5BFE01DE8ADF800632391 /* ChatBtnTableCell.m */,
 				87C9F3441DDE9F0300734504 /* FriendDetailTableCell.h */,
 				87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */,
 				87ED6F8A1DCAB96A004DB409 /* FriendTableCell.h */,
@@ -496,6 +501,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				912D2D761C86A26A0039AEF5 /* FriendsViewController.m in Sources */,
+				87E5BFE11DE8ADF800632391 /* ChatBtnTableCell.m in Sources */,
 				912D2D4F1C869FC30039AEF5 /* SlideNavigationController.m in Sources */,
 				87ED6F8F1DCC00C7004DB409 /* PNFriend.m in Sources */,
 				914431E71C70DABA003FB63E /* AFURLSessionManager.m in Sources */,
