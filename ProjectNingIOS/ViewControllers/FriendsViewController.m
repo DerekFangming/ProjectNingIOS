@@ -15,6 +15,7 @@
 	[super viewDidLoad];
     
     self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = GRAY_COLOR;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [PNRelationship getDetailedFriendListWithResponse:^(NSArray *newFriendList, NSError *error) {
@@ -114,6 +115,15 @@
         return [searchResultsTitles indexOfObject:title];
     }else{
         return [friendListTitles indexOfObject:title];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    if ([view isKindOfClass:[UITableViewHeaderFooterView class]]) {
+        UITableViewHeaderFooterView *headerView = (UITableViewHeaderFooterView *)view;
+        headerView.contentView.backgroundColor = [UIColor clearColor];
+        headerView.backgroundView.backgroundColor = [UIColor clearColor];
     }
 }
 

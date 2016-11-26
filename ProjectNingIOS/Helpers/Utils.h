@@ -18,6 +18,8 @@
 #define HOME_VC           0
 #define FRIEND_VC         1
 
+#define GRAY_COLOR        [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1]
+
 @interface Utils : NSObject
 
 + (void)rotateLayerInfinite:(CALayer *)layer;

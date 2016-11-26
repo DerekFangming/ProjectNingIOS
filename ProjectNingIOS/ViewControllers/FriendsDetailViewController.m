@@ -16,6 +16,7 @@
     
     self.friendDetails = [[NSMutableArray alloc] init];
     
+    self.tableView.backgroundColor = GRAY_COLOR;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [PNUser getDetailInfoForUser:self.userId
@@ -148,6 +149,8 @@
         }
         
         cell.separatorInset = UIEdgeInsetsMake(0.0f, 10000.0f, 0.0f, 0.0f);
+        cell.contentView.backgroundColor = GRAY_COLOR;
+        cell.backgroundColor = GRAY_COLOR;
         [cell.chatBtn setBackgroundImage:[self imageWithColor:[UIColor grayColor]] forState:UIControlStateHighlighted];
         
         return cell;

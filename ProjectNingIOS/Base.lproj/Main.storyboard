@@ -437,7 +437,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hUD-NR-ndd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="friendOverviewCell" rowHeight="80" id="3aa-b2-BEj" customClass="FriendDetailTableCell">
                                 <rect key="frame" x="0.0" y="92" width="600" height="80"/>
@@ -548,7 +548,6 @@
                                             <state key="normal" title="Chat"/>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="1YH-So-QwF" firstAttribute="top" secondItem="LsN-XJ-XJf" secondAttribute="topMargin" constant="-8" id="8xQ-z9-tF5"/>
                                         <constraint firstItem="1YH-So-QwF" firstAttribute="leading" secondItem="LsN-XJ-XJf" secondAttribute="leadingMargin" constant="25" id="ApA-IW-DFN"/>
@@ -556,7 +555,6 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="1YH-So-QwF" secondAttribute="trailing" constant="25" id="PX6-q1-5Le"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="chatBtn" destination="1YH-So-QwF" id="5gD-ff-ApW"/>
                                 </connections>
