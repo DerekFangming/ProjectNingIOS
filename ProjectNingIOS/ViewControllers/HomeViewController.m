@@ -28,6 +28,9 @@
         [SlideNavigationController sharedInstance].menuRevealAnimator = [[SlideNavigationContorllerAnimatorScaleAndFade alloc] initWithMaximumFadeAlpha:.6 fadeColor:[UIColor blackColor] andMinimumScale:.8];
     }];
     
+    //Setting up background
+    self.view.backgroundColor = GRAY_COLOR;
+    
     //Setting up avatar image view
     [avatarView setImage:[UIImage imageNamed:@"defaultAvatar.jpg"]];
     [[avatarView layer] setShadowOffset:CGSizeMake(10, 10)];

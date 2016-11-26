@@ -152,6 +152,7 @@
         cell.contentView.backgroundColor = GRAY_COLOR;
         cell.backgroundColor = GRAY_COLOR;
         [cell.chatBtn setBackgroundImage:[self imageWithColor:[UIColor grayColor]] forState:UIControlStateHighlighted];
+        [cell.chatBtn addTarget:self action:@selector(chatButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         
         return cell;
     }
@@ -168,6 +169,12 @@
     }else{
         return 45;
     }
+}
+
+#pragma mark - Table cell button(s) -
+
+-(void)chatButtonClicked {
+    NSLog(@"clicked");
 }
 
 #pragma  mark - Table cell helpers -

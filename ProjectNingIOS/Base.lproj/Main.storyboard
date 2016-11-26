@@ -125,7 +125,6 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.94631032569999995" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vfd-40-EMd" firstAttribute="top" secondItem="LmG-2g-PZ7" secondAttribute="bottom" constant="44" id="0eQ-YY-LJ0"/>
                             <constraint firstItem="cEa-rK-jU3" firstAttribute="top" secondItem="LmG-2g-PZ7" secondAttribute="bottom" constant="44" id="1yT-ar-nVF"/>
@@ -205,7 +204,6 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="0.94631032567275197" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ElD-mV-G0k" firstAttribute="top" secondItem="dbq-RU-6GE" secondAttribute="bottom" constant="58" id="2tm-BQ-rQ8"/>
                             <constraint firstItem="ElD-mV-G0k" firstAttribute="centerX" secondItem="6aj-Zu-ys0" secondAttribute="centerX" constant="62" id="Yax-7n-UYP"/>
@@ -509,7 +507,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LLLLLLL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loh-sa-eDz">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="loh-sa-eDz">
                                             <rect key="frame" x="17" y="24" width="65" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="65" id="NHS-zh-sm6"/>
