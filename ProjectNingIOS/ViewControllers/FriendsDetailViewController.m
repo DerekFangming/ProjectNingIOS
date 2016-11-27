@@ -105,6 +105,13 @@
         [cell.friendUserId setText:[@"ID : " stringByAppendingString:[self.userId stringValue]]];
         [cell.friendNickName setText:self.nickname];
         
+        //Set up image view onclick event
+        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc]
+                                             initWithTarget:self action:@selector(zoomInAvatar:)];
+        singleTap.numberOfTapsRequired = 1;
+        [cell.friendDetailAvatar setUserInteractionEnabled:YES];
+        [cell.friendDetailAvatar addGestureRecognizer:singleTap];
+        
         //Set up name field
         NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
         attachment.bounds = CGRectMake(0, -1, 15, 15);
@@ -171,9 +178,46 @@
     }
 }
 
-#pragma mark - Table cell button(s) -
+#pragma mark - Table cell button events -
 
--(void)chatButtonClicked {
+- (void)zoomInAvatar:(UIGestureRecognizer *)gestureRecognizer {
+    tempAvatar = (UIImageView *)gestureRecognizer.view;
+    
+    //fullview is gloabal, So we can acess any time to remove it
+    fullScreenAvatar = [[UIImageView alloc]init];
+    [fullScreenAvatar setContentMode:UIViewContentModeScaleAspectFit];
+    [fullScreenAvatar setBackgroundColor:[UIColor blackColor]];
+    fullScreenAvatar.image = [(UIImageView *)gestureRecognizer.view image];
+    CGRect point=[self.view convertRect:gestureRecognizer.view.bounds fromView:gestureRecognizer.view];
+    [fullScreenAvatar setFrame:point];
+    
+    [self.view addSubview:fullScreenAvatar];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        [fullScreenAvatar setFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    }];
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoomOutAvatar:)];
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.numberOfTouchesRequired = 1;
+    [fullScreenAvatar addGestureRecognizer:singleTap];
+    [fullScreenAvatar setUserInteractionEnabled:YES];
+}
+
+- (void)zoomOutAvatar:(UIGestureRecognizer *)gestureRecognizer {
+    CGRect point=[self.view convertRect:tempAvatar.bounds fromView:tempAvatar];
+    
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        gestureRecognizer.view.backgroundColor=[UIColor clearColor];
+        [(UIImageView *)gestureRecognizer.view setFrame:point];
+    } completion:^(BOOL finished) {
+        [fullScreenAvatar removeFromSuperview];
+        fullScreenAvatar=nil;
+    }];
+}
+
+- (void)chatButtonClicked {
     NSLog(@"clicked");
 }
 

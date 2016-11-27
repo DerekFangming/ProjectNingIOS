@@ -13,7 +13,10 @@
 #import "FriendDetailTableCell.h"
 #import "ChatBtnTableCell.h"
 
-@interface FriendsDetailViewController : UITableViewController
+@interface FriendsDetailViewController : UITableViewController{
+    UIImageView *tempAvatar;
+    UIImageView *fullScreenAvatar;
+}
 
 @property (nonatomic, strong) NSNumber *userId;
 @property (nonatomic, strong) NSString *displayedName;
