@@ -12,6 +12,7 @@
 #import "Utils.h"
 #import "FriendDetailTableCell.h"
 #import "ChatBtnTableCell.h"
+#import "FriendMomentController.h"
 
 @interface FriendsDetailViewController : UITableViewController{
     UIImageView *tempAvatar;

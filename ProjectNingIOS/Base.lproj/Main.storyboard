@@ -524,7 +524,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Z4O-DE-KCu" kind="show" id="uk6-ab-AmM"/>
+                                    <segue destination="Z4O-DE-KCu" kind="show" identifier="friendMomentSegue" id="uk6-ab-AmM"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="detailCell" id="Cgn-aj-BLe">
@@ -593,6 +593,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Moment" id="QTK-j4-hzT"/>
+                    <connections>
+                        <outlet property="navBar" destination="QTK-j4-hzT" id="4l8-yI-nJf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkC-Ts-Fnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

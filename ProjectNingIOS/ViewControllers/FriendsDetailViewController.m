@@ -236,4 +236,14 @@
     return image;
 }
 
+#pragma mark - Prepare for friend detail segue -
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"friendMomentSegue"]) {
+        FriendMomentController *destVC = segue.destinationViewController;
+        [destVC.navBar setTitle:self.displayedName];
+    }
+}
+
 @end

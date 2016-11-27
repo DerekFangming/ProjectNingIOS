@@ -10,4 +10,6 @@
 
 @interface FriendMomentController : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
+
 @end
