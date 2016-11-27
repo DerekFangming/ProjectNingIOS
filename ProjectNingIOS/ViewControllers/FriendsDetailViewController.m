@@ -46,15 +46,15 @@
                          
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section ==1 && indexPath.row == 0)
-    {
-        NSLog(@"1");
-    }else if(indexPath.section ==1 && indexPath.row == 1){
-        NSLog(@"2");
-    }
-}
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (indexPath.section ==1 && indexPath.row == 0)
+//    {
+//        NSLog(@"1");
+//    }else if(indexPath.section ==1 && indexPath.row == 1){
+//        NSLog(@"2");
+//    }
+//}
 
 #pragma make - Section and list handling -
 
@@ -183,7 +183,6 @@
 - (void)zoomInAvatar:(UIGestureRecognizer *)gestureRecognizer {
     tempAvatar = (UIImageView *)gestureRecognizer.view;
     
-    //fullview is gloabal, So we can acess any time to remove it
     fullScreenAvatar = [[UIImageView alloc]init];
     [fullScreenAvatar setContentMode:UIViewContentModeScaleAspectFit];
     [fullScreenAvatar setBackgroundColor:[UIColor blackColor]];

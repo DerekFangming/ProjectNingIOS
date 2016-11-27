@@ -13,6 +13,7 @@
 		87C9F3461DDE9F0300734504 /* FriendDetailTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */; };
 		87E5BFDE1DE7FF6200632391 /* RightMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFDD1DE7FF6200632391 /* RightMenuViewController.m */; };
 		87E5BFE11DE8ADF800632391 /* ChatBtnTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFE01DE8ADF800632391 /* ChatBtnTableCell.m */; };
+		87E5BFE41DEB42E200632391 /* FriendMomentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFE31DEB42E200632391 /* FriendMomentController.m */; };
 		87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F651D834F1B004DB409 /* PNStranger.m */; };
 		87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F6C1D9199AF004DB409 /* Utils.m */; };
 		87ED6F741D9314C2004DB409 /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F731D9314C2004DB409 /* GMDCircleLoader.m */; };
@@ -81,6 +82,8 @@
 		87E5BFDD1DE7FF6200632391 /* RightMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RightMenuViewController.m; path = ViewControllers/RightMenuViewController.m; sourceTree = "<group>"; };
 		87E5BFDF1DE8ADF800632391 /* ChatBtnTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChatBtnTableCell.h; path = ViewControllers/TableCells/ChatBtnTableCell.h; sourceTree = "<group>"; };
 		87E5BFE01DE8ADF800632391 /* ChatBtnTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatBtnTableCell.m; path = ViewControllers/TableCells/ChatBtnTableCell.m; sourceTree = "<group>"; };
+		87E5BFE21DEB42E200632391 /* FriendMomentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendMomentController.h; path = ViewControllers/FriendMomentController.h; sourceTree = "<group>"; };
+		87E5BFE31DEB42E200632391 /* FriendMomentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendMomentController.m; path = ViewControllers/FriendMomentController.m; sourceTree = "<group>"; };
 		87ED6F641D834F1B004DB409 /* PNStranger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNStranger.h; path = PNService/PNStranger.h; sourceTree = "<group>"; };
 		87ED6F651D834F1B004DB409 /* PNStranger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNStranger.m; path = PNService/PNStranger.m; sourceTree = "<group>"; };
 		87ED6F6B1D9199AF004DB409 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Helpers/Utils.h; sourceTree = "<group>"; };
@@ -255,6 +258,8 @@
 				87E5BFD91DE7F97300632391 /* TableCells */,
 				871D68731DD69BAD00728AD6 /* FriendsDetailViewController.h */,
 				871D68741DD69BAD00728AD6 /* FriendsDetailViewController.m */,
+				87E5BFE21DEB42E200632391 /* FriendMomentController.h */,
+				87E5BFE31DEB42E200632391 /* FriendMomentController.m */,
 				912D2D6D1C86A26A0039AEF5 /* FriendsViewController.h */,
 				912D2D6E1C86A26A0039AEF5 /* FriendsViewController.m */,
 				912D2D6B1C86A26A0039AEF5 /* HomeViewController.h */,
@@ -524,6 +529,7 @@
 				914431E41C6E75A0003FB63E /* AFURLResponseSerialization.m in Sources */,
 				87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */,
 				912D2D781C86A26A0039AEF5 /* ProfileDetailViewController.m in Sources */,
+				87E5BFE41DEB42E200632391 /* FriendMomentController.m in Sources */,
 				87ED6F831DBE8031004DB409 /* VCHolder.m in Sources */,
 				912D2D641C86A0120039AEF5 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				912D2D731C86A26A0039AEF5 /* LeftMenuViewController.m in Sources */,
