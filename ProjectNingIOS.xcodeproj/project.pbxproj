@@ -14,6 +14,7 @@
 		87E5BFDE1DE7FF6200632391 /* RightMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFDD1DE7FF6200632391 /* RightMenuViewController.m */; };
 		87E5BFE11DE8ADF800632391 /* ChatBtnTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFE01DE8ADF800632391 /* ChatBtnTableCell.m */; };
 		87E5BFE41DEB42E200632391 /* FriendMomentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFE31DEB42E200632391 /* FriendMomentController.m */; };
+		87E5BFE71DEB522800632391 /* MomentCoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFE61DEB522800632391 /* MomentCoverCell.m */; };
 		87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F651D834F1B004DB409 /* PNStranger.m */; };
 		87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F6C1D9199AF004DB409 /* Utils.m */; };
 		87ED6F741D9314C2004DB409 /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F731D9314C2004DB409 /* GMDCircleLoader.m */; };
@@ -84,6 +85,8 @@
 		87E5BFE01DE8ADF800632391 /* ChatBtnTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatBtnTableCell.m; path = ViewControllers/TableCells/ChatBtnTableCell.m; sourceTree = "<group>"; };
 		87E5BFE21DEB42E200632391 /* FriendMomentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendMomentController.h; path = ViewControllers/FriendMomentController.h; sourceTree = "<group>"; };
 		87E5BFE31DEB42E200632391 /* FriendMomentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendMomentController.m; path = ViewControllers/FriendMomentController.m; sourceTree = "<group>"; };
+		87E5BFE51DEB522800632391 /* MomentCoverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentCoverCell.h; path = ViewControllers/TableCells/MomentCoverCell.h; sourceTree = "<group>"; };
+		87E5BFE61DEB522800632391 /* MomentCoverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentCoverCell.m; path = ViewControllers/TableCells/MomentCoverCell.m; sourceTree = "<group>"; };
 		87ED6F641D834F1B004DB409 /* PNStranger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNStranger.h; path = PNService/PNStranger.h; sourceTree = "<group>"; };
 		87ED6F651D834F1B004DB409 /* PNStranger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNStranger.m; path = PNService/PNStranger.m; sourceTree = "<group>"; };
 		87ED6F6B1D9199AF004DB409 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Helpers/Utils.h; sourceTree = "<group>"; };
@@ -197,6 +200,8 @@
 				87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */,
 				87ED6F8A1DCAB96A004DB409 /* FriendTableCell.h */,
 				87ED6F8B1DCAB96A004DB409 /* FriendTableCell.m */,
+				87E5BFE51DEB522800632391 /* MomentCoverCell.h */,
+				87E5BFE61DEB522800632391 /* MomentCoverCell.m */,
 			);
 			name = TableCells;
 			sourceTree = "<group>";
@@ -522,6 +527,7 @@
 				912D2D631C86A0120039AEF5 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				87E5BFDE1DE7FF6200632391 /* RightMenuViewController.m in Sources */,
 				87ED6F861DC817C8004DB409 /* PNRelationship.m in Sources */,
+				87E5BFE71DEB522800632391 /* MomentCoverCell.m in Sources */,
 				87ED6F8C1DCAB96A004DB409 /* FriendTableCell.m in Sources */,
 				914431981C6E2353003FB63E /* AppDelegate.m in Sources */,
 				87ED6F7B1D9CAEF9004DB409 /* PNViewControllerHelper.m in Sources */,

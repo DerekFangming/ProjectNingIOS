@@ -578,10 +578,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="o4j-ul-Ino">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="coverPageCell" rowHeight="120" id="o4j-ul-Ino" customClass="MomentCoverCell">
+                                <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o4j-ul-Ino" id="8EA-6D-gzu">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JNG-nx-4gs">
+                                            <rect key="frame" x="0.0" y="-9" width="600" height="128"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="JNG-nx-4gs" firstAttribute="leading" secondItem="8EA-6D-gzu" secondAttribute="leadingMargin" constant="-8" id="1t7-zV-MVA"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="JNG-nx-4gs" secondAttribute="trailing" constant="-8" id="DYq-mt-qRM"/>
+                                        <constraint firstItem="JNG-nx-4gs" firstAttribute="top" secondItem="8EA-6D-gzu" secondAttribute="topMargin" constant="-17" id="WT4-ig-ExS"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="JNG-nx-4gs" secondAttribute="bottom" constant="-8" id="f1J-XY-8QU"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="coverImage" destination="JNG-nx-4gs" id="z3O-fP-Rm6"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wtf" id="fJt-yn-0e2">
+                                <rect key="frame" x="0.0" y="212" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fJt-yn-0e2" id="l4w-mG-Rsg">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
