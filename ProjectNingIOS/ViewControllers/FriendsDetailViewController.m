@@ -242,7 +242,9 @@
     
     if ([segue.identifier isEqualToString:@"friendMomentSegue"]) {
         FriendMomentController *destVC = segue.destinationViewController;
-        [destVC.navBar setTitle:self.displayedName];
+        destVC.displayedName = self.displayedName;
+        destVC.avatar = self.avatar;
+        destVC.userId = self.userId;
     }
 }
 

@@ -17,11 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.navBar setTitle:self.displayedName];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,6 +56,12 @@
         }
         
         [cell.coverImage setImage:[UIImage imageNamed:@"defaultAvatar.jpg"]];
+        [cell.coverImage setContentMode:UIViewContentModeScaleAspectFill];
+        [cell.coverImage setClipsToBounds:YES];
+        [cell.avatar setImage:self.avatar];
+        [cell.avatar.layer setBorderColor: [[UIColor lightGrayColor] CGColor]];
+        [cell.avatar.layer setBorderWidth:0.5];
+        cell.displayedName.text = self.displayedName;
         
         return cell;
     }else{

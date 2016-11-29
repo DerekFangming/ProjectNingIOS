@@ -10,5 +10,7 @@
 
 @interface MomentCoverCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *coverImage;
+@property (weak, nonatomic) IBOutlet UIImageView *avatar;
+@property (weak, nonatomic) IBOutlet UILabel *displayedName;
 
 @end
