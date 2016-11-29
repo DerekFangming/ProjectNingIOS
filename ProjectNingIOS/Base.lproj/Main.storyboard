@@ -578,25 +578,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="coverPageCell" rowHeight="170" id="o4j-ul-Ino" customClass="MomentCoverCell">
-                                <rect key="frame" x="0.0" y="92" width="600" height="170"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="coverPageCell" rowHeight="240" id="o4j-ul-Ino" customClass="MomentCoverCell">
+                                <rect key="frame" x="0.0" y="92" width="600" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o4j-ul-Ino" id="8EA-6D-gzu">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="169"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="239"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JNG-nx-4gs">
-                                            <rect key="frame" x="0.0" y="-9" width="600" height="148"/>
+                                            <rect key="frame" x="0.0" y="-9" width="600" height="218"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D1u-r4-DrU">
-                                            <rect key="frame" x="526" y="95" width="60" height="60"/>
+                                            <rect key="frame" x="526" y="165" width="60" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="0fC-hU-4eZ"/>
                                                 <constraint firstAttribute="width" constant="60" id="pbF-uq-S3J"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IP5-fM-V0q">
-                                            <rect key="frame" x="382" y="114" width="125" height="21"/>
+                                            <rect key="frame" x="382" y="184" width="125" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="125" id="kMh-4h-N4c"/>
                                                 <constraint firstAttribute="height" constant="21" id="lKJ-4C-GNG"/>
@@ -625,11 +625,11 @@
                                     <outlet property="displayedName" destination="IP5-fM-V0q" id="krB-o9-uiY"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wtf" id="fJt-yn-0e2">
-                                <rect key="frame" x="0.0" y="262" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentCell" rowHeight="80" id="fJt-yn-0e2">
+                                <rect key="frame" x="0.0" y="332" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fJt-yn-0e2" id="l4w-mG-Rsg">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

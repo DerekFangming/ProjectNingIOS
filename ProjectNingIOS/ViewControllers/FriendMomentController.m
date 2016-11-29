@@ -18,6 +18,7 @@
     [super viewDidLoad];
     
     [self.navBar setTitle:self.displayedName];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,16 +33,20 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    if(section == 0){
+        return 1;
+    }else{
+        return 2;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0)
     {
-        return 200;
+        return 240;
     }else{
-        return 45;
+        return 80;
     }
 }
 
@@ -63,12 +68,13 @@
         [cell.avatar.layer setBorderWidth:0.5];
         cell.displayedName.text = self.displayedName;
         
+        cell.separatorInset = UIEdgeInsetsMake(0.0f, 10000.0f, 0.0f, 0.0f);        
         return cell;
     }else{
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"wtf" forIndexPath:indexPath];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentCell" forIndexPath:indexPath];
         
         if(cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"wtf"];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentCell"];
         }
         
         return cell;
