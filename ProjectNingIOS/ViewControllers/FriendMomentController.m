@@ -60,7 +60,7 @@
             cell = [[MomentCoverCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"coverPageCell"];
         }
         
-        [cell.coverImage setImage:[UIImage imageNamed:@"defaultAvatar.jpg"]];
+        [cell.coverImage setImage:[UIImage imageNamed:@"coverImg1.png"]];
         [cell.coverImage setContentMode:UIViewContentModeScaleAspectFill];
         [cell.coverImage setClipsToBounds:YES];
         [cell.avatar setImage:self.avatar];
