@@ -84,7 +84,6 @@
         UIFont *VerdanaFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
         NSDictionary *verdanaDict = [NSDictionary dictionaryWithObject:VerdanaFont forKey:NSFontAttributeName];
         NSMutableAttributedString *vAttrString = [[NSMutableAttributedString alloc]initWithString: @"1st" attributes:verdanaDict];
-        //[vAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:(NSMakeRange(0, 15))];
         [aAttrString appendAttributedString:vAttrString];
         
         cell.dateLabel.attributedText = aAttrString;
