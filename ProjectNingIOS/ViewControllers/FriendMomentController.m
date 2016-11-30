@@ -71,11 +71,23 @@
         cell.separatorInset = UIEdgeInsetsMake(0.0f, 10000.0f, 0.0f, 0.0f);        
         return cell;
     }else{
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentCell" forIndexPath:indexPath];
+        MomentPostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentCell" forIndexPath:indexPath];
         
         if(cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentCell"];
+            cell = [[MomentPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentCell"];
         }
+        
+        UIFont *arialFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0];
+        NSDictionary *arialDict = [NSDictionary dictionaryWithObject: arialFont forKey:NSFontAttributeName];
+        NSMutableAttributedString *aAttrString = [[NSMutableAttributedString alloc] initWithString:@"Jan" attributes: arialDict];
+        
+        UIFont *VerdanaFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
+        NSDictionary *verdanaDict = [NSDictionary dictionaryWithObject:VerdanaFont forKey:NSFontAttributeName];
+        NSMutableAttributedString *vAttrString = [[NSMutableAttributedString alloc]initWithString: @"1st" attributes:verdanaDict];
+        //[vAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:(NSMakeRange(0, 15))];
+        [aAttrString appendAttributedString:vAttrString];
+        
+        cell.dateLabel.attributedText = aAttrString;
         
         return cell;
     }

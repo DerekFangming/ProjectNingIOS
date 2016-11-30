@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MomentCoverCell.h"
+#import "MomentPostCell.h"
 #import "Utils.h"
 
 @interface FriendMomentController : UITableViewController
