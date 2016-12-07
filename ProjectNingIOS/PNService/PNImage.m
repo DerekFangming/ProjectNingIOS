@@ -38,8 +38,6 @@
     }
     
     PNUser *user = [PNUser currentUser];
-    NSString *baseURL = @"http://fmning.com:8080/projectNing/";
-    NSString *pathForImgUpload = @"upload_image";
     
     NSData *imageData = UIImagePNGRepresentation(img);;
     NSString *base64 = [imageData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
@@ -50,7 +48,7 @@
     [parameters setObject:title forKey:@"title"];
     [parameters setObject:base64 forKey:@"image"];
     
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
@@ -80,18 +78,16 @@
     }
     
     PNUser *user = [PNUser currentUser];
-    NSString *baseURL = @"http://fmning.com:8080/projectNing/";
-    NSString *pathForDeleteImg = @"delete_image";
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:[user accessToken] forKey:@"accessToken"];
     [parameters setObject:imageId forKey:@"imageId"];
     
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    [manager POST:pathForDeleteImg
+    [manager POST:pathForImgDelete
        parameters:parameters
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -117,14 +113,12 @@
     }
     
     PNUser *user = [PNUser currentUser];
-    NSString *baseURL = @"http://fmning.com:8080/projectNing/";
-    NSString *pathForImgIdList = @"get_image_ids_by_type";
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:[user accessToken] forKey:@"accessToken"];
     [parameters setObject:type forKey:@"type"];
     
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
@@ -156,18 +150,16 @@
     }
     
     PNUser *user = [PNUser currentUser];
-    NSString *baseURL = @"http://fmning.com:8080/projectNing/";
-    NSString *pathForDownloadImg = @"download_image_by_id";
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:[user accessToken] forKey:@"accessToken"];
     [parameters setObject:imageId forKey:@"imageId"];
     
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    [manager POST:pathForDownloadImg
+    [manager POST:pathForImgDownload
        parameters:parameters
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -187,8 +179,9 @@
           }];
 }
 
-+ (void) getAvatarForUser:(NSNumber *) userId
-                 response:(void (^)(UIImage *, NSError *))response{
++ (void) getSingletonImgForUser:(NSNumber *) userId
+                    withImgType:(NSString *) imgType
+                       response:(void (^)(UIImage *, NSError *))response{
     NSError *error = [PNUser checkUserLoginStatus];
     if(error != nil){
         response(nil, error);
@@ -199,12 +192,13 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:[user accessToken] forKey:@"accessToken"];
     [parameters setObject:userId forKey:@"userId"];
+    [parameters setObject:imgType forKey:@"imgType"];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    [manager POST:pathForUserAvatar
+    [manager POST:pathForSingletonTypeImg
        parameters:parameters
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

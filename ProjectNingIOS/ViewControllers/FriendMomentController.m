@@ -66,9 +66,7 @@
         [cell.avatar setImage:self.avatar];
         [cell.avatar.layer setBorderColor: [[UIColor lightGrayColor] CGColor]];
         [cell.avatar.layer setBorderWidth:0.5];
-        cell.displayedName.text = self.displayedName;
-        
-        cell.separatorInset = UIEdgeInsetsMake(0.0f, 10000.0f, 0.0f, 0.0f);        
+        cell.displayedName.text = self.displayedName;      
         return cell;
     }else{
         MomentPostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentCell" forIndexPath:indexPath];
