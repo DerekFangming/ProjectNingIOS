@@ -18,7 +18,7 @@
 		87E5BFEC1DEE6F9600632391 /* coverImg1.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E5BFE81DEE6F9600632391 /* coverImg1.png */; };
 		87E5BFED1DEE6F9600632391 /* coverImg2.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E5BFE91DEE6F9600632391 /* coverImg2.png */; };
 		87E5BFEE1DEE6F9600632391 /* coverImg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E5BFEA1DEE6F9600632391 /* coverImg3.png */; };
-		87E5BFEF1DEE6F9600632391 /* coverImg4.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E5BFEB1DEE6F9600632391 /* coverImg4.png */; };
+		87E5BFEF1DEE6F9600632391 /* coverImg0.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E5BFEB1DEE6F9600632391 /* coverImg0.png */; };
 		87E5BFF31DEF497600632391 /* MomentPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFF21DEF497600632391 /* MomentPostCell.m */; };
 		87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F651D834F1B004DB409 /* PNStranger.m */; };
 		87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F6C1D9199AF004DB409 /* Utils.m */; };
@@ -95,7 +95,7 @@
 		87E5BFE81DEE6F9600632391 /* coverImg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coverImg1.png; sourceTree = "<group>"; };
 		87E5BFE91DEE6F9600632391 /* coverImg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coverImg2.png; sourceTree = "<group>"; };
 		87E5BFEA1DEE6F9600632391 /* coverImg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coverImg3.png; sourceTree = "<group>"; };
-		87E5BFEB1DEE6F9600632391 /* coverImg4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coverImg4.png; sourceTree = "<group>"; };
+		87E5BFEB1DEE6F9600632391 /* coverImg0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coverImg0.png; sourceTree = "<group>"; };
 		87E5BFF11DEF497600632391 /* MomentPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentPostCell.h; path = ViewControllers/TableCells/MomentPostCell.h; sourceTree = "<group>"; };
 		87E5BFF21DEF497600632391 /* MomentPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentPostCell.m; path = ViewControllers/TableCells/MomentPostCell.m; sourceTree = "<group>"; };
 		87ED6F641D834F1B004DB409 /* PNStranger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNStranger.h; path = PNService/PNStranger.h; sourceTree = "<group>"; };
@@ -399,10 +399,10 @@
 			children = (
 				9170BBDB1D3F045D00FFD3E8 /* acceptBtn.png */,
 				9170BBDA1D3F045D00FFD3E8 /* acceptBtnClicked.png */,
+				87E5BFEB1DEE6F9600632391 /* coverImg0.png */,
 				87E5BFE81DEE6F9600632391 /* coverImg1.png */,
 				87E5BFE91DEE6F9600632391 /* coverImg2.png */,
 				87E5BFEA1DEE6F9600632391 /* coverImg3.png */,
-				87E5BFEB1DEE6F9600632391 /* coverImg4.png */,
 				87ED6F7C1DA73430004DB409 /* defaultAvatar.jpg */,
 				9170BBDF1D3F052E00FFD3E8 /* denyBtn.png */,
 				9170BBDE1D3F052E00FFD3E8 /* denyBtnClicked.png */,
@@ -506,7 +506,7 @@
 				87C9F3421DD9279500734504 /* female.png in Resources */,
 				87E5BFED1DEE6F9600632391 /* coverImg2.png in Resources */,
 				87ED6F7F1DADA739004DB409 /* refreshBtn.png in Resources */,
-				87E5BFEF1DEE6F9600632391 /* coverImg4.png in Resources */,
+				87E5BFEF1DEE6F9600632391 /* coverImg0.png in Resources */,
 				87ED6F7D1DA73430004DB409 /* defaultAvatar.jpg in Resources */,
 				87C9F3411DD9279500734504 /* male.png in Resources */,
 				87E5BFEE1DEE6F9600632391 /* coverImg3.png in Resources */,

@@ -7,15 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <stdlib.h>
 #import "MomentCoverCell.h"
 #import "MomentPostCell.h"
 #import "Utils.h"
+#import "PNService.h"
 
 @interface FriendMomentController : UITableViewController
 
 @property (nonatomic, strong) NSNumber *userId;
 @property (nonatomic, strong) NSString *displayedName;
 @property (nonatomic, strong) UIImage *avatar;
+
+@property (nonatomic, strong) UIImage *coverImg;
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
 

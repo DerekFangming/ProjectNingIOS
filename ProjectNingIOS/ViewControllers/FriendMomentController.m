@@ -18,7 +18,21 @@
     [super viewDidLoad];
     
     [self.navBar setTitle:self.displayedName];
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    [PNImage getSingletonImgForUser:self.userId
+                        withImgType:COVER_IMG
+                           response:^(UIImage *img, NSError *err) {
+                               if(err != nil){
+                                   int randNum = arc4random_uniform(4);
+                                   NSString *imgName = [@"coverImg"
+                                                        stringByAppendingString:[NSString stringWithFormat:@"%d", randNum]];
+                                   self.coverImg = [UIImage imageNamed:[imgName stringByAppendingString:@".png"]];
+                               }else{
+                                   self.coverImg = img;
+                               }
+                               [self.tableView reloadData];
+                           }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,9 +74,10 @@
             cell = [[MomentCoverCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"coverPageCell"];
         }
         
-        [cell.coverImage setImage:[UIImage imageNamed:@"coverImg1.png"]];
+        [cell.coverImage setImage:self.coverImg];
         [cell.coverImage setContentMode:UIViewContentModeScaleAspectFill];
         [cell.coverImage setClipsToBounds:YES];
+        
         [cell.avatar setImage:self.avatar];
         [cell.avatar.layer setBorderColor: [[UIColor lightGrayColor] CGColor]];
         [cell.avatar.layer setBorderWidth:0.5];
