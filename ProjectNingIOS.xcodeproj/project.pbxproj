@@ -67,7 +67,7 @@
 		9170BBDD1D3F045D00FFD3E8 /* acceptBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 9170BBDB1D3F045D00FFD3E8 /* acceptBtn.png */; };
 		9170BBE01D3F052E00FFD3E8 /* denyBtnClicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 9170BBDE1D3F052E00FFD3E8 /* denyBtnClicked.png */; };
 		9170BBE11D3F052E00FFD3E8 /* denyBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 9170BBDF1D3F052E00FFD3E8 /* denyBtn.png */; };
-		91C532C31C9C68D0003E0CCB /* PNImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C532C21C9C68D0003E0CCB /* PNImage.m */; };
+		91C532C31C9C68D0003E0CCB /* PNImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C532C21C9C68D0003E0CCB /* PNImageManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,8 +186,8 @@
 		9170BBDB1D3F045D00FFD3E8 /* acceptBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = acceptBtn.png; path = Images/acceptBtn.png; sourceTree = "<group>"; };
 		9170BBDE1D3F052E00FFD3E8 /* denyBtnClicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = denyBtnClicked.png; path = Images/denyBtnClicked.png; sourceTree = "<group>"; };
 		9170BBDF1D3F052E00FFD3E8 /* denyBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = denyBtn.png; path = Images/denyBtn.png; sourceTree = "<group>"; };
-		91C532C11C9C68D0003E0CCB /* PNImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNImage.h; path = PNService/PNImage.h; sourceTree = "<group>"; };
-		91C532C21C9C68D0003E0CCB /* PNImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNImage.m; path = PNService/PNImage.m; sourceTree = "<group>"; };
+		91C532C11C9C68D0003E0CCB /* PNImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNImageManager.h; path = PNService/PNImageManager.h; sourceTree = "<group>"; };
+		91C532C21C9C68D0003E0CCB /* PNImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNImageManager.m; path = PNService/PNImageManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -366,8 +366,8 @@
 				914431E91C7244B7003FB63E /* PNDateFormater.m */,
 				87ED6F8D1DCC00C7004DB409 /* PNFriend.h */,
 				87ED6F8E1DCC00C7004DB409 /* PNFriend.m */,
-				91C532C11C9C68D0003E0CCB /* PNImage.h */,
-				91C532C21C9C68D0003E0CCB /* PNImage.m */,
+				91C532C11C9C68D0003E0CCB /* PNImageManager.h */,
+				91C532C21C9C68D0003E0CCB /* PNImageManager.m */,
 				87ED6F841DC817C8004DB409 /* PNRelationship.h */,
 				87ED6F851DC817C8004DB409 /* PNRelationship.m */,
 				914431B91C6E240E003FB63E /* PNService.h */,
@@ -574,7 +574,7 @@
 				912D2D731C86A26A0039AEF5 /* LeftMenuViewController.m in Sources */,
 				912D2D611C86A0120039AEF5 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				87E5BFF91E01AF4400632391 /* PNMomentManager.m in Sources */,
-				91C532C31C9C68D0003E0CCB /* PNImage.m in Sources */,
+				91C532C31C9C68D0003E0CCB /* PNImageManager.m in Sources */,
 				87ED6F891DC81F4B004DB409 /* PNUtils.m in Sources */,
 				87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */,
 				914431E01C6E75A0003FB63E /* AFHTTPSessionManager.m in Sources */,

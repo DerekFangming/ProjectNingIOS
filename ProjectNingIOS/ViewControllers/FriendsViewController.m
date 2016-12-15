@@ -156,7 +156,7 @@
     cell.avatar.contentMode = UIViewContentModeScaleAspectFit;
     if(friend.avatar == nil){
         //NSLog(@"new Load");
-        [PNImage getSingletonImgForUser:friend.userId withImgType:AVATAR
+        [PNImageManager getSingletonImgForUser:friend.userId withImgType:AVATAR
                          response:^(UIImage *img, NSError *err) {
                              if(err != nil){
                                  friend.avatar = [UIImage imageNamed:@"defaultAvatar.jpg"];

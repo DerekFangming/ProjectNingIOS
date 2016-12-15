@@ -12,7 +12,7 @@
 #import "PNStranger.h"
 #import "PNUtils.h"
 
-@interface PNImage : NSObject
+@interface PNImageManager : NSObject
 
 + (instancetype)imageManager;
 

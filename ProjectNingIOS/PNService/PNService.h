@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PNUser.h"
-#import "PNImage.h"
+#import "PNImageManager.h"
 #import "PNAlertHelper.h"
 #import "PNRelationship.h"
 #import "PNFriend.h"

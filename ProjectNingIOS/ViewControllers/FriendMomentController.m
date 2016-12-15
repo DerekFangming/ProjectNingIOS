@@ -20,7 +20,7 @@
     [self.navBar setTitle:self.displayedName];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    [PNImage getSingletonImgForUser:self.userId
+    [PNImageManager getSingletonImgForUser:self.userId
                         withImgType:COVER_IMG
                            response:^(UIImage *img, NSError *err) {
                                if(err != nil){

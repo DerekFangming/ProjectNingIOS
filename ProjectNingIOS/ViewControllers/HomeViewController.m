@@ -97,7 +97,7 @@
 - (IBAction)acceptBtnClick {
     [self disableAllBtns];
     [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
-    [PNImage getNextAvatarWithAction:ACCEPT_ACTION
+    [PNImageManager getNextAvatarWithAction:ACCEPT_ACTION
                 forCurrentUserWithId:[currentStranger userId]
                             response:^(PNStranger * stranger, bool status, NSError *error) {
                                 [self enableAllBtns];
@@ -114,7 +114,7 @@
 - (IBAction)denyBtnClick {
     [self disableAllBtns];
     [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
-    [PNImage getNextAvatarWithAction:DENY_ACTION
+    [PNImageManager getNextAvatarWithAction:DENY_ACTION
                 forCurrentUserWithId:[currentStranger userId]
                             response:^(PNStranger * stranger, bool status, NSError *error) {
                                 [self enableAllBtns];
@@ -133,7 +133,7 @@
 - (IBAction)refreshBtnClick {
     [refreshBtn setHidden:YES];
     [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
-    [PNImage getNextAvatarWithAction:nil
+    [PNImageManager getNextAvatarWithAction:nil
                 forCurrentUserWithId:nil
                             response:^(PNStranger * stranger, bool status, NSError *error) {
                                 [self enableAllBtns];

@@ -6,17 +6,17 @@
 //  Copyright © 2016 fangming. All rights reserved.
 //
 
-#import "PNImage.h"
+#import "PNImageManager.h"
 
-@implementation PNImage
+@implementation PNImageManager
 
 + (instancetype)imageManager{
-    static PNImage *sharedInstance = nil;
+    static PNImageManager *sharedInstance = nil;
     
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[PNImage alloc] init];
+        sharedInstance = [[PNImageManager alloc] init];
     });
     return sharedInstance;
     
