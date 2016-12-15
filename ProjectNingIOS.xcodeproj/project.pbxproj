@@ -20,6 +20,8 @@
 		87E5BFEE1DEE6F9600632391 /* coverImg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E5BFEA1DEE6F9600632391 /* coverImg3.png */; };
 		87E5BFEF1DEE6F9600632391 /* coverImg0.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E5BFEB1DEE6F9600632391 /* coverImg0.png */; };
 		87E5BFF31DEF497600632391 /* MomentPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFF21DEF497600632391 /* MomentPostCell.m */; };
+		87E5BFF61E01A31700632391 /* PNMoment.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFF51E01A31700632391 /* PNMoment.m */; };
+		87E5BFF91E01AF4400632391 /* PNMomentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFF81E01AF4400632391 /* PNMomentManager.m */; };
 		87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F651D834F1B004DB409 /* PNStranger.m */; };
 		87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F6C1D9199AF004DB409 /* Utils.m */; };
 		87ED6F741D9314C2004DB409 /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F731D9314C2004DB409 /* GMDCircleLoader.m */; };
@@ -98,6 +100,10 @@
 		87E5BFEB1DEE6F9600632391 /* coverImg0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coverImg0.png; sourceTree = "<group>"; };
 		87E5BFF11DEF497600632391 /* MomentPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentPostCell.h; path = ViewControllers/TableCells/MomentPostCell.h; sourceTree = "<group>"; };
 		87E5BFF21DEF497600632391 /* MomentPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentPostCell.m; path = ViewControllers/TableCells/MomentPostCell.m; sourceTree = "<group>"; };
+		87E5BFF41E01A31700632391 /* PNMoment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNMoment.h; path = PNService/PNMoment.h; sourceTree = "<group>"; };
+		87E5BFF51E01A31700632391 /* PNMoment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNMoment.m; path = PNService/PNMoment.m; sourceTree = "<group>"; };
+		87E5BFF71E01AF4400632391 /* PNMomentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNMomentManager.h; path = PNService/PNMomentManager.h; sourceTree = "<group>"; };
+		87E5BFF81E01AF4400632391 /* PNMomentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNMomentManager.m; path = PNService/PNMomentManager.m; sourceTree = "<group>"; };
 		87ED6F641D834F1B004DB409 /* PNStranger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNStranger.h; path = PNService/PNStranger.h; sourceTree = "<group>"; };
 		87ED6F651D834F1B004DB409 /* PNStranger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNStranger.m; path = PNService/PNStranger.m; sourceTree = "<group>"; };
 		87ED6F6B1D9199AF004DB409 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Helpers/Utils.h; sourceTree = "<group>"; };
@@ -374,6 +380,10 @@
 				87ED6F881DC81F4B004DB409 /* PNUtils.m */,
 				87ED6F791D9CAEF9004DB409 /* PNViewControllerHelper.h */,
 				87ED6F7A1D9CAEF9004DB409 /* PNViewControllerHelper.m */,
+				87E5BFF41E01A31700632391 /* PNMoment.h */,
+				87E5BFF51E01A31700632391 /* PNMoment.m */,
+				87E5BFF71E01AF4400632391 /* PNMomentManager.h */,
+				87E5BFF81E01AF4400632391 /* PNMomentManager.m */,
 			);
 			name = PNService;
 			sourceTree = "<group>";
@@ -558,10 +568,12 @@
 				87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */,
 				912D2D781C86A26A0039AEF5 /* ProfileDetailViewController.m in Sources */,
 				87E5BFE41DEB42E200632391 /* FriendMomentController.m in Sources */,
+				87E5BFF61E01A31700632391 /* PNMoment.m in Sources */,
 				87ED6F831DBE8031004DB409 /* VCHolder.m in Sources */,
 				912D2D641C86A0120039AEF5 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				912D2D731C86A26A0039AEF5 /* LeftMenuViewController.m in Sources */,
 				912D2D611C86A0120039AEF5 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
+				87E5BFF91E01AF4400632391 /* PNMomentManager.m in Sources */,
 				91C532C31C9C68D0003E0CCB /* PNImage.m in Sources */,
 				87ED6F891DC81F4B004DB409 /* PNUtils.m in Sources */,
 				87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */,
