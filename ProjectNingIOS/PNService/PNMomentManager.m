@@ -20,14 +20,13 @@
     }
     
     PNUser *user = [PNUser currentUser];
-    
+    ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:[user accessToken] forKey:@"accessToken"];
     [parameters setObject:userId forKey:@"userId"];
-    if(date != nil){
-        ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
+    if(date != nil)
         [parameters setObject:[formatter stringFromDate:date] forKey:@"checkPoint"];
-    }
+
     if(limit != nil)
         [parameters setObject:limit forKey:@"limit"];
     
@@ -39,13 +38,11 @@
        parameters:parameters
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-              if (![[responseObject objectForKey:@"error"] isEqualToString:@""]) {
-                  //NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                  //[details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
-                  //NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
-                  response(error,nil,nil);
+              if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
+                  NSDate *checkPoint = [formatter dateFromString:[responseObject objectForKey:@"checkPoint"]];
+                  response(nil, nil,checkPoint);
               }else{
-                  response(nil,nil,nil);
+                  response([PNUtils createNSError:responseObject], nil, nil);
               }
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               response(error,nil,nil);

@@ -25,4 +25,6 @@
 
 @interface PNUtils : NSObject
 
++ (NSError *) createNSError:(NSDictionary *) dic;
+
 @end

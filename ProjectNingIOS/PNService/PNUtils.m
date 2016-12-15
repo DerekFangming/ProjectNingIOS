@@ -10,4 +10,10 @@
 
 @implementation PNUtils
 
++ (NSError *) createNSError:(NSDictionary *) dic{
+    NSMutableDictionary* details = [NSMutableDictionary dictionary];
+    [details setValue:[dic objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
+    return [NSError errorWithDomain:@"PN" code:200 userInfo:details];
+}
+
 @end
