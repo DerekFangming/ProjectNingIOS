@@ -10,6 +10,7 @@
 
 #import "PNUser.h"
 #import "PNUtils.h"
+#import "PNMoment.h"
 
 @interface PNMomentManager : NSObject
 
