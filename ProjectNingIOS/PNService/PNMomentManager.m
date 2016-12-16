@@ -39,14 +39,15 @@
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
-                  NSArray *array = [responseObject objectForKey:@"friendList"];
+                  NSArray *array = [responseObject objectForKey:@"momentList"];
                   NSMutableArray *momentList = [[NSMutableArray alloc] init];
                   for(NSDictionary * dic in array){
                       PNMoment *moment = [[PNMoment alloc] initWithMomentId:[dic objectForKey:@"momentId"]
                                                                     andBody:[dic objectForKey:@"momentBody"]
-                                                                    andDate:[dic objectForKey:@"createdAt"]];
+                                                                    andDate:[formatter dateFromString:[dic objectForKey:@"createdAt"]]];
                       [momentList addObject:moment];
                   }
+                  
                   NSDate *checkPoint = [formatter dateFromString:[responseObject objectForKey:@"checkPoint"]];
                   response(nil, momentList,checkPoint);
               }else{

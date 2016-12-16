@@ -21,6 +21,9 @@
 
 @property (nonatomic, strong) UIImage *coverImg;
 
+@property (nonatomic, strong) NSDate *checkPoint;
+@property (nonatomic, strong) NSMutableArray *momentList;
+
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
 
 @end

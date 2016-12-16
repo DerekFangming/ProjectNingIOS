@@ -27,4 +27,6 @@
 
 + (void)rotateLayerInfinite:(CALayer *)layer;
 
++ (NSString *) monthToString :(NSInteger) intMonth;
+
 @end

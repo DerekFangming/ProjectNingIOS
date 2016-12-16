@@ -20,6 +20,8 @@
     [self.navBar setTitle:self.displayedName];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
+    self.momentList = [[NSMutableArray alloc] init];
+    
     [PNImageManager getSingletonImgForUser:self.userId
                         withImgType:COVER_IMG
                            response:^(UIImage *img, NSError *err) {
@@ -33,6 +35,7 @@
                                }
                                [self.tableView reloadData];
                            }];
+    [self loadMoreMoments];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,7 +53,7 @@
     if(section == 0){
         return 1;
     }else{
-        return 2;
+        return [self.momentList count];
     }
 }
 
@@ -89,14 +92,18 @@
         if(cell == nil) {
             cell = [[MomentPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentCell"];
         }
+        PNMoment *moment = [self.momentList objectAtIndex:indexPath.row];
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:moment.createdAt];
         
+        NSString *month = [Utils monthToString:[components month]];
+        NSString *day = [@([components day]) stringValue];
         UIFont *arialFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0];
         NSDictionary *arialDict = [NSDictionary dictionaryWithObject: arialFont forKey:NSFontAttributeName];
-        NSMutableAttributedString *aAttrString = [[NSMutableAttributedString alloc] initWithString:@"Jan" attributes: arialDict];
+        NSMutableAttributedString *aAttrString = [[NSMutableAttributedString alloc] initWithString:month attributes: arialDict];
         
         UIFont *VerdanaFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
         NSDictionary *verdanaDict = [NSDictionary dictionaryWithObject:VerdanaFont forKey:NSFontAttributeName];
-        NSMutableAttributedString *vAttrString = [[NSMutableAttributedString alloc]initWithString: @"1st" attributes:verdanaDict];
+        NSMutableAttributedString *vAttrString = [[NSMutableAttributedString alloc]initWithString: day attributes:verdanaDict];
         [aAttrString appendAttributedString:vAttrString];
         
         cell.dateLabel.attributedText = aAttrString;
@@ -105,6 +112,22 @@
     }
 }
 
+#pragma mark - moment helpers -
+
+- (void) loadMoreMoments{
+    [PNMomentManager getRecentMomentListForUser:self.userId
+                                      beforeDte:[NSDate date]
+                                      withLimit:[NSNumber numberWithInt:4]
+                                       response:^(NSError *err, NSArray *momentList, NSDate *checkPoint) {
+                                           if(err == nil){
+                                               self.checkPoint = checkPoint;
+                                               [self.momentList addObjectsFromArray:momentList];
+                                               [self.tableView reloadData];
+                                           }else{
+                                               NSLog([err localizedDescription]);
+                                           }
+                                       }];
+}
 
 /*
 // Override to support conditional editing of the table view.

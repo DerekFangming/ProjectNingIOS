@@ -64,7 +64,7 @@ static NSCache *timeZonesByOffset;
         
         format = ISO8601DateFormatCalendar;
         timeSeparator = ISO8601DefaultTimeSeparatorCharacter;
-        includeTime = NO;
+        includeTime = YES;
         parsesStrictly = NO;
         useMillisecondPrecision = NO;
     }
@@ -731,14 +731,18 @@ static BOOL is_leap_year(NSUInteger year);
             int timeZoneOffsetHour = abs((int)(offset / 60));
             int timeZoneOffsetMinute = abs((int)(offset % 60));
             
-            if (offset > 0) str = [str stringByAppendingString:@"+"];
-            else str = [str stringByAppendingString:@"-"];
+            //if (offset > 0) str = [str stringByAppendingString:@"+"];
+            //else str = [str stringByAppendingString:@"-"];
+            
+            str = [str stringByAppendingString:@"."];
             
             str = [str stringByAppendingFormat:ISO8601TwoCharIntegerFormat, timeZoneOffsetHour];
             
             if (self.timeZoneSeparator) str = [str stringByAppendingFormat:@"%C", self.timeZoneSeparator];
             
             str = [str stringByAppendingFormat:ISO8601TwoCharIntegerFormat, timeZoneOffsetMinute];
+            
+            str = [[str substringToIndex:[str length] - 1] stringByAppendingString:@"Z"];
         }
     }
     
