@@ -11,4 +11,6 @@
 @interface MomentPostCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UITextView *momentLabel;
+
 @end

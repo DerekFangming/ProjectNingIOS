@@ -87,14 +87,15 @@
         cell.displayedName.text = self.displayedName;      
         return cell;
     }else{
-        MomentPostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentCell" forIndexPath:indexPath];
+        MomentPostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextCell" forIndexPath:indexPath];
         
         if(cell == nil) {
-            cell = [[MomentPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentCell"];
+            cell = [[MomentPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextCell"];
         }
         PNMoment *moment = [self.momentList objectAtIndex:indexPath.row];
-        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:moment.createdAt];
         
+        //Date processing
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:moment.createdAt];
         NSString *month = [Utils monthToString:[components month]];
         NSString *day = [@([components day]) stringValue];
         UIFont *arialFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0];
@@ -107,6 +108,13 @@
         [aAttrString appendAttributedString:vAttrString];
         
         cell.dateLabel.attributedText = aAttrString;
+        
+        //Moment body processing
+        //cell.momentLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        cell.momentLabel.text = moment.momentBody;
+        cell.momentLabel.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
+        //cell.momentLabel.numberOfLines = 0;
+        //[cell.momentLabel sizeToFit];
         
         return cell;
     }

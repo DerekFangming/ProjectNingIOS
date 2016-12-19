@@ -17,9 +17,12 @@
 
 @property (nonatomic, strong)NSMutableArray *imgList;
 
+@property (nonatomic, assign)BOOL hasCoverImg;
 @property (nonatomic, strong)UIImage *coverImg;
 
 
-- (id)initWithMomentId:(NSNumber *) momentId andBody:(NSString *) momentBody andDate:(NSDate *) createdAt;
+- (id)initWithMomentId:(NSNumber *) momentId
+               andBody:(NSString *) momentBody
+               andDate:(NSDate *) createdAt;
 
 @end
