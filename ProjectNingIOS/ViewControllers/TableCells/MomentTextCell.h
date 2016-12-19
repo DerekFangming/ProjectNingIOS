@@ -1,5 +1,5 @@
 //
-//  MomentPostCell.h
+//  MomentTextCell.h
 //  ProjectNingIOS
 //
 //  Created by NingFangming on 11/30/16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MomentPostCell : UITableViewCell
+@interface MomentTextCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UITextView *momentLabel;

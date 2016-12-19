@@ -625,7 +625,7 @@
                                     <outlet property="displayedName" destination="IP5-fM-V0q" id="krB-o9-uiY"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentTextCell" rowHeight="80" id="fJt-yn-0e2" customClass="MomentPostCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentTextCell" rowHeight="80" id="fJt-yn-0e2" customClass="MomentTextCell">
                                 <rect key="frame" x="0.0" y="332" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fJt-yn-0e2" id="l4w-mG-Rsg">
@@ -678,6 +678,55 @@
                                     <outlet property="dateLabel" destination="5fZ-cG-xbA" id="GL3-Nn-j8h"/>
                                     <outlet property="momentLabel" destination="ypt-Xx-H2d" id="6yc-hT-CJs"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="momentImageCell" rowHeight="80" id="rFS-lT-MuO" customClass="MomentImageCell">
+                                <rect key="frame" x="0.0" y="412" width="600" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rFS-lT-MuO" id="GsR-Sd-Smf">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6D-Be-21R">
+                                            <rect key="frame" x="15" y="8" width="63" height="29"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="29" id="Ozr-61-LvM"/>
+                                                <constraint firstAttribute="width" constant="63" id="kBz-TF-Sua"/>
+                                                <constraint firstAttribute="width" constant="63" id="wfi-HQ-qZ5"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="wfi-HQ-qZ5"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A8I-uA-GWf">
+                                            <rect key="frame" x="68" y="10" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="2Kj-Qu-Iqt"/>
+                                                <constraint firstAttribute="height" constant="60" id="fA7-5m-muK"/>
+                                            </constraints>
+                                        </imageView>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NxS-k1-io8">
+                                            <rect key="frame" x="138" y="8" width="444" height="63"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="NxS-k1-io8" firstAttribute="top" secondItem="GsR-Sd-Smf" secondAttribute="topMargin" id="RFF-lw-378"/>
+                                        <constraint firstItem="F6D-Be-21R" firstAttribute="leading" secondItem="GsR-Sd-Smf" secondAttribute="leadingMargin" constant="7" id="Tcy-G4-suX"/>
+                                        <constraint firstItem="A8I-uA-GWf" firstAttribute="leading" secondItem="GsR-Sd-Smf" secondAttribute="leadingMargin" constant="60" id="ZGA-Ao-Bia"/>
+                                        <constraint firstItem="F6D-Be-21R" firstAttribute="top" secondItem="GsR-Sd-Smf" secondAttribute="topMargin" id="erk-3q-Tj5"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="NxS-k1-io8" secondAttribute="bottom" id="gUk-1i-IMK"/>
+                                        <constraint firstItem="NxS-k1-io8" firstAttribute="leading" secondItem="A8I-uA-GWf" secondAttribute="trailing" constant="10" id="i3E-0g-uaH"/>
+                                        <constraint firstItem="A8I-uA-GWf" firstAttribute="top" secondItem="GsR-Sd-Smf" secondAttribute="topMargin" constant="2" id="tGa-vN-HDG"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="NxS-k1-io8" secondAttribute="trailing" constant="10" id="tvh-hb-XfJ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>

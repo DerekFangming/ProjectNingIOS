@@ -87,10 +87,10 @@
         cell.displayedName.text = self.displayedName;      
         return cell;
     }else{
-        MomentPostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextCell" forIndexPath:indexPath];
+        MomentTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextCell" forIndexPath:indexPath];
         
         if(cell == nil) {
-            cell = [[MomentPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextCell"];
+            cell = [[MomentTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextCell"];
         }
         PNMoment *moment = [self.momentList objectAtIndex:indexPath.row];
         

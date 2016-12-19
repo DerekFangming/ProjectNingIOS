@@ -1,14 +1,14 @@
 //
-//  MomentPostCell.m
+//  MomentTextCell.m
 //  ProjectNingIOS
 //
 //  Created by NingFangming on 11/30/16.
 //  Copyright © 2016 fangming. All rights reserved.
 //
 
-#import "MomentPostCell.h"
+#import "MomentTextCell.h"
 
-@implementation MomentPostCell
+@implementation MomentTextCell
 
 - (id)initWithStyle: (UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

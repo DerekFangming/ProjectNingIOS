@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <stdlib.h>
 #import "MomentCoverCell.h"
-#import "MomentPostCell.h"
+#import "MomentTextCell.h"
 #import "Utils.h"
 #import "PNService.h"
 

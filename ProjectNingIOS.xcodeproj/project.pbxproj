@@ -19,9 +19,10 @@
 		87E5BFED1DEE6F9600632391 /* coverImg2.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E5BFE91DEE6F9600632391 /* coverImg2.png */; };
 		87E5BFEE1DEE6F9600632391 /* coverImg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E5BFEA1DEE6F9600632391 /* coverImg3.png */; };
 		87E5BFEF1DEE6F9600632391 /* coverImg0.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E5BFEB1DEE6F9600632391 /* coverImg0.png */; };
-		87E5BFF31DEF497600632391 /* MomentPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFF21DEF497600632391 /* MomentPostCell.m */; };
+		87E5BFF31DEF497600632391 /* MomentTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFF21DEF497600632391 /* MomentTextCell.m */; };
 		87E5BFF61E01A31700632391 /* PNMoment.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFF51E01A31700632391 /* PNMoment.m */; };
 		87E5BFF91E01AF4400632391 /* PNMomentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFF81E01AF4400632391 /* PNMomentManager.m */; };
+		87E5BFFC1E085AFD00632391 /* MomentImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFFB1E085AFD00632391 /* MomentImageCell.m */; };
 		87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F651D834F1B004DB409 /* PNStranger.m */; };
 		87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F6C1D9199AF004DB409 /* Utils.m */; };
 		87ED6F741D9314C2004DB409 /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F731D9314C2004DB409 /* GMDCircleLoader.m */; };
@@ -98,12 +99,14 @@
 		87E5BFE91DEE6F9600632391 /* coverImg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coverImg2.png; sourceTree = "<group>"; };
 		87E5BFEA1DEE6F9600632391 /* coverImg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coverImg3.png; sourceTree = "<group>"; };
 		87E5BFEB1DEE6F9600632391 /* coverImg0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coverImg0.png; sourceTree = "<group>"; };
-		87E5BFF11DEF497600632391 /* MomentPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentPostCell.h; path = ViewControllers/TableCells/MomentPostCell.h; sourceTree = "<group>"; };
-		87E5BFF21DEF497600632391 /* MomentPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentPostCell.m; path = ViewControllers/TableCells/MomentPostCell.m; sourceTree = "<group>"; };
+		87E5BFF11DEF497600632391 /* MomentTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentTextCell.h; path = ViewControllers/TableCells/MomentTextCell.h; sourceTree = "<group>"; };
+		87E5BFF21DEF497600632391 /* MomentTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentTextCell.m; path = ViewControllers/TableCells/MomentTextCell.m; sourceTree = "<group>"; };
 		87E5BFF41E01A31700632391 /* PNMoment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNMoment.h; path = PNService/PNMoment.h; sourceTree = "<group>"; };
 		87E5BFF51E01A31700632391 /* PNMoment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNMoment.m; path = PNService/PNMoment.m; sourceTree = "<group>"; };
 		87E5BFF71E01AF4400632391 /* PNMomentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNMomentManager.h; path = PNService/PNMomentManager.h; sourceTree = "<group>"; };
 		87E5BFF81E01AF4400632391 /* PNMomentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNMomentManager.m; path = PNService/PNMomentManager.m; sourceTree = "<group>"; };
+		87E5BFFA1E085AFD00632391 /* MomentImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentImageCell.h; path = ViewControllers/TableCells/MomentImageCell.h; sourceTree = "<group>"; };
+		87E5BFFB1E085AFD00632391 /* MomentImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentImageCell.m; path = ViewControllers/TableCells/MomentImageCell.m; sourceTree = "<group>"; };
 		87ED6F641D834F1B004DB409 /* PNStranger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNStranger.h; path = PNService/PNStranger.h; sourceTree = "<group>"; };
 		87ED6F651D834F1B004DB409 /* PNStranger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNStranger.m; path = PNService/PNStranger.m; sourceTree = "<group>"; };
 		87ED6F6B1D9199AF004DB409 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Helpers/Utils.h; sourceTree = "<group>"; };
@@ -219,8 +222,10 @@
 				87ED6F8B1DCAB96A004DB409 /* FriendTableCell.m */,
 				87E5BFE51DEB522800632391 /* MomentCoverCell.h */,
 				87E5BFE61DEB522800632391 /* MomentCoverCell.m */,
-				87E5BFF11DEF497600632391 /* MomentPostCell.h */,
-				87E5BFF21DEF497600632391 /* MomentPostCell.m */,
+				87E5BFF11DEF497600632391 /* MomentTextCell.h */,
+				87E5BFF21DEF497600632391 /* MomentTextCell.m */,
+				87E5BFFA1E085AFD00632391 /* MomentImageCell.h */,
+				87E5BFFB1E085AFD00632391 /* MomentImageCell.m */,
 			);
 			name = TableCells;
 			sourceTree = "<group>";
@@ -556,7 +561,7 @@
 				912D2D651C86A0120039AEF5 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				914431BB1C6E240E003FB63E /* PNService.m in Sources */,
 				912D2D631C86A0120039AEF5 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
-				87E5BFF31DEF497600632391 /* MomentPostCell.m in Sources */,
+				87E5BFF31DEF497600632391 /* MomentTextCell.m in Sources */,
 				87E5BFDE1DE7FF6200632391 /* RightMenuViewController.m in Sources */,
 				87ED6F861DC817C8004DB409 /* PNRelationship.m in Sources */,
 				87E5BFE71DEB522800632391 /* MomentCoverCell.m in Sources */,
@@ -578,6 +583,7 @@
 				87ED6F891DC81F4B004DB409 /* PNUtils.m in Sources */,
 				87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */,
 				914431E01C6E75A0003FB63E /* AFHTTPSessionManager.m in Sources */,
+				87E5BFFC1E085AFD00632391 /* MomentImageCell.m in Sources */,
 				914431951C6E2353003FB63E /* main.m in Sources */,
 				912D2D751C86A26A0039AEF5 /* HomeViewController.m in Sources */,
 				914431BE1C6E250B003FB63E /* PNUser.m in Sources */,
