@@ -87,11 +87,6 @@
         cell.displayedName.text = self.displayedName;      
         return cell;
     }else{
-        MomentTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextCell" forIndexPath:indexPath];
-        
-        if(cell == nil) {
-            cell = [[MomentTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextCell"];
-        }
         PNMoment *moment = [self.momentList objectAtIndex:indexPath.row];
         
         //Date processing
@@ -100,23 +95,42 @@
         NSString *day = [@([components day]) stringValue];
         UIFont *arialFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0];
         NSDictionary *arialDict = [NSDictionary dictionaryWithObject: arialFont forKey:NSFontAttributeName];
-        NSMutableAttributedString *aAttrString = [[NSMutableAttributedString alloc] initWithString:month attributes: arialDict];
+        NSMutableAttributedString *dateText = [[NSMutableAttributedString alloc] initWithString:month attributes: arialDict];
         
         UIFont *VerdanaFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
         NSDictionary *verdanaDict = [NSDictionary dictionaryWithObject:VerdanaFont forKey:NSFontAttributeName];
         NSMutableAttributedString *vAttrString = [[NSMutableAttributedString alloc]initWithString: day attributes:verdanaDict];
-        [aAttrString appendAttributedString:vAttrString];
+        [dateText appendAttributedString:vAttrString];
         
-        cell.dateLabel.attributedText = aAttrString;
+        //Cell processing for text or image cell
+        if(moment.hasCoverImg){
+            MomentImageCell * cell = [tableView dequeueReusableCellWithIdentifier:@"momentImageCell" forIndexPath:indexPath];
+            
+            if(cell == nil) {
+                cell = [[MomentImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentImageCell"];
+            }
+            
+            cell.dateLabel.attributedText = dateText;
+            
+            cell.momentBody.text = moment.momentBody;
+            cell.momentBody.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
+            
+            return cell;
+        }else{
+            MomentTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextCell" forIndexPath:indexPath];
         
-        //Moment body processing
-        //cell.momentLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        cell.momentLabel.text = moment.momentBody;
-        cell.momentLabel.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
-        //cell.momentLabel.numberOfLines = 0;
-        //[cell.momentLabel sizeToFit];
+            if(cell == nil) {
+                cell = [[MomentTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextCell"];
+            }
         
-        return cell;
+        
+            cell.dateLabel.attributedText = dateText;
+            
+            cell.momentBody.text = moment.momentBody;
+            cell.momentBody.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
+            
+            return cell;
+        }
     }
 }
 
@@ -132,7 +146,7 @@
                                                [self.momentList addObjectsFromArray:momentList];
                                                [self.tableView reloadData];
                                            }else{
-                                               NSLog([err localizedDescription]);
+                                               //NSLog([err localizedDescription]);
                                            }
                                        }];
 }

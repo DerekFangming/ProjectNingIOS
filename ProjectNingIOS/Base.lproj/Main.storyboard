@@ -676,7 +676,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateLabel" destination="5fZ-cG-xbA" id="GL3-Nn-j8h"/>
-                                    <outlet property="momentLabel" destination="ypt-Xx-H2d" id="6yc-hT-CJs"/>
+                                    <outlet property="momentBody" destination="ypt-Xx-H2d" id="wa5-vK-E1s"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="momentImageCell" rowHeight="80" id="rFS-lT-MuO" customClass="MomentImageCell">
@@ -727,6 +727,11 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="NxS-k1-io8" secondAttribute="trailing" constant="10" id="tvh-hb-XfJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="coverImg" destination="A8I-uA-GWf" id="Fd0-Qa-slB"/>
+                                    <outlet property="dateLabel" destination="F6D-Be-21R" id="o7Q-Ac-JmV"/>
+                                    <outlet property="momentBody" destination="NxS-k1-io8" id="mxq-Je-8Cw"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -10,6 +10,7 @@
 #import <stdlib.h>
 #import "MomentCoverCell.h"
 #import "MomentTextCell.h"
+#import "MomentImageCell.h"
 #import "Utils.h"
 #import "PNService.h"
 
