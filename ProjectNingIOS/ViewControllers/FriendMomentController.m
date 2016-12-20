@@ -114,7 +114,7 @@
             
             cell.momentBody.text = moment.momentBody;
             cell.momentBody.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
-            
+            NSLog(@"img cell");
             return cell;
         }else{
             MomentTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextCell" forIndexPath:indexPath];
@@ -128,7 +128,7 @@
             
             cell.momentBody.text = moment.momentBody;
             cell.momentBody.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
-            
+            NSLog(@"test cell");
             return cell;
         }
     }
@@ -139,7 +139,7 @@
 - (void) loadMoreMoments{
     [PNMomentManager getRecentMomentListForUser:self.userId
                                       beforeDte:[NSDate date]
-                                      withLimit:[NSNumber numberWithInt:4]
+                                      withLimit:[NSNumber numberWithInt:5]
                                        response:^(NSError *err, NSArray *momentList, NSDate *checkPoint) {
                                            if(err == nil){
                                                self.checkPoint = checkPoint;

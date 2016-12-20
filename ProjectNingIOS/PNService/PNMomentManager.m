@@ -45,7 +45,7 @@
                       PNMoment *moment = [[PNMoment alloc] initWithMomentId:[dic objectForKey:@"momentId"]
                                                                     andBody:[dic objectForKey:@"momentBody"]
                                                                     andDate:[formatter dateFromString:[dic objectForKey:@"createdAt"]]];
-                      moment.hasCoverImg = [[responseObject objectForKey:@""] boolValue];
+                      moment.hasCoverImg = [[dic objectForKey:@"hasImage"] boolValue];
                       [momentList addObject:moment];
                   }
                   
