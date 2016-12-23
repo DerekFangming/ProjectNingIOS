@@ -24,12 +24,14 @@
 
 + (void) uploadImage:(UIImage *) img
               inType:(NSString *) type
+   withTypeMappingId:(NSNumber *) typeMappingId
             response:(void (^)(NSError *))response{
-    [self uploadImage:img inType:type withTitle:@"Others" response:response];
+    [self uploadImage:img inType:type withTypeMappingId:typeMappingId withTitle:@"" response:response];
 }
 
 + (void) uploadImage:(UIImage *) img
               inType:(NSString *) type
+   withTypeMappingId:(NSNumber *) typeMappingId
            withTitle:(NSString *) title
             response:(void (^)(NSError *))response{
     NSError *error = [PNUser checkUserLoginStatus];
@@ -44,9 +46,12 @@
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:[user accessToken] forKey:@"accessToken"];
-    [parameters setObject:type forKey:@"type"];
     [parameters setObject:title forKey:@"title"];
     [parameters setObject:base64 forKey:@"image"];
+    if(type != nil){
+        [parameters setObject:type forKey:@"type"];
+        [parameters setObject:typeMappingId forKey:@"typeMappingId"];
+    }
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -57,10 +62,7 @@
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               if (![[responseObject objectForKey:@"error"] isEqualToString:@""]) {
-                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                  [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
-                  NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
-                  response(error);
+                  response([PNUtils createNSError:responseObject]);
               }else{
                   response(nil);
               }
@@ -92,10 +94,7 @@
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               if (![[responseObject objectForKey:@"error"] isEqualToString:@""]) {
-                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                  [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
-                  NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
-                  response(error);
+                  response([PNUtils createNSError:responseObject]);
               }else{
                   response(nil);
               }
@@ -131,10 +130,7 @@
                   result = [responseObject objectForKey:@"idList"];
                   response(result, nil);
               }else{
-                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                  [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
-                  NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
-                  response(nil, error);
+                  response(nil, [PNUtils createNSError:responseObject]);
               }
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               response(nil, error);
@@ -164,14 +160,10 @@
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
-                  NSData* imgData = [[NSData alloc] initWithBase64EncodedString:[responseObject objectForKey:@"image"] options:0];
-                  UIImage* image = [UIImage imageWithData:imgData];
+                  UIImage* image = [PNUtils base64ToImage:[responseObject objectForKey:@"image"]];
                   response(image, nil);
               }else{
-                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                  [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
-                  NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
-                  response(nil, error);
+                  response(nil, [PNUtils createNSError:responseObject]);
               }
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               response(nil, error);
@@ -203,15 +195,11 @@
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
-                  NSData* imgData = [[NSData alloc] initWithBase64EncodedString:[responseObject objectForKey:@"image"] options:0];
-                  UIImage* image = [UIImage imageWithData:imgData];
+                  UIImage* image = [PNUtils base64ToImage:[responseObject objectForKey:@"image"]];
                   
                   response(image, nil);
               }else{
-                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                  [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
-                  NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
-                  response(nil, error);
+                  response(nil, [PNUtils createNSError:responseObject]);
               }
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               response(nil, error);
@@ -246,8 +234,7 @@
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
-                  NSData* imgData = [[NSData alloc] initWithBase64EncodedString:[responseObject objectForKey:@"image"] options:0];
-                  UIImage* image = [UIImage imageWithData:imgData];
+                  UIImage* image = [PNUtils base64ToImage:[responseObject objectForKey:@"image"]];
                   
                   PNStranger *stranger = [[PNStranger alloc]
                                           initWithAvatar:image
@@ -255,10 +242,7 @@
                                           [NSNumber numberWithInt:[[responseObject objectForKey:@"userId"] intValue]]];
                   response(stranger, [responseObject objectForKey:@"status"], nil);
               }else{
-                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                  [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
-                  NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
-                  response(nil, nil, error);
+                  response(nil, nil, [PNUtils createNSError:responseObject]);
               }
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               response(nil, nil, error);

@@ -21,9 +21,11 @@
  If the response error is not nil, there is error in the upload process
  @param img the image in UIImage form
  @param type the type of the image. This will be validated by the server and may be changed
+ @param typeMappingId the mapping if for the image type
  */
 + (void) uploadImage:(UIImage *) img
               inType:(NSString *) type
+   withTypeMappingId:(NSNumber *) typeMappingId
             response:(void (^)(NSError *))response;
 
 /**
@@ -31,9 +33,11 @@
  If the response error is not nil, there is error in the upload process
  @param img the image in UIImage form
  @param type the type of the image. This will be validated by the server and may be changed
+ @param typeMappingId the mapping if for the image type
  */
 + (void) uploadImage:(UIImage *) img
               inType:(NSString *) type
+   withTypeMappingId:(NSNumber *) typeMappingId
            withTitle:(NSString *) title
             response:(void (^)(NSError *))response;
 

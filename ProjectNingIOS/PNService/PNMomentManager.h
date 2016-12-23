@@ -27,4 +27,7 @@
                           withLimit: (NSNumber *) limit
                            response:(void(^)(NSError *, NSArray *, NSDate *)) response;
 
++ (void) getMomentCoverImgForUser:(NSNumber *) userId
+                         onMoment: (NSNumber *) momentId
+                         response:(void(^)(NSError *, UIImage *)) response;
 @end

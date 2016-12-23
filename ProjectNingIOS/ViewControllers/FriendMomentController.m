@@ -109,12 +109,21 @@
             if(cell == nil) {
                 cell = [[MomentImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentImageCell"];
             }
-            
             cell.dateLabel.attributedText = dateText;
-            
             cell.momentBody.text = moment.momentBody;
             cell.momentBody.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
-            NSLog(@"img cell");
+            
+            [PNMomentManager getMomentCoverImgForUser:self.userId
+                                             onMoment:moment.momentId
+                                             response:^(NSError *err, UIImage *image) {
+                                                 NSLog(@"loaded");
+                                                 if(err == nil){
+                                                     [cell.coverImg setImage:image];
+                                                 }else{
+                                                     NSLog([err localizedDescription]);
+                                                 }
+                                             }];
+            
             return cell;
         }else{
             MomentTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextCell" forIndexPath:indexPath];
@@ -122,13 +131,10 @@
             if(cell == nil) {
                 cell = [[MomentTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextCell"];
             }
-        
-        
             cell.dateLabel.attributedText = dateText;
-            
             cell.momentBody.text = moment.momentBody;
             cell.momentBody.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
-            NSLog(@"test cell");
+            
             return cell;
         }
     }

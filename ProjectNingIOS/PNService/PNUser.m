@@ -64,10 +64,7 @@
                                 
                                 response(user, nil);
                             }else{
-                                NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                                [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
-                                NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
-                                response(nil, error);
+                                response(nil, [PNUtils createNSError:responseObject]);
 
                             }
                         }
@@ -75,10 +72,7 @@
                             response(nil, error);
                         }];
               }else{
-                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                  [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
-                  NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
-                  response(nil, error);
+                  response(nil, [PNUtils createNSError:responseObject]);
               }
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               response(nil, error);
@@ -121,19 +115,13 @@
                                 
                                 response(user, nil);
                             }else{
-                                NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                                [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
-                                NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
-                                response(nil, error);
+                                response(nil, [PNUtils createNSError:responseObject]);
                             }
                         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                             response(nil, error);
                         }];
               }else{
-                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                  [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
-                  NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
-                  response(nil, error);
+                  response(nil, [PNUtils createNSError:responseObject]);
               }
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               response(nil, error);
@@ -167,10 +155,7 @@
                   response(responseObject, nil);
                   
               }else{
-                  NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                  [details setValue:[responseObject objectForKey:@"error"] forKey:NSLocalizedDescriptionKey];
-                  NSError *error = [NSError errorWithDomain:@"PN" code:200 userInfo:details];
-                  response(nil, error);
+                  response(nil, [PNUtils createNSError:responseObject]);
               }
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               response(nil, error);

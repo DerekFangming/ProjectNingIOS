@@ -60,6 +60,37 @@
           }];
 }
 
-
++ (void) getMomentCoverImgForUser:(NSNumber *) userId
+                         onMoment: (NSNumber *) momentId
+                          response:(void(^)(NSError *, UIImage *)) response{
+    NSError *error = [PNUser checkUserLoginStatus];
+    if(error != nil){
+        response(error, nil);
+    }
+    
+    PNUser *user = [PNUser currentUser];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:userId forKey:@"userId"];
+    [parameters setObject:momentId forKey:@"momentId"];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager POST:pathForMomentCoverImg
+       parameters:parameters
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
+                  UIImage* image = [PNUtils base64ToImage:[responseObject objectForKey:@"image"]];
+                  response(nil, image);
+              }else{
+                  response([PNUtils createNSError:responseObject], nil);
+              }
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              response(error,nil);
+              
+          }];}
 
 @end

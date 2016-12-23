@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #define requestBaseURL              @"http://fmning.com:8080/projectNing/"
 #define pathForDetailedFriendList   @"get_sorted_friend_list"
@@ -21,10 +22,13 @@
 #define pathForImgDownload          @"download_image_by_id"
 #define pathForSingletonTypeImg     @"get_singleton_img_by_type"
 #define pathForRecentMomentList     @"get_recent_moments"
+#define pathForMomentCoverImg       @"get_moment_cover_img"
 
 
 @interface PNUtils : NSObject
 
 + (NSError *) createNSError:(NSDictionary *) dic;
+
++ (UIImage *) base64ToImage:(NSString *) base64Str;
 
 @end
