@@ -63,7 +63,12 @@
     {
         return 240;
     }else{
-        return 80;
+        PNMoment *moment = [self.momentList objectAtIndex:indexPath.row];
+        if(moment.hasCoverImg){
+            return 64;
+        }else{
+            return 45;
+        }
     }
 }
 
@@ -93,11 +98,11 @@
         NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:moment.createdAt];
         NSString *month = [Utils monthToString:[components month]];
         NSString *day = [@([components day]) stringValue];
-        UIFont *arialFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0];
+        UIFont *arialFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0];
         NSDictionary *arialDict = [NSDictionary dictionaryWithObject: arialFont forKey:NSFontAttributeName];
         NSMutableAttributedString *dateText = [[NSMutableAttributedString alloc] initWithString:month attributes: arialDict];
         
-        UIFont *VerdanaFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
+        UIFont *VerdanaFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:9.0];
         NSDictionary *verdanaDict = [NSDictionary dictionaryWithObject:VerdanaFont forKey:NSFontAttributeName];
         NSMutableAttributedString *vAttrString = [[NSMutableAttributedString alloc]initWithString: day attributes:verdanaDict];
         [dateText appendAttributedString:vAttrString];
@@ -116,11 +121,10 @@
             [PNMomentManager getMomentCoverImgForUser:self.userId
                                              onMoment:moment.momentId
                                              response:^(NSError *err, UIImage *image) {
-                                                 NSLog(@"loaded");
                                                  if(err == nil){
                                                      [cell.coverImg setImage:image];
                                                  }else{
-                                                     NSLog([err localizedDescription]);
+                                                     //
                                                  }
                                              }];
             
