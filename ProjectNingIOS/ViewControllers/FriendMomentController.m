@@ -138,6 +138,8 @@
             cell.dateLabel.attributedText = dateText;
             cell.momentBody.text = moment.momentBody;
             cell.momentBody.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
+            [cell.backgroundView setBackgroundColor:GRAY_COLOR];
+            cell.momentBody.contentInset = UIEdgeInsetsMake(-4,-2,0,0);
             
             return cell;
         }
@@ -149,7 +151,7 @@
 - (void) loadMoreMoments{
     [PNMomentManager getRecentMomentListForUser:self.userId
                                       beforeDte:[NSDate date]
-                                      withLimit:[NSNumber numberWithInt:5]
+                                      withLimit:[NSNumber numberWithInt:10]
                                        response:^(NSError *err, NSArray *momentList, NSDate *checkPoint) {
                                            if(err == nil){
                                                self.checkPoint = checkPoint;

@@ -11,6 +11,7 @@
 @interface MomentTextCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) IBOutlet UIView *backgroundView;
 @property (weak, nonatomic) IBOutlet UITextView *momentBody;
 
 @end

@@ -625,7 +625,7 @@
                                     <outlet property="displayedName" destination="IP5-fM-V0q" id="krB-o9-uiY"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentTextCell" rowHeight="45" id="fJt-yn-0e2" customClass="MomentTextCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="momentTextCell" rowHeight="45" id="fJt-yn-0e2" customClass="MomentTextCell">
                                 <rect key="frame" x="0.0" y="332" width="600" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fJt-yn-0e2" id="l4w-mG-Rsg">
@@ -648,9 +648,15 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Moment body" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypt-Xx-H2d">
-                                            <rect key="frame" x="53" y="-7" width="529" height="60"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ap-mA-C32">
+                                            <rect key="frame" x="58" y="-5" width="524" height="46"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="46" id="Vgh-tY-sz0"/>
+                                            </constraints>
+                                        </view>
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Moment body" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypt-Xx-H2d">
+                                            <rect key="frame" x="58" y="-5" width="524" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="pJM-tC-HSr"/>
                                             </constraints>
@@ -659,13 +665,17 @@
                                         </textView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="4Ap-mA-C32" firstAttribute="top" secondItem="l4w-mG-Rsg" secondAttribute="topMargin" constant="-13" id="08S-PE-vwk"/>
                                         <constraint firstItem="5fZ-cG-xbA" firstAttribute="leading" secondItem="l4w-mG-Rsg" secondAttribute="leadingMargin" constant="7" id="J3p-6j-eY9"/>
                                         <constraint firstItem="5fZ-cG-xbA" firstAttribute="top" secondItem="l4w-mG-Rsg" secondAttribute="topMargin" id="KqH-Zt-Sre"/>
-                                        <constraint firstItem="ypt-Xx-H2d" firstAttribute="top" secondItem="l4w-mG-Rsg" secondAttribute="topMargin" constant="-15" id="Mz8-bP-5oL"/>
+                                        <constraint firstItem="ypt-Xx-H2d" firstAttribute="top" secondItem="l4w-mG-Rsg" secondAttribute="topMargin" constant="-13" id="Mz8-bP-5oL"/>
                                         <constraint firstItem="5fZ-cG-xbA" firstAttribute="top" secondItem="l4w-mG-Rsg" secondAttribute="topMargin" constant="-11" id="TCp-Qg-R9g"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="5fZ-cG-xbA" secondAttribute="bottom" constant="35" id="YCb-Xs-8bN"/>
+                                        <constraint firstItem="4Ap-mA-C32" firstAttribute="leading" secondItem="5fZ-cG-xbA" secondAttribute="trailing" id="YYk-ND-09W"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="4Ap-mA-C32" secondAttribute="trailing" constant="10" id="fhJ-4u-yft"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="ypt-Xx-H2d" secondAttribute="bottom" id="gSJ-o8-wli"/>
-                                        <constraint firstItem="ypt-Xx-H2d" firstAttribute="leading" secondItem="l4w-mG-Rsg" secondAttribute="leadingMargin" constant="45" id="kj4-AY-Zbo"/>
+                                        <constraint firstItem="ypt-Xx-H2d" firstAttribute="leading" secondItem="l4w-mG-Rsg" secondAttribute="leadingMargin" constant="50" id="kj4-AY-Zbo"/>
+                                        <constraint firstItem="4Ap-mA-C32" firstAttribute="leading" secondItem="5fZ-cG-xbA" secondAttribute="trailing" constant="-13" id="px3-Eq-9eE"/>
                                         <constraint firstItem="5fZ-cG-xbA" firstAttribute="leading" secondItem="l4w-mG-Rsg" secondAttribute="leadingMargin" id="sjT-c4-TLy"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ypt-Xx-H2d" secondAttribute="trailing" constant="10" id="xlv-Fa-yfH"/>
                                     </constraints>
@@ -675,10 +685,12 @@
                                             <exclude reference="KqH-Zt-Sre"/>
                                             <exclude reference="YCb-Xs-8bN"/>
                                             <exclude reference="gSJ-o8-wli"/>
+                                            <exclude reference="YYk-ND-09W"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="backgroundView" destination="4Ap-mA-C32" id="7lu-lE-Luz"/>
                                     <outlet property="dateLabel" destination="5fZ-cG-xbA" id="GL3-Nn-j8h"/>
                                     <outlet property="momentBody" destination="ypt-Xx-H2d" id="wa5-vK-E1s"/>
                                 </connections>
@@ -706,7 +718,7 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Moment body" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NxS-k1-io8">
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Moment body" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NxS-k1-io8">
                                             <rect key="frame" x="117" y="-7" width="465" height="60"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
