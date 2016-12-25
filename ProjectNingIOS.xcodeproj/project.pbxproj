@@ -10,9 +10,9 @@
 		871D68751DD69BAD00728AD6 /* FriendsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 871D68741DD69BAD00728AD6 /* FriendsDetailViewController.m */; };
 		87C9F3411DD9279500734504 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F33F1DD9279500734504 /* male.png */; };
 		87C9F3421DD9279500734504 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F3401DD9279500734504 /* female.png */; };
-		87C9F3461DDE9F0300734504 /* FriendDetailTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */; };
+		87C9F3461DDE9F0300734504 /* FriendOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9F3451DDE9F0300734504 /* FriendOverviewCell.m */; };
 		87E5BFDE1DE7FF6200632391 /* RightMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFDD1DE7FF6200632391 /* RightMenuViewController.m */; };
-		87E5BFE11DE8ADF800632391 /* ChatBtnTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFE01DE8ADF800632391 /* ChatBtnTableCell.m */; };
+		87E5BFE11DE8ADF800632391 /* ChatBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFE01DE8ADF800632391 /* ChatBtnCell.m */; };
 		87E5BFE41DEB42E200632391 /* FriendMomentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFE31DEB42E200632391 /* FriendMomentController.m */; };
 		87E5BFE71DEB522800632391 /* MomentCoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFE61DEB522800632391 /* MomentCoverCell.m */; };
 		87E5BFEC1DEE6F9600632391 /* coverImg1.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E5BFE81DEE6F9600632391 /* coverImg1.png */; };
@@ -86,11 +86,11 @@
 		871D68741DD69BAD00728AD6 /* FriendsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendsDetailViewController.m; path = ViewControllers/FriendsDetailViewController.m; sourceTree = "<group>"; };
 		87C9F33F1DD9279500734504 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = male.png; path = Images/male.png; sourceTree = "<group>"; };
 		87C9F3401DD9279500734504 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = female.png; path = Images/female.png; sourceTree = "<group>"; };
-		87C9F3441DDE9F0300734504 /* FriendDetailTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendDetailTableCell.h; path = ViewControllers/TableCells/FriendDetailTableCell.h; sourceTree = "<group>"; };
-		87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendDetailTableCell.m; path = ViewControllers/TableCells/FriendDetailTableCell.m; sourceTree = "<group>"; };
+		87C9F3441DDE9F0300734504 /* FriendOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendOverviewCell.h; path = ViewControllers/TableCells/FriendOverviewCell.h; sourceTree = "<group>"; };
+		87C9F3451DDE9F0300734504 /* FriendOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendOverviewCell.m; path = ViewControllers/TableCells/FriendOverviewCell.m; sourceTree = "<group>"; };
 		87E5BFDD1DE7FF6200632391 /* RightMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RightMenuViewController.m; path = ViewControllers/RightMenuViewController.m; sourceTree = "<group>"; };
-		87E5BFDF1DE8ADF800632391 /* ChatBtnTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChatBtnTableCell.h; path = ViewControllers/TableCells/ChatBtnTableCell.h; sourceTree = "<group>"; };
-		87E5BFE01DE8ADF800632391 /* ChatBtnTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatBtnTableCell.m; path = ViewControllers/TableCells/ChatBtnTableCell.m; sourceTree = "<group>"; };
+		87E5BFDF1DE8ADF800632391 /* ChatBtnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChatBtnCell.h; path = ViewControllers/TableCells/ChatBtnCell.h; sourceTree = "<group>"; };
+		87E5BFE01DE8ADF800632391 /* ChatBtnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatBtnCell.m; path = ViewControllers/TableCells/ChatBtnCell.m; sourceTree = "<group>"; };
 		87E5BFE21DEB42E200632391 /* FriendMomentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendMomentController.h; path = ViewControllers/FriendMomentController.h; sourceTree = "<group>"; };
 		87E5BFE31DEB42E200632391 /* FriendMomentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendMomentController.m; path = ViewControllers/FriendMomentController.m; sourceTree = "<group>"; };
 		87E5BFE51DEB522800632391 /* MomentCoverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentCoverCell.h; path = ViewControllers/TableCells/MomentCoverCell.h; sourceTree = "<group>"; };
@@ -214,10 +214,10 @@
 		87E5BFD91DE7F97300632391 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
-				87E5BFDF1DE8ADF800632391 /* ChatBtnTableCell.h */,
-				87E5BFE01DE8ADF800632391 /* ChatBtnTableCell.m */,
-				87C9F3441DDE9F0300734504 /* FriendDetailTableCell.h */,
-				87C9F3451DDE9F0300734504 /* FriendDetailTableCell.m */,
+				87E5BFDF1DE8ADF800632391 /* ChatBtnCell.h */,
+				87E5BFE01DE8ADF800632391 /* ChatBtnCell.m */,
+				87C9F3441DDE9F0300734504 /* FriendOverviewCell.h */,
+				87C9F3451DDE9F0300734504 /* FriendOverviewCell.m */,
 				87ED6F8A1DCAB96A004DB409 /* FriendTableCell.h */,
 				87ED6F8B1DCAB96A004DB409 /* FriendTableCell.m */,
 				87E5BFE51DEB522800632391 /* MomentCoverCell.h */,
@@ -547,12 +547,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				912D2D761C86A26A0039AEF5 /* FriendsViewController.m in Sources */,
-				87E5BFE11DE8ADF800632391 /* ChatBtnTableCell.m in Sources */,
+				87E5BFE11DE8ADF800632391 /* ChatBtnCell.m in Sources */,
 				912D2D4F1C869FC30039AEF5 /* SlideNavigationController.m in Sources */,
 				87ED6F8F1DCC00C7004DB409 /* PNFriend.m in Sources */,
 				914431E71C70DABA003FB63E /* AFURLSessionManager.m in Sources */,
 				914431E31C6E75A0003FB63E /* AFURLRequestSerialization.m in Sources */,
-				87C9F3461DDE9F0300734504 /* FriendDetailTableCell.m in Sources */,
+				87C9F3461DDE9F0300734504 /* FriendOverviewCell.m in Sources */,
 				87ED6F781D9CAB53004DB409 /* PNAlertHelper.m in Sources */,
 				912D2D771C86A26A0039AEF5 /* ProfileViewController.m in Sources */,
 				871D68751DD69BAD00728AD6 /* FriendsDetailViewController.m in Sources */,

@@ -1,5 +1,5 @@
 //
-//  ChatBtnTableCell.h
+//  ChatBtnCell.h
 //  ProjectNingIOS
 //
 //  Created by NingFangming on 11/25/16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChatBtnTableCell : UITableViewCell
+@interface ChatBtnCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIButton *chatBtn;
 @end

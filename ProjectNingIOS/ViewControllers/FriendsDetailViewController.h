@@ -10,8 +10,8 @@
 
 #import "PNService.h"
 #import "Utils.h"
-#import "FriendDetailTableCell.h"
-#import "ChatBtnTableCell.h"
+#import "FriendOverviewCell.h"
+#import "ChatBtnCell.h"
 #import "FriendMomentController.h"
 
 @interface FriendsDetailViewController : UITableViewController{

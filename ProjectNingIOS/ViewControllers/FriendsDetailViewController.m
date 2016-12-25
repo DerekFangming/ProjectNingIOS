@@ -96,10 +96,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if(indexPath.section == 0 && indexPath.row == 0){
-        FriendDetailTableCell * cell;
+        FriendOverviewCell * cell;
         cell = [tableView dequeueReusableCellWithIdentifier:@"friendOverviewCell"];
         if(cell == nil) {
-            cell = [[FriendDetailTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"friendOverviewCell"];
+            cell = [[FriendOverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"friendOverviewCell"];
         }
         [cell.friendDetailAvatar setImage:self.avatar];
         [cell.friendUserId setText:[@"ID : " stringByAppendingString:[self.userId stringValue]]];
@@ -149,10 +149,10 @@
         
         return cell;
     }else{
-        ChatBtnTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatBtnCell"];
+        ChatBtnCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatBtnCell"];
         
         if(cell == nil) {
-            cell = [[ChatBtnTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chatBtnCell"];
+            cell = [[ChatBtnCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chatBtnCell"];
         }
         
         cell.separatorInset = UIEdgeInsetsMake(0.0f, 10000.0f, 0.0f, 0.0f);

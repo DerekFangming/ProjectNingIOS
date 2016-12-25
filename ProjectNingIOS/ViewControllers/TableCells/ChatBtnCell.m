@@ -1,14 +1,14 @@
 //
-//  ChatBtnTableCell.m
+//  ChatBtnCell.m
 //  ProjectNingIOS
 //
 //  Created by NingFangming on 11/25/16.
 //  Copyright © 2016 fangming. All rights reserved.
 //
 
-#import "ChatBtnTableCell.h"
+#import "ChatBtnCell.h"
 
-@implementation ChatBtnTableCell
+@implementation ChatBtnCell
 
 - (id)initWithStyle: (UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

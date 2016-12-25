@@ -1,5 +1,5 @@
 //
-//  FriendDetailTableCell.h
+//  FriendOverviewCell.h
 //  ProjectNingIOS
 //
 //  Created by NingFangming on 11/17/16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FriendDetailTableCell : UITableViewCell
+@interface FriendOverviewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UIImageView *friendDetailAvatar;
 @property (strong, nonatomic) IBOutlet UILabel *friendDisplayedName;

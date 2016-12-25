@@ -1,14 +1,14 @@
 //
-//  FriendDetailTableCell.m
+//  FriendOverviewCell.m
 //  ProjectNingIOS
 //
 //  Created by NingFangming on 11/17/16.
 //  Copyright © 2016 fangming. All rights reserved.
 //
 
-#import "FriendDetailTableCell.h"
+#import "FriendOverviewCell.h"
 
-@implementation FriendDetailTableCell
+@implementation FriendOverviewCell
 
 - (id)initWithStyle: (UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

@@ -1,5 +1,5 @@
 //
-//  PNImage.m
+//  PNImageManager.m
 //  ProjectNingIOS
 //
 //  Created by NingFangming on 3/18/16.

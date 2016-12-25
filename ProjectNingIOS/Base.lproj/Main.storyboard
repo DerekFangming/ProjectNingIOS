@@ -437,7 +437,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="friendOverviewCell" rowHeight="80" id="3aa-b2-BEj" customClass="FriendDetailTableCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="friendOverviewCell" rowHeight="80" id="3aa-b2-BEj" customClass="FriendOverviewCell">
                                 <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3aa-b2-BEj" id="ERu-Lj-DE5">
@@ -535,7 +535,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="chatBtnCell" id="2sW-Ct-NbO" customClass="ChatBtnTableCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="chatBtnCell" id="2sW-Ct-NbO" customClass="ChatBtnCell">
                                 <rect key="frame" x="0.0" y="286" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2sW-Ct-NbO" id="LsN-XJ-XJf">
@@ -578,7 +578,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="coverPageCell" rowHeight="240" id="o4j-ul-Ino" customClass="MomentCoverCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentCoverCell" rowHeight="240" id="o4j-ul-Ino" customClass="MomentCoverCell">
                                 <rect key="frame" x="0.0" y="92" width="600" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o4j-ul-Ino" id="8EA-6D-gzu">
@@ -684,8 +684,8 @@
                                             <exclude reference="J3p-6j-eY9"/>
                                             <exclude reference="KqH-Zt-Sre"/>
                                             <exclude reference="YCb-Xs-8bN"/>
-                                            <exclude reference="gSJ-o8-wli"/>
                                             <exclude reference="YYk-ND-09W"/>
+                                            <exclude reference="gSJ-o8-wli"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>

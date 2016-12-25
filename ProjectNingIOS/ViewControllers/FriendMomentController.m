@@ -84,10 +84,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section == 0 && indexPath.row == 0){
-        MomentCoverCell *cell = [tableView dequeueReusableCellWithIdentifier:@"coverPageCell" forIndexPath:indexPath];
+        MomentCoverCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentCoverCell" forIndexPath:indexPath];
         
         if(cell == nil) {
-            cell = [[MomentCoverCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"coverPageCell"];
+            cell = [[MomentCoverCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentCoverCell"];
         }
         
         [cell.coverImage setImage:self.coverImg];
