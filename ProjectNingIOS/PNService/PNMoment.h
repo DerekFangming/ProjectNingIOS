@@ -20,9 +20,13 @@
 @property (nonatomic, assign)BOOL hasCoverImg;
 @property (nonatomic, strong)UIImage *coverImg;
 
+@property (nonatomic, assign)BOOL isLastMomentOfTheDay;
+@property (nonatomic, strong)NSMutableAttributedString *dateText;
 
 - (id)initWithMomentId:(NSNumber *) momentId
                andBody:(NSString *) momentBody
                andDate:(NSDate *) createdAt;
+
+
 
 @end

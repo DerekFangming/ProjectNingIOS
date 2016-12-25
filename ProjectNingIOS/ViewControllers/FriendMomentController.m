@@ -65,9 +65,17 @@
     }else{
         PNMoment *moment = [self.momentList objectAtIndex:indexPath.row];
         if(moment.hasCoverImg){
-            return 64;
+            if(moment.isLastMomentOfTheDay){
+                return 84;
+            }else{
+                return 64;
+            }
         }else{
-            return 45;
+            if(moment.isLastMomentOfTheDay){
+                return 65;
+            }else{
+                return 45;
+            }
         }
     }
 }
@@ -94,19 +102,23 @@
     }else{
         PNMoment *moment = [self.momentList objectAtIndex:indexPath.row];
         
-        //Date processing
-        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:moment.createdAt];
-        NSString *month = [Utils monthToString:[components month]];
-        NSString *day = [@([components day]) stringValue];
-        UIFont *arialFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0];
-        NSDictionary *arialDict = [NSDictionary dictionaryWithObject: arialFont forKey:NSFontAttributeName];
-        NSMutableAttributedString *dateText = [[NSMutableAttributedString alloc] initWithString:month attributes: arialDict];
+        //Process height indicator
+        if(indexPath.row == [self.momentList count] - 1){
+            moment.isLastMomentOfTheDay = YES;
+        }else{
+            NSDate *nextDate = [[self.momentList objectAtIndex:indexPath.row + 1] createdAt];
+            if(![[NSCalendar currentCalendar] isDate:moment.createdAt inSameDayAsDate:nextDate]){
+                moment.isLastMomentOfTheDay = YES;
+            }
+        }
         
-        UIFont *VerdanaFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:9.0];
-        NSDictionary *verdanaDict = [NSDictionary dictionaryWithObject:VerdanaFont forKey:NSFontAttributeName];
-        NSMutableAttributedString *vAttrString = [[NSMutableAttributedString alloc]initWithString: day attributes:verdanaDict];
-        [dateText appendAttributedString:vAttrString];
-        
+        //Process moment date text
+        if(indexPath.row == 0){
+            moment.dateText = [self processDateToText:moment.createdAt];
+        }else if([[self.momentList objectAtIndex:indexPath.row - 1] isLastMomentOfTheDay]){
+            moment.dateText = [self processDateToText:moment.createdAt];
+        }
+        [[NSCalendar currentCalendar] isDate:moment.createdAt inSameDayAsDate:moment.createdAt];
         //Cell processing for text or image cell
         if(moment.hasCoverImg){
             MomentImageCell * cell = [tableView dequeueReusableCellWithIdentifier:@"momentImageCell" forIndexPath:indexPath];
@@ -114,7 +126,7 @@
             if(cell == nil) {
                 cell = [[MomentImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentImageCell"];
             }
-            cell.dateLabel.attributedText = dateText;
+            cell.dateLabel.attributedText = moment.dateText;
             cell.momentBody.text = moment.momentBody;
             cell.momentBody.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
             
@@ -135,7 +147,7 @@
             if(cell == nil) {
                 cell = [[MomentTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextCell"];
             }
-            cell.dateLabel.attributedText = dateText;
+            cell.dateLabel.attributedText = moment.dateText;
             cell.momentBody.text = moment.momentBody;
             cell.momentBody.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
             [cell.backgroundView setBackgroundColor:GRAY_COLOR];
@@ -163,48 +175,20 @@
                                        }];
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (NSMutableAttributedString *) processDateToText: (NSDate *) date{
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
+    NSString *month = [Utils monthToString:[components month]];
+    NSString *day = [@([components day]) stringValue];
+    UIFont *arialFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0];
+    NSDictionary *arialDict = [NSDictionary dictionaryWithObject: arialFont forKey:NSFontAttributeName];
+    NSMutableAttributedString *dateText = [[NSMutableAttributedString alloc] initWithString:month attributes: arialDict];
+    
+    UIFont *VerdanaFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:9.0];
+    NSDictionary *verdanaDict = [NSDictionary dictionaryWithObject:VerdanaFont forKey:NSFontAttributeName];
+    NSMutableAttributedString *dayString = [[NSMutableAttributedString alloc]initWithString: day attributes:verdanaDict];
+    [dateText appendAttributedString:dayString];
+    return dateText;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
