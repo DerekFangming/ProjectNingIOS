@@ -115,7 +115,7 @@
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
-                  response(nil, [responseObject objectForKey:@"error"]);
+                  response(nil, [responseObject objectForKey:@"idList"]);
               }else{
                   response([PNUtils createNSError:responseObject], nil);
               }

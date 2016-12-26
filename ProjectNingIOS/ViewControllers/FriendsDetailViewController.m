@@ -138,12 +138,12 @@
         
         [PNMomentManager getMomentPreviewImageIdListForUser:self.userId
                                                    response:^(NSError *err, NSArray *idList) {
-                                                       if(err != nil){
+                                                       if(err == nil){
                                                            [self loadMomentPreviewCell:cell
                                                                             atPosition:0
                                                                           withImageIds:idList];
                                                        }else{
-                                                           NSLog(@"something wrong");
+                                                           //
                                                        }
                                                    }];
         return cell;
