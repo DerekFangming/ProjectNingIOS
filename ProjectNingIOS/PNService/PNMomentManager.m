@@ -91,6 +91,38 @@
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               response(error,nil);
               
-          }];}
+          }];
+}
+
++ (void) getMomentPreviewImageIdListForUser:(NSNumber *) userId
+                                   response:(void(^)(NSError *, NSArray *)) response{
+    NSError *error = [PNUser checkUserLoginStatus];
+    if(error != nil){
+        response(error, nil);
+    }
+    
+    PNUser *user = [PNUser currentUser];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:userId forKey:@"userId"];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager POST:pathForMomentPreviewIds
+       parameters:parameters
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
+                  response(nil, [responseObject objectForKey:@"error"]);
+              }else{
+                  response([PNUtils createNSError:responseObject], nil);
+              }
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              response(error,nil);
+              
+          }];
+}
 
 @end

@@ -23,11 +23,15 @@
  @param limit this will limit the number of moments that are retrived at a time
  */
 + (void) getRecentMomentListForUser:(NSNumber *) userId
-                          beforeDte: (NSDate *) date
-                          withLimit: (NSNumber *) limit
+                          beforeDte:(NSDate *) date
+                          withLimit:(NSNumber *) limit
                            response:(void(^)(NSError *, NSArray *, NSDate *)) response;
 
 + (void) getMomentCoverImgForUser:(NSNumber *) userId
-                         onMoment: (NSNumber *) momentId
+                         onMoment:(NSNumber *) momentId
                          response:(void(^)(NSError *, UIImage *)) response;
+
++ (void) getMomentPreviewImageIdListForUser:(NSNumber *) userId
+                                   response:(void(^)(NSError *, NSArray *)) response;
+
 @end

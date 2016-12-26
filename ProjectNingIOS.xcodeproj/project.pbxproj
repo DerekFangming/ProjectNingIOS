@@ -23,6 +23,7 @@
 		87E5BFF61E01A31700632391 /* PNMoment.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFF51E01A31700632391 /* PNMoment.m */; };
 		87E5BFF91E01AF4400632391 /* PNMomentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFF81E01AF4400632391 /* PNMomentManager.m */; };
 		87E5BFFC1E085AFD00632391 /* MomentImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFFB1E085AFD00632391 /* MomentImageCell.m */; };
+		87E5BFFF1E0F77F200632391 /* MomentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFFE1E0F77F200632391 /* MomentsCell.m */; };
 		87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F651D834F1B004DB409 /* PNStranger.m */; };
 		87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F6C1D9199AF004DB409 /* Utils.m */; };
 		87ED6F741D9314C2004DB409 /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F731D9314C2004DB409 /* GMDCircleLoader.m */; };
@@ -107,6 +108,8 @@
 		87E5BFF81E01AF4400632391 /* PNMomentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNMomentManager.m; path = PNService/PNMomentManager.m; sourceTree = "<group>"; };
 		87E5BFFA1E085AFD00632391 /* MomentImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentImageCell.h; path = ViewControllers/TableCells/MomentImageCell.h; sourceTree = "<group>"; };
 		87E5BFFB1E085AFD00632391 /* MomentImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentImageCell.m; path = ViewControllers/TableCells/MomentImageCell.m; sourceTree = "<group>"; };
+		87E5BFFD1E0F77F200632391 /* MomentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentsCell.h; path = ViewControllers/TableCells/MomentsCell.h; sourceTree = "<group>"; };
+		87E5BFFE1E0F77F200632391 /* MomentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentsCell.m; path = ViewControllers/TableCells/MomentsCell.m; sourceTree = "<group>"; };
 		87ED6F641D834F1B004DB409 /* PNStranger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNStranger.h; path = PNService/PNStranger.h; sourceTree = "<group>"; };
 		87ED6F651D834F1B004DB409 /* PNStranger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNStranger.m; path = PNService/PNStranger.m; sourceTree = "<group>"; };
 		87ED6F6B1D9199AF004DB409 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Helpers/Utils.h; sourceTree = "<group>"; };
@@ -226,6 +229,8 @@
 				87E5BFF21DEF497600632391 /* MomentTextCell.m */,
 				87E5BFFA1E085AFD00632391 /* MomentImageCell.h */,
 				87E5BFFB1E085AFD00632391 /* MomentImageCell.m */,
+				87E5BFFD1E0F77F200632391 /* MomentsCell.h */,
+				87E5BFFE1E0F77F200632391 /* MomentsCell.m */,
 			);
 			name = TableCells;
 			sourceTree = "<group>";
@@ -568,6 +573,7 @@
 				87ED6F8C1DCAB96A004DB409 /* FriendTableCell.m in Sources */,
 				914431981C6E2353003FB63E /* AppDelegate.m in Sources */,
 				87ED6F7B1D9CAEF9004DB409 /* PNViewControllerHelper.m in Sources */,
+				87E5BFFF1E0F77F200632391 /* MomentsCell.m in Sources */,
 				914431EA1C7244B7003FB63E /* PNDateFormater.m in Sources */,
 				914431E41C6E75A0003FB63E /* AFURLResponseSerialization.m in Sources */,
 				87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */,

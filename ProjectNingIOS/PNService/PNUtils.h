@@ -23,6 +23,7 @@
 #define pathForSingletonTypeImg     @"get_singleton_img_by_type"
 #define pathForRecentMomentList     @"get_recent_moments"
 #define pathForMomentCoverImg       @"get_moment_cover_img"
+#define pathForMomentPreviewIds     @"get_moment_preview_images"
 
 
 @interface PNUtils : NSObject

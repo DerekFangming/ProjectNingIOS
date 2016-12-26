@@ -12,6 +12,7 @@
 #import "Utils.h"
 #import "FriendOverviewCell.h"
 #import "ChatBtnCell.h"
+#import "MomentsCell.h"
 #import "FriendMomentController.h"
 
 @interface FriendsDetailViewController : UITableViewController{

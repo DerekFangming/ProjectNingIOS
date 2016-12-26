@@ -500,7 +500,7 @@
                                     <outlet property="friendUserId" destination="smu-Tk-9wE" id="cBt-AX-daw"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="momentsCell" rowHeight="70" id="ZHi-s8-AMh">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="momentsCell" rowHeight="70" id="ZHi-s8-AMh" customClass="MomentsCell">
                                 <rect key="frame" x="0.0" y="172" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZHi-s8-AMh" id="FDS-zO-WDd">
@@ -517,13 +517,53 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pQ9-ek-dCL">
+                                            <rect key="frame" x="94" y="12" width="45" height="45"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="45" id="Pgf-5s-guL"/>
+                                                <constraint firstAttribute="width" constant="45" id="qL6-sO-HFG"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lRW-Qc-YE3">
+                                            <rect key="frame" x="145" y="12" width="45" height="45"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="45" id="5qh-L1-OBq"/>
+                                                <constraint firstAttribute="width" constant="45" id="skI-wU-Byd"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bf1-WM-d9i">
+                                            <rect key="frame" x="196" y="12" width="45" height="45"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="45" id="XZm-hd-SZM"/>
+                                                <constraint firstAttribute="height" constant="45" id="ipK-1o-05B"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mjH-or-DVv">
+                                            <rect key="frame" x="247" y="12" width="45" height="45"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="45" id="Nba-2q-PVO"/>
+                                                <constraint firstAttribute="height" constant="45" id="b75-06-8kY"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="lRW-Qc-YE3" firstAttribute="centerY" secondItem="FDS-zO-WDd" secondAttribute="centerY" id="0f5-zq-OMS"/>
+                                        <constraint firstItem="pQ9-ek-dCL" firstAttribute="leading" secondItem="loh-sa-eDz" secondAttribute="trailing" constant="12" id="HuU-hV-KUM"/>
+                                        <constraint firstItem="mjH-or-DVv" firstAttribute="centerY" secondItem="FDS-zO-WDd" secondAttribute="centerY" id="IAX-gP-E7m"/>
                                         <constraint firstItem="loh-sa-eDz" firstAttribute="leading" secondItem="FDS-zO-WDd" secondAttribute="leadingMargin" constant="9" id="LcL-xl-GCV"/>
+                                        <constraint firstItem="bf1-WM-d9i" firstAttribute="centerY" secondItem="FDS-zO-WDd" secondAttribute="centerY" id="UeP-oV-BwJ"/>
+                                        <constraint firstItem="pQ9-ek-dCL" firstAttribute="centerY" secondItem="FDS-zO-WDd" secondAttribute="centerY" id="ckc-y9-rA8"/>
                                         <constraint firstItem="loh-sa-eDz" firstAttribute="centerY" secondItem="FDS-zO-WDd" secondAttribute="centerY" id="lPw-H8-XOC"/>
+                                        <constraint firstItem="bf1-WM-d9i" firstAttribute="leading" secondItem="lRW-Qc-YE3" secondAttribute="trailing" constant="6" id="lrU-AG-Urp"/>
+                                        <constraint firstItem="lRW-Qc-YE3" firstAttribute="leading" secondItem="pQ9-ek-dCL" secondAttribute="trailing" constant="6" id="rcZ-Gh-PNV"/>
+                                        <constraint firstItem="mjH-or-DVv" firstAttribute="leading" secondItem="bf1-WM-d9i" secondAttribute="trailing" constant="6" id="yM9-fc-Dxg"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="preview1" destination="pQ9-ek-dCL" id="CJA-O8-cd4"/>
+                                    <outlet property="preview2" destination="lRW-Qc-YE3" id="Uv4-bm-1eY"/>
+                                    <outlet property="preview3" destination="bf1-WM-d9i" id="6NO-Qk-vLb"/>
+                                    <outlet property="preview4" destination="mjH-or-DVv" id="CcQ-ZA-1XF"/>
                                     <segue destination="Z4O-DE-KCu" kind="show" identifier="friendMomentSegue" id="uk6-ab-AmM"/>
                                 </connections>
                             </tableViewCell>

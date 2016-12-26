@@ -130,12 +130,22 @@
         
         return cell;
     }else if (indexPath.section == 1){
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentsCell"];
+        MomentsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentsCell"];
         
         if(cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentsCell"];
+            cell = [[MomentsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentsCell"];
         }
         
+        [PNMomentManager getMomentPreviewImageIdListForUser:self.userId
+                                                   response:^(NSError *err, NSArray *idList) {
+                                                       if(err != nil){
+                                                           [self loadMomentPreviewCell:cell
+                                                                            atPosition:0
+                                                                          withImageIds:idList];
+                                                       }else{
+                                                           NSLog(@"something wrong");
+                                                       }
+                                                   }];
         return cell;
     }else if (indexPath.section == 2){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailCell"];
@@ -234,6 +244,33 @@
     UIGraphicsEndImageContext();
     
     return image;
+}
+
+- (void)loadMomentPreviewCell:(MomentsCell *) cell atPosition:(NSInteger) index withImageIds:(NSArray *) imgIdList{
+    if([imgIdList count] > index){
+        [PNImageManager downloadImageWithId:[imgIdList objectAtIndex:index]
+                                   response:^(UIImage *img, NSError *err) {
+                                       if(err == nil){
+                                           switch (index) {
+                                               case 0:
+                                                   [cell.preview1 setImage:img];
+                                                   break;
+                                               case 1:
+                                                   [cell.preview2 setImage:img];
+                                                   break;
+                                               case 2:
+                                                   [cell.preview3 setImage:img];
+                                                   break;
+                                               case 3:
+                                                   [cell.preview4 setImage:img];
+                                                   break;
+                                               default:
+                                                   break;
+                                           }
+                                           [self loadMomentPreviewCell:cell atPosition:index + 1 withImageIds:imgIdList];
+                                       }
+                                   }];
+    }
 }
 
 #pragma mark - Prepare for friend detail segue -
