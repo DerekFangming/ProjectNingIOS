@@ -29,7 +29,7 @@
     }];
     
     //Setting up background
-    self.view.backgroundColor = GRAY_COLOR;
+    self.view.backgroundColor = GRAY_BG_COLOR;
     
     //Setting up avatar image view
     [avatarView setImage:[UIImage imageNamed:@"defaultAvatar.jpg"]];

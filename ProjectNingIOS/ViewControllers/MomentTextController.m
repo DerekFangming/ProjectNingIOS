@@ -41,7 +41,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 180;
+    return headerCellHeight + 30;
 }
 
 #pragma mark - Table cell handling -
@@ -61,6 +61,8 @@
     [cell.momentTextField layoutIfNeeded];
     CGSize size = [cell.momentTextField
                       sizeThatFits:CGSizeMake(cell.momentTextField.frame.size.width, CGFLOAT_MAX)];
+    headerCellHeight = size.height;
+    NSLog(@"%f",size.height);
     [cell.momentTextField setContentSize:size];
     
     return cell;

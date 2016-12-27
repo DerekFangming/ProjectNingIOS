@@ -15,7 +15,7 @@
 	[super viewDidLoad];
     
     self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
-    self.tableView.backgroundColor = GRAY_COLOR;
+    self.tableView.backgroundColor = GRAY_BG_COLOR;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [PNRelationship getDetailedFriendListWithResponse:^(NSArray *newFriendList, NSError *error) {

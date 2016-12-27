@@ -150,7 +150,7 @@
             cell.dateLabel.attributedText = moment.dateText;
             cell.momentBody.text = [moment.momentBody stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];
             cell.momentBody.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
-            [cell.backgroundView setBackgroundColor:GRAY_COLOR];
+            [cell.backgroundView setBackgroundColor:GRAY_BG_COLOR];
             cell.momentBody.contentInset = UIEdgeInsetsMake(-4,-2,0,0);
             
             return cell;

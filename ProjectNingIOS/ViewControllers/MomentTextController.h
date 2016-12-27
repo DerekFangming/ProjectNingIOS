@@ -11,7 +11,9 @@
 #import "Utils.h"
 #import "MomentTextHeaderCell.h"
 
-@interface MomentTextController : UITableViewController
+@interface MomentTextController : UITableViewController{
+    CGFloat headerCellHeight;
+}
 
 @property (nonatomic, strong) NSNumber *userId;
 @property (nonatomic, strong) NSString *displayedName;
