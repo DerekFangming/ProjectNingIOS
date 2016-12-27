@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PNService.h"
+#import "Utils.h"
 #import "MomentTextHeaderCell.h"
 
 @interface MomentTextController : UITableViewController

@@ -41,7 +41,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 120;
+    return 180;
 }
 
 #pragma mark - Table cell handling -
@@ -55,7 +55,13 @@
     
     [cell.avatar setImage: self.avatar];
     cell.nameLabel.text = self.displayedName;
-    cell.momentTextField.text = self.momentBody;
+    cell.nameLabel.textColor = PURPLE_COLOR;
+    cell.momentTextField.text = [self.momentBody stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];
+    [cell.momentTextField sizeToFit];
+    [cell.momentTextField layoutIfNeeded];
+    CGSize size = [cell.momentTextField
+                      sizeThatFits:CGSizeMake(cell.momentTextField.frame.size.width, CGFLOAT_MAX)];
+    [cell.momentTextField setContentSize:size];
     
     return cell;
 }

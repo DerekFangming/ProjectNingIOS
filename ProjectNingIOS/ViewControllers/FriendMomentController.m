@@ -127,7 +127,7 @@
                 cell = [[MomentImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentImageCell"];
             }
             cell.dateLabel.attributedText = moment.dateText;
-            cell.momentBody.text = moment.momentBody;
+            cell.momentBody.text = [moment.momentBody stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];
             cell.momentBody.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
             
             [PNMomentManager getMomentCoverImgForUser:self.userId
@@ -148,7 +148,7 @@
                 cell = [[MomentTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextCell"];
             }
             cell.dateLabel.attributedText = moment.dateText;
-            cell.momentBody.text = moment.momentBody;
+            cell.momentBody.text = [moment.momentBody stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];
             cell.momentBody.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
             [cell.backgroundView setBackgroundColor:GRAY_COLOR];
             cell.momentBody.contentInset = UIEdgeInsetsMake(-4,-2,0,0);
