@@ -146,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8H-Uo-Au6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1272" y="-222"/>
+            <point key="canvasLocation" x="1448" y="-788"/>
         </scene>
         <!--Login-->
         <scene sceneID="GyY-MU-nf4">
@@ -245,7 +245,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RHC-1t-rfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1272" y="460"/>
+            <point key="canvasLocation" x="312" y="978"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="4u9-fr-ag5">
@@ -343,7 +343,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Q7-tC-hs2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1956" y="460"/>
+            <point key="canvasLocation" x="366" y="1884"/>
         </scene>
         <!--Friends-->
         <scene sceneID="mIz-Ix-FnG">
@@ -426,7 +426,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="885" y="1226"/>
+            <point key="canvasLocation" x="1448" y="-80"/>
         </scene>
         <!--FriendDetail-->
         <scene sceneID="XwE-yj-0Qg">
@@ -607,7 +607,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="879-Zh-34j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1722" y="1226"/>
+            <point key="canvasLocation" x="2170" y="-80"/>
         </scene>
         <!--Moment-->
         <scene sceneID="uA1-MV-hjG">
@@ -733,6 +733,7 @@
                                     <outlet property="backgroundView" destination="4Ap-mA-C32" id="7lu-lE-Luz"/>
                                     <outlet property="dateLabel" destination="5fZ-cG-xbA" id="GL3-Nn-j8h"/>
                                     <outlet property="momentBody" destination="ypt-Xx-H2d" id="wa5-vK-E1s"/>
+                                    <segue destination="tAQ-2l-9bv" kind="show" identifier="momentTextDetailSegue" id="4hu-hd-8u0"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="momentImageCell" rowHeight="64" id="rFS-lT-MuO" customClass="MomentImageCell">
@@ -795,6 +796,7 @@
                                     <outlet property="coverImg" destination="A8I-uA-GWf" id="Fd0-Qa-slB"/>
                                     <outlet property="dateLabel" destination="F6D-Be-21R" id="o7Q-Ac-JmV"/>
                                     <outlet property="momentBody" destination="NxS-k1-io8" id="mxq-Je-8Cw"/>
+                                    <segue destination="GIw-wE-xnq" kind="show" identifier="momentImageDetailSegue" id="RN3-fS-Myh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -810,7 +812,95 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nkC-Ts-Fnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2572" y="1226"/>
+            <point key="canvasLocation" x="2884" y="-80"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="qaI-SN-87z">
+            <objects>
+                <tableViewController id="tAQ-2l-9bv" customClass="MomentTextController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Yac-YP-MAA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="momentTextHeaderCell" rowHeight="120" id="P1I-uz-yDB" customClass="MomentTextHeaderCell">
+                                <rect key="frame" x="0.0" y="92" width="600" height="120"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P1I-uz-yDB" id="DvM-EY-3wI">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ppo-sI-9iL">
+                                            <rect key="frame" x="19" y="13" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="bWy-VW-4HE"/>
+                                                <constraint firstAttribute="height" constant="60" id="s0i-su-eqb"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7C-vp-uM9">
+                                            <rect key="frame" x="98" y="13" width="200" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="6vS-gT-vkt"/>
+                                                <constraint firstAttribute="width" constant="200" id="Bg2-EA-yIN"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Moment Body" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RsY-tY-nYw">
+                                            <rect key="frame" x="98" y="42" width="484" height="61"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="P7C-vp-uM9" firstAttribute="top" secondItem="DvM-EY-3wI" secondAttribute="topMargin" constant="5" id="8mn-Hj-FSI"/>
+                                        <constraint firstItem="ppo-sI-9iL" firstAttribute="leading" secondItem="DvM-EY-3wI" secondAttribute="leadingMargin" constant="11" id="F4r-WC-8bj"/>
+                                        <constraint firstItem="P7C-vp-uM9" firstAttribute="leading" secondItem="ppo-sI-9iL" secondAttribute="trailing" constant="19" id="FQh-lf-xZm"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="RsY-tY-nYw" secondAttribute="trailing" constant="10" id="IrZ-IM-vME"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="RsY-tY-nYw" secondAttribute="bottom" constant="8" id="POI-vX-4ow"/>
+                                        <constraint firstItem="RsY-tY-nYw" firstAttribute="leading" secondItem="ppo-sI-9iL" secondAttribute="trailing" constant="19" id="XNC-K5-pee"/>
+                                        <constraint firstItem="RsY-tY-nYw" firstAttribute="top" secondItem="P7C-vp-uM9" secondAttribute="bottom" constant="8" id="q4f-3H-xF7"/>
+                                        <constraint firstItem="ppo-sI-9iL" firstAttribute="top" secondItem="DvM-EY-3wI" secondAttribute="topMargin" constant="5" id="tX8-wi-sfu"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="avatar" destination="ppo-sI-9iL" id="RAd-1G-lcR"/>
+                                    <outlet property="momentTextField" destination="RsY-tY-nYw" id="DOX-s1-19U"/>
+                                    <outlet property="nameLabel" destination="P7C-vp-uM9" id="y3h-8P-oyK"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tAQ-2l-9bv" id="Nm2-XG-gCm"/>
+                            <outlet property="delegate" destination="tAQ-2l-9bv" id="HEa-if-NME"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Detail" id="z8V-df-3Ev"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oki-1h-Exh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3669" y="-434"/>
+        </scene>
+        <!--Date-->
+        <scene sceneID="1f9-Ij-0h6">
+            <objects>
+                <viewController id="GIw-wE-xnq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4GL-MG-4Dn"/>
+                        <viewControllerLayoutGuide type="bottom" id="aDe-4Z-wyF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t6B-bS-re9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Date" id="nkV-7c-QRj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mQI-3N-SGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3670" y="273"/>
         </scene>
         <!--Right Menu View Controller-->
         <scene sceneID="6K5-RU-jDf">

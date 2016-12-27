@@ -190,5 +190,18 @@
     return dateText;
 }
 
+#pragma mark - Prepare for friend detail segue -
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"momentTextDetailSegue"]) {
+        MomentTextController *destVC = segue.destinationViewController;
+        NSString * a =  self.displayedName;
+        destVC.displayedName = a;
+        destVC.avatar = self.avatar;
+        destVC.userId = self.userId;
+        destVC.momentBody = ((MomentTextCell *)sender).momentBody.text;
+    }
+}
 
 @end

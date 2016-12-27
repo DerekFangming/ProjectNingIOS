@@ -13,6 +13,7 @@
 #import "MomentImageCell.h"
 #import "Utils.h"
 #import "PNService.h"
+#import "MomentTextController.h"
 
 @interface FriendMomentController : UITableViewController
 
