@@ -848,25 +848,44 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Moment Body" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RsY-tY-nYw">
-                                            <rect key="frame" x="63" y="24" width="519" height="79"/>
+                                            <rect key="frame" x="62" y="24" width="520" height="79"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkH-e1-Rgk">
+                                            <rect key="frame" x="67" y="95" width="175" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="175" id="Gg1-KD-gmI"/>
+                                                <constraint firstAttribute="height" constant="21" id="ylA-qW-Dg0"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="OkH-e1-Rgk" firstAttribute="leading" secondItem="DvM-EY-3wI" secondAttribute="leadingMargin" constant="59" id="1lc-Rd-ndL"/>
                                         <constraint firstItem="P7C-vp-uM9" firstAttribute="top" secondItem="DvM-EY-3wI" secondAttribute="topMargin" id="8mn-Hj-FSI"/>
+                                        <constraint firstItem="OkH-e1-Rgk" firstAttribute="top" secondItem="P7C-vp-uM9" secondAttribute="bottom" constant="84" id="9Q0-g0-RcD"/>
                                         <constraint firstItem="ppo-sI-9iL" firstAttribute="leading" secondItem="DvM-EY-3wI" secondAttribute="leadingMargin" constant="5" id="F4r-WC-8bj"/>
                                         <constraint firstItem="P7C-vp-uM9" firstAttribute="leading" secondItem="ppo-sI-9iL" secondAttribute="trailing" constant="19" id="FQh-lf-xZm"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="RsY-tY-nYw" secondAttribute="trailing" constant="10" id="IrZ-IM-vME"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="RsY-tY-nYw" secondAttribute="bottom" constant="8" id="POI-vX-4ow"/>
-                                        <constraint firstItem="RsY-tY-nYw" firstAttribute="leading" secondItem="ppo-sI-9iL" secondAttribute="trailing" constant="15" id="XNC-K5-pee"/>
+                                        <constraint firstItem="RsY-tY-nYw" firstAttribute="leading" secondItem="ppo-sI-9iL" secondAttribute="trailing" constant="14" id="XNC-K5-pee"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="OkH-e1-Rgk" secondAttribute="bottom" constant="-5" id="huK-kM-0Zv"/>
                                         <constraint firstItem="RsY-tY-nYw" firstAttribute="top" secondItem="P7C-vp-uM9" secondAttribute="bottom" constant="-5" id="q4f-3H-xF7"/>
                                         <constraint firstItem="ppo-sI-9iL" firstAttribute="top" secondItem="DvM-EY-3wI" secondAttribute="topMargin" id="tX8-wi-sfu"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="9Q0-g0-RcD"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="avatar" destination="ppo-sI-9iL" id="RAd-1G-lcR"/>
+                                    <outlet property="dateLabel" destination="OkH-e1-Rgk" id="wvw-zp-zgZ"/>
                                     <outlet property="momentTextField" destination="RsY-tY-nYw" id="DOX-s1-19U"/>
                                     <outlet property="nameLabel" destination="P7C-vp-uM9" id="y3h-8P-oyK"/>
                                 </connections>

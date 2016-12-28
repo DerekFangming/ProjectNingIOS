@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextView *momentTextField;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end

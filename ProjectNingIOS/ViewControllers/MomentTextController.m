@@ -41,7 +41,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return headerCellHeight + 30;
+    return headerCellHeight + 45;
 }
 
 #pragma mark - Table cell handling -
