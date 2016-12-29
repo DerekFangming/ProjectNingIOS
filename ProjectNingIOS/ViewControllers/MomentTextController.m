@@ -64,10 +64,22 @@
     headerCellHeight = size.height;
     NSLog(@"%f",size.height);
     [cell.momentTextField setContentSize:size];
+    //cell.dateLabel.text = self processDateToText:self.date
     
     return cell;
 }
 
+#pragma mark - Helpers -
 
+- (NSString *) processDateToText: (NSDate *) date{
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
+    NSString *month = [Utils monthToString:[components month] withAbbreviation:NO];
+    NSString *dateStr = [NSString stringWithFormat:@"%@ %@, %@", month, [@([components day]) stringValue],
+                         [@([components year]) stringValue]];
+    dateStr = [NSString stringWithFormat:@"%@ %@:%@", dateStr, [@([components hour]) stringValue],
+               [@([components minute]) stringValue]];
+    
+    return dateStr;
+}
 
 @end

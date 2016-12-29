@@ -23,32 +23,32 @@
     [layer addAnimation:rotation forKey:@"Spin"];
 }
 
-+ (NSString *) monthToString :(NSInteger) intMonth{
++ (NSString *) monthToString :(NSInteger) intMonth withAbbreviation:(BOOL) abbrev{
     switch (intMonth) {
         case 1:
-            return @"JAN";
+            return abbrev ? @"JAN" : @"January";
         case 2:
-            return @"FEB";
+            return abbrev ? @"FEB" : @"February";
         case 3:
-            return @"MAR";
+            return abbrev ? @"MAR" : @"March";
         case 4:
-            return @"APR";
+            return abbrev ? @"APR" : @"April";
         case 5:
-            return @"MAY";
+            return abbrev ? @"MAY" : @"May";
         case 6:
-            return @"JUN";
+            return abbrev ? @"JUN" : @"June";
         case 7:
-            return @"JUL";
+            return abbrev ? @"JUL" : @"July";
         case 8:
-            return @"AUG";
+            return abbrev ? @"AUG" : @"August";
         case 9:
-            return @"SEP";
+            return abbrev ? @"SEP" : @"September";
         case 10:
-            return @"OCT";
+            return abbrev ? @"OCT" : @"October";
         case 11:
-            return @"NOV";
+            return abbrev ? @"NOV" : @"November";
         case 12:
-            return @"DEC";
+            return abbrev ? @"DEC" : @"December";
             
         default:
             return @"ERROR";

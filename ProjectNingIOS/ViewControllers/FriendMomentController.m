@@ -177,7 +177,7 @@
 
 - (NSMutableAttributedString *) processDateToText: (NSDate *) date{
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
-    NSString *month = [Utils monthToString:[components month]];
+    NSString *month = [Utils monthToString:[components month] withAbbreviation:YES];
     NSString *day = [@([components day]) stringValue];
     UIFont *arialFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0];
     NSDictionary *arialDict = [NSDictionary dictionaryWithObject: arialFont forKey:NSFontAttributeName];

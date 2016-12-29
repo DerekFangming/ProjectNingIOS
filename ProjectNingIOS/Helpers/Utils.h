@@ -28,6 +28,6 @@
 
 + (void)rotateLayerInfinite:(CALayer *)layer;
 
-+ (NSString *) monthToString :(NSInteger) intMonth;
++ (NSString *) monthToString:(NSInteger) intMonth withAbbreviation:(BOOL) abbrev;
 
 @end
