@@ -863,17 +863,36 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbA-o5-v1i">
+                                            <rect key="frame" x="562" y="96" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="UhS-kj-zGb"/>
+                                                <constraint firstAttribute="width" constant="20" id="r4a-3t-Bfg"/>
+                                            </constraints>
+                                            <state key="normal" image="writeComment.png"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q70-Vr-Uqr">
+                                            <rect key="frame" x="539" y="96" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="KzG-dc-rkx"/>
+                                                <constraint firstAttribute="height" constant="20" id="Umt-HM-2dB"/>
+                                            </constraints>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="OkH-e1-Rgk" firstAttribute="leading" secondItem="DvM-EY-3wI" secondAttribute="leadingMargin" constant="59" id="1lc-Rd-ndL"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Q70-Vr-Uqr" secondAttribute="bottom" constant="-5" id="54y-oE-Xbd"/>
                                         <constraint firstItem="P7C-vp-uM9" firstAttribute="top" secondItem="DvM-EY-3wI" secondAttribute="topMargin" id="8mn-Hj-FSI"/>
                                         <constraint firstItem="OkH-e1-Rgk" firstAttribute="top" secondItem="P7C-vp-uM9" secondAttribute="bottom" constant="84" id="9Q0-g0-RcD"/>
                                         <constraint firstItem="ppo-sI-9iL" firstAttribute="leading" secondItem="DvM-EY-3wI" secondAttribute="leadingMargin" constant="5" id="F4r-WC-8bj"/>
                                         <constraint firstItem="P7C-vp-uM9" firstAttribute="leading" secondItem="ppo-sI-9iL" secondAttribute="trailing" constant="19" id="FQh-lf-xZm"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="RsY-tY-nYw" secondAttribute="trailing" constant="10" id="IrZ-IM-vME"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="NbA-o5-v1i" secondAttribute="trailing" constant="10" id="L63-b7-wP8"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="RsY-tY-nYw" secondAttribute="bottom" constant="8" id="POI-vX-4ow"/>
                                         <constraint firstItem="RsY-tY-nYw" firstAttribute="leading" secondItem="ppo-sI-9iL" secondAttribute="trailing" constant="14" id="XNC-K5-pee"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="NbA-o5-v1i" secondAttribute="bottom" constant="-5" id="awy-2d-Rak"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="OkH-e1-Rgk" secondAttribute="bottom" constant="-5" id="huK-kM-0Zv"/>
+                                        <constraint firstItem="NbA-o5-v1i" firstAttribute="leading" secondItem="Q70-Vr-Uqr" secondAttribute="trailing" constant="3" id="jgX-98-tt5"/>
                                         <constraint firstItem="RsY-tY-nYw" firstAttribute="top" secondItem="P7C-vp-uM9" secondAttribute="bottom" constant="-5" id="q4f-3H-xF7"/>
                                         <constraint firstItem="ppo-sI-9iL" firstAttribute="top" secondItem="DvM-EY-3wI" secondAttribute="topMargin" id="tX8-wi-sfu"/>
                                     </constraints>
@@ -885,7 +904,9 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="avatar" destination="ppo-sI-9iL" id="RAd-1G-lcR"/>
+                                    <outlet property="commentBtn" destination="NbA-o5-v1i" id="sSu-gG-WEh"/>
                                     <outlet property="dateLabel" destination="OkH-e1-Rgk" id="wvw-zp-zgZ"/>
+                                    <outlet property="likeBtn" destination="Q70-Vr-Uqr" id="JzD-TJ-Ovf"/>
                                     <outlet property="momentTextField" destination="RsY-tY-nYw" id="DOX-s1-19U"/>
                                     <outlet property="nameLabel" destination="P7C-vp-uM9" id="y3h-8P-oyK"/>
                                 </connections>
@@ -976,4 +997,7 @@
             <point key="canvasLocation" x="-1128" y="414"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="writeComment.png" width="64" height="64"/>
+    </resources>
 </document>

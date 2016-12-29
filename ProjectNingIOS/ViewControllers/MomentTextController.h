@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSString *displayedName;
 @property (nonatomic, strong) UIImage *avatar;
 @property (nonatomic, strong) NSString *momentBody;
-
+@property (nonatomic, strong) NSDate *createdAt;
+@property (nonatomic, assign) BOOL likedByCurrentUser;
 
 @end

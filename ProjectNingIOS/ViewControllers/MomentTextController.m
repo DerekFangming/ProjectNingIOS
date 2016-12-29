@@ -47,38 +47,59 @@
 #pragma mark - Table cell handling -
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MomentTextHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextHeaderCell" forIndexPath:indexPath];
-    
-    if(cell == nil) {
-        cell = [[MomentTextHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentImageCell"];
+    if(indexPath.row == 0){
+        MomentTextHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextHeaderCell" forIndexPath:indexPath];
+        
+        if(cell == nil) {
+            cell = [[MomentTextHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentImageCell"];
+        }
+        
+        [cell.avatar setImage: self.avatar];
+        cell.nameLabel.text = self.displayedName;
+        cell.nameLabel.textColor = PURPLE_COLOR;
+        cell.momentTextField.text = [self.momentBody stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];
+        [cell.momentTextField sizeToFit];
+        [cell.momentTextField layoutIfNeeded];
+        CGSize size = [cell.momentTextField
+                       sizeThatFits:CGSizeMake(cell.momentTextField.frame.size.width, CGFLOAT_MAX)];
+        headerCellHeight = size.height;
+        
+        [cell.momentTextField setContentSize:size];
+        cell.dateLabel.text = [self processDateToText:self.createdAt];
+        
+        if(self.likedByCurrentUser) [cell.likeBtn setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
+        else [cell.likeBtn setBackgroundImage:[UIImage imageNamed:@"notLike.png"] forState:UIControlStateNormal];
+        
+        [cell.likeBtn addTarget:self action:@selector(okButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+        
+        return cell;
+    }else{
+        return nil;
+    }
+}
+
+#pragma mark - Like and comment button events -
+
+- (void)okButtonTapped:(UIButton *)sender{
+    if(self.likedByCurrentUser){
+        [sender setBackgroundImage:[UIImage imageNamed:@"notLike.png"] forState:UIControlStateNormal];
+        self.likedByCurrentUser = NO;
+    }else{
+        [sender setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
+        self.likedByCurrentUser = YES;
     }
     
-    [cell.avatar setImage: self.avatar];
-    cell.nameLabel.text = self.displayedName;
-    cell.nameLabel.textColor = PURPLE_COLOR;
-    cell.momentTextField.text = [self.momentBody stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];
-    [cell.momentTextField sizeToFit];
-    [cell.momentTextField layoutIfNeeded];
-    CGSize size = [cell.momentTextField
-                      sizeThatFits:CGSizeMake(cell.momentTextField.frame.size.width, CGFLOAT_MAX)];
-    headerCellHeight = size.height;
-    NSLog(@"%f",size.height);
-    [cell.momentTextField setContentSize:size];
-    //cell.dateLabel.text = self processDateToText:self.date
-    
-    return cell;
 }
 
 #pragma mark - Helpers -
 
 - (NSString *) processDateToText: (NSDate *) date{
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute fromDate:date];
     NSString *month = [Utils monthToString:[components month] withAbbreviation:NO];
     NSString *dateStr = [NSString stringWithFormat:@"%@ %@, %@", month, [@([components day]) stringValue],
                          [@([components year]) stringValue]];
     dateStr = [NSString stringWithFormat:@"%@ %@:%@", dateStr, [@([components hour]) stringValue],
                [@([components minute]) stringValue]];
-    
     return dateStr;
 }
 

@@ -195,12 +195,14 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([segue.identifier isEqualToString:@"momentTextDetailSegue"]) {
+        PNMoment *selectedMoment = [self.momentList objectAtIndex:[[self.tableView indexPathForCell:sender] row]];
         MomentTextController *destVC = segue.destinationViewController;
         NSString * a =  self.displayedName;
         destVC.displayedName = a;
         destVC.avatar = self.avatar;
         destVC.userId = self.userId;
-        destVC.momentBody = ((MomentTextCell *)sender).momentBody.text;
+        destVC.momentBody = [selectedMoment momentBody];
+        destVC.createdAt = [selectedMoment createdAt];
     }
 }
 
