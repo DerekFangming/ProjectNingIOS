@@ -34,16 +34,16 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    [manager POST:pathForRecentMomentList
+    [manager POST:pathForRecentFeedList
        parameters:parameters
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
-                  NSArray *array = [responseObject objectForKey:@"momentList"];
+                  NSArray *array = [responseObject objectForKey:@"feedList"];
                   NSMutableArray *momentList = [[NSMutableArray alloc] init];
                   for(NSDictionary * dic in array){
-                      PNMoment *moment = [[PNMoment alloc] initWithMomentId:[dic objectForKey:@"momentId"]
-                                                                    andBody:[dic objectForKey:@"momentBody"]
+                      PNMoment *moment = [[PNMoment alloc] initWithMomentId:[dic objectForKey:@"feedId"]
+                                                                    andBody:[dic objectForKey:@"feedBody"]
                                                                     andDate:[formatter dateFromString:[dic objectForKey:@"createdAt"]]];
                       moment.hasCoverImg = [[dic objectForKey:@"hasImage"] boolValue];
                       [momentList addObject:moment];
@@ -72,13 +72,13 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:[user accessToken] forKey:@"accessToken"];
     [parameters setObject:userId forKey:@"userId"];
-    [parameters setObject:momentId forKey:@"momentId"];
+    [parameters setObject:momentId forKey:@"feedId"];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    [manager POST:pathForMomentCoverImg
+    [manager POST:pathForFeedCoverImg
        parameters:parameters
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -110,7 +110,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    [manager POST:pathForMomentPreviewIds
+    [manager POST:pathForFeedPreviewIds
        parameters:parameters
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

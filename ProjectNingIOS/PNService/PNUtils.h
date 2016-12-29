@@ -21,9 +21,9 @@
 #define pathForImgIdList            @"get_image_ids_by_type"
 #define pathForImgDownload          @"download_image_by_id"
 #define pathForSingletonTypeImg     @"get_singleton_img_by_type"
-#define pathForRecentMomentList     @"get_recent_moments"
-#define pathForMomentCoverImg       @"get_moment_cover_img"
-#define pathForMomentPreviewIds     @"get_moment_preview_images"
+#define pathForRecentFeedList       @"get_recent_feeds"
+#define pathForFeedCoverImg         @"get_feed_cover_img"
+#define pathForFeedPreviewIds       @"get_feed_preview_images"
 
 
 @interface PNUtils : NSObject
