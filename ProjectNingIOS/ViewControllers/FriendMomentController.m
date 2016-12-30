@@ -63,15 +63,15 @@
     {
         return 240;
     }else{
-        PNMoment *moment = [self.momentList objectAtIndex:indexPath.row];
+        PNFeed *moment = [self.momentList objectAtIndex:indexPath.row];
         if(moment.hasCoverImg){
-            if(moment.isLastMomentOfTheDay){
+            if(moment.isLastFeedOfTheDay){
                 return 84;
             }else{
                 return 64;
             }
         }else{
-            if(moment.isLastMomentOfTheDay){
+            if(moment.isLastFeedOfTheDay){
                 return 65;
             }else{
                 return 45;
@@ -100,22 +100,22 @@
         cell.displayedName.text = self.displayedName;      
         return cell;
     }else{
-        PNMoment *moment = [self.momentList objectAtIndex:indexPath.row];
+        PNFeed *moment = [self.momentList objectAtIndex:indexPath.row];
         
         //Process height indicator
         if(indexPath.row == [self.momentList count] - 1){
-            moment.isLastMomentOfTheDay = YES;
+            moment.isLastFeedOfTheDay = YES;
         }else{
             NSDate *nextDate = [[self.momentList objectAtIndex:indexPath.row + 1] createdAt];
             if(![[NSCalendar currentCalendar] isDate:moment.createdAt inSameDayAsDate:nextDate]){
-                moment.isLastMomentOfTheDay = YES;
+                moment.isLastFeedOfTheDay = YES;
             }
         }
         
         //Process moment date text
         if(indexPath.row == 0){
             moment.dateText = [self processDateToText:moment.createdAt];
-        }else if([[self.momentList objectAtIndex:indexPath.row - 1] isLastMomentOfTheDay]){
+        }else if([[self.momentList objectAtIndex:indexPath.row - 1] isLastFeedOfTheDay]){
             moment.dateText = [self processDateToText:moment.createdAt];
         }
         [[NSCalendar currentCalendar] isDate:moment.createdAt inSameDayAsDate:moment.createdAt];
@@ -127,11 +127,11 @@
                 cell = [[MomentImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentImageCell"];
             }
             cell.dateLabel.attributedText = moment.dateText;
-            cell.momentBody.text = [moment.momentBody stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];
+            cell.momentBody.text = [moment.feedBody stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];
             cell.momentBody.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
             
-            [PNMomentManager getMomentCoverImgForUser:self.userId
-                                             onMoment:moment.momentId
+            [PNFeedManager getFeedCoverImgForUser:self.userId
+                                             onFeed:moment.feedId
                                              response:^(NSError *err, UIImage *image) {
                                                  if(err == nil){
                                                      [cell.coverImg setImage:image];
@@ -148,7 +148,7 @@
                 cell = [[MomentTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextCell"];
             }
             cell.dateLabel.attributedText = moment.dateText;
-            cell.momentBody.text = [moment.momentBody stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];
+            cell.momentBody.text = [moment.feedBody stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];
             cell.momentBody.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
             [cell.backgroundView setBackgroundColor:GRAY_BG_COLOR];
             cell.momentBody.contentInset = UIEdgeInsetsMake(-4,-2,0,0);
@@ -161,18 +161,18 @@
 #pragma mark - moment helpers -
 
 - (void) loadMoreMoments{
-    [PNMomentManager getRecentMomentListForUser:self.userId
-                                      beforeDte:[NSDate date]
-                                      withLimit:[NSNumber numberWithInt:10]
-                                       response:^(NSError *err, NSArray *momentList, NSDate *checkPoint) {
-                                           if(err == nil){
-                                               self.checkPoint = checkPoint;
-                                               [self.momentList addObjectsFromArray:momentList];
-                                               [self.tableView reloadData];
-                                           }else{
-                                               //NSLog([err localizedDescription]);
-                                           }
-                                       }];
+    [PNFeedManager getRecentFeedListForUser:self.userId
+                                  beforeDte:[NSDate date]
+                                  withLimit:[NSNumber numberWithInt:10]
+                                   response:^(NSError *err, NSArray *momentList, NSDate *checkPoint) {
+                                       if(err == nil){
+                                           self.checkPoint = checkPoint;
+                                           [self.momentList addObjectsFromArray:momentList];
+                                           [self.tableView reloadData];
+                                       }else{
+                                           //NSLog([err localizedDescription]);
+                                       }
+                                    }];
 }
 
 - (NSMutableAttributedString *) processDateToText: (NSDate *) date{
@@ -195,13 +195,13 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([segue.identifier isEqualToString:@"momentTextDetailSegue"]) {
-        PNMoment *selectedMoment = [self.momentList objectAtIndex:[[self.tableView indexPathForCell:sender] row]];
+        PNFeed *selectedMoment = [self.momentList objectAtIndex:[[self.tableView indexPathForCell:sender] row]];
         MomentTextController *destVC = segue.destinationViewController;
         NSString * a =  self.displayedName;
         destVC.displayedName = a;
         destVC.avatar = self.avatar;
         destVC.userId = self.userId;
-        destVC.momentBody = [selectedMoment momentBody];
+        destVC.momentBody = [selectedMoment feedBody];
         destVC.createdAt = [selectedMoment createdAt];
     }
 }

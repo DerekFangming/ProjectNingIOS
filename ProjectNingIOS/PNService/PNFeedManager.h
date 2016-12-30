@@ -1,5 +1,5 @@
 //
-//  PNMomentManager.h
+//  PNFeedManager.h
 //  ProjectNingIOS
 //
 //  Created by NingFangming on 12/14/16.
@@ -10,28 +10,28 @@
 
 #import "PNUser.h"
 #import "PNUtils.h"
-#import "PNMoment.h"
+#import "PNFeed.h"
 
-@interface PNMomentManager : NSObject
+@interface PNFeedManager : NSObject
 
 /**
- Get a list of most recent moments for a user.
- All moments are created before the date and will be limited by the limit input.
+ Get a list of most recent feeds for a user.
+ All feeds are created before the date and will be limited by the limit input.
  If entering nil, for date and limit, they will be defaulted to now and 10.
- @param userId the owner of the moments
+ @param userId the owner of the feeds
  @param date the check point date
- @param limit this will limit the number of moments that are retrived at a time
+ @param limit this will limit the number of feeds that are retrived at a time
  */
-+ (void) getRecentMomentListForUser:(NSNumber *) userId
++ (void) getRecentFeedListForUser:(NSNumber *) userId
                           beforeDte:(NSDate *) date
                           withLimit:(NSNumber *) limit
                            response:(void(^)(NSError *, NSArray *, NSDate *)) response;
 
-+ (void) getMomentCoverImgForUser:(NSNumber *) userId
-                         onMoment:(NSNumber *) momentId
++ (void) getFeedCoverImgForUser:(NSNumber *) userId
+                         onFeed:(NSNumber *) feedId
                          response:(void(^)(NSError *, UIImage *)) response;
 
-+ (void) getMomentPreviewImageIdListForUser:(NSNumber *) userId
++ (void) getFeedPreviewImageIdListForUser:(NSNumber *) userId
                                    response:(void(^)(NSError *, NSArray *)) response;
 
 @end

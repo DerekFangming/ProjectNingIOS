@@ -1,21 +1,21 @@
 //
-//  PNMoment.m
+//  PNFeed.m
 //  ProjectNingIOS
 //
 //  Created by NingFangming on 12/14/16.
 //  Copyright © 2016 fangming. All rights reserved.
 //
 
-#import "PNMoment.h"
+#import "PNFeed.h"
 
-@implementation PNMoment
+@implementation PNFeed
 
-- (id)initWithMomentId:(NSNumber *) momentId andBody:(NSString *) momentBody andDate:(NSDate *) createdAt{
+- (id)initWithFeedId:(NSNumber *) feedId andBody:(NSString *) feedBody andDate:(NSDate *) createdAt{
     self = [super init];
     
     if(self){
-        self.momentId = momentId;
-        self.momentBody = momentBody;
+        self.feedId = feedId;
+        self.feedBody = feedBody;
         self.createdAt = createdAt;
     }
     

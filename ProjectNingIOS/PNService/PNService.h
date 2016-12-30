@@ -12,8 +12,8 @@
 #import "PNAlertHelper.h"
 #import "PNRelationship.h"
 #import "PNFriend.h"
-#import "PNMoment.h"
-#import "PNMomentManager.h"
+#import "PNFeed.h"
+#import "PNFeedManager.h"
 
 @interface PNService : NSObject
 

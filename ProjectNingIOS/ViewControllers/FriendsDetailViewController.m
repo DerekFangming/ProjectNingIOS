@@ -136,16 +136,18 @@
             cell = [[MomentsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentsCell"];
         }
         
-        [PNMomentManager getMomentPreviewImageIdListForUser:self.userId
-                                                   response:^(NSError *err, NSArray *idList) {
-                                                       if(err == nil){
-                                                           [self loadMomentPreviewCell:cell
-                                                                            atPosition:0
-                                                                          withImageIds:idList];
-                                                       }else{
-                                                           //
-                                                       }
-                                                   }];
+        [PNFeedManager getFeedPreviewImageIdListForUser:self.userId
+                                                response:^(NSError *err, NSArray *idList) {
+                                                    if(err == nil){
+                                                    [self loadMomentPreviewCell:cell
+                                                                        atPosition:0
+                                                                    withImageIds:idList];
+                                                    }else{
+                                                        //
+                                                    }
+                                                }];
+                                                     
+                                                     
         return cell;
     }else if (indexPath.section == 2){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailCell"];

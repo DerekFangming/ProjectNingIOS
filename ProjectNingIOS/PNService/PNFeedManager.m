@@ -1,16 +1,16 @@
 //
-//  PNMomentManager.m
+//  PNFeedManager.m
 //  ProjectNingIOS
 //
 //  Created by NingFangming on 12/14/16.
 //  Copyright © 2016 fangming. All rights reserved.
 //
 
-#import "PNMomentManager.h"
+#import "PNFeedManager.h"
 
-@implementation PNMomentManager
+@implementation PNFeedManager
 
-+ (void) getRecentMomentListForUser:(NSNumber *) userId
++ (void) getRecentFeedListForUser:(NSNumber *) userId
                           beforeDte: (NSDate *) date
                           withLimit: (NSNumber *) limit
                            response:(void(^)(NSError *, NSArray *, NSDate *)) response{
@@ -40,17 +40,17 @@
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
                   NSArray *array = [responseObject objectForKey:@"feedList"];
-                  NSMutableArray *momentList = [[NSMutableArray alloc] init];
+                  NSMutableArray *feedList = [[NSMutableArray alloc] init];
                   for(NSDictionary * dic in array){
-                      PNMoment *moment = [[PNMoment alloc] initWithMomentId:[dic objectForKey:@"feedId"]
+                      PNFeed *feed = [[PNFeed alloc] initWithFeedId:[dic objectForKey:@"feedId"]
                                                                     andBody:[dic objectForKey:@"feedBody"]
                                                                     andDate:[formatter dateFromString:[dic objectForKey:@"createdAt"]]];
-                      moment.hasCoverImg = [[dic objectForKey:@"hasImage"] boolValue];
-                      [momentList addObject:moment];
+                      feed.hasCoverImg = [[dic objectForKey:@"hasImage"] boolValue];
+                      [feedList addObject:feed];
                   }
                   
                   NSDate *checkPoint = [formatter dateFromString:[responseObject objectForKey:@"checkPoint"]];
-                  response(nil, momentList,checkPoint);
+                  response(nil, feedList,checkPoint);
               }else{
                   response([PNUtils createNSError:responseObject], nil, nil);
               }
@@ -60,8 +60,8 @@
           }];
 }
 
-+ (void) getMomentCoverImgForUser:(NSNumber *) userId
-                         onMoment: (NSNumber *) momentId
++ (void) getFeedCoverImgForUser:(NSNumber *) userId
+                         onFeed: (NSNumber *) feedId
                           response:(void(^)(NSError *, UIImage *)) response{
     NSError *error = [PNUser checkUserLoginStatus];
     if(error != nil){
@@ -72,7 +72,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:[user accessToken] forKey:@"accessToken"];
     [parameters setObject:userId forKey:@"userId"];
-    [parameters setObject:momentId forKey:@"feedId"];
+    [parameters setObject:feedId forKey:@"feedId"];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -94,7 +94,7 @@
           }];
 }
 
-+ (void) getMomentPreviewImageIdListForUser:(NSNumber *) userId
++ (void) getFeedPreviewImageIdListForUser:(NSNumber *) userId
                                    response:(void(^)(NSError *, NSArray *)) response{
     NSError *error = [PNUser checkUserLoginStatus];
     if(error != nil){

@@ -20,8 +20,8 @@
 		87E5BFEE1DEE6F9600632391 /* coverImg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E5BFEA1DEE6F9600632391 /* coverImg3.png */; };
 		87E5BFEF1DEE6F9600632391 /* coverImg0.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E5BFEB1DEE6F9600632391 /* coverImg0.png */; };
 		87E5BFF31DEF497600632391 /* MomentTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFF21DEF497600632391 /* MomentTextCell.m */; };
-		87E5BFF61E01A31700632391 /* PNMoment.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFF51E01A31700632391 /* PNMoment.m */; };
-		87E5BFF91E01AF4400632391 /* PNMomentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFF81E01AF4400632391 /* PNMomentManager.m */; };
+		87E5BFF61E01A31700632391 /* PNFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFF51E01A31700632391 /* PNFeed.m */; };
+		87E5BFF91E01AF4400632391 /* PNFeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFF81E01AF4400632391 /* PNFeedManager.m */; };
 		87E5BFFC1E085AFD00632391 /* MomentImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFFB1E085AFD00632391 /* MomentImageCell.m */; };
 		87E5BFFF1E0F77F200632391 /* MomentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5BFFE1E0F77F200632391 /* MomentsCell.m */; };
 		87E5C0021E11EF4600632391 /* MomentTextHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5C0011E11EF4600632391 /* MomentTextHeaderCell.m */; };
@@ -107,10 +107,10 @@
 		87E5BFEB1DEE6F9600632391 /* coverImg0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coverImg0.png; path = Images/coverImg0.png; sourceTree = "<group>"; };
 		87E5BFF11DEF497600632391 /* MomentTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentTextCell.h; path = ViewControllers/TableCells/MomentTextCell.h; sourceTree = "<group>"; };
 		87E5BFF21DEF497600632391 /* MomentTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentTextCell.m; path = ViewControllers/TableCells/MomentTextCell.m; sourceTree = "<group>"; };
-		87E5BFF41E01A31700632391 /* PNMoment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNMoment.h; path = PNService/PNMoment.h; sourceTree = "<group>"; };
-		87E5BFF51E01A31700632391 /* PNMoment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNMoment.m; path = PNService/PNMoment.m; sourceTree = "<group>"; };
-		87E5BFF71E01AF4400632391 /* PNMomentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNMomentManager.h; path = PNService/PNMomentManager.h; sourceTree = "<group>"; };
-		87E5BFF81E01AF4400632391 /* PNMomentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNMomentManager.m; path = PNService/PNMomentManager.m; sourceTree = "<group>"; };
+		87E5BFF41E01A31700632391 /* PNFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNFeed.h; path = PNService/PNFeed.h; sourceTree = "<group>"; };
+		87E5BFF51E01A31700632391 /* PNFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNFeed.m; path = PNService/PNFeed.m; sourceTree = "<group>"; };
+		87E5BFF71E01AF4400632391 /* PNFeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNFeedManager.h; path = PNService/PNFeedManager.h; sourceTree = "<group>"; };
+		87E5BFF81E01AF4400632391 /* PNFeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNFeedManager.m; path = PNService/PNFeedManager.m; sourceTree = "<group>"; };
 		87E5BFFA1E085AFD00632391 /* MomentImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentImageCell.h; path = ViewControllers/TableCells/MomentImageCell.h; sourceTree = "<group>"; };
 		87E5BFFB1E085AFD00632391 /* MomentImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentImageCell.m; path = ViewControllers/TableCells/MomentImageCell.m; sourceTree = "<group>"; };
 		87E5BFFD1E0F77F200632391 /* MomentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentsCell.h; path = ViewControllers/TableCells/MomentsCell.h; sourceTree = "<group>"; };
@@ -406,10 +406,10 @@
 				87ED6F881DC81F4B004DB409 /* PNUtils.m */,
 				87ED6F791D9CAEF9004DB409 /* PNViewControllerHelper.h */,
 				87ED6F7A1D9CAEF9004DB409 /* PNViewControllerHelper.m */,
-				87E5BFF41E01A31700632391 /* PNMoment.h */,
-				87E5BFF51E01A31700632391 /* PNMoment.m */,
-				87E5BFF71E01AF4400632391 /* PNMomentManager.h */,
-				87E5BFF81E01AF4400632391 /* PNMomentManager.m */,
+				87E5BFF41E01A31700632391 /* PNFeed.h */,
+				87E5BFF51E01A31700632391 /* PNFeed.m */,
+				87E5BFF71E01AF4400632391 /* PNFeedManager.h */,
+				87E5BFF81E01AF4400632391 /* PNFeedManager.m */,
 			);
 			name = PNService;
 			sourceTree = "<group>";
@@ -603,12 +603,12 @@
 				87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */,
 				912D2D781C86A26A0039AEF5 /* ProfileDetailViewController.m in Sources */,
 				87E5BFE41DEB42E200632391 /* FriendMomentController.m in Sources */,
-				87E5BFF61E01A31700632391 /* PNMoment.m in Sources */,
+				87E5BFF61E01A31700632391 /* PNFeed.m in Sources */,
 				87ED6F831DBE8031004DB409 /* VCHolder.m in Sources */,
 				912D2D641C86A0120039AEF5 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				912D2D731C86A26A0039AEF5 /* LeftMenuViewController.m in Sources */,
 				912D2D611C86A0120039AEF5 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
-				87E5BFF91E01AF4400632391 /* PNMomentManager.m in Sources */,
+				87E5BFF91E01AF4400632391 /* PNFeedManager.m in Sources */,
 				91C532C31C9C68D0003E0CCB /* PNImageManager.m in Sources */,
 				87ED6F891DC81F4B004DB409 /* PNUtils.m in Sources */,
 				87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */,
