@@ -53,8 +53,10 @@
 	Get a list of IDs for images with the specific type.
 	Note that only images created by you with that type will get retrieved
 	@param type the type name of the images
+    @param userId the owner of the images
  */
 + (void) getImageIdListByType:(NSString *) type
+                      forUser:(NSNumber *) userId
                      response:(void (^)(NSMutableArray *, NSError *))response;
 
 /**

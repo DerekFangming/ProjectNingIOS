@@ -105,6 +105,7 @@
 }
 
 +(void) getImageIdListByType:(NSString *) type
+                     forUser:(NSNumber *) userId
                     response:(void (^)(NSMutableArray *list, NSError *error))response{
     NSError *error = [PNUser checkUserLoginStatus];
     if(error != nil){
@@ -116,6 +117,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:[user accessToken] forKey:@"accessToken"];
     [parameters setObject:type forKey:@"type"];
+    [parameters setObject:userId forKey:@"userId"];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
