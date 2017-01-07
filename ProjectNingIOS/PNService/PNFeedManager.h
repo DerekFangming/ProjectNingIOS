@@ -27,10 +27,19 @@
                           withLimit:(NSNumber *) limit
                            response:(void(^)(NSError *, NSArray *, NSDate *)) response;
 
+/**
+ Get feed cover image for a feed. This image is created by sending create cover image request to the server
+ @param userId the user
+ @param feedId the feed
+ */
 + (void) getFeedCoverImgForUser:(NSNumber *) userId
                          onFeed:(NSNumber *) feedId
                          response:(void(^)(NSError *, UIImage *)) response;
 
+/**
+ Get list of IDs for the most recent feed cover images. 4 image IDs will be retrieved maximumly
+ @param userId the user
+ */
 + (void) getFeedPreviewImageIdListForUser:(NSNumber *) userId
                                    response:(void(^)(NSError *, NSArray *)) response;
 
