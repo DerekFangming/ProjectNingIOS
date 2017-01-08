@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PNUser.h"
+#import "PNUtils.h"
+#import "PNComment.h"
 
 @interface PNCommentManager : NSObject
+
++ (void) getRecentCommentsForUser:(NSNumber *) userId
+                   forCommentType:(NSString *) type
+                    withMappingId:(NSNumber *) mappingId
+                         response:(void(^)(NSError *, NSArray *)) response;
 
 @end
