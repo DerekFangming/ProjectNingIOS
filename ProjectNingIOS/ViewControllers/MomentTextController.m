@@ -17,11 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.likeCellHeight = 44;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,12 +33,18 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return headerCellHeight + 45;
+    if(indexPath.row == 0){
+        return headerCellHeight + 45;
+    }else if(indexPath.row == 1){
+        return self.likeCellHeight;
+    }else{
+        return 45;
+    }
 }
 
 #pragma mark - Table cell handling -
@@ -53,6 +56,8 @@
         if(cell == nil) {
             cell = [[MomentTextHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentImageCell"];
         }
+        //Remove seperator?
+        //cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width, 0.f, 0.f);
         
         [cell.avatar setImage: self.avatar];
         cell.nameLabel.text = self.displayedName;
@@ -73,6 +78,35 @@
         [cell.likeBtn addTarget:self action:@selector(okButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
         
         return cell;
+    }else if (indexPath.row == 1){
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextLikeCell" forIndexPath:indexPath];
+        
+        if(cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextLikeCell"];
+        }
+        
+        NSLog(@"%f", cell.bounds.size.width);
+        NSLog(@"%f", cell.bounds.size.height);
+        
+        int commentCount = 7;
+        
+        int cellwidth = (int) roundf(cell.bounds.size.width);
+        int picPerRow = (cellwidth - 75) / 35;
+        
+        int totalRows = ceil((float)commentCount / (float)picPerRow);
+        for(int i = 0; i < picPerRow; i ++){
+            UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(60 + i * 35, 7, 30, 30)];
+            imv.image=[UIImage imageNamed:@"defaultAvatar.jpg"];
+            [cell.contentView addSubview:imv];
+        }
+        
+        
+        
+        [cell.contentView setBackgroundColor:GRAY_BG_COLOR];
+        
+        return cell;
+        
     }else{
         return nil;
     }

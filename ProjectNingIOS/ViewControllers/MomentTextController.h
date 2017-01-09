@@ -22,4 +22,6 @@
 @property (nonatomic, strong) NSDate *createdAt;
 @property (nonatomic, assign) BOOL likedByCurrentUser;
 
+@property (nonatomic, assign) CGFloat likeCellHeight;
+
 @end

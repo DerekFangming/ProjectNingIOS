@@ -911,6 +911,14 @@
                                     <outlet property="nameLabel" destination="P7C-vp-uM9" id="y3h-8P-oyK"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentTextLikeCell" id="9cb-Hd-Kvc">
+                                <rect key="frame" x="0.0" y="212" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9cb-Hd-Kvc" id="lC6-oD-Tvg">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="tAQ-2l-9bv" id="Nm2-XG-gCm"/>
