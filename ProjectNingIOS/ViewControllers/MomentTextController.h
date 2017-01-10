@@ -11,9 +11,7 @@
 #import "Utils.h"
 #import "MomentTextHeaderCell.h"
 
-@interface MomentTextController : UITableViewController{
-    CGFloat headerCellHeight;
-}
+@interface MomentTextController : UITableViewController
 
 @property (nonatomic, strong) NSNumber *userId;
 @property (nonatomic, strong) NSString *displayedName;
@@ -22,6 +20,8 @@
 @property (nonatomic, strong) NSDate *createdAt;
 @property (nonatomic, assign) BOOL likedByCurrentUser;
 
+@property (nonatomic, assign) int commentLikeCount;
 @property (nonatomic, assign) CGFloat likeCellHeight;
+@property (nonatomic, assign) CGFloat headerCellHeight;
 
 @end

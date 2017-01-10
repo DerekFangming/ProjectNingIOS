@@ -18,6 +18,8 @@
     [super viewDidLoad];
     
     self.likeCellHeight = 44;
+    self.commentLikeCount = 14;
+    
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
@@ -39,7 +41,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.row == 0){
-        return headerCellHeight + 45;
+        return self.headerCellHeight;
     }else if(indexPath.row == 1){
         return self.likeCellHeight;
     }else{
@@ -57,7 +59,7 @@
             cell = [[MomentTextHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentImageCell"];
         }
         //Remove seperator?
-        //cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width, 0.f, 0.f);
+        cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width, 0.f, 0.f);
         
         [cell.avatar setImage: self.avatar];
         cell.nameLabel.text = self.displayedName;
@@ -67,15 +69,32 @@
         [cell.momentTextField layoutIfNeeded];
         CGSize size = [cell.momentTextField
                        sizeThatFits:CGSizeMake(cell.momentTextField.frame.size.width, CGFLOAT_MAX)];
-        headerCellHeight = size.height;
+        self.headerCellHeight = size.height + 45;
         
         [cell.momentTextField setContentSize:size];
         cell.dateLabel.text = [self processDateToText:self.createdAt];
         
+        //Like button
         if(self.likedByCurrentUser) [cell.likeBtn setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
         else [cell.likeBtn setBackgroundImage:[UIImage imageNamed:@"notLike.png"] forState:UIControlStateNormal];
         
         [cell.likeBtn addTarget:self action:@selector(okButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+        
+        //Triangle view
+        UIBezierPath* trianglePath = [UIBezierPath bezierPath];
+        [trianglePath moveToPoint:CGPointMake(0, 5)];
+        [trianglePath addLineToPoint:CGPointMake(5,0)];
+        [trianglePath addLineToPoint:CGPointMake(10, 5)];
+        [trianglePath closePath];
+        
+        CAShapeLayer *triangleMaskLayer = [CAShapeLayer layer];
+        [triangleMaskLayer setPath:trianglePath.CGPath];
+        
+        UIView *triangleView = [[UIView alloc] initWithFrame:CGRectMake(20,self.headerCellHeight - 5, 10, 5)];
+        
+        triangleView.backgroundColor = GRAY_BG_COLOR;
+        triangleView.layer.mask = triangleMaskLayer;
+        [cell.contentView addSubview:triangleView];
         
         return cell;
     }else if (indexPath.row == 1){
@@ -85,26 +104,38 @@
         if(cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextLikeCell"];
         }
-        
-        NSLog(@"%f", cell.bounds.size.width);
-        NSLog(@"%f", cell.bounds.size.height);
-        
-        int commentCount = 7;
+        // Put condition in this code
+        if ([cell.contentView subviews]){
+            for (UIView *subview in [cell.contentView subviews]) {
+                [subview removeFromSuperview];
+            }
+        }
         
         int cellwidth = (int) roundf(cell.bounds.size.width);
         int picPerRow = (cellwidth - 75) / 35;
         
-        int totalRows = ceil((float)commentCount / (float)picPerRow);
-        for(int i = 0; i < picPerRow; i ++){
-            UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(60 + i * 35, 7, 30, 30)];
+        int totalRows = ceil((float)self.commentLikeCount / (float)picPerRow);
+        self.likeCellHeight = totalRows * 35 + 9; // rows * 30 + (rows - 1 ) * 5 + 7 * 2
+        
+        UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(15, 0, cell.bounds.size.width - 25, self.likeCellHeight)];
+        [bgView setBackgroundColor:GRAY_BG_COLOR];
+        [cell.contentView addSubview:bgView];
+        
+        for(int i = 0; i < self.commentLikeCount; i ++){
+            int row = i / picPerRow;
+            int col = i % picPerRow;
+            UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(60 + col * 35, 7 + row * 35, 30, 30)];
             imv.image=[UIImage imageNamed:@"defaultAvatar.jpg"];
+            imv.tag = i;
+            UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                        action:@selector(likeImgClick:)];
+            singleTap.numberOfTapsRequired = 1;
+            [imv setUserInteractionEnabled:YES];
+            [imv addGestureRecognizer:singleTap];
             [cell.contentView addSubview:imv];
         }
         
-        
-        
-        [cell.contentView setBackgroundColor:GRAY_BG_COLOR];
-        
+        //cell.separatorInset = UIEdgeInsetsMake(10, cell.bounds.size.width - 10, 0, 0);
         return cell;
         
     }else{
@@ -118,11 +149,13 @@
     if(self.likedByCurrentUser){
         [sender setBackgroundImage:[UIImage imageNamed:@"notLike.png"] forState:UIControlStateNormal];
         self.likedByCurrentUser = NO;
+        self.commentLikeCount -= 1;
     }else{
         [sender setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
         self.likedByCurrentUser = YES;
+        self.commentLikeCount += 1;
     }
-    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Helpers -
@@ -135,6 +168,11 @@
     dateStr = [NSString stringWithFormat:@"%@ %@:%@", dateStr, [@([components hour]) stringValue],
                [@([components minute]) stringValue]];
     return dateStr;
+}
+
+-(void)likeImgClick:(UITapGestureRecognizer *)recognizer
+{
+    NSLog(@"%d", recognizer.view.tag);
 }
 
 @end
