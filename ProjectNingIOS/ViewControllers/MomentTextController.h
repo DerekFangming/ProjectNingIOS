@@ -18,9 +18,14 @@
 @property (nonatomic, strong) UIImage *avatar;
 @property (nonatomic, strong) NSString *momentBody;
 @property (nonatomic, strong) NSDate *createdAt;
+
 @property (nonatomic, assign) BOOL likedByCurrentUser;
 
-@property (nonatomic, assign) int commentLikeCount;
+@property (nonatomic, strong) NSMutableArray *likedList;
+@property (nonatomic, strong) NSMutableArray *commentList;
+
+@property (nonatomic, assign) int commentLikeCount; // testing only
+@property (nonatomic, assign) int commentCount; // testing only
 @property (nonatomic, assign) CGFloat likeCellHeight;
 @property (nonatomic, assign) CGFloat headerCellHeight;
 

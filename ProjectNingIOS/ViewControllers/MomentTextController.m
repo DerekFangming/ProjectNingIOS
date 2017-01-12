@@ -17,8 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.likeCellHeight = 44;
-    self.commentLikeCount = 14;
+    //self.likeCellHeight = 44;
+    //self.commentLikeCount = 0;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
@@ -81,21 +81,26 @@
         [cell.likeBtn addTarget:self action:@selector(okButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
         
         //Triangle view
-        UIBezierPath* trianglePath = [UIBezierPath bezierPath];
-        [trianglePath moveToPoint:CGPointMake(0, 5)];
-        [trianglePath addLineToPoint:CGPointMake(5,0)];
-        [trianglePath addLineToPoint:CGPointMake(10, 5)];
-        [trianglePath closePath];
-        
-        CAShapeLayer *triangleMaskLayer = [CAShapeLayer layer];
-        [triangleMaskLayer setPath:trianglePath.CGPath];
-        
-        UIView *triangleView = [[UIView alloc] initWithFrame:CGRectMake(20,self.headerCellHeight - 5, 10, 5)];
-        
-        triangleView.backgroundColor = GRAY_BG_COLOR;
-        triangleView.layer.mask = triangleMaskLayer;
-        [cell.contentView addSubview:triangleView];
-        
+        if(self.commentLikeCount > 0 || self.commentCount > 0){
+            UIBezierPath* trianglePath = [UIBezierPath bezierPath];
+            [trianglePath moveToPoint:CGPointMake(0, 5)];
+            [trianglePath addLineToPoint:CGPointMake(5,0)];
+            [trianglePath addLineToPoint:CGPointMake(10, 5)];
+            [trianglePath closePath];
+            
+            CAShapeLayer *triangleMaskLayer = [CAShapeLayer layer];
+            [triangleMaskLayer setPath:trianglePath.CGPath];
+            
+            UIView *triangleView = [[UIView alloc] initWithFrame:CGRectMake(20,self.headerCellHeight - 5, 10, 5)];
+            
+            triangleView.backgroundColor = GRAY_BG_COLOR;
+            triangleView.layer.mask = triangleMaskLayer;
+            triangleView.tag = 1;
+            [cell.contentView addSubview:triangleView];
+        }else if ([cell.contentView subviews]){
+            UIView * triagnleView = [cell.contentView viewWithTag:1];
+            [triagnleView removeFromSuperview];
+        }
         return cell;
     }else if (indexPath.row == 1){
         
@@ -104,23 +109,28 @@
         if(cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextLikeCell"];
         }
-        // Put condition in this code
+        
+        //Remove background view and images
         if ([cell.contentView subviews]){
             for (UIView *subview in [cell.contentView subviews]) {
                 [subview removeFromSuperview];
             }
         }
-        
+                                                                   
+        //Calculate image information base on cell width, etc
         int cellwidth = (int) roundf(cell.bounds.size.width);
         int picPerRow = (cellwidth - 75) / 35;
-        
         int totalRows = ceil((float)self.commentLikeCount / (float)picPerRow);
-        self.likeCellHeight = totalRows * 35 + 9; // rows * 30 + (rows - 1 ) * 5 + 7 * 2
         
-        UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(15, 0, cell.bounds.size.width - 25, self.likeCellHeight)];
-        [bgView setBackgroundColor:GRAY_BG_COLOR];
-        [cell.contentView addSubview:bgView];
-        
+        //Add gray background view and calculate cell height if there are comments
+        if(self.commentLikeCount > 0){
+            self.likeCellHeight = totalRows * 35 + 9; // rows * 30 + (rows - 1 ) * 5 + 7 * 2
+            UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(15, 0, cell.bounds.size.width - 25, self.likeCellHeight)];
+            [bgView setBackgroundColor:GRAY_BG_COLOR];
+            [cell.contentView addSubview:bgView];
+        }
+            
+        //Adding images
         for(int i = 0; i < self.commentLikeCount; i ++){
             int row = i / picPerRow;
             int col = i % picPerRow;
@@ -135,7 +145,10 @@
             [cell.contentView addSubview:imv];
         }
         
-        //cell.separatorInset = UIEdgeInsetsMake(10, cell.bounds.size.width - 10, 0, 0);
+        //Add seperator only when both like and comment exist
+        if(self.commentLikeCount == 0 || self.commentCount == 0){
+            cell.separatorInset = UIEdgeInsetsMake(10, cell.bounds.size.width , 0, 0);
+        }
         return cell;
         
     }else{
