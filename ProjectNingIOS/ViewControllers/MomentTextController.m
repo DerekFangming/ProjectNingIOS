@@ -17,8 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //self.likeCellHeight = 44;
-    //self.commentLikeCount = 0;
+    self.commentCount = 4;
+    self.commentLikeCount = 2;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
@@ -31,18 +31,22 @@
 #pragma mark - Section and list -
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    if(section == 0){
+        return 2;
+    }else{
+        return self.commentCount;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row == 0){
+    if(indexPath.section == 0 && indexPath.row == 0){
         return self.headerCellHeight;
-    }else if(indexPath.row == 1){
+    }else if(indexPath.section == 0 && indexPath.row == 1){
         return self.likeCellHeight;
     }else{
         return 45;
@@ -52,7 +56,7 @@
 #pragma mark - Table cell handling -
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.row == 0){
+    if(indexPath.section == 0 && indexPath.row == 0){
         MomentTextHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextHeaderCell" forIndexPath:indexPath];
         
         if(cell == nil) {
@@ -102,7 +106,7 @@
             [triagnleView removeFromSuperview];
         }
         return cell;
-    }else if (indexPath.row == 1){
+    }else if (indexPath.section == 0 && indexPath.row == 1){
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextLikeCell" forIndexPath:indexPath];
         
@@ -152,7 +156,13 @@
         return cell;
         
     }else{
-        return nil;
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextCommentCell" forIndexPath:indexPath];
+        
+        if(cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextCommentCell"];
+        }
+        [cell.contentView setBackgroundColor:GRAY_BG_COLOR];
+        return cell;
     }
 }
 
