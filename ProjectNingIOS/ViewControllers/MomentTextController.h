@@ -10,6 +10,7 @@
 #import "PNService.h"
 #import "Utils.h"
 #import "MomentTextHeaderCell.h"
+#import "MomentTextCommentCell.h"
 
 @interface MomentTextController : UITableViewController
 

@@ -31,6 +31,7 @@
 		87E5C00B1E14A7C300632391 /* writeComment.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E5C0081E14A7C300632391 /* writeComment.png */; };
 		87E5C00E1E1EA46300632391 /* PNCommentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5C00D1E1EA46300632391 /* PNCommentManager.m */; };
 		87E5C0111E1EC9D100632391 /* PNComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5C0101E1EC9D100632391 /* PNComment.m */; };
+		87E5C0141E273AF800632391 /* MomentTextCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5C0131E273AF800632391 /* MomentTextCommentCell.m */; };
 		87ED6F661D834F1B004DB409 /* PNStranger.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F651D834F1B004DB409 /* PNStranger.m */; };
 		87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F6C1D9199AF004DB409 /* Utils.m */; };
 		87ED6F741D9314C2004DB409 /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED6F731D9314C2004DB409 /* GMDCircleLoader.m */; };
@@ -128,6 +129,8 @@
 		87E5C00D1E1EA46300632391 /* PNCommentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNCommentManager.m; path = PNService/PNCommentManager.m; sourceTree = "<group>"; };
 		87E5C00F1E1EC9D100632391 /* PNComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNComment.h; path = PNService/PNComment.h; sourceTree = "<group>"; };
 		87E5C0101E1EC9D100632391 /* PNComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNComment.m; path = PNService/PNComment.m; sourceTree = "<group>"; };
+		87E5C0121E273AF800632391 /* MomentTextCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentTextCommentCell.h; path = ViewControllers/TableCells/MomentTextCommentCell.h; sourceTree = "<group>"; };
+		87E5C0131E273AF800632391 /* MomentTextCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentTextCommentCell.m; path = ViewControllers/TableCells/MomentTextCommentCell.m; sourceTree = "<group>"; };
 		87ED6F641D834F1B004DB409 /* PNStranger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNStranger.h; path = PNService/PNStranger.h; sourceTree = "<group>"; };
 		87ED6F651D834F1B004DB409 /* PNStranger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNStranger.m; path = PNService/PNStranger.m; sourceTree = "<group>"; };
 		87ED6F6B1D9199AF004DB409 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Helpers/Utils.h; sourceTree = "<group>"; };
@@ -251,6 +254,8 @@
 				87E5BFFE1E0F77F200632391 /* MomentsCell.m */,
 				87E5C0001E11EF4600632391 /* MomentTextHeaderCell.h */,
 				87E5C0011E11EF4600632391 /* MomentTextHeaderCell.m */,
+				87E5C0121E273AF800632391 /* MomentTextCommentCell.h */,
+				87E5C0131E273AF800632391 /* MomentTextCommentCell.m */,
 			);
 			name = TableCells;
 			sourceTree = "<group>";
@@ -593,6 +598,7 @@
 				87ED6F781D9CAB53004DB409 /* PNAlertHelper.m in Sources */,
 				912D2D771C86A26A0039AEF5 /* ProfileViewController.m in Sources */,
 				871D68751DD69BAD00728AD6 /* FriendsDetailViewController.m in Sources */,
+				87E5C0141E273AF800632391 /* MomentTextCommentCell.m in Sources */,
 				912D2D621C86A0120039AEF5 /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				87E5C0021E11EF4600632391 /* MomentTextHeaderCell.m in Sources */,
 				9144319B1C6E2353003FB63E /* ViewController.m in Sources */,

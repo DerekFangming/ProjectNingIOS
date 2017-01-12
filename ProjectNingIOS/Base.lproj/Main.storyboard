@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -914,13 +915,16 @@
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="10" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="momentTextCommentCell" id="mbe-gZ-lqb">
-                                <rect key="frame" x="0.0" y="256" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="momentTextCommentCell" rowHeight="50" id="mbe-gZ-lqb" customClass="MomentTextCommentCell">
+                                <rect key="frame" x="0.0" y="256" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mbe-gZ-lqb" id="7r2-5j-Ljg">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zga-vI-Atp">
+                                            <rect key="frame" x="15" y="0.0" width="575" height="50"/>
+                                        </view>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultAvatar.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="79C-DZ-cdP">
                                             <rect key="frame" x="58" y="7" width="30" height="30"/>
                                             <constraints>
@@ -929,12 +933,12 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dd5-hy-ixS">
-                                            <rect key="frame" x="96" y="7" width="100" height="21"/>
+                                            <rect key="frame" x="96" y="5" width="100" height="17"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="HMI-aH-eIW"/>
+                                                <constraint firstAttribute="height" constant="17" id="HMI-aH-eIW"/>
                                                 <constraint firstAttribute="width" constant="100" id="u37-dz-HTS"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -948,16 +952,45 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Comment text" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56q-fD-Ddt">
+                                            <rect key="frame" x="96" y="20" width="486" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="56q-fD-Ddt" firstAttribute="leading" secondItem="79C-DZ-cdP" secondAttribute="trailing" constant="8" id="4jN-gB-AY6"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Zga-vI-Atp" secondAttribute="trailing" constant="2" id="8AB-1E-l8z"/>
                                         <constraint firstItem="79C-DZ-cdP" firstAttribute="top" secondItem="7r2-5j-Ljg" secondAttribute="topMargin" constant="-1" id="BQf-VB-g4G"/>
+                                        <constraint firstItem="Zga-vI-Atp" firstAttribute="top" secondItem="7r2-5j-Ljg" secondAttribute="topMargin" constant="-8" id="Bqb-dT-nUL"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="56q-fD-Ddt" secondAttribute="trailing" constant="10" id="GqN-Ig-RRv"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="56q-fD-Ddt" secondAttribute="bottom" id="PRd-n8-x9l"/>
                                         <constraint firstItem="dd5-hy-ixS" firstAttribute="leading" secondItem="79C-DZ-cdP" secondAttribute="trailing" constant="8" id="UAn-dC-RzY"/>
                                         <constraint firstItem="ghp-wC-3Nx" firstAttribute="top" secondItem="7r2-5j-Ljg" secondAttribute="topMargin" constant="-1" id="Ut0-cn-hEV"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ghp-wC-3Nx" secondAttribute="trailing" constant="23" id="WRp-GX-Lzz"/>
                                         <constraint firstItem="79C-DZ-cdP" firstAttribute="leading" secondItem="7r2-5j-Ljg" secondAttribute="leadingMargin" constant="50" id="XCj-cd-YJv"/>
-                                        <constraint firstItem="dd5-hy-ixS" firstAttribute="top" secondItem="7r2-5j-Ljg" secondAttribute="topMargin" constant="-1" id="oP4-dA-PiZ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Zga-vI-Atp" secondAttribute="bottom" constant="-9" id="djg-Ut-fwu"/>
+                                        <constraint firstItem="Zga-vI-Atp" firstAttribute="leading" secondItem="7r2-5j-Ljg" secondAttribute="leadingMargin" constant="7" id="fbW-Lz-kcl"/>
+                                        <constraint firstItem="ghp-wC-3Nx" firstAttribute="leftMargin" secondItem="Zga-vI-Atp" secondAttribute="right" id="jnM-lE-UiY"/>
+                                        <constraint firstItem="Zga-vI-Atp" firstAttribute="leading" secondItem="79C-DZ-cdP" secondAttribute="trailing" id="mMi-Lw-vxq"/>
+                                        <constraint firstItem="dd5-hy-ixS" firstAttribute="top" secondItem="7r2-5j-Ljg" secondAttribute="topMargin" constant="-3" id="oP4-dA-PiZ"/>
+                                        <constraint firstItem="56q-fD-Ddt" firstAttribute="top" secondItem="dd5-hy-ixS" secondAttribute="bottom" constant="-2" id="q7i-mG-ixi"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="mMi-Lw-vxq"/>
+                                            <exclude reference="jnM-lE-UiY"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="25" minY="0.0" maxX="15" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="bgView" destination="Zga-vI-Atp" id="bvH-2I-Cuu"/>
+                                    <outlet property="commentBody" destination="56q-fD-Ddt" id="dhr-sm-fMA"/>
+                                    <outlet property="commentCreatedAt" destination="ghp-wC-3Nx" id="x1M-lE-A5F"/>
+                                    <outlet property="commentOwnerAvatar" destination="79C-DZ-cdP" id="hRG-Or-JFa"/>
+                                    <outlet property="commentOwnerName" destination="dd5-hy-ixS" id="XBE-vX-GWN"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

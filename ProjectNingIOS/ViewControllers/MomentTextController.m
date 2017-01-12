@@ -18,7 +18,7 @@
     [super viewDidLoad];
     
     self.commentCount = 4;
-    self.commentLikeCount = 2;
+    //self.commentLikeCount = 2;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
@@ -156,12 +156,22 @@
         return cell;
         
     }else{
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextCommentCell" forIndexPath:indexPath];
+        MomentTextCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextCommentCell"
+                                                                      forIndexPath:indexPath];
         
         if(cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextCommentCell"];
+            cell = [[MomentTextCommentCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                reuseIdentifier:@"momentTextCommentCell"];
         }
-        [cell.contentView setBackgroundColor:GRAY_BG_COLOR];
+        
+        [cell.bgView setBackgroundColor:GRAY_BG_COLOR];
+        cell.commentOwnerName.textColor = PURPLE_COLOR;
+        cell.commentBody.textContainer.lineFragmentPadding = 0;
+        cell.commentBody.textContainerInset = UIEdgeInsetsZero;
+        
+        if(indexPath.row + 1 == self.commentCount){
+            cell.separatorInset = UIEdgeInsetsMake(10, cell.bounds.size.width , 0, 0);
+        }
         return cell;
     }
 }
