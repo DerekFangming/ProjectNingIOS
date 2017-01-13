@@ -21,6 +21,18 @@
     //self.commentLikeCount = 2;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    [PNCommentManager getRecentCommentsForCurrentUserWithCommentType:@"Feed"
+                                                        andMappingId:self.momentId
+                                                            response:^(NSError *error, NSMutableArray *resultList) {
+                                          if(error != nil){
+                                              [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
+                                                                                           from:self];
+                                          }else{
+                                              self.commentList = resultList;
+                                              [self.tableView reloadData];
+                                          }
+                                      }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,7 +50,7 @@
     if(section == 0){
         return 2;
     }else{
-        return self.commentCount;
+        return [self.commentList count];
     }
 }
 
@@ -49,7 +61,7 @@
     }else if(indexPath.section == 0 && indexPath.row == 1){
         return self.likeCellHeight;
     }else{
-        return 45;
+        return [[self.commentList objectAtIndex:indexPath.row] cellHeight];
     }
 }
 
@@ -76,7 +88,7 @@
         self.headerCellHeight = size.height + 45;
         
         [cell.momentTextField setContentSize:size];
-        cell.dateLabel.text = [self processDateToText:self.createdAt];
+        cell.dateLabel.text = [self processDateToText:self.createdAt withAbbreviation:NO];
         
         //Like button
         if(self.likedByCurrentUser) [cell.likeBtn setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
@@ -88,7 +100,7 @@
         [cell.commentBtn addTarget:self action:@selector(commentButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
         
         //Triangle view
-        if(self.commentLikeCount > 0 || self.commentCount > 0){
+        if(self.commentLikeCount > 0 || [self.commentList count] > 0){
             UIBezierPath* trianglePath = [UIBezierPath bezierPath];
             [trianglePath moveToPoint:CGPointMake(0, 5)];
             [trianglePath addLineToPoint:CGPointMake(5,0)];
@@ -159,7 +171,7 @@
         }
         
         //Add seperator only when both like and comment exist
-        if(self.commentLikeCount == 0 || self.commentCount == 0){
+        if(self.commentLikeCount == 0 || [self.commentList count] == 0){
             cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width , 0, 0);
         }else{
             cell.separatorInset = UIEdgeInsetsMake(0, 15 , 0, 10);
@@ -176,14 +188,24 @@
         }
         
         [cell.bgView setBackgroundColor:GRAY_BG_COLOR];
+        PNComment *comment = [self.commentList objectAtIndex:indexPath.row];
+        cell.commentOwnerName.text = [comment ownerDisplayedName];
         cell.commentOwnerName.textColor = PURPLE_COLOR;
+        cell.commentBody.text = [comment commentBody];
         cell.commentBody.textContainer.lineFragmentPadding = 0;
         cell.commentBody.textContainerInset = UIEdgeInsetsZero;
+        [cell.commentBody sizeToFit];
+        [cell.commentBody layoutIfNeeded];
+        CGSize size = [cell.commentBody
+                       sizeThatFits:CGSizeMake(cell.commentBody.frame.size.width, CGFLOAT_MAX)];
+        comment.cellHeight = size.height + 31;
+        cell.commentCreatedAt.text = [self processDateToText:[[self.commentList objectAtIndex:indexPath.row] createdAt]
+                                            withAbbreviation:YES];
         
-        if(indexPath.row + 1 == self.commentCount){
+        if(indexPath.row + 1 == [self.commentList count]){
             cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width , 0, 0);
         }else{
-            cell.separatorInset = UIEdgeInsetsMake(0, 25, 0, 15);
+            cell.separatorInset = UIEdgeInsetsMake(0, 30, 0, 15);
         }
         
         if(indexPath.row == 0){
@@ -211,15 +233,15 @@
 }
 
 - (void)commentButtonTapped:(UIButton *)sender{
-    self.commentCount += 1;
-    [self.tableView reloadData];
+    //self.commentCount += 1;
+    //[self.tableView reloadData];
 }
 
 #pragma mark - Helpers -
 
-- (NSString *) processDateToText: (NSDate *) date{
+- (NSString *) processDateToText: (NSDate *) date withAbbreviation: (BOOL) abbrev{
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute fromDate:date];
-    NSString *month = [Utils monthToString:[components month] withAbbreviation:NO];
+    NSString *month = [Utils monthToString:[components month] withAbbreviation:abbrev];
     NSString *dateStr = [NSString stringWithFormat:@"%@ %@, %@", month, [@([components day]) stringValue],
                          [@([components year]) stringValue]];
     dateStr = [NSString stringWithFormat:@"%@ %@:%@", dateStr, [@([components hour]) stringValue],

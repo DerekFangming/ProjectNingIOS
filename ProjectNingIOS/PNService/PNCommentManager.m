@@ -10,10 +10,9 @@
 
 @implementation PNCommentManager
 
-+ (void) getRecentCommentsForUser:(NSNumber *) userId
-                   forCommentType:(NSString *) type
-                    withMappingId:(NSNumber *) mappingId
-                         response:(void(^)(NSError *, NSMutableArray *)) response{
++ (void) getRecentCommentsForCurrentUserWithCommentType:(NSString *) type
+                                           andMappingId:(NSNumber *) mappingId
+                                               response:(void(^)(NSError *, NSMutableArray *)) response{
     NSError *error = [PNUser checkUserLoginStatus];
     if(error != nil){
         response(error, nil);
@@ -22,7 +21,6 @@
     PNUser *user = [PNUser currentUser];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject:[user accessToken] forKey:@"accessToken"];
-    [parameters setObject:userId forKey:@"userId"];
     [parameters setObject:type forKey:@"type"];
     [parameters setObject:mappingId forKey:@"mappingId"];
     
@@ -35,6 +33,7 @@
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
+                  ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
                   NSArray *array = [responseObject objectForKey:@"commentList"];
                   NSMutableArray *commentList = [[NSMutableArray alloc] init];
                   for(NSDictionary * dic in array){
@@ -43,9 +42,11 @@
                                                                         andType:type
                                                                    andMappingId:mappingId
                                                                      andOwnerId:[dic objectForKey:@"ownerId"]
-                                                                        andDate:[dic objectForKey:@"createdAt"]];
+                                                                        andDate:[formatter dateFromString:[dic objectForKey:@"createdAt"]]];
                       
                       comment.ownerDisplayedName = [dic objectForKey:@"ownerName"];
+                      comment.mentionedUserId = [dic objectForKey:@"mentionedUserId"];
+                      comment.mentionedUserName = [dic objectForKey:@"mentionedUserName"];
                       [commentList addObject:comment];
                   }
                   

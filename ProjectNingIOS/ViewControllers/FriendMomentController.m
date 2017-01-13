@@ -201,6 +201,7 @@
         destVC.displayedName = a;
         destVC.avatar = self.avatar;
         destVC.userId = self.userId;
+        destVC.momentId = [selectedMoment feedId];
         destVC.momentBody = [selectedMoment feedBody];
         destVC.createdAt = [selectedMoment createdAt];
     }

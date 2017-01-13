@@ -935,7 +935,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dd5-hy-ixS">
                                             <rect key="frame" x="96" y="5" width="100" height="17"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="17" id="HMI-aH-eIW"/>
+                                                <constraint firstAttribute="height" priority="999" constant="17" id="HMI-aH-eIW"/>
                                                 <constraint firstAttribute="width" constant="100" id="u37-dz-HTS"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -943,9 +943,9 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghp-wC-3Nx">
-                                            <rect key="frame" x="489" y="7" width="80" height="21"/>
+                                            <rect key="frame" x="482" y="5" width="100" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="eGa-rx-Xk3"/>
+                                                <constraint firstAttribute="width" constant="100" id="eGa-rx-Xk3"/>
                                                 <constraint firstAttribute="height" constant="21" id="xYp-y7-kdo"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -953,7 +953,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Comment text" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56q-fD-Ddt">
-                                            <rect key="frame" x="96" y="20" width="486" height="21"/>
+                                            <rect key="frame" x="96" y="22" width="486" height="19"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
@@ -964,17 +964,17 @@
                                         <constraint firstItem="79C-DZ-cdP" firstAttribute="top" secondItem="7r2-5j-Ljg" secondAttribute="topMargin" constant="-1" id="BQf-VB-g4G"/>
                                         <constraint firstItem="Zga-vI-Atp" firstAttribute="top" secondItem="7r2-5j-Ljg" secondAttribute="topMargin" constant="-8" id="Bqb-dT-nUL"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="56q-fD-Ddt" secondAttribute="trailing" constant="10" id="GqN-Ig-RRv"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="56q-fD-Ddt" secondAttribute="bottom" id="PRd-n8-x9l"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="56q-fD-Ddt" secondAttribute="bottom" priority="999" id="PRd-n8-x9l"/>
                                         <constraint firstItem="dd5-hy-ixS" firstAttribute="leading" secondItem="79C-DZ-cdP" secondAttribute="trailing" constant="8" id="UAn-dC-RzY"/>
-                                        <constraint firstItem="ghp-wC-3Nx" firstAttribute="top" secondItem="7r2-5j-Ljg" secondAttribute="topMargin" constant="-1" id="Ut0-cn-hEV"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="ghp-wC-3Nx" secondAttribute="trailing" constant="23" id="WRp-GX-Lzz"/>
+                                        <constraint firstItem="ghp-wC-3Nx" firstAttribute="top" secondItem="7r2-5j-Ljg" secondAttribute="topMargin" constant="-3" id="Ut0-cn-hEV"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ghp-wC-3Nx" secondAttribute="trailing" constant="10" id="WRp-GX-Lzz"/>
                                         <constraint firstItem="79C-DZ-cdP" firstAttribute="leading" secondItem="7r2-5j-Ljg" secondAttribute="leadingMargin" constant="50" id="XCj-cd-YJv"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Zga-vI-Atp" secondAttribute="bottom" constant="-9" id="djg-Ut-fwu"/>
                                         <constraint firstItem="Zga-vI-Atp" firstAttribute="leading" secondItem="7r2-5j-Ljg" secondAttribute="leadingMargin" constant="7" id="fbW-Lz-kcl"/>
                                         <constraint firstItem="ghp-wC-3Nx" firstAttribute="leftMargin" secondItem="Zga-vI-Atp" secondAttribute="right" id="jnM-lE-UiY"/>
                                         <constraint firstItem="Zga-vI-Atp" firstAttribute="leading" secondItem="79C-DZ-cdP" secondAttribute="trailing" id="mMi-Lw-vxq"/>
                                         <constraint firstItem="dd5-hy-ixS" firstAttribute="top" secondItem="7r2-5j-Ljg" secondAttribute="topMargin" constant="-3" id="oP4-dA-PiZ"/>
-                                        <constraint firstItem="56q-fD-Ddt" firstAttribute="top" secondItem="dd5-hy-ixS" secondAttribute="bottom" constant="-2" id="q7i-mG-ixi"/>
+                                        <constraint firstItem="56q-fD-Ddt" firstAttribute="top" secondItem="dd5-hy-ixS" secondAttribute="bottom" id="q7i-mG-ixi"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
@@ -983,7 +983,7 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <inset key="separatorInset" minX="25" minY="0.0" maxX="15" maxY="0.0"/>
+                                <inset key="separatorInset" minX="30" minY="0.0" maxX="15" maxY="0.0"/>
                                 <connections>
                                     <outlet property="bgView" destination="Zga-vI-Atp" id="bvH-2I-Cuu"/>
                                     <outlet property="commentBody" destination="56q-fD-Ddt" id="dhr-sm-fMA"/>

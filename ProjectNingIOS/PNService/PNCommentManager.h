@@ -13,9 +13,8 @@
 
 @interface PNCommentManager : NSObject
 
-+ (void) getRecentCommentsForUser:(NSNumber *) userId
-                   forCommentType:(NSString *) type
-                    withMappingId:(NSNumber *) mappingId
-                         response:(void(^)(NSError *, NSMutableArray *)) response;
++ (void) getRecentCommentsForCurrentUserWithCommentType:(NSString *) type
+                                           andMappingId:(NSNumber *) mappingId
+                                               response:(void(^)(NSError *, NSMutableArray *)) response;
 
 @end
