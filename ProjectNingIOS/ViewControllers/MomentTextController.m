@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.commentCount = 4;
+    //self.commentCount = 4;
     //self.commentLikeCount = 2;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -132,13 +132,15 @@
             UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(15, 0, cell.bounds.size.width - 25, self.likeCellHeight)];
             [bgView setBackgroundColor:GRAY_BG_COLOR];
             [cell.contentView addSubview:bgView];
+        }else{
+            self.likeCellHeight = 0;
         }
             
         //Adding images
         for(int i = 0; i < self.commentLikeCount; i ++){
             int row = i / picPerRow;
             int col = i % picPerRow;
-            UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(60 + col * 35, 7 + row * 35, 30, 30)];
+            UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(58 + col * 35, 7 + row * 35, 30, 30)];
             imv.image=[UIImage imageNamed:@"defaultAvatar.jpg"];
             imv.tag = i;
             UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -152,6 +154,8 @@
         //Add seperator only when both like and comment exist
         if(self.commentLikeCount == 0 || self.commentCount == 0){
             cell.separatorInset = UIEdgeInsetsMake(10, cell.bounds.size.width , 0, 0);
+        }else{
+            cell.separatorInset = UIEdgeInsetsMake(0, 15 , 0, 10);
         }
         return cell;
         
