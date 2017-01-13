@@ -82,7 +82,10 @@
         if(self.likedByCurrentUser) [cell.likeBtn setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
         else [cell.likeBtn setBackgroundImage:[UIImage imageNamed:@"notLike.png"] forState:UIControlStateNormal];
         
-        [cell.likeBtn addTarget:self action:@selector(okButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.likeBtn addTarget:self action:@selector(likeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+        
+        //Comment button
+        [cell.commentBtn addTarget:self action:@selector(commentButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
         
         //Triangle view
         if(self.commentLikeCount > 0 || self.commentCount > 0){
@@ -132,6 +135,10 @@
             UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(15, 0, cell.bounds.size.width - 25, self.likeCellHeight)];
             [bgView setBackgroundColor:GRAY_BG_COLOR];
             [cell.contentView addSubview:bgView];
+            
+            UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(35, 14, 15, 15)];
+            imv.image=[UIImage imageNamed:@"like.png"];
+            [cell.contentView addSubview:imv];
         }else{
             self.likeCellHeight = 0;
         }
@@ -153,7 +160,7 @@
         
         //Add seperator only when both like and comment exist
         if(self.commentLikeCount == 0 || self.commentCount == 0){
-            cell.separatorInset = UIEdgeInsetsMake(10, cell.bounds.size.width , 0, 0);
+            cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width , 0, 0);
         }else{
             cell.separatorInset = UIEdgeInsetsMake(0, 15 , 0, 10);
         }
@@ -174,7 +181,15 @@
         cell.commentBody.textContainerInset = UIEdgeInsetsZero;
         
         if(indexPath.row + 1 == self.commentCount){
-            cell.separatorInset = UIEdgeInsetsMake(10, cell.bounds.size.width , 0, 0);
+            cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width , 0, 0);
+        }else{
+            cell.separatorInset = UIEdgeInsetsMake(0, 25, 0, 15);
+        }
+        
+        if(indexPath.row == 0){
+            UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(35, 14, 15, 15)];
+            imv.image=[UIImage imageNamed:@"writeComment.png"];
+            [cell.contentView addSubview:imv];
         }
         return cell;
     }
@@ -182,7 +197,7 @@
 
 #pragma mark - Like and comment button events -
 
-- (void)okButtonTapped:(UIButton *)sender{
+- (void)likeButtonTapped:(UIButton *)sender{
     if(self.likedByCurrentUser){
         [sender setBackgroundImage:[UIImage imageNamed:@"notLike.png"] forState:UIControlStateNormal];
         self.likedByCurrentUser = NO;
@@ -192,6 +207,11 @@
         self.likedByCurrentUser = YES;
         self.commentLikeCount += 1;
     }
+    [self.tableView reloadData];
+}
+
+- (void)commentButtonTapped:(UIButton *)sender{
+    self.commentCount += 1;
     [self.tableView reloadData];
 }
 
