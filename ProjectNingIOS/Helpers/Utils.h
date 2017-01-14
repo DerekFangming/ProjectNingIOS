@@ -13,6 +13,7 @@
 #define DENY_ACTION         @"deny"
 #define NO_AVATAR_ERR_MSG   @"The user does not have an avatar."
 #define NO_DETAIL_ERR_MSG   @"The user does not have detail information."
+#define NO_COMMENT_ERR_MSG  @"The comment you are looking for does not exist."
 
 #define AVATAR              @"Avatar"
 #define COVER_IMG           @"Cover Image"

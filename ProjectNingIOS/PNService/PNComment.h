@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface PNComment : NSObject
 
@@ -20,6 +21,7 @@
 @property (nonatomic, strong)NSDate *createdAt;
 
 @property (nonatomic, strong)NSString *ownerDisplayedName;
+@property (nonatomic, strong)UIImage *ownerAvatar;
 
 @property (nonatomic, assign)NSInteger cellHeight;
 

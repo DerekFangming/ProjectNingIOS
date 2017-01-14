@@ -26,13 +26,29 @@
                                                         andMappingId:self.momentId
                                                             response:^(NSError *error, NSMutableArray *resultList) {
                                           if(error != nil){
-                                              [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
-                                                                                           from:self];
+                                              if(![[error localizedDescription] isEqualToString:NO_COMMENT_ERR_MSG]){
+                                                  [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
+                                                                                               from:self];
+                                              }
                                           }else{
                                               self.commentList = resultList;
                                               [self.tableView reloadData];
                                           }
                                       }];
+    
+    [PNCommentManager getRecentCommentsForCurrentUserWithCommentType:@"Feed Like"
+                                                        andMappingId:self.momentId
+                                                            response:^(NSError *error, NSMutableArray *resultList) {
+                                                                if(error != nil){
+                                                                    if(![[error localizedDescription] isEqualToString:NO_COMMENT_ERR_MSG]){
+                                                                        [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
+                                                                                                                     from:self];
+                                                                    }
+                                                                }else{
+                                                                    self.likedList = resultList;
+                                                                    [self.tableView reloadData];
+                                                                }
+                                                            }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -100,7 +116,7 @@
         [cell.commentBtn addTarget:self action:@selector(commentButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
         
         //Triangle view
-        if(self.commentLikeCount > 0 || [self.commentList count] > 0){
+        if([self.likedList count] > 0 || [self.commentList count] > 0){
             UIBezierPath* trianglePath = [UIBezierPath bezierPath];
             [trianglePath moveToPoint:CGPointMake(0, 5)];
             [trianglePath addLineToPoint:CGPointMake(5,0)];
@@ -139,10 +155,10 @@
         //Calculate image information base on cell width, etc
         int cellwidth = (int) roundf(cell.bounds.size.width);
         int picPerRow = (cellwidth - 75) / 35;
-        int totalRows = ceil((float)self.commentLikeCount / (float)picPerRow);
+        int totalRows = ceil((float)[self.likedList count] / (float)picPerRow);
         
         //Add gray background view and calculate cell height if there are comments
-        if(self.commentLikeCount > 0){
+        if([self.likedList count] > 0){
             self.likeCellHeight = totalRows * 35 + 9; // rows * 30 + (rows - 1 ) * 5 + 7 * 2
             UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(15, 0, cell.bounds.size.width - 25, self.likeCellHeight)];
             [bgView setBackgroundColor:GRAY_BG_COLOR];
@@ -156,11 +172,11 @@
         }
             
         //Adding images
-        for(int i = 0; i < self.commentLikeCount; i ++){
+        for(int i = 0; i < [self.likedList count]; i ++){
             int row = i / picPerRow;
             int col = i % picPerRow;
             UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(58 + col * 35, 7 + row * 35, 30, 30)];
-            imv.image=[UIImage imageNamed:@"defaultAvatar.jpg"];
+            //imv.image=[UIImage imageNamed:@"defaultAvatar.jpg"];
             imv.tag = i;
             UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                         action:@selector(likeImgClick:)];
@@ -168,10 +184,27 @@
             [imv setUserInteractionEnabled:YES];
             [imv addGestureRecognizer:singleTap];
             [cell.contentView addSubview:imv];
+            
+            PNComment *comment = [self.likedList objectAtIndex: i];
+            if(comment.ownerAvatar == nil){
+                [PNImageManager getSingletonImgForUser:comment.ownerId
+                                           withImgType:AVATAR
+                                              response:^(UIImage *img, NSError *err) {
+                                                  if(err != nil){
+                                                      comment.ownerAvatar = [UIImage imageNamed:@"defaultAvatar.jpg"];
+                                                  }else{
+                                                      comment.ownerAvatar = img;
+                                                  }
+                                                  imv.image = comment.ownerAvatar;
+                                              }];
+            }else{
+                imv.image = comment.ownerAvatar;
+            }
+            
         }
         
         //Add seperator only when both like and comment exist
-        if(self.commentLikeCount == 0 || [self.commentList count] == 0){
+        if([self.likedList count] == 0 || [self.commentList count] == 0){
             cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width , 0, 0);
         }else{
             cell.separatorInset = UIEdgeInsetsMake(0, 15 , 0, 10);
@@ -213,6 +246,21 @@
             imv.image=[UIImage imageNamed:@"writeComment.png"];
             [cell.contentView addSubview:imv];
         }
+        
+        if(comment.ownerAvatar == nil){
+            [PNImageManager getSingletonImgForUser:comment.ownerId
+                                       withImgType:AVATAR
+                                          response:^(UIImage *img, NSError *err) {
+                                              if(err != nil){
+                                                  comment.ownerAvatar = [UIImage imageNamed:@"defaultAvatar.jpg"];
+                                              }else{
+                                                  comment.ownerAvatar = img;
+                                              }
+                                              [cell.commentOwnerAvatar setImage: comment.ownerAvatar];
+                                          }];
+        }else{
+            [cell.commentOwnerAvatar setImage: comment.ownerAvatar];
+        }
         return cell;
     }
 }
@@ -223,11 +271,11 @@
     if(self.likedByCurrentUser){
         [sender setBackgroundImage:[UIImage imageNamed:@"notLike.png"] forState:UIControlStateNormal];
         self.likedByCurrentUser = NO;
-        self.commentLikeCount -= 1;
+        //self.commentLikeCount -= 1;
     }else{
         [sender setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
         self.likedByCurrentUser = YES;
-        self.commentLikeCount += 1;
+        //self.commentLikeCount += 1;
     }
     [self.tableView reloadData];
 }

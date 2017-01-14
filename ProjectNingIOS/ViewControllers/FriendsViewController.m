@@ -155,7 +155,6 @@
     cell.name.text = friend.name;
     cell.avatar.contentMode = UIViewContentModeScaleAspectFit;
     if(friend.avatar == nil){
-        //NSLog(@"new Load");
         [PNImageManager getSingletonImgForUser:friend.userId withImgType:AVATAR
                          response:^(UIImage *img, NSError *err) {
                              if(err != nil){
@@ -172,7 +171,6 @@
                              [cell.avatar setImage:img];
                          }];
     }else{
-        //NSLog(@"cached");
         [cell.avatar setImage:friend.avatar];
     }
     

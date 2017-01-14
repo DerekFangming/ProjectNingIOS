@@ -925,7 +925,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zga-vI-Atp">
                                             <rect key="frame" x="15" y="0.0" width="575" height="50"/>
                                         </view>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultAvatar.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="79C-DZ-cdP">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="79C-DZ-cdP">
                                             <rect key="frame" x="58" y="7" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="3kL-bp-ZUq"/>
@@ -1079,7 +1079,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="defaultAvatar.jpg" width="300" height="300"/>
         <image name="writeComment.png" width="64" height="64"/>
     </resources>
 </document>
