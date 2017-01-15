@@ -17,6 +17,11 @@
     UIView *floatingView;
     UIView *separatorView;
     UITextField *commentInput;
+    
+    CGFloat keyboardHeight;
+    
+    BOOL keyboardShowingHiding;
+    BOOL keyboardIsUp;
 }
 
 @property (nonatomic, strong) NSNumber *userId;
