@@ -12,7 +12,12 @@
 #import "MomentTextHeaderCell.h"
 #import "MomentTextCommentCell.h"
 
-@interface MomentTextController : UITableViewController
+@interface MomentTextController : UITableViewController{
+    NSInteger floadtingViewOffset;
+    UIView *floatingView;
+    UIView *separatorView;
+    UITextField *commentInput;
+}
 
 @property (nonatomic, strong) NSNumber *userId;
 @property (nonatomic, strong) NSString *displayedName;

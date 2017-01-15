@@ -49,6 +49,26 @@
                                                                     [self.tableView reloadData];
                                                                 }
                                                             }];
+    
+    //Create comment input text field
+    floatingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50)];
+    floadtingViewOffset = self.tableView.frame.size.height - 50;
+    [floatingView setBackgroundColor:GRAY_BG_COLOR];
+    
+    separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1)];
+    [separatorView setBackgroundColor: [UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1]];
+    
+    commentInput = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, self.tableView.frame.size.width - 20, 30)];
+    [commentInput setBackgroundColor:[UIColor whiteColor]];
+    
+    [floatingView addSubview:separatorView];
+    [floatingView addSubview:commentInput];
+    [self.view addSubview:floatingView];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(onKeyboardShow:)
+                                                name:UIKeyboardWillShowNotification object:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -283,6 +303,28 @@
 - (void)commentButtonTapped:(UIButton *)sender{
     //self.commentCount += 1;
     //[self.tableView reloadData];
+}
+
+#pragma mark - Bottom comment text field -
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"recal");
+    CGRect frame = floatingView.frame;
+    frame.origin.y = scrollView.contentOffset.y + floadtingViewOffset;
+    floatingView.frame = frame;
+    
+    [self.view bringSubviewToFront:floatingView];
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [commentInput resignFirstResponder];
+}
+
+-(void)onKeyboardShow:(NSNotification *)notification
+{
+    NSLog(@"show");
 }
 
 #pragma mark - Helpers -
