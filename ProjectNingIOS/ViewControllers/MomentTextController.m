@@ -56,10 +56,17 @@
     [floatingView setBackgroundColor:GRAY_BG_COLOR];
     
     separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1)];
-    [separatorView setBackgroundColor: [UIColor colorWithRed:210/255.0 green:210/255.0 blue:210/255.0 alpha:1]];
+    [separatorView setBackgroundColor: [UIColor colorWithRed: 190/255.0 green:190/255.0 blue:190/255.0 alpha:1]];
     
     commentInput = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, self.tableView.frame.size.width - 20, 30)];
     [commentInput setBackgroundColor:[UIColor whiteColor]];
+    [commentInput.layer setBorderColor:[UIColor colorWithRed: 230/255.0 green:230/255.0 blue:230/255.0 alpha:1].CGColor];
+    [commentInput.layer setBorderWidth:1.0];
+    [commentInput setReturnKeyType:UIReturnKeySend];
+    commentInput.clipsToBounds = YES;
+    commentInput.layer.cornerRadius = 10.0f;
+    commentInput.placeholder = @" Enter comment";
+    commentInput.delegate = self;
     
     [floatingView addSubview:separatorView];
     [floatingView addSubview:commentInput];
@@ -71,7 +78,11 @@
                                             selector:@selector(onKeyboardShow:)
                                                 name:UIKeyboardWillShowNotification object:nil];
     
-    
+    //
+    NSLog(@"%f", self.tableView.frame.origin.x);
+    NSLog(@"%f", self.tableView.frame.origin.y);
+    tableViewHeight = self.tableView.frame.size.height;
+    tableViewWidth = self.tableView.frame.size.width;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -312,6 +323,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if(keyboardIsUp){
+        NSLog(@"remove keyboard");
         keyboardIsUp = NO;
         keyboardShowingHiding = YES;
         [commentInput resignFirstResponder];
@@ -335,6 +347,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"row selected");
     if(keyboardIsUp){
         keyboardIsUp = NO;
         keyboardShowingHiding = YES;
@@ -357,13 +370,47 @@
     keyboardHeight = kbSize.height;
     NSLog(@"%f", keyboardHeight);
     
-    [UIView animateWithDuration:0.4f animations:^{
+    
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        self.tableView.frame = CGRectMake(0, 0, tableViewWidth, tableViewHeight - keyboardHeight - 50);
         floatingView.frame = CGRectOffset(floatingView.frame, 0, -keyboardHeight);
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.commentList.count-1 inSection:1] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
     } completion:^(BOOL finished) {
+        //[self.tableView setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
         keyboardIsUp = YES;
         keyboardShowingHiding = NO;
+        
+        
     }];
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardHeight, 0.0);
+    //self.tableView.contentInset = contentInsets;
+    //self.tableView.scrollIndicatorInsets = contentInsets;
+    //[self.tableView scrollToRowAtIndexPath:self.editingIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSLog(@"return pressed");
+    keyboardIsUp = NO;
+    keyboardShowingHiding = YES;
+    [commentInput resignFirstResponder];
+    [UIView animateWithDuration:0.3f animations:^{
+        
+        floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight);
+    } completion:^(BOOL finished) {
+        keyboardShowingHiding = NO;
+    }];
+    
+    //NSLog(commentInput.text);
+    commentInput.text = @"";
+    return YES;
+}
+
+//- (void) textFieldDidBeginEditing:(UITextField *)textField {
+//}
 
 #pragma mark - Helpers -
 
@@ -380,6 +427,12 @@
 -(void)likeImgClick:(UITapGestureRecognizer *)recognizer
 {
     NSLog(@"%d", recognizer.view.tag);
+}
+
+- (void)dealloc
+{
+    NSLog(@"de alloced");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
