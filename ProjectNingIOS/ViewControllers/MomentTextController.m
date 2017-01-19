@@ -79,7 +79,7 @@
     
     //Keyboard methods
     [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(onKeyboardShow:)
+                                            selector:@selector(keyboardWillShow:)
                                                 name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(keyboardDidShow:)
@@ -87,9 +87,9 @@
     
     
     //Sett content offset for the floating view
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, commentInputHeight, 0.0);
-    //self.tableView.contentInset = contentInsets;
-    //self.tableView.scrollIndicatorInsets = contentInsets;
+    tableviewContentInsets = UIEdgeInsetsMake(0.0, 0.0, commentInputHeight, 0.0);
+    self.tableView.contentInset = tableviewContentInsets;
+    self.tableView.scrollIndicatorInsets = tableviewContentInsets;
 }
 
 #pragma mark - Section and list -
@@ -323,43 +323,37 @@
 #pragma mark - Bottom comment text field -
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if(false){
-        NSLog(@"remove keyboard");
-        keyboardIsUp = NO;
-        keyboardShowingHiding = YES;
-        [commentInput resignFirstResponder];
-        [UIView animateWithDuration:0.3f animations:^{
-            floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight);
-        } completion:^(BOOL finished) {
-            
-            keyboardShowingHiding = NO;
-        }];
-    }
-    
-    if(keyboardIsUp){
-        NSLog(@"recal- kb up");
-        CGRect frame = floatingView.frame;
-        frame.origin.y = scrollView.contentOffset.y + tableViewHeight - commentInputHeight - keyboardHeight;
-        floatingView.frame = frame;
-        
-        [self.view bringSubviewToFront:floatingView];
-    } else 
-    
-    if(!keyboardShowingHiding){
+    if(!keyboardShowingHiding && !keyboardIsUp){
         NSLog(@"recal");
         CGRect frame = floatingView.frame;
         frame.origin.y = scrollView.contentOffset.y + floadtingViewOffset;
         floatingView.frame = frame;
         
         [self.view bringSubviewToFront:floatingView];
+    }else if (keyboardAdjusting){
+        NSLog(@"recal- kb up");
+        CGRect frame = floatingView.frame;
+        frame.origin.y = scrollView.contentOffset.y + tableViewHeight - commentInputHeight - keyboardHeight;
+        floatingView.frame = frame;
+        
+        [self.view bringSubviewToFront:floatingView];
+    }else if (!keyboardShowingHiding){
+        NSLog(@"remove keyboard");
+        keyboardShowingHiding = YES;
+        [commentInput resignFirstResponder];
+        [UIView animateWithDuration:0.3f animations:^{
+            self.tableView.contentInset = tableviewContentInsets;
+            self.tableView.scrollIndicatorInsets = tableviewContentInsets;
+            floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight);
+        } completion:^(BOOL finished) {
+            keyboardIsUp = NO;
+            keyboardShowingHiding = NO;
+        }];
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    
     NSLog(@"row selected");
     if(keyboardIsUp){
         keyboardIsUp = NO;
@@ -373,51 +367,39 @@
     }
 }
 
--(void)onKeyboardShow:(NSNotification *)notification
+-(void)keyboardWillShow:(NSNotification *)notification
 {
-    NSLog(@"offset %f", self.tableView.contentInset.bottom);
-    NSLog(@"show");
+    NSLog(@"will show");
     keyboardShowingHiding = YES;
-    
-    NSDictionary* keyboardInfo = [notification userInfo];
-    CGSize kbSize = [[keyboardInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    keyboardHeight = kbSize.height;
+    if(keyboardHeight == 0){
+        NSDictionary* keyboardInfo = [notification userInfo];
+        CGSize kbSize = [[keyboardInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+        keyboardHeight = kbSize.height;
+    }
     NSLog(@"%f", keyboardHeight);
-    
-    //UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, commentInputHeight + keyboardHeight, 0.0);
-    //self.tableView.contentInset = contentInsets;
-    //self.tableView.scrollIndicatorInsets = contentInsets;
-    
-    //[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    
     [UIView animateWithDuration:0.4f animations:^{
-        
-        //self.tableView.contentInset = contentInsets;
-        //self.tableView.scrollIndicatorInsets = contentInsets;
-        
-        //floatingView.frame = CGRectOffset(floatingView.frame, 0, -keyboardHeight + 35);
-        //[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        floatingView.frame = CGRectOffset(floatingView.frame, 0, -keyboardHeight);
     } completion:^(BOOL finished) {
-        //[self.tableView setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
-        keyboardIsUp = YES;
-        //keyboardShowingHiding = NO;
-        
-        
+        NSLog(@"will show done");
+        keyboardShowingHiding = NO;
     }];
-    NSLog(@"offset %f", self.tableView.contentInset.bottom);
     
 }
 
 - (void)keyboardDidShow:(NSNotification *)notification
 {
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardHeight, 0.0);
-    [UIView animateWithDuration:0.4 animations:^{
+    NSLog(@"did show");
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardHeight + commentInputHeight, 0.0);
+    keyboardAdjusting = YES;
+    keyboardIsUp = YES;
+    [UIView animateWithDuration:0.4f animations:^{
         self.tableView.contentInset = contentInsets;
         self.tableView.scrollIndicatorInsets = contentInsets;
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]
                               atScrollPosition:UITableViewScrollPositionBottom animated:NO];
     } completion:^(BOOL finished) {
-        keyboardShowingHiding = NO;
+        NSLog(@"did show done");
+        keyboardAdjusting = NO;
     }];
 }
 

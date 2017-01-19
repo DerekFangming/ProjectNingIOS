@@ -865,7 +865,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbA-o5-v1i">
-                                            <rect key="frame" x="562" y="96" width="20" height="20"/>
+                                            <rect key="frame" x="567" y="96" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="UhS-kj-zGb"/>
                                                 <constraint firstAttribute="width" constant="20" id="r4a-3t-Bfg"/>
@@ -873,7 +873,7 @@
                                             <state key="normal" image="writeComment.png"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q70-Vr-Uqr">
-                                            <rect key="frame" x="539" y="96" width="20" height="20"/>
+                                            <rect key="frame" x="537" y="96" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="KzG-dc-rkx"/>
                                                 <constraint firstAttribute="height" constant="20" id="Umt-HM-2dB"/>
@@ -887,11 +887,11 @@
                                         <constraint firstItem="ppo-sI-9iL" firstAttribute="leading" secondItem="DvM-EY-3wI" secondAttribute="leadingMargin" constant="5" id="F4r-WC-8bj"/>
                                         <constraint firstItem="P7C-vp-uM9" firstAttribute="leading" secondItem="ppo-sI-9iL" secondAttribute="trailing" constant="19" id="FQh-lf-xZm"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="RsY-tY-nYw" secondAttribute="trailing" constant="10" id="IrZ-IM-vME"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="NbA-o5-v1i" secondAttribute="trailing" constant="10" id="L63-b7-wP8"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="NbA-o5-v1i" secondAttribute="trailing" constant="5" id="L63-b7-wP8"/>
                                         <constraint firstItem="RsY-tY-nYw" firstAttribute="leading" secondItem="ppo-sI-9iL" secondAttribute="trailing" constant="14" id="XNC-K5-pee"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="NbA-o5-v1i" secondAttribute="bottom" constant="-5" id="awy-2d-Rak"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="OkH-e1-Rgk" secondAttribute="bottom" constant="-5" id="huK-kM-0Zv"/>
-                                        <constraint firstItem="NbA-o5-v1i" firstAttribute="leading" secondItem="Q70-Vr-Uqr" secondAttribute="trailing" constant="3" id="jgX-98-tt5"/>
+                                        <constraint firstItem="NbA-o5-v1i" firstAttribute="leading" secondItem="Q70-Vr-Uqr" secondAttribute="trailing" constant="10" id="jgX-98-tt5"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="RsY-tY-nYw" secondAttribute="bottom" priority="999" constant="8" id="sOi-Cf-Fxr"/>
                                         <constraint firstItem="ppo-sI-9iL" firstAttribute="top" secondItem="DvM-EY-3wI" secondAttribute="topMargin" id="tX8-wi-sfu"/>
                                         <constraint firstItem="RsY-tY-nYw" firstAttribute="top" secondItem="DvM-EY-3wI" secondAttribute="topMargin" constant="17" id="xAz-Wr-8j4"/>

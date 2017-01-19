@@ -13,10 +13,12 @@
 #import "MomentTextCommentCell.h"
 
 @interface MomentTextController : UITableViewController <UITextFieldDelegate>{
-    NSInteger floadtingViewOffset;
     UIView *floatingView;
     UIView *separatorView;
     UITextField *commentInput;
+    
+    NSInteger floadtingViewOffset;
+    UIEdgeInsets tableviewContentInsets;
     
     CGFloat keyboardHeight;
     CGFloat commentInputHeight;
@@ -25,6 +27,7 @@
     
     BOOL keyboardShowingHiding;
     BOOL keyboardIsUp;
+    BOOL keyboardAdjusting;
 }
 
 @property (nonatomic, strong) NSNumber *userId;
