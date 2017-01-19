@@ -19,6 +19,7 @@
     UITextField *commentInput;
     
     CGFloat keyboardHeight;
+    CGFloat commentInputHeight;
     CGFloat tableViewHeight;
     CGFloat tableViewWidth;
     

@@ -49,16 +49,20 @@
                                                                     [self.tableView reloadData];
                                                                 }
                                                             }];
+    //Define constants
+    tableViewHeight = self.tableView.frame.size.height;
+    tableViewWidth = self.tableView.frame.size.width;
+    commentInputHeight = 35;
     
     //Create comment input text field
-    floatingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50)];
-    floadtingViewOffset = self.tableView.frame.size.height - 50;
+    floatingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableViewWidth, commentInputHeight)];
+    floadtingViewOffset = tableViewHeight - commentInputHeight;
     [floatingView setBackgroundColor:GRAY_BG_COLOR];
     
-    separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 1)];
+    separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableViewWidth, 1)];
     [separatorView setBackgroundColor: [UIColor colorWithRed: 190/255.0 green:190/255.0 blue:190/255.0 alpha:1]];
     
-    commentInput = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, self.tableView.frame.size.width - 20, 30)];
+    commentInput = [[UITextField alloc] initWithFrame:CGRectMake(10, 5, tableViewWidth - 20, 25)];
     [commentInput setBackgroundColor:[UIColor whiteColor]];
     [commentInput.layer setBorderColor:[UIColor colorWithRed: 230/255.0 green:230/255.0 blue:230/255.0 alpha:1].CGColor];
     [commentInput.layer setBorderWidth:1.0];
@@ -68,26 +72,24 @@
     commentInput.placeholder = @" Enter comment";
     commentInput.delegate = self;
     
+    
     [floatingView addSubview:separatorView];
     [floatingView addSubview:commentInput];
     [self.view addSubview:floatingView];
     
     //Keyboard methods
-    
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(onKeyboardShow:)
                                                 name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(keyboardDidShow:)
+                                                name:UIKeyboardDidShowNotification object:nil];
     
-    //
-    NSLog(@"%f", self.tableView.frame.origin.x);
-    NSLog(@"%f", self.tableView.frame.origin.y);
-    tableViewHeight = self.tableView.frame.size.height;
-    tableViewWidth = self.tableView.frame.size.width;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    //Sett content offset for the floating view
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, commentInputHeight, 0.0);
+    //self.tableView.contentInset = contentInsets;
+    //self.tableView.scrollIndicatorInsets = contentInsets;
 }
 
 #pragma mark - Section and list -
@@ -187,14 +189,13 @@
         }
                                                                    
         //Calculate image information base on cell width, etc
-        int cellwidth = (int) roundf(cell.bounds.size.width);
-        int picPerRow = (cellwidth - 75) / 35;
+        int picPerRow = (tableViewWidth - 75) / 35;
         int totalRows = ceil((float)[self.likedList count] / (float)picPerRow);
         
         //Add gray background view and calculate cell height if there are comments
         if([self.likedList count] > 0){
             self.likeCellHeight = totalRows * 35 + 9; // rows * 30 + (rows - 1 ) * 5 + 7 * 2
-            UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(15, 0, cell.bounds.size.width - 25, self.likeCellHeight)];
+            UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(15, 0, tableViewWidth - 25, self.likeCellHeight)];
             [bgView setBackgroundColor:GRAY_BG_COLOR];
             [cell.contentView addSubview:bgView];
             
@@ -270,7 +271,7 @@
                                             withAbbreviation:YES];
         
         if(indexPath.row + 1 == [self.commentList count]){
-            cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width , 0, 0);
+            cell.separatorInset = UIEdgeInsetsMake(0, tableViewWidth , 0, 0);
         }else{
             cell.separatorInset = UIEdgeInsetsMake(0, 30, 0, 15);
         }
@@ -322,7 +323,7 @@
 #pragma mark - Bottom comment text field -
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if(keyboardIsUp){
+    if(false){
         NSLog(@"remove keyboard");
         keyboardIsUp = NO;
         keyboardShowingHiding = YES;
@@ -334,6 +335,15 @@
             keyboardShowingHiding = NO;
         }];
     }
+    
+    if(keyboardIsUp){
+        NSLog(@"recal- kb up");
+        CGRect frame = floatingView.frame;
+        frame.origin.y = scrollView.contentOffset.y + tableViewHeight - commentInputHeight - keyboardHeight;
+        floatingView.frame = frame;
+        
+        [self.view bringSubviewToFront:floatingView];
+    } else 
     
     if(!keyboardShowingHiding){
         NSLog(@"recal");
@@ -347,6 +357,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
+    
     NSLog(@"row selected");
     if(keyboardIsUp){
         keyboardIsUp = NO;
@@ -362,6 +375,7 @@
 
 -(void)onKeyboardShow:(NSNotification *)notification
 {
+    NSLog(@"offset %f", self.tableView.contentInset.bottom);
     NSLog(@"show");
     keyboardShowingHiding = YES;
     
@@ -370,25 +384,41 @@
     keyboardHeight = kbSize.height;
     NSLog(@"%f", keyboardHeight);
     
+    //UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, commentInputHeight + keyboardHeight, 0.0);
+    //self.tableView.contentInset = contentInsets;
+    //self.tableView.scrollIndicatorInsets = contentInsets;
     
+    //[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     
-    [UIView animateWithDuration:0.3f animations:^{
-        self.tableView.frame = CGRectMake(0, 0, tableViewWidth, tableViewHeight - keyboardHeight - 50);
-        floatingView.frame = CGRectOffset(floatingView.frame, 0, -keyboardHeight);
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.commentList.count-1 inSection:1] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    [UIView animateWithDuration:0.4f animations:^{
+        
+        //self.tableView.contentInset = contentInsets;
+        //self.tableView.scrollIndicatorInsets = contentInsets;
+        
+        //floatingView.frame = CGRectOffset(floatingView.frame, 0, -keyboardHeight + 35);
+        //[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
     } completion:^(BOOL finished) {
         //[self.tableView setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
         keyboardIsUp = YES;
-        keyboardShowingHiding = NO;
+        //keyboardShowingHiding = NO;
         
         
     }];
+    NSLog(@"offset %f", self.tableView.contentInset.bottom);
     
+}
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardHeight, 0.0);
-    //self.tableView.contentInset = contentInsets;
-    //self.tableView.scrollIndicatorInsets = contentInsets;
-    //[self.tableView scrollToRowAtIndexPath:self.editingIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    
+    [UIView animateWithDuration:0.4 animations:^{
+        self.tableView.contentInset = contentInsets;
+        self.tableView.scrollIndicatorInsets = contentInsets;
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]
+                              atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    } completion:^(BOOL finished) {
+        keyboardShowingHiding = NO;
+    }];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -431,8 +461,13 @@
 
 - (void)dealloc
 {
-    NSLog(@"de alloced");
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end
