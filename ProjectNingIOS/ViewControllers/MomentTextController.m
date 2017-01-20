@@ -68,14 +68,16 @@
     [commentInput.layer setBorderWidth:1.0];
     [commentInput setReturnKeyType:UIReturnKeySend];
     commentInput.clipsToBounds = YES;
-    commentInput.layer.cornerRadius = 10.0f;
-    commentInput.placeholder = @" Enter comment";
+    commentInput.layer.cornerRadius = 4.0f;
+    commentInput.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
+    commentInput.placeholder = @"Enter comment";
     commentInput.delegate = self;
-    
     
     [floatingView addSubview:separatorView];
     [floatingView addSubview:commentInput];
     [self.view addSubview:floatingView];
+    
+    
     
     //Keyboard methods
     [[NSNotificationCenter defaultCenter]addObserver:self
@@ -84,12 +86,7 @@
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(keyboardDidShow:)
                                                 name:UIKeyboardDidShowNotification object:nil];
-    
-    
-    //Sett content offset for the floating view
-    tableviewContentInsets = UIEdgeInsetsMake(0.0, 0.0, commentInputHeight, 0.0);
-    self.tableView.contentInset = tableviewContentInsets;
-    self.tableView.scrollIndicatorInsets = tableviewContentInsets;
+
 }
 
 #pragma mark - Section and list -
@@ -300,57 +297,6 @@
     }
 }
 
-#pragma mark - Like and comment button events -
-
-- (void)likeButtonTapped:(UIButton *)sender{
-    if(self.likedByCurrentUser){
-        [sender setBackgroundImage:[UIImage imageNamed:@"notLike.png"] forState:UIControlStateNormal];
-        self.likedByCurrentUser = NO;
-        //self.commentLikeCount -= 1;
-    }else{
-        [sender setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
-        self.likedByCurrentUser = YES;
-        //self.commentLikeCount += 1;
-    }
-    [self.tableView reloadData];
-}
-
-- (void)commentButtonTapped:(UIButton *)sender{
-    //self.commentCount += 1;
-    //[self.tableView reloadData];
-}
-
-#pragma mark - Bottom comment text field -
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if(!keyboardShowingHiding && !keyboardIsUp){
-        NSLog(@"recal");
-        CGRect frame = floatingView.frame;
-        frame.origin.y = scrollView.contentOffset.y + floadtingViewOffset;
-        floatingView.frame = frame;
-        
-        [self.view bringSubviewToFront:floatingView];
-    }else if (keyboardAdjusting){
-        NSLog(@"recal- kb up");
-        CGRect frame = floatingView.frame;
-        frame.origin.y = scrollView.contentOffset.y + tableViewHeight - commentInputHeight - keyboardHeight;
-        floatingView.frame = frame;
-        
-        [self.view bringSubviewToFront:floatingView];
-    }else if (!keyboardShowingHiding){
-        NSLog(@"remove keyboard");
-        keyboardShowingHiding = YES;
-        [commentInput resignFirstResponder];
-        [UIView animateWithDuration:0.3f animations:^{
-            self.tableView.contentInset = tableviewContentInsets;
-            self.tableView.scrollIndicatorInsets = tableviewContentInsets;
-            floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight);
-        } completion:^(BOOL finished) {
-            keyboardIsUp = NO;
-            keyboardShowingHiding = NO;
-        }];
-    }
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -367,40 +313,57 @@
     }
 }
 
--(void)keyboardWillShow:(NSNotification *)notification
-{
-    NSLog(@"will show");
-    keyboardShowingHiding = YES;
-    if(keyboardHeight == 0){
-        NSDictionary* keyboardInfo = [notification userInfo];
-        CGSize kbSize = [[keyboardInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-        keyboardHeight = kbSize.height;
+#pragma mark - Like and comment button -
+
+- (void)likeButtonTapped:(UIButton *)sender{
+    if(self.likedByCurrentUser){
+        [sender setBackgroundImage:[UIImage imageNamed:@"notLike.png"] forState:UIControlStateNormal];
+        self.likedByCurrentUser = NO;
+        //self.commentLikeCount -= 1;
+    }else{
+        [sender setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
+        self.likedByCurrentUser = YES;
+        //self.commentLikeCount += 1;
     }
-    NSLog(@"%f", keyboardHeight);
-    [UIView animateWithDuration:0.4f animations:^{
-        floatingView.frame = CGRectOffset(floatingView.frame, 0, -keyboardHeight);
-    } completion:^(BOOL finished) {
-        NSLog(@"will show done");
-        keyboardShowingHiding = NO;
-    }];
-    
+    [self.tableView reloadData];
 }
 
-- (void)keyboardDidShow:(NSNotification *)notification
-{
-    NSLog(@"did show");
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardHeight + commentInputHeight, 0.0);
-    keyboardAdjusting = YES;
-    keyboardIsUp = YES;
-    [UIView animateWithDuration:0.4f animations:^{
-        self.tableView.contentInset = contentInsets;
-        self.tableView.scrollIndicatorInsets = contentInsets;
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]
-                              atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-    } completion:^(BOOL finished) {
-        NSLog(@"did show done");
-        keyboardAdjusting = NO;
-    }];
+- (void)commentButtonTapped:(UIButton *)sender{
+    UIEdgeInsets a = self.tableView.contentInset;
+    CGPoint b = self.tableView.contentOffset;
+    CGRect c = self.tableView.frame;
+    CGRect d = floatingView.frame;
+    NSLog(@"tapped");
+}
+
+#pragma mark - Comment input text field -
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if(!keyboardShowingHiding && !keyboardIsUp){
+        NSLog(@"recal %f", self.tableView.contentOffset.y);
+        CGRect frame = floatingView.frame;
+        frame.origin.y = scrollView.contentOffset.y + floadtingViewOffset;
+        floatingView.frame = frame;
+        
+        [self.view bringSubviewToFront:floatingView];
+    }else if (keyboardAdjusting){
+        NSLog(@"recal- kb up %f", self.tableView.contentOffset.y);
+        CGRect frame = floatingView.frame;
+        frame.origin.y = scrollView.contentOffset.y + tableViewHeight - commentInputHeight - keyboardHeight;
+        floatingView.frame = frame;
+        
+        [self.view bringSubviewToFront:floatingView];
+    }else if (!keyboardShowingHiding){
+        NSLog(@"remove keyboard");
+        keyboardShowingHiding = YES;
+        [commentInput resignFirstResponder];
+        [UIView animateWithDuration:0.3f animations:^{
+            floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight);
+        } completion:^(BOOL finished) {
+            keyboardIsUp = NO;
+            keyboardShowingHiding = NO;
+        }];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -413,6 +376,7 @@
         
         floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight);
     } completion:^(BOOL finished) {
+        
         keyboardShowingHiding = NO;
     }];
     
@@ -422,7 +386,39 @@
 }
 
 //- (void) textFieldDidBeginEditing:(UITextField *)textField {
+//
 //}
+
+#pragma mark - Keyboard handlding methods -
+
+-(void)keyboardWillShow:(NSNotification *)notification
+{
+    NSLog(@"will show");
+    [self setEdgesForExtendedLayout:UIRectEdgeNone];
+    keyboardShowingHiding = YES;
+    if(keyboardHeight == 0){
+        NSDictionary* keyboardInfo = [notification userInfo];
+        CGSize kbSize = [[keyboardInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+        keyboardHeight = kbSize.height;
+    }
+    NSLog(@"%f", keyboardHeight);
+    
+}
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    NSLog(@"did show");
+    keyboardAdjusting = YES;
+    keyboardIsUp = YES;
+    [UIView animateWithDuration:0.4f animations:^{
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]
+                          atScrollPosition:UITableViewScrollPositionBottom animated:NO];//Scroll to previous row!
+    } completion:^(BOOL finished) {
+        NSLog(@"did show done");
+        keyboardAdjusting = NO;
+        keyboardShowingHiding = NO;
+    }];
+}
 
 #pragma mark - Helpers -
 

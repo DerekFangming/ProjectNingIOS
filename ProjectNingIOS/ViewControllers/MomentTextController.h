@@ -18,7 +18,6 @@
     UITextField *commentInput;
     
     NSInteger floadtingViewOffset;
-    UIEdgeInsets tableviewContentInsets;
     
     CGFloat keyboardHeight;
     CGFloat commentInputHeight;
@@ -28,6 +27,7 @@
     BOOL keyboardShowingHiding;
     BOOL keyboardIsUp;
     BOOL keyboardAdjusting;
+    BOOL test;
 }
 
 @property (nonatomic, strong) NSNumber *userId;
