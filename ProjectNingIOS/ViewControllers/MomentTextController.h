@@ -18,6 +18,7 @@
     UITextField *commentInput;
     
     NSInteger floadtingViewOffset;
+    NSInteger selectedRow;
     
     CGFloat keyboardHeight;
     CGFloat commentInputHeight;
@@ -27,7 +28,6 @@
     BOOL keyboardShowingHiding;
     BOOL keyboardIsUp;
     BOOL keyboardAdjusting;
-    BOOL test;
 }
 
 @property (nonatomic, strong) NSNumber *userId;
@@ -42,8 +42,6 @@
 @property (nonatomic, strong) NSMutableArray *likedList;
 @property (nonatomic, strong) NSMutableArray *commentList;
 
-//@property (nonatomic, assign) int commentLikeCount; // testing only
-//@property (nonatomic, assign) int commentCount; // testing only
 @property (nonatomic, assign) CGFloat likeCellHeight;
 @property (nonatomic, assign) CGFloat headerCellHeight;
 

@@ -17,8 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //self.commentCount = 4;
-    //self.commentLikeCount = 2;
+    selectedRow = -1;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
@@ -92,14 +91,16 @@
 #pragma mark - Section and list -
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(section == 0){
         return 2;
-    }else{
+    }else if (section == 1 ){
         return [self.commentList count];
+    }else{
+        return 1;
     }
 }
 
@@ -109,8 +110,10 @@
         return self.headerCellHeight;
     }else if(indexPath.section == 0 && indexPath.row == 1){
         return self.likeCellHeight;
-    }else{
+    }else if (indexPath.section == 1){
         return [[self.commentList objectAtIndex:indexPath.row] cellHeight];
+    }else{
+        return 35;
     }
 }
 
@@ -243,7 +246,7 @@
         }
         return cell;
         
-    }else{
+    }else if (indexPath.section == 1){
         MomentTextCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextCommentCell"
                                                                       forIndexPath:indexPath];
         
@@ -294,6 +297,15 @@
             [cell.commentOwnerAvatar setImage: comment.ownerAvatar];
         }
         return cell;
+    }else{
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextFooterCell"
+                                                                      forIndexPath:indexPath];
+        if(cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                reuseIdentifier:@"momentTextFooterCell"];
+        }
+        cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width , 0, 0);        
+        return cell;
     }
 }
 
@@ -303,13 +315,18 @@
     NSLog(@"row selected");
     if(keyboardIsUp){
         keyboardIsUp = NO;
-        keyboardShowingHiding = YES;
+        commentInput.placeholder = @"Enter comment";
         [commentInput resignFirstResponder];
         [UIView animateWithDuration:0.3f animations:^{
-            floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight);
+            floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight + 150);
         } completion:^(BOOL finished) {
-            keyboardShowingHiding = NO;
+            NSLog(@"Done!");
         }];
+    }else if(indexPath.section == 1){
+        NSString *name = [[self.commentList objectAtIndex:indexPath.row] ownerDisplayedName];
+        commentInput.placeholder = [@"Reply to " stringByAppendingString: name];
+        selectedRow = indexPath.row;
+        [commentInput becomeFirstResponder];
     }
 }
 
@@ -356,6 +373,7 @@
     }else if (!keyboardShowingHiding){
         NSLog(@"remove keyboard");
         keyboardShowingHiding = YES;
+        commentInput.placeholder = @"Enter comment";
         [commentInput resignFirstResponder];
         [UIView animateWithDuration:0.3f animations:^{
             floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight);
@@ -363,6 +381,8 @@
             keyboardIsUp = NO;
             keyboardShowingHiding = NO;
         }];
+    }else{
+        NSLog(@"scroll");
     }
 }
 
@@ -411,10 +431,19 @@
     keyboardAdjusting = YES;
     keyboardIsUp = YES;
     [UIView animateWithDuration:0.4f animations:^{
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]
-                          atScrollPosition:UITableViewScrollPositionBottom animated:NO];//Scroll to previous row!
+        if(selectedRow + 1 == [self.commentList count]){
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]
+                                  atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        }else if(selectedRow >= 0){
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow + 1 inSection:1]
+                                  atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        }else{
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow inSection:1]
+                                  atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        }
     } completion:^(BOOL finished) {
-        NSLog(@"did show done");
+        NSLog(@"did show done %f", self.tableView.contentOffset.y);
+        selectedRow = -1;
         keyboardAdjusting = NO;
         keyboardShowingHiding = NO;
     }];

@@ -915,7 +915,7 @@
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="10" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="momentTextCommentCell" rowHeight="50" id="mbe-gZ-lqb" customClass="MomentTextCommentCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentTextCommentCell" rowHeight="50" id="mbe-gZ-lqb" customClass="MomentTextCommentCell">
                                 <rect key="frame" x="0.0" y="256" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mbe-gZ-lqb" id="7r2-5j-Ljg">
@@ -991,6 +991,14 @@
                                     <outlet property="commentOwnerAvatar" destination="79C-DZ-cdP" id="hRG-Or-JFa"/>
                                     <outlet property="commentOwnerName" destination="dd5-hy-ixS" id="XBE-vX-GWN"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentTextFooterCell" id="NSe-tL-zG7">
+                                <rect key="frame" x="0.0" y="306" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NSe-tL-zG7" id="f4c-Rg-6Xa">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
