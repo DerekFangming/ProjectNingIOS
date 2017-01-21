@@ -346,11 +346,9 @@
 }
 
 - (void)commentButtonTapped:(UIButton *)sender{
-    UIEdgeInsets a = self.tableView.contentInset;
-    CGPoint b = self.tableView.contentOffset;
-    CGRect c = self.tableView.frame;
-    CGRect d = floatingView.frame;
-    NSLog(@"tapped");
+    if(!keyboardIsUp && !keyboardShowingHiding){
+        [commentInput becomeFirstResponder];
+    }
 }
 
 #pragma mark - Comment input text field -
@@ -382,7 +380,7 @@
             keyboardShowingHiding = NO;
         }];
     }else{
-        NSLog(@"scroll");
+        //NSLog(@"scroll");
     }
 }
 
@@ -430,15 +428,13 @@
     NSLog(@"did show");
     keyboardAdjusting = YES;
     keyboardIsUp = YES;
+    NSLog(@"This row is selected %d", selectedRow);
     [UIView animateWithDuration:0.4f animations:^{
-        if(selectedRow + 1 == [self.commentList count]){
+        if(selectedRow + 1 == [self.commentList count] || selectedRow == -1){
             [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]
                                   atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-        }else if(selectedRow >= 0){
-            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow + 1 inSection:1]
-                                  atScrollPosition:UITableViewScrollPositionBottom animated:NO];
         }else{
-            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow inSection:1]
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:selectedRow + 1 inSection:1]
                                   atScrollPosition:UITableViewScrollPositionBottom animated:NO];
         }
     } completion:^(BOOL finished) {
