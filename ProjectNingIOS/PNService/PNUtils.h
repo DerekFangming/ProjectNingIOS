@@ -24,6 +24,7 @@
 #define pathForRecentFeedList       @"get_recent_feeds"
 #define pathForFeedCoverImg         @"get_feed_cover_img"
 #define pathForFeedPreviewIds       @"get_feed_preview_images"
+#define pathForCreatingComment      @"create_comment"
 #define pathForRecentComments       @"get_recent_comment_from_friends"
 
 

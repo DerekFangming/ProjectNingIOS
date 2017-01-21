@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ProjectNingIOS/PNService/PNUser.m"
-            timestampString = "504156367.094575"
+            timestampString = "506663894.092678"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "+loginUserWithUsername:andPassword:response:"
             landmarkType = "5">
          </BreakpointContent>

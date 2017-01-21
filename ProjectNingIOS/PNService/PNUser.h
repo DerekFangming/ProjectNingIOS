@@ -15,6 +15,7 @@
 
 
 @interface PNUser : NSObject{
+    @protected NSNumber *userId;
     @protected NSString *username;
     @protected NSString *accessToken;
     @protected NSDate *expDate;
@@ -59,6 +60,11 @@
     Return nil if there is a current user
  */
 + (NSError *) checkUserLoginStatus;
+
+/**
+ Method to retrieve the user Id of a user object
+ */
+- (NSNumber *) userId;
 
 /**
     Method to retrieve the username of a user object

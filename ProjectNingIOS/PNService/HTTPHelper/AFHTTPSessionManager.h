@@ -113,6 +113,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithBaseURL:(nullable NSURL *)url;
 
 /**
+ Same as above but set both request and response serializer to use JSON
+ */
+
+- (instancetype)initJSONManagerWithBaseURL:(nullable NSURL *)url;
+
+/**
  Initializes an `AFHTTPSessionManager` object with the specified base URL.
 
  This is the designated initializer.

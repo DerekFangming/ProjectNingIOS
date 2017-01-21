@@ -59,6 +59,13 @@
     return [self initWithBaseURL:url sessionConfiguration:nil];
 }
 
+- (instancetype)initJSONManagerWithBaseURL:(nullable NSURL *)url{
+    AFHTTPSessionManager *manager = [self initWithBaseURL:url sessionConfiguration:nil];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    return manager;
+}
+
 - (instancetype)initWithSessionConfiguration:(NSURLSessionConfiguration *)configuration {
     return [self initWithBaseURL:nil sessionConfiguration:configuration];
 }

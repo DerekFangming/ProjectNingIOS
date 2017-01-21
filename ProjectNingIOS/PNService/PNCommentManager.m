@@ -10,6 +10,42 @@
 
 @implementation PNCommentManager
 
++ (void) createComment:(NSString *) commentBody
+        forCommentType:(NSString *) type
+          andMappingId:(NSNumber *) mappingId
+          mentionsUser:(NSNumber *) mentionedUserId
+              response:(void(^)(NSError *)) response{
+    NSError *error = [PNUser checkUserLoginStatus];
+    if(error != nil){
+        response(error);
+    }
+    
+    PNUser *user = [PNUser currentUser];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:commentBody forKey:@"commentBody"];
+    [parameters setObject:type forKey:@"type"];
+    [parameters setObject:mappingId forKey:@"mappingId"];
+    if (mentionedUserId != nil)
+        [parameters setObject:mentionedUserId forKey:@"mentionedUserId"];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
+    
+    [manager POST:pathForCreatingComment
+       parameters:parameters
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
+                  response(nil);
+              }else{
+                  response([PNUtils createNSError:responseObject]);
+              }
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              response(error);
+              
+          }];
+}
+
 + (void) getRecentCommentsForCurrentUserWithCommentType:(NSString *) type
                                            andMappingId:(NSNumber *) mappingId
                                                response:(void(^)(NSError *, NSMutableArray *)) response{

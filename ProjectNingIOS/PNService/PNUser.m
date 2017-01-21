@@ -57,6 +57,7 @@
                                 ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
                                 
                                 PNUser *user = [PNUser currentUser];
+                                user->userId = [responseObject objectForKey:@"userId"];
                                 user->username = [responseObject objectForKey:@"username"];
                                 user->accessToken = [responseObject objectForKey:@"accessToken"];
                                 user->expDate = [formatter dateFromString:[responseObject objectForKey:@"expire"]];
@@ -108,6 +109,7 @@
                                 ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
                                 
                                 PNUser *user = [PNUser currentUser];
+                                user->userId = [responseObject objectForKey:@"userId"];                                
                                 user->username = [responseObject objectForKey:@"username"];
                                 user->accessToken = [responseObject objectForKey:@"accessToken"];
                                 user->expDate = [formatter dateFromString:[responseObject objectForKey:@"expire"]];
@@ -164,6 +166,7 @@
 }
 + (void) logoutCurrentUser{
     PNUser *user = [PNUser currentUser];
+    user->userId = nil;
     user->username = nil;
     user->accessToken = nil;
     user->expDate = nil;
@@ -193,6 +196,10 @@
         [output appendFormat:@"%02x", digest[i]];
     
     return  output;
+}
+
+- (NSNumber *) userId{
+    return self->userId;
 }
 
 - (NSString *) username{

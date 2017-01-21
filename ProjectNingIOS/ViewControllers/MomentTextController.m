@@ -221,6 +221,10 @@
             [cell.contentView addSubview:imv];
             
             PNComment *comment = [self.likedList objectAtIndex: i];
+            if(comment.ownerId == [[PNUser currentUser] userId]){
+                self.likedByCurrentUser = YES;
+            }
+            
             if(comment.ownerAvatar == nil){
                 [PNImageManager getSingletonImgForUser:comment.ownerId
                                            withImgType:AVATAR
