@@ -17,11 +17,13 @@
         forCommentType:(NSString *) type
           andMappingId:(NSNumber *) mappingId
           mentionsUser:(NSNumber *) mentionedUserId
-              response:(void(^)(NSError *)) response;
+              response:(void(^)(NSError *, NSNumber *)) response;
+
++ (void) deleteCommentWithId:(NSNumber *) commentId response:(void(^)(NSError *)) response;
 
 + (void) getRecentCommentsForCurrentUserWithCommentType:(NSString *) type
                                            andMappingId:(NSNumber *) mappingId
-                                               response:(void(^)(NSError *, NSMutableArray *)) response;
+                                               response:(void(^)(NSError *, NSMutableArray *, BOOL)) response;
 
 
 @end

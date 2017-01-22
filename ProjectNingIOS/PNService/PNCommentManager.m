@@ -14,10 +14,10 @@
         forCommentType:(NSString *) type
           andMappingId:(NSNumber *) mappingId
           mentionsUser:(NSNumber *) mentionedUserId
-              response:(void(^)(NSError *)) response{
+              response:(void(^)(NSError *, NSNumber *)) response{
     NSError *error = [PNUser checkUserLoginStatus];
     if(error != nil){
-        response(error);
+        response(error, nil);
     }
     
     PNUser *user = [PNUser currentUser];
@@ -36,6 +36,35 @@
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
+                  response(nil, [responseObject objectForKey:@"commentId"]);
+              }else{
+                  response([PNUtils createNSError:responseObject], nil);
+              }
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              response(error, nil);
+              
+          }];
+}
+
++ (void) deleteCommentWithId:(NSNumber *) commentId
+                    response:(void(^)(NSError *)) response{
+    NSError *error = [PNUser checkUserLoginStatus];
+    if(error != nil){
+        response(error);
+    }
+    
+    PNUser *user = [PNUser currentUser];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:commentId forKey:@"commentId"];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
+    
+    [manager POST:pathForDeletingComment
+       parameters:parameters
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
                   response(nil);
               }else{
                   response([PNUtils createNSError:responseObject]);
@@ -48,10 +77,10 @@
 
 + (void) getRecentCommentsForCurrentUserWithCommentType:(NSString *) type
                                            andMappingId:(NSNumber *) mappingId
-                                               response:(void(^)(NSError *, NSMutableArray *)) response{
+                                               response:(void(^)(NSError *, NSMutableArray *, BOOL)) response{
     NSError *error = [PNUser checkUserLoginStatus];
     if(error != nil){
-        response(error, nil);
+        response(error, nil, NO);
     }
     
     PNUser *user = [PNUser currentUser];
@@ -86,12 +115,12 @@
                       [commentList addObject:comment];
                   }
                   
-                  response(nil, commentList);
+                  response(nil, commentList, [[responseObject objectForKey:@""] boolValue]);
               }else{
-                  response([PNUtils createNSError:responseObject], nil);
+                  response([PNUtils createNSError:responseObject], nil, false);
               }
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-              response(error,nil);
+              response(error,nil, false);
               
           }];
     

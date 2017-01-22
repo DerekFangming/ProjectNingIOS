@@ -23,7 +23,7 @@
     
     [PNCommentManager getRecentCommentsForCurrentUserWithCommentType:@"Feed"
                                                         andMappingId:self.momentId
-                                                            response:^(NSError *error, NSMutableArray *resultList) {
+                                                            response:^(NSError *error, NSMutableArray *resultList, BOOL liked) {
                                           if(error != nil){
                                               if(![[error localizedDescription] isEqualToString:NO_COMMENT_ERR_MSG]){
                                                   [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
@@ -37,7 +37,7 @@
     
     [PNCommentManager getRecentCommentsForCurrentUserWithCommentType:@"Feed Like"
                                                         andMappingId:self.momentId
-                                                            response:^(NSError *error, NSMutableArray *resultList) {
+                                                            response:^(NSError *error, NSMutableArray *resultList, BOOL liked) {
                                                                 if(error != nil){
                                                                     if(![[error localizedDescription] isEqualToString:NO_COMMENT_ERR_MSG]){
                                                                         [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
@@ -45,6 +45,7 @@
                                                                     }
                                                                 }else{
                                                                     self.likedList = resultList;
+                                                                    self.likedByCurrentUser = liked;
                                                                     [self.tableView reloadData];
                                                                 }
                                                             }];
@@ -221,10 +222,6 @@
             [cell.contentView addSubview:imv];
             
             PNComment *comment = [self.likedList objectAtIndex: i];
-            if(comment.ownerId == [[PNUser currentUser] userId]){
-                self.likedByCurrentUser = YES;
-            }
-            
             if(comment.ownerAvatar == nil){
                 [PNImageManager getSingletonImgForUser:comment.ownerId
                                            withImgType:AVATAR
@@ -338,15 +335,47 @@
 
 - (void)likeButtonTapped:(UIButton *)sender{
     if(self.likedByCurrentUser){
-        [sender setBackgroundImage:[UIImage imageNamed:@"notLike.png"] forState:UIControlStateNormal];
-        self.likedByCurrentUser = NO;
-        //self.commentLikeCount -= 1;
+        [PNCommentManager deleteCommentWithId:self.momentId
+                                     response:^(NSError *error) {
+                                         if(error != nil){
+                                             [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
+                                                                                          from: self];
+                                         }else{
+                                             [sender setBackgroundImage:[UIImage imageNamed:@"notLike.png"] forState:UIControlStateNormal];
+                                             self.likedByCurrentUser = NO;
+                                             NSNumber *currentUserId = [[PNUser currentUser] userId];
+                                             for(PNComment *comment in self.commentList){
+                                                 if(comment.ownerId == currentUserId){
+                                                     [self.commentList removeObject:comment];
+                                                     break;
+                                                 }
+                                             }
+                                             [self.tableView reloadData];
+                                         }
+                                     }];
     }else{
-        [sender setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
-        self.likedByCurrentUser = YES;
-        //self.commentLikeCount += 1;
+        [PNCommentManager createComment:@"like"
+                         forCommentType:@"Feed Like"
+                           andMappingId:self.momentId
+                           mentionsUser:nil
+                               response:^(NSError *error, NSNumber *commentId) {
+                                   if(error != nil){
+                                       [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
+                                                                                    from: self];
+                                   }else{
+                                       [sender setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
+                                       self.likedByCurrentUser = YES;
+                                       PNComment * comment = [[PNComment alloc] initWithCommentId:commentId
+                                                                                          andBody:@"like"
+                                                                                          andType:@"Feed Like"
+                                                                                     andMappingId:self.momentId
+                                                                                       andOwnerId:[[PNUser currentUser] userId]
+                                                                                          andDate:[NSDate date]];
+                                       [self.likedList addObject:comment];
+                                       [self.tableView reloadData];
+                                   }
+                               }];
     }
-    [self.tableView reloadData];
 }
 
 - (void)commentButtonTapped:(UIButton *)sender{
