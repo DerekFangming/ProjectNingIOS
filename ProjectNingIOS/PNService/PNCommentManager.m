@@ -115,7 +115,7 @@
                       [commentList addObject:comment];
                   }
                   
-                  response(nil, commentList, [[responseObject objectForKey:@""] boolValue]);
+                  response(nil, commentList, [[responseObject objectForKey:@"likedByCurrentUser"] boolValue]);
               }else{
                   response([PNUtils createNSError:responseObject], nil, false);
               }

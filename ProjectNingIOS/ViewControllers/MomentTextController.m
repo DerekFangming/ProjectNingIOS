@@ -335,7 +335,15 @@
 
 - (void)likeButtonTapped:(UIButton *)sender{
     if(self.likedByCurrentUser){
-        [PNCommentManager deleteCommentWithId:self.momentId
+        PNComment *commentByCurrentUser;
+        NSNumber *currentUserId = [[PNUser currentUser] userId];
+        for(PNComment *comment in self.likedList){
+            if(comment.ownerId == currentUserId){
+                commentByCurrentUser = comment;
+                break;
+            }
+        }
+        [PNCommentManager deleteCommentWithId:commentByCurrentUser.commentId
                                      response:^(NSError *error) {
                                          if(error != nil){
                                              [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
@@ -343,13 +351,7 @@
                                          }else{
                                              [sender setBackgroundImage:[UIImage imageNamed:@"notLike.png"] forState:UIControlStateNormal];
                                              self.likedByCurrentUser = NO;
-                                             NSNumber *currentUserId = [[PNUser currentUser] userId];
-                                             for(PNComment *comment in self.commentList){
-                                                 if(comment.ownerId == currentUserId){
-                                                     [self.commentList removeObject:comment];
-                                                     break;
-                                                 }
-                                             }
+                                             [self.likedList removeObject:commentByCurrentUser];
                                              [self.tableView reloadData];
                                          }
                                      }];
