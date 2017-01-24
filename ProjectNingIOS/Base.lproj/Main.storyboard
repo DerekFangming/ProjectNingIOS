@@ -952,7 +952,7 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Comment text" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56q-fD-Ddt">
+                                        <textView clipsSubviews="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Comment text" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56q-fD-Ddt">
                                             <rect key="frame" x="96" y="22" width="486" height="19"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

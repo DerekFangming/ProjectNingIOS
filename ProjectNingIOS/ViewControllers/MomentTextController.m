@@ -260,7 +260,22 @@
         PNComment *comment = [self.commentList objectAtIndex:indexPath.row];
         cell.commentOwnerName.text = [comment ownerDisplayedName];
         cell.commentOwnerName.textColor = PURPLE_COLOR;
-        cell.commentBody.text = [comment commentBody];
+        NSMutableAttributedString *attrBody;
+        if (comment.mentionedUserId != nil){
+            //Create user obj here
+            NSString *body = [NSString stringWithFormat:@"@%@%@%@", comment.mentionedUserName, @": ", comment.commentBody];
+            attrBody = [[NSMutableAttributedString alloc]initWithString:body attributes:@{ @"myCustomTag" : @(YES) }];
+            [attrBody addAttribute:NSForegroundColorAttributeName value:PURPLE_COLOR
+                             range:NSMakeRange(1, comment.mentionedUserName.length)];
+            cell.commentBody.attributedText =attrBody;
+        }else{
+            attrBody = [[NSMutableAttributedString alloc]initWithString:comment.commentBody
+                                                             attributes:@{ @"myCustomTag" : @(YES) }];
+            cell.commentBody.attributedText =attrBody;
+        }
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(textTapped:)];
+        tap.numberOfTapsRequired = 1;
+        [cell.commentBody addGestureRecognizer:tap];
         cell.commentBody.textContainer.lineFragmentPadding = 0;
         cell.commentBody.textContainerInset = UIEdgeInsetsZero;
         [cell.commentBody sizeToFit];
@@ -309,6 +324,7 @@
         return cell;
     }
 }
+
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -390,21 +406,21 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if(!keyboardShowingHiding && !keyboardIsUp){
-        NSLog(@"recal %f", self.tableView.contentOffset.y);
+        //NSLog(@"recal %f", self.tableView.contentOffset.y);
         CGRect frame = floatingView.frame;
         frame.origin.y = scrollView.contentOffset.y + floadtingViewOffset;
         floatingView.frame = frame;
         
         [self.view bringSubviewToFront:floatingView];
     }else if (keyboardAdjusting){
-        NSLog(@"recal- kb up %f", self.tableView.contentOffset.y);
+        //NSLog(@"recal- kb up %f", self.tableView.contentOffset.y);
         CGRect frame = floatingView.frame;
         frame.origin.y = scrollView.contentOffset.y + tableViewHeight - commentInputHeight - keyboardHeight;
         floatingView.frame = frame;
         
         [self.view bringSubviewToFront:floatingView];
     }else if (!keyboardShowingHiding){
-        NSLog(@"remove keyboard");
+        //NSLog(@"remove keyboard");
         keyboardShowingHiding = YES;
         commentInput.placeholder = @"Enter comment";
         [commentInput resignFirstResponder];
@@ -421,7 +437,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSLog(@"return pressed");
+    //NSLog(@"return pressed");
     keyboardIsUp = NO;
     keyboardShowingHiding = YES;
     [commentInput resignFirstResponder];
@@ -446,7 +462,7 @@
 
 -(void)keyboardWillShow:(NSNotification *)notification
 {
-    NSLog(@"will show");
+    //NSLog(@"will show");
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
     keyboardShowingHiding = YES;
     if(keyboardHeight == 0){
@@ -454,16 +470,15 @@
         CGSize kbSize = [[keyboardInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
         keyboardHeight = kbSize.height;
     }
-    NSLog(@"%f", keyboardHeight);
+    //NSLog(@"%f", keyboardHeight);
     
 }
 
 - (void)keyboardDidShow:(NSNotification *)notification
 {
-    NSLog(@"did show");
+    //NSLog(@"did show");
     keyboardAdjusting = YES;
     keyboardIsUp = YES;
-    NSLog(@"This row is selected %d", selectedRow);
     [UIView animateWithDuration:0.4f animations:^{
         if(selectedRow + 1 == [self.commentList count] || selectedRow == -1){
             [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]
@@ -473,13 +488,60 @@
                                   atScrollPosition:UITableViewScrollPositionBottom animated:NO];
         }
     } completion:^(BOOL finished) {
-        NSLog(@"did show done %f", self.tableView.contentOffset.y);
+        //NSLog(@"did show done %f", self.tableView.contentOffset.y);
         selectedRow = -1;
         keyboardAdjusting = NO;
         keyboardShowingHiding = NO;
     }];
 }
 
+#pragma mark - Comment mentioned user tap handling -
+
+- (void)textTapped:(UITapGestureRecognizer *)recognizer
+{
+    UITextView *textView = (UITextView *)recognizer.view;
+    
+    // Location of the tap in text-container coordinates
+    NSLayoutManager *layoutManager = textView.layoutManager;
+    CGPoint location = [recognizer locationInView:textView];
+    location.x -= textView.textContainerInset.left;
+    location.y -= textView.textContainerInset.top;
+    
+    // Find the character that's been tapped on
+    NSUInteger characterIndex;
+    characterIndex = [layoutManager characterIndexForPoint:location
+                                           inTextContainer:textView.textContainer
+                  fractionOfDistanceBetweenInsertionPoints:NULL];
+    
+    if (characterIndex < textView.textStorage.length) {
+        
+        NSRange range;
+        //id value =
+        [textView.attributedText attribute:@"myCustomTag" atIndex:characterIndex effectiveRange:&range];
+        
+        //NSLog(@"%@, %d, %d", value, range.location, range.length);
+        if(range.location == 1){
+            //segue to friend view
+            NSLog(@"go to user page");
+        }else if(keyboardIsUp){
+            keyboardIsUp = NO;
+            commentInput.placeholder = @"Enter comment";
+            [commentInput resignFirstResponder];
+            [UIView animateWithDuration:0.3f animations:^{
+                floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight + 150);
+            } completion:^(BOOL finished) {
+                NSLog(@"Done!");
+            }];
+        }else{
+            MomentTextCommentCell *cell = (MomentTextCommentCell *) textView.superview.superview;
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+            NSString *name = [[self.commentList objectAtIndex:indexPath.row] ownerDisplayedName];
+            commentInput.placeholder = [@"Reply to " stringByAppendingString: name];
+            selectedRow = indexPath.row;
+            [commentInput becomeFirstResponder];
+        }
+    }
+}
 #pragma mark - Helpers -
 
 - (NSString *) processDateToText: (NSDate *) date withAbbreviation: (BOOL) abbrev{
