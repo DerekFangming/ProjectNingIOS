@@ -264,7 +264,7 @@
         if (comment.mentionedUserId != nil){
             //Create user obj here
             NSString *body = [NSString stringWithFormat:@"@%@%@%@", comment.mentionedUserName, @": ", comment.commentBody];
-            attrBody = [[NSMutableAttributedString alloc]initWithString:body attributes:@{ @"myCustomTag" : @(YES) }];
+            attrBody = [[NSMutableAttributedString alloc]initWithString:body attributes:@{ @"nameSegueTag" : @(YES) }];
             [attrBody addAttribute:NSForegroundColorAttributeName value:PURPLE_COLOR
                              range:NSMakeRange(1, comment.mentionedUserName.length)];
             cell.commentBody.attributedText =attrBody;
@@ -330,7 +330,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"row selected");
-    if(keyboardIsUp){
+    PNComment *comment = [self.commentList objectAtIndex:indexPath.row];
+    if(comment.ownerId == [[PNUser currentUser] userId]){
+        [self showDeleteCommentConfirmationForComment:comment];
+    }else if(keyboardIsUp){
         keyboardIsUp = NO;
         commentInput.placeholder = @"Enter comment";
         [commentInput resignFirstResponder];
@@ -340,8 +343,7 @@
             NSLog(@"Done!");
         }];
     }else if(indexPath.section == 1){
-        NSString *name = [[self.commentList objectAtIndex:indexPath.row] ownerDisplayedName];
-        commentInput.placeholder = [@"Reply to " stringByAppendingString: name];
+        commentInput.placeholder = [@"Reply to " stringByAppendingString: comment.ownerDisplayedName];
         selectedRow = indexPath.row;
         [commentInput becomeFirstResponder];
     }
@@ -517,12 +519,18 @@
         
         NSRange range;
         //id value =
-        [textView.attributedText attribute:@"myCustomTag" atIndex:characterIndex effectiveRange:&range];
+        [textView.attributedText attribute:@"nameSegueTag" atIndex:characterIndex effectiveRange:&range];
         
         //NSLog(@"%@, %d, %d", value, range.location, range.length);
+        MomentTextCommentCell *cell = (MomentTextCommentCell *) textView.superview.superview;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        PNComment *comment = [self.commentList objectAtIndex:indexPath.row];
+        
         if(range.location == 1){
             //segue to friend view
             NSLog(@"go to user page");
+        }else if([comment ownerId] == [[PNUser currentUser] userId]){
+            [self showDeleteCommentConfirmationForComment:comment];
         }else if(keyboardIsUp){
             keyboardIsUp = NO;
             commentInput.placeholder = @"Enter comment";
@@ -533,9 +541,7 @@
                 NSLog(@"Done!");
             }];
         }else{
-            MomentTextCommentCell *cell = (MomentTextCommentCell *) textView.superview.superview;
-            NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-            NSString *name = [[self.commentList objectAtIndex:indexPath.row] ownerDisplayedName];
+            NSString *name = [comment ownerDisplayedName];
             commentInput.placeholder = [@"Reply to " stringByAppendingString: name];
             selectedRow = indexPath.row;
             [commentInput becomeFirstResponder];
@@ -554,8 +560,47 @@
     return dateStr;
 }
 
--(void)likeImgClick:(UITapGestureRecognizer *)recognizer
-{
+- (void)showDeleteCommentConfirmationForComment:(PNComment *) comment{
+    UIAlertController * view=   [UIAlertController
+                                 alertControllerWithTitle:@"Delete my comment "
+                                 message:nil
+                                 preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"Delete"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [PNCommentManager deleteCommentWithId:comment.commentId
+                                                          response:^(NSError *error) {
+                                                              if(error != nil){
+                                                                  [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
+                                                                                                               from: self];
+                                                              }else{
+                                                                  [self.commentList removeObject:comment];
+                                                                  [self.tableView reloadData];
+                                                              }
+                                                          }];
+                             [view dismissViewControllerAnimated:YES completion:nil];
+                             
+                         }];
+    [ok setValue:[UIColor redColor] forKey:@"titleTextColor"];
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [view dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+    
+    
+    [view addAction:ok];
+    [view addAction:cancel];
+    [self presentViewController:view animated:YES completion:nil];
+}
+
+- (void)likeImgClick:(UITapGestureRecognizer *)recognizer{
     NSLog(@"%d", recognizer.view.tag);
 }
 
