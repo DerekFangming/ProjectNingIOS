@@ -392,6 +392,8 @@
                                                                                      andMappingId:self.momentId
                                                                                        andOwnerId:[[PNUser currentUser] userId]
                                                                                           andDate:[NSDate date]];
+                                       if(self.likedList == nil)
+                                           self.likedList = [[NSMutableArray alloc] init];
                                        [self.likedList addObject:comment];
                                        [self.tableView reloadData];
                                    }
@@ -474,6 +476,8 @@
                                    comment.mentionedUserId = mentionedUser;
                                    comment.mentionedUserName = clickedUserName;
                                    comment.ownerDisplayedName = [[PNUser currentUser] username];
+                                   if (self.commentList == nil)
+                                       self.commentList = [[NSMutableArray alloc] init];
                                    [self.commentList addObject:comment];
                                    [self.tableView reloadData];
                                }
