@@ -345,6 +345,7 @@
     }else if(indexPath.section == 1){
         commentInput.placeholder = [@"Reply to " stringByAppendingString: comment.ownerDisplayedName];
         selectedRow = indexPath.row;
+        mentionedUser = comment.ownerId;
         [commentInput becomeFirstResponder];
     }
 }
@@ -400,6 +401,7 @@
 
 - (void)commentButtonTapped:(UIButton *)sender{
     if(!keyboardIsUp && !keyboardShowingHiding){
+        mentionedUser = nil;
         [commentInput becomeFirstResponder];
     }
 }
@@ -451,7 +453,32 @@
         keyboardShowingHiding = NO;
     }];
     
-    //NSLog(commentInput.text);
+    NSString *clickedUserName = [commentInput.placeholder
+                                   stringByReplacingOccurrencesOfString:@"Reply to " withString:@""];
+    NSString *commentBody = commentInput.text;
+    [PNCommentManager createComment:commentBody
+                     forCommentType:@"Feed"
+                       andMappingId:self.momentId
+                       mentionsUser:mentionedUser
+                           response:^(NSError *error, NSNumber *commentId) {
+                               if(error != nil){
+                                   [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
+                                                                                from: self];
+                               }else{
+                                   PNComment * comment = [[PNComment alloc] initWithCommentId:commentId
+                                                                                      andBody:commentBody
+                                                                                      andType:@"Feed"
+                                                                                 andMappingId:self.momentId
+                                                                                   andOwnerId:[[PNUser currentUser] userId]
+                                                                                      andDate:[NSDate date]];
+                                   comment.mentionedUserId = mentionedUser;
+                                   comment.mentionedUserName = clickedUserName;
+                                   comment.ownerDisplayedName = [[PNUser currentUser] username];
+                                   [self.commentList addObject:comment];
+                                   [self.tableView reloadData];
+                               }
+                           }];
+    commentInput.placeholder = @"Enter comment";
     commentInput.text = @"";
     return YES;
 }
@@ -518,7 +545,7 @@
     if (characterIndex < textView.textStorage.length) {
         
         NSRange range;
-        //id value =
+        //id value = [textView.attributedText attribute:@"nameSegueTag" atIndex:characterIndex effectiveRange:&range];
         [textView.attributedText attribute:@"nameSegueTag" atIndex:characterIndex effectiveRange:&range];
         
         //NSLog(@"%@, %d, %d", value, range.location, range.length);
@@ -544,6 +571,7 @@
             NSString *name = [comment ownerDisplayedName];
             commentInput.placeholder = [@"Reply to " stringByAppendingString: name];
             selectedRow = indexPath.row;
+            mentionedUser = comment.ownerId;
             [commentInput becomeFirstResponder];
         }
     }

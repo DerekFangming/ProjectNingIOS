@@ -19,6 +19,7 @@
     
     NSInteger floadtingViewOffset;
     NSInteger selectedRow;
+    NSNumber *mentionedUser;
     
     CGFloat keyboardHeight;
     CGFloat commentInputHeight;
