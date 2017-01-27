@@ -26,7 +26,7 @@
     CGFloat tableViewHeight;
     CGFloat tableViewWidth;
     
-    BOOL keyboardShowingHiding;
+    BOOL keyboardShowingHiding1;
     BOOL keyboardIsUp;
     BOOL keyboardAdjusting;
 }

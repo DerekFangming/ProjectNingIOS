@@ -264,13 +264,13 @@
         if (comment.mentionedUserId != nil){
             //Create user obj here
             NSString *body = [NSString stringWithFormat:@"@%@%@%@", comment.mentionedUserName, @": ", comment.commentBody];
-            attrBody = [[NSMutableAttributedString alloc]initWithString:body attributes:@{ @"nameSegueTag" : @(YES) }];
+            attrBody = [[NSMutableAttributedString alloc]initWithString:body attributes:@{ @"commentTag" : @(YES) }];
             [attrBody addAttribute:NSForegroundColorAttributeName value:PURPLE_COLOR
                              range:NSMakeRange(1, comment.mentionedUserName.length)];
             cell.commentBody.attributedText =attrBody;
         }else{
             attrBody = [[NSMutableAttributedString alloc]initWithString:comment.commentBody
-                                                             attributes:@{ @"myCustomTag" : @(YES) }];
+                                                             attributes:@{ @"commentTag" : @(YES) }];
             cell.commentBody.attributedText =attrBody;
         }
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(textTapped:)];
@@ -338,7 +338,7 @@
         commentInput.placeholder = @"Enter comment";
         [commentInput resignFirstResponder];
         [UIView animateWithDuration:0.3f animations:^{
-            floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight + 150);
+            floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight);
         } completion:^(BOOL finished) {
             NSLog(@"Done!");
         }];
@@ -402,7 +402,9 @@
 }
 
 - (void)commentButtonTapped:(UIButton *)sender{
-    if(!keyboardIsUp && !keyboardShowingHiding){
+    if(!keyboardIsUp){
+        NSLog(@"%ld", (long)floadtingViewOffset);
+        NSLog(@"%f", floatingView.frame.origin.x);
         mentionedUser = nil;
         [commentInput becomeFirstResponder];
     }
@@ -411,30 +413,27 @@
 #pragma mark - Comment input text field -
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if(!keyboardShowingHiding && !keyboardIsUp){
+    if(!keyboardIsUp){
         //NSLog(@"recal %f", self.tableView.contentOffset.y);
         CGRect frame = floatingView.frame;
         frame.origin.y = scrollView.contentOffset.y + floadtingViewOffset;
         floatingView.frame = frame;
         
-        [self.view bringSubviewToFront:floatingView];
     }else if (keyboardAdjusting){
         //NSLog(@"recal- kb up %f", self.tableView.contentOffset.y);
         CGRect frame = floatingView.frame;
+        NSLog(@"adjust keyboard");
         frame.origin.y = scrollView.contentOffset.y + tableViewHeight - commentInputHeight - keyboardHeight;
         floatingView.frame = frame;
         
-        [self.view bringSubviewToFront:floatingView];
-    }else if (!keyboardShowingHiding){
-        //NSLog(@"remove keyboard");
-        keyboardShowingHiding = YES;
+    }else if (keyboardIsUp){
+        NSLog(@"remove keyboard");
         commentInput.placeholder = @"Enter comment";
         [commentInput resignFirstResponder];
         [UIView animateWithDuration:0.3f animations:^{
             floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight);
         } completion:^(BOOL finished) {
             keyboardIsUp = NO;
-            keyboardShowingHiding = NO;
         }];
     }else{
         //NSLog(@"scroll");
@@ -445,15 +444,15 @@
 {
     //NSLog(@"return pressed");
     keyboardIsUp = NO;
-    keyboardShowingHiding = YES;
     [commentInput resignFirstResponder];
     [UIView animateWithDuration:0.3f animations:^{
         
         floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight);
     } completion:^(BOOL finished) {
         
-        keyboardShowingHiding = NO;
     }];
+    
+    return YES;
     
     NSString *clickedUserName = [commentInput.placeholder
                                    stringByReplacingOccurrencesOfString:@"Reply to " withString:@""];
@@ -495,24 +494,29 @@
 
 -(void)keyboardWillShow:(NSNotification *)notification
 {
-    //NSLog(@"will show");
-    [self setEdgesForExtendedLayout:UIRectEdgeNone];
-    keyboardShowingHiding = YES;
+    NSLog(@"will show");
+    [self.view sendSubviewToBack:floatingView];
     if(keyboardHeight == 0){
         NSDictionary* keyboardInfo = [notification userInfo];
         CGSize kbSize = [[keyboardInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
         keyboardHeight = kbSize.height;
     }
-    //NSLog(@"%f", keyboardHeight);
     
 }
 
 - (void)keyboardDidShow:(NSNotification *)notification
 {
-    //NSLog(@"did show");
+    NSLog(@"did show");
     keyboardAdjusting = YES;
     keyboardIsUp = YES;
-    [UIView animateWithDuration:0.4f animations:^{
+    
+    
+    CGRect frame = floatingView.frame;
+    frame.origin.y = self.tableView.contentOffset.y + tableViewHeight - commentInputHeight - keyboardHeight;
+    floatingView.frame = frame;
+    [self.view bringSubviewToFront:floatingView];
+    
+    [UIView animateWithDuration:0.3f animations:^{
         if(selectedRow + 1 == [self.commentList count] || selectedRow == -1){
             [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]
                                   atScrollPosition:UITableViewScrollPositionBottom animated:NO];
@@ -524,11 +528,10 @@
         //NSLog(@"did show done %f", self.tableView.contentOffset.y);
         selectedRow = -1;
         keyboardAdjusting = NO;
-        keyboardShowingHiding = NO;
     }];
 }
 
-#pragma mark - Comment mentioned user tap handling -
+#pragma mark - Comment user tap handling -
 
 - (void)textTapped:(UITapGestureRecognizer *)recognizer
 {
@@ -550,27 +553,27 @@
         
         NSRange range;
         //id value = [textView.attributedText attribute:@"nameSegueTag" atIndex:characterIndex effectiveRange:&range];
-        [textView.attributedText attribute:@"nameSegueTag" atIndex:characterIndex effectiveRange:&range];
+        [textView.attributedText attribute:@"commentTag" atIndex:characterIndex effectiveRange:&range];
         
         //NSLog(@"%@, %d, %d", value, range.location, range.length);
         MomentTextCommentCell *cell = (MomentTextCommentCell *) textView.superview.superview;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         PNComment *comment = [self.commentList objectAtIndex:indexPath.row];
         
-        if(range.location == 1){
-            //segue to friend view
-            NSLog(@"go to user page");
-        }else if([comment ownerId] == [[PNUser currentUser] userId]){
-            [self showDeleteCommentConfirmationForComment:comment];
-        }else if(keyboardIsUp){
+        if(keyboardIsUp){
             keyboardIsUp = NO;
             commentInput.placeholder = @"Enter comment";
             [commentInput resignFirstResponder];
             [UIView animateWithDuration:0.3f animations:^{
-                floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight + 150);
+                floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight);
             } completion:^(BOOL finished) {
                 NSLog(@"Done!");
             }];
+        }else if(range.location == 1){
+            //segue to friend view
+            NSLog(@"go to user page");
+        }else if([comment ownerId] == [[PNUser currentUser] userId]){
+            [self showDeleteCommentConfirmationForComment:comment];
         }else{
             NSString *name = [comment ownerDisplayedName];
             commentInput.placeholder = [@"Reply to " stringByAppendingString: name];
