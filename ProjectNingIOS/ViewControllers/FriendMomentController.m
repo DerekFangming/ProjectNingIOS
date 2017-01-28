@@ -204,6 +204,8 @@
         destVC.momentId = [selectedMoment feedId];
         destVC.momentBody = [selectedMoment feedBody];
         destVC.createdAt = [selectedMoment createdAt];
+    }else if([segue.identifier isEqualToString:@"momentImageDetailSegue"]){
+        //self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     }
 }
 

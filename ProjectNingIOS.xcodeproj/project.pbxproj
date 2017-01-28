@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		871D68751DD69BAD00728AD6 /* FriendsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 871D68741DD69BAD00728AD6 /* FriendsDetailViewController.m */; };
+		8732381E1E3C46110057FCBB /* MomentImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8732381D1E3C46110057FCBB /* MomentImageController.m */; };
 		87C9F3411DD9279500734504 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F33F1DD9279500734504 /* male.png */; };
 		87C9F3421DD9279500734504 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F3401DD9279500734504 /* female.png */; };
 		87C9F3461DDE9F0300734504 /* FriendOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9F3451DDE9F0300734504 /* FriendOverviewCell.m */; };
@@ -93,6 +94,8 @@
 /* Begin PBXFileReference section */
 		871D68731DD69BAD00728AD6 /* FriendsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendsDetailViewController.h; path = ViewControllers/FriendsDetailViewController.h; sourceTree = "<group>"; };
 		871D68741DD69BAD00728AD6 /* FriendsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendsDetailViewController.m; path = ViewControllers/FriendsDetailViewController.m; sourceTree = "<group>"; };
+		8732381C1E3C46110057FCBB /* MomentImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentImageController.h; path = ViewControllers/MomentImageController.h; sourceTree = "<group>"; };
+		8732381D1E3C46110057FCBB /* MomentImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentImageController.m; path = ViewControllers/MomentImageController.m; sourceTree = "<group>"; };
 		87C9F33F1DD9279500734504 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = male.png; path = Images/male.png; sourceTree = "<group>"; };
 		87C9F3401DD9279500734504 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = female.png; path = Images/female.png; sourceTree = "<group>"; };
 		87C9F3441DDE9F0300734504 /* FriendOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendOverviewCell.h; path = ViewControllers/TableCells/FriendOverviewCell.h; sourceTree = "<group>"; };
@@ -323,6 +326,8 @@
 				912D2D6E1C86A26A0039AEF5 /* FriendsViewController.m */,
 				912D2D6B1C86A26A0039AEF5 /* HomeViewController.h */,
 				912D2D6C1C86A26A0039AEF5 /* HomeViewController.m */,
+				8732381C1E3C46110057FCBB /* MomentImageController.h */,
+				8732381D1E3C46110057FCBB /* MomentImageController.m */,
 				87E5C0031E11F7AC00632391 /* MomentTextController.h */,
 				87E5C0041E11F7AC00632391 /* MomentTextController.m */,
 				912D2D671C86A26A0039AEF5 /* LeftMenuViewController.h */,
@@ -619,6 +624,7 @@
 				914431E41C6E75A0003FB63E /* AFURLResponseSerialization.m in Sources */,
 				87ED6F6D1D9199AF004DB409 /* Utils.m in Sources */,
 				912D2D781C86A26A0039AEF5 /* ProfileDetailViewController.m in Sources */,
+				8732381E1E3C46110057FCBB /* MomentImageController.m in Sources */,
 				87E5BFE41DEB42E200632391 /* FriendMomentController.m in Sources */,
 				87E5BFF61E01A31700632391 /* PNFeed.m in Sources */,
 				87E5C0111E1EC9D100632391 /* PNComment.m in Sources */,

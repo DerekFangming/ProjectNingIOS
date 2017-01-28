@@ -1015,7 +1015,7 @@
         <!--Date-->
         <scene sceneID="1f9-Ij-0h6">
             <objects>
-                <viewController id="GIw-wE-xnq" sceneMemberID="viewController">
+                <viewController id="GIw-wE-xnq" customClass="MomentImageController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4GL-MG-4Dn"/>
                         <viewControllerLayoutGuide type="bottom" id="aDe-4Z-wyF"/>
@@ -1025,7 +1025,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Date" id="nkV-7c-QRj"/>
+                    <navigationItem key="navigationItem" title="Date" id="nkV-7c-QRj">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="sEW-wE-OwE"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mQI-3N-SGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
