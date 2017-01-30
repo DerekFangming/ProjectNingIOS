@@ -30,9 +30,7 @@
     if(limit != nil)
         [parameters setObject:limit forKey:@"limit"];
     
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     
     [manager POST:pathForRecentFeedList
        parameters:parameters
@@ -74,9 +72,7 @@
     [parameters setObject:userId forKey:@"userId"];
     [parameters setObject:feedId forKey:@"feedId"];
     
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     
     [manager POST:pathForFeedCoverImg
        parameters:parameters
@@ -106,9 +102,7 @@
     [parameters setObject:[user accessToken] forKey:@"accessToken"];
     [parameters setObject:userId forKey:@"userId"];
     
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     
     [manager POST:pathForFeedPreviewIds
        parameters:parameters

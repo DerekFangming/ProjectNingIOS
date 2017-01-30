@@ -89,9 +89,7 @@
     [parameters setObject:type forKey:@"type"];
     [parameters setObject:mappingId forKey:@"mappingId"];
     
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     
     [manager POST:pathForRecentComments
        parameters:parameters
