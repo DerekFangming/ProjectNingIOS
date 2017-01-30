@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		871D68751DD69BAD00728AD6 /* FriendsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 871D68741DD69BAD00728AD6 /* FriendsDetailViewController.m */; };
 		8732381E1E3C46110057FCBB /* MomentImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8732381D1E3C46110057FCBB /* MomentImageController.m */; };
+		873238231E3E90B30057FCBB /* PNImageSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 873238221E3E90B30057FCBB /* PNImageSliderCell.m */; };
 		87C9F3411DD9279500734504 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F33F1DD9279500734504 /* male.png */; };
 		87C9F3421DD9279500734504 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F3401DD9279500734504 /* female.png */; };
 		87C9F3461DDE9F0300734504 /* FriendOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9F3451DDE9F0300734504 /* FriendOverviewCell.m */; };
@@ -96,6 +97,8 @@
 		871D68741DD69BAD00728AD6 /* FriendsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendsDetailViewController.m; path = ViewControllers/FriendsDetailViewController.m; sourceTree = "<group>"; };
 		8732381C1E3C46110057FCBB /* MomentImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentImageController.h; path = ViewControllers/MomentImageController.h; sourceTree = "<group>"; };
 		8732381D1E3C46110057FCBB /* MomentImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentImageController.m; path = ViewControllers/MomentImageController.m; sourceTree = "<group>"; };
+		873238211E3E90B30057FCBB /* PNImageSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNImageSliderCell.h; path = Helpers/ImageSlider/PNImageSliderCell.h; sourceTree = "<group>"; };
+		873238221E3E90B30057FCBB /* PNImageSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNImageSliderCell.m; path = Helpers/ImageSlider/PNImageSliderCell.m; sourceTree = "<group>"; };
 		87C9F33F1DD9279500734504 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = male.png; path = Images/male.png; sourceTree = "<group>"; };
 		87C9F3401DD9279500734504 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = female.png; path = Images/female.png; sourceTree = "<group>"; };
 		87C9F3441DDE9F0300734504 /* FriendOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendOverviewCell.h; path = ViewControllers/TableCells/FriendOverviewCell.h; sourceTree = "<group>"; };
@@ -238,6 +241,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8732381F1E3E89F50057FCBB /* ImageSlider */ = {
+			isa = PBXGroup;
+			children = (
+				873238211E3E90B30057FCBB /* PNImageSliderCell.h */,
+				873238221E3E90B30057FCBB /* PNImageSliderCell.m */,
+			);
+			name = ImageSlider;
+			sourceTree = "<group>";
+		};
 		87E5BFD91DE7F97300632391 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +278,7 @@
 		87ED6F751D931F1E004DB409 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8732381F1E3E89F50057FCBB /* ImageSlider */,
 				87ED6F721D9314C2004DB409 /* GMDCircleLoader.h */,
 				87ED6F731D9314C2004DB409 /* GMDCircleLoader.m */,
 				87ED6F6B1D9199AF004DB409 /* Utils.h */,
@@ -627,6 +640,7 @@
 				8732381E1E3C46110057FCBB /* MomentImageController.m in Sources */,
 				87E5BFE41DEB42E200632391 /* FriendMomentController.m in Sources */,
 				87E5BFF61E01A31700632391 /* PNFeed.m in Sources */,
+				873238231E3E90B30057FCBB /* PNImageSliderCell.m in Sources */,
 				87E5C0111E1EC9D100632391 /* PNComment.m in Sources */,
 				87ED6F831DBE8031004DB409 /* VCHolder.m in Sources */,
 				912D2D641C86A0120039AEF5 /* SlideNavigationContorllerAnimatorScale.m in Sources */,

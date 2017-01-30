@@ -452,8 +452,6 @@
         
     }];
     
-    return YES;
-    
     NSString *clickedUserName = [commentInput.placeholder
                                    stringByReplacingOccurrencesOfString:@"Reply to " withString:@""];
     NSString *commentBody = commentInput.text;
