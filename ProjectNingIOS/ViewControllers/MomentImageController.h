@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PNService.h"
+#import "PNImageSliderView.h"
 
 @interface MomentImageController : UIViewController
+
+@property(strong, nonatomic) NSArray *imageIds;
+
+@property(strong, nonatomic) PNImageSliderView *imageSliderView;
+@property(strong, nonatomic) UILabel *displayLabel;
 
 @end

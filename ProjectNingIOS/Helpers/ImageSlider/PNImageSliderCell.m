@@ -33,10 +33,10 @@
     return _scrollView;
 }
 
-- (instancetype)initWithImageUrl:(NSString *)imageUrl {
+- (instancetype)initWithPNImageId:(NSNumber *) imageId{
     self = [super init];
     if (self) {
-        self.imageUrl = imageUrl;
+        self.imageId = imageId;
         [self initialize];
     }
     
@@ -59,15 +59,25 @@
     [self addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:@"imageSliderCell"];
 }
 
-/*
+
 - (void)loadImage {
-    if (self.imageView.image) {
+    if (self.imageView.image || self.isImageLoading) {
         return;
     }
+    NSLog(@"image loading");
     
-    [self makeToastActivity:CSToastPositionCenter];
+    //[self makeToastActivity:CSToastPositionCenter];
     self.scrollView.frame = self.bounds;
     [self resetZoomScale];
+    self.isImageLoading = YES;
+    [PNImageManager downloadImageWithId:self.imageId response:^(UIImage *image, NSError *error) {
+        if(error == nil){
+            [self.imageView setImage:image];
+            self.isImageLoading = NO;
+        }
+    }];
+    
+    /*
     
     __weak __typeof(self)weakSelf = self;
     NSURL *url = [NSURL URLWithString:self.imageUrl];
@@ -83,8 +93,9 @@
             [weakSelf makeToast:[ZMImageSliderUtility localizedString:@"Failed to load the image"] duration:2 position:CSToastPositionCenter style:style];
         }
     }];
+     */
 }
-*/
+
  
 - (void)drawImage {
     CGRect scrollViewFrame = self.scrollView.frame;
@@ -179,7 +190,7 @@
     [self.imageView removeFromSuperview];
     [self.scrollView removeFromSuperview];
     
-    self.imageUrl = nil;
+    self.imageId = nil;
     self.imageView = nil;
     self.scrollView = nil;
     //self.delegate = nil;

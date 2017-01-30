@@ -16,10 +16,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.imageIds = [NSArray arrayWithObjects:[NSNumber numberWithInt:14],[NSNumber numberWithInt:15],[NSNumber numberWithInt:16],[NSNumber numberWithInt:17],[NSNumber numberWithInt:18],nil];
+    
+    self.imageSliderView = [[PNImageSliderView alloc] initWithInitialIndex:0 imageIds:self.imageIds];
+    self.imageSliderView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    self.view.clipsToBounds = YES;
+    self.view.backgroundColor = [UIColor blackColor];
+    
+    [self.view addSubview:self.imageSliderView];
+    [self setImageSliderViewConstraints];
 }
-- (IBAction)back:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+
+- (void)setImageSliderViewConstraints {
+    NSArray *imageSliderViewHConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[imageSliderView]-0-|"
+                                                                                   options:0
+                                                                                   metrics:nil
+                                                                                     views:@{@"imageSliderView": self.imageSliderView}];
+    
+    [self.view addConstraints:imageSliderViewHConstraints];
+    
+    
+    
+    NSArray *imageSliderViewVConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[imageSliderView]-0-|"
+                                                                                   options:0
+                                                                                   metrics:nil
+                                                                                     views:@{@"imageSliderView": self.imageSliderView}];
+    
+    [self.view addConstraints:imageSliderViewVConstraints];
 }
 
 - (void)didReceiveMemoryWarning {
