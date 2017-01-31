@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PNImageSliderCell.h"
+#import "PNImageSliderDelegate.h"
 
 @interface PNImageSliderView : UIView<UIScrollViewDelegate>
 
@@ -17,7 +18,7 @@
 @property(strong, nonatomic) NSMutableArray *sliderCells;
 @property(strong, nonatomic) UIScrollView *scrollView;
 
-//@property(weak, nonatomic) id<ZMImageSliderViewDelegate> delegate;
+@property(weak, nonatomic) id<PNImageSliderDelegate> delegate;
 
 - (instancetype)initWithInitialIndex:(NSInteger)currentIndex imageIds:(NSArray *)imageIds;
 

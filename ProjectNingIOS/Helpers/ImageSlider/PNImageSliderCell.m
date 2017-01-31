@@ -66,7 +66,6 @@
     }
     NSLog(@"image loading");
     
-    //[self makeToastActivity:CSToastPositionCenter];
     self.scrollView.frame = self.bounds;
     [self resetZoomScale];
     self.isImageLoading = YES;
@@ -77,31 +76,12 @@
             [self drawImage];
         }
     }];
-    
-    /*
-    
-    __weak __typeof(self)weakSelf = self;
-    NSURL *url = [NSURL URLWithString:self.imageUrl];
-    [self.imageView sd_setImageWithURL:url placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        
-        [self hideToastActivity];
-        if (!error && image) {
-            weakSelf.imageView.image = image;
-            [weakSelf drawImage];
-        } else {
-            CSToastStyle *style = [[CSToastStyle alloc] initWithDefaultStyle];
-            style.messageAlignment = NSTextAlignmentCenter;
-            [weakSelf makeToast:[ZMImageSliderUtility localizedString:@"Failed to load the image"] duration:2 position:CSToastPositionCenter style:style];
-        }
-    }];
-     */
 }
 
  
 - (void)drawImage {
     CGRect scrollViewFrame = self.scrollView.frame;
     if (self.imageView.image) {
-        NSLog(@"zoomed");
         CGSize imageSize = self.imageView.image.size;
         CGFloat ratio = scrollViewFrame.size.width / imageSize.width;
         self.imageView.frame = CGRectMake(0.0f, 0.0f, scrollViewFrame.size.width, imageSize.height * ratio);
@@ -111,7 +91,6 @@
         self.scrollView.maximumZoomScale = scrollViewFrame.size.height / self.imageView.frame.size.height;
         self.scrollView.zoomScale = 1.0f;
     } else {
-        NSLog(@"failed");
         scrollViewFrame.origin = CGPointZero;
         self.imageView.frame = scrollViewFrame;
         self.scrollView.contentSize = self.imageView.frame.size;

@@ -18,8 +18,8 @@
     [super viewDidLoad];
     
     self.imageIds = [NSArray arrayWithObjects:[NSNumber numberWithInt:14],[NSNumber numberWithInt:15],[NSNumber numberWithInt:16],[NSNumber numberWithInt:17],[NSNumber numberWithInt:18],nil];
-    
     self.imageSliderView = [[PNImageSliderView alloc] initWithInitialIndex:0 imageIds:self.imageIds];
+    self.imageSliderView.delegate = self;
     self.imageSliderView.translatesAutoresizingMaskIntoConstraints = NO;
     
     self.view.clipsToBounds = YES;
@@ -45,6 +45,16 @@
                                                                                      views:@{@"imageSliderView": self.imageSliderView}];
     
     [self.view addConstraints:imageSliderViewVConstraints];
+}
+
+- (void)imageSliderViewImageDidSwitchToIndex:(NSInteger)index totalCount:(NSInteger)count{
+    NSLog(@"hshs");
+    NSLog(@"%d / %d", index, count);
+    //[self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)imageSliderViewSingleTap:(UITapGestureRecognizer *)tap{
+    
 }
 
 - (void)didReceiveMemoryWarning {

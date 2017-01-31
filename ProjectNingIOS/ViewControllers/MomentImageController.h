@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "PNService.h"
 #import "PNImageSliderView.h"
+#import "PNImageSliderDelegate.h"
 
-@interface MomentImageController : UIViewController
+@interface MomentImageController : UIViewController<PNImageSliderDelegate>
 
 @property(strong, nonatomic) NSArray *imageIds;
 

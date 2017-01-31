@@ -54,6 +54,12 @@
         [self.scrollView addSubview:sliderCell];
     }
     
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewCellSingleTap:)];
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.enabled = YES;
+    singleTap.cancelsTouchesInView = NO;
+    [self.scrollView addGestureRecognizer:singleTap];
+    
     [self addSubview:self.scrollView];
     [self updateCellFrames];
     [self addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew context:@"imageSliderView"];
@@ -61,11 +67,11 @@
 
 - (void)switchImage:(NSInteger)index {
     PNImageSliderCell *cell = [self.sliderCells objectAtIndex:index];
-    /*
-    if (self.delegate && [self.delegate respondsToSelector:@selector(imageSliderViewImageSwitch:count:imageUrl:)]) {
-        [self.delegate imageSliderViewImageSwitch:index count:[self.sliderCells count] imageUrl:cell.imageUrl];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(imageSliderViewImageDidSwitchToIndex:totalCount:)]) {
+        [self.delegate imageSliderViewImageDidSwitchToIndex:index totalCount:[self.sliderCells count]];
     }
-    */
+    
     self.currentIndex = index;
     [cell loadImage];
 }
@@ -103,6 +109,13 @@
     NSInteger index = floor((self.scrollView.contentOffset.x - width / 2) / width) + 1;
     if (self.currentIndex != index) {
         [self switchImage:index];
+    }
+}
+
+- (void)imageViewCellSingleTap:(UITapGestureRecognizer *)tap {
+    NSLog(@"tapped!");
+    if (self.delegate && [self.delegate respondsToSelector:@selector(imageSliderViewSingleTap:)]) {
+        [self.delegate imageSliderViewSingleTap:tap];
     }
 }
 

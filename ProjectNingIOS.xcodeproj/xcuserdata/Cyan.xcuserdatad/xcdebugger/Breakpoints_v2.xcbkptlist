@@ -19,28 +19,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ProjectNingIOS/Helpers/ImageSlider/PNImageSliderView.m"
-            timestampString = "507526506.902172"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "-updateCellFrames"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ProjectNingIOS/Helpers/ImageSlider/PNImageSliderCell.m"
-            timestampString = "507526500.324545"
+            timestampString = "507530564.019021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-drawImage"
             landmarkType = "5">
          </BreakpointContent>

@@ -102,6 +102,7 @@
 		873238221E3E90B30057FCBB /* PNImageSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNImageSliderCell.m; path = Helpers/ImageSlider/PNImageSliderCell.m; sourceTree = "<group>"; };
 		873238241E3ED9490057FCBB /* PNImageSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNImageSliderView.h; path = Helpers/ImageSlider/PNImageSliderView.h; sourceTree = "<group>"; };
 		873238251E3ED9490057FCBB /* PNImageSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNImageSliderView.m; path = Helpers/ImageSlider/PNImageSliderView.m; sourceTree = "<group>"; };
+		873238271E404E990057FCBB /* PNImageSliderDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PNImageSliderDelegate.h; path = Helpers/ImageSlider/PNImageSliderDelegate.h; sourceTree = "<group>"; };
 		87C9F33F1DD9279500734504 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = male.png; path = Images/male.png; sourceTree = "<group>"; };
 		87C9F3401DD9279500734504 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = female.png; path = Images/female.png; sourceTree = "<group>"; };
 		87C9F3441DDE9F0300734504 /* FriendOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendOverviewCell.h; path = ViewControllers/TableCells/FriendOverviewCell.h; sourceTree = "<group>"; };
@@ -251,6 +252,7 @@
 				873238221E3E90B30057FCBB /* PNImageSliderCell.m */,
 				873238241E3ED9490057FCBB /* PNImageSliderView.h */,
 				873238251E3ED9490057FCBB /* PNImageSliderView.m */,
+				873238271E404E990057FCBB /* PNImageSliderDelegate.h */,
 			);
 			name = ImageSlider;
 			sourceTree = "<group>";
