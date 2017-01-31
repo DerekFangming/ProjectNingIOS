@@ -71,7 +71,6 @@
 }
 
 - (void)updateCellFrames {
-    NSLog(@"updated");
     NSInteger pageCount = [self.sliderCells count];
     CGRect sliderViewFrame = self.bounds;
     
@@ -88,13 +87,11 @@
                                 CGRectGetWidth(scrollViewBounds),
                                 CGRectGetHeight(scrollViewBounds));
     }
-    NSLog(@"update done");
     [self switchImage:self.currentIndex];
     
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"scrolling");
     if (self.isUpdatingCellFrames) {
         self.isUpdatingCellFrames = NO;
         return;
@@ -104,7 +101,6 @@
     CGFloat width = CGRectGetWidth(self.scrollView.frame);
     if (width == 0) return;
     NSInteger index = floor((self.scrollView.contentOffset.x - width / 2) / width) + 1;
-    NSLog(@"index %d x %f width %f", index, self.scrollView.contentOffset.x, width);
     if (self.currentIndex != index) {
         [self switchImage:index];
     }

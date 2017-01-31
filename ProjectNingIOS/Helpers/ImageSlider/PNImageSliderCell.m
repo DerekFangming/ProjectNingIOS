@@ -23,7 +23,7 @@
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] init];
         _scrollView.clipsToBounds = YES;
-//        _scrollView.delegate = self;
+        _scrollView.delegate = self;
         _scrollView.showsVerticalScrollIndicator = NO;
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.decelerationRate /= 2;
@@ -72,8 +72,9 @@
     self.isImageLoading = YES;
     [PNImageManager downloadImageWithId:self.imageId response:^(UIImage *image, NSError *error) {
         if(error == nil){
-            [self.imageView setImage:image];
+            self.imageView.image = image;
             self.isImageLoading = NO;
+            [self drawImage];
         }
     }];
     
@@ -100,6 +101,7 @@
 - (void)drawImage {
     CGRect scrollViewFrame = self.scrollView.frame;
     if (self.imageView.image) {
+        NSLog(@"zoomed");
         CGSize imageSize = self.imageView.image.size;
         CGFloat ratio = scrollViewFrame.size.width / imageSize.width;
         self.imageView.frame = CGRectMake(0.0f, 0.0f, scrollViewFrame.size.width, imageSize.height * ratio);
@@ -109,6 +111,7 @@
         self.scrollView.maximumZoomScale = scrollViewFrame.size.height / self.imageView.frame.size.height;
         self.scrollView.zoomScale = 1.0f;
     } else {
+        NSLog(@"failed");
         scrollViewFrame.origin = CGPointZero;
         self.imageView.frame = scrollViewFrame;
         self.scrollView.contentSize = self.imageView.frame.size;
