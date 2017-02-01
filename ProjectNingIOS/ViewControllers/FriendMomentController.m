@@ -205,7 +205,9 @@
         destVC.momentBody = [selectedMoment feedBody];
         destVC.createdAt = [selectedMoment createdAt];
     }else if([segue.identifier isEqualToString:@"momentImageDetailSegue"]){
-        //self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        PNFeed *selectedMoment = [self.momentList objectAtIndex:[[self.tableView indexPathForCell:sender] row]];
+        MomentImageController *destVC = segue.destinationViewController;
+        destVC.imageIdList = selectedMoment.imgIdList;
     }
 }
 

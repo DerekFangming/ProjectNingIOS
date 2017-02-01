@@ -44,6 +44,9 @@
                                                                     andBody:[dic objectForKey:@"feedBody"]
                                                                     andDate:[formatter dateFromString:[dic objectForKey:@"createdAt"]]];
                       feed.hasCoverImg = [[dic objectForKey:@"hasImage"] boolValue];
+                      if(feed.hasCoverImg){
+                          feed.imgIdList = [dic objectForKey:@"imageIdList"];
+                      }
                       [feedList addObject:feed];
                   }
                   

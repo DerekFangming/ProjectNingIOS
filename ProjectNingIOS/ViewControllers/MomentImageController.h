@@ -13,7 +13,7 @@
 
 @interface MomentImageController : UIViewController<PNImageSliderDelegate>
 
-@property(strong, nonatomic) NSArray *imageIds;
+@property(strong, nonatomic) NSArray *imageIdList;
 
 @property(strong, nonatomic) PNImageSliderView *imageSliderView;
 @property(strong, nonatomic) UILabel *displayLabel;

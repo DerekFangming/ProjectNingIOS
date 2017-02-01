@@ -17,8 +17,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.imageIds = [NSArray arrayWithObjects:[NSNumber numberWithInt:14],[NSNumber numberWithInt:15],[NSNumber numberWithInt:16],[NSNumber numberWithInt:17],[NSNumber numberWithInt:18],nil];
-    self.imageSliderView = [[PNImageSliderView alloc] initWithInitialIndex:0 imageIds:self.imageIds];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 480, 44)];
+    label.backgroundColor = [UIColor clearColor];
+    label.numberOfLines = 2;
+    label.font = [UIFont boldSystemFontOfSize: 14.0f];
+    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor whiteColor];
+    label.text = @"This is a\nmultiline string";
+    
+    self.navigationItem.titleView = label;
+    
+    //self.imageIdList = [NSArray arrayWithObjects:[NSNumber numberWithInt:14],[NSNumber numberWithInt:15],[NSNumber numberWithInt:16],[NSNumber numberWithInt:17],[NSNumber numberWithInt:18],nil];
+    self.imageSliderView = [[PNImageSliderView alloc] initWithInitialIndex:0 imageIds:self.imageIdList];
     self.imageSliderView.delegate = self;
     self.imageSliderView.translatesAutoresizingMaskIntoConstraints = NO;
     

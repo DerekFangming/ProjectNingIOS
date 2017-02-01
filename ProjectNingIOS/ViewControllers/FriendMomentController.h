@@ -14,6 +14,7 @@
 #import "Utils.h"
 #import "PNService.h"
 #import "MomentTextController.h"
+#import "MomentImageController.h"
 
 @interface FriendMomentController : UITableViewController
 

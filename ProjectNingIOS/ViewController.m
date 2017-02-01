@@ -24,6 +24,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
+    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+    //self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
     self.view.backgroundColor = GRAY_BG_COLOR;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
@@ -97,6 +104,7 @@
     [username resignFirstResponder];
     [password resignFirstResponder];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

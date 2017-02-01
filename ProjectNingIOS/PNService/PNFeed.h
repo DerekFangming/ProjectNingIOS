@@ -15,7 +15,7 @@
 @property (nonatomic, strong)NSString *feedBody;
 @property (nonatomic, strong)NSDate *createdAt;
 
-@property (nonatomic, strong)NSMutableArray *imgList;
+@property (nonatomic, strong)NSMutableArray *imgIdList;
 
 @property (nonatomic, assign)BOOL hasCoverImg;
 @property (nonatomic, strong)UIImage *coverImg;
