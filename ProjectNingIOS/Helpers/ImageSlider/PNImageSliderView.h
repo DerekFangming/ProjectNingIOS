@@ -10,7 +10,7 @@
 #import "PNImageSliderCell.h"
 #import "PNImageSliderDelegate.h"
 
-@interface PNImageSliderView : UIView<UIScrollViewDelegate>
+@interface PNImageSliderView : UIView<UIScrollViewDelegate, PNImageSliderDelegate>
 
 @property(assign) BOOL isUpdatingCellFrames;
 

@@ -51,7 +51,7 @@
     doubleTap.numberOfTapsRequired = 2;
     [self.scrollView addGestureRecognizer:doubleTap];
     
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageSliderCellSingleTap:)];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageSliderViewSingleTap:)];
     singleTap.numberOfTapsRequired = 1;
     [singleTap requireGestureRecognizerToFail:doubleTap];
     [self addGestureRecognizer:singleTap];
@@ -148,14 +148,16 @@
 }
 
 
-- (void)imageSliderCellSingleTap:(UITapGestureRecognizer *)tap {
-    /*
-    if (self.delegate && [self.delegate respondsToSelector:@selector(imageSliderCellSingleTap:)]) {
-        [self.delegate imageSliderCellSingleTap:tap];
+- (void)imageSliderViewSingleTap:(UITapGestureRecognizer *)tap {
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(imageSliderViewSingleTap:)]) {
+        [self.delegate imageSliderViewSingleTap:tap];
     }
-     */
+     
 }
 
+- (void)imageSliderViewImageDidSwitchToIndex:(NSInteger)index totalCount:(NSInteger)count{
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"frame"]) {
@@ -175,7 +177,7 @@
     self.imageId = nil;
     self.imageView = nil;
     self.scrollView = nil;
-    //self.delegate = nil;
+    self.delegate = nil;
 }
 
 @end

@@ -8,14 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "PNService.h"
+#import "PNImageSliderDelegate.h"
 
-@interface PNImageSliderCell : UIView<UIScrollViewDelegate>
+@interface PNImageSliderCell : UIView<UIScrollViewDelegate, PNImageSliderDelegate>
 
 @property(strong, nonatomic) NSNumber *imageId;
 @property(strong, nonatomic) UIImageView *imageView;
 @property(strong, nonatomic) UIScrollView *scrollView;
 
-//@property(weak, nonatomic) id<ZMImageSliderCellDelegate> delegate;
+@property(weak, nonatomic) id<PNImageSliderDelegate> delegate;
 
 @property(assign, nonatomic) BOOL isImageLoading;
 

@@ -49,16 +49,10 @@
     
     for (NSNumber *imageId in imageIds) {
         PNImageSliderCell *sliderCell = [[PNImageSliderCell alloc] initWithPNImageId:imageId];
-        //sliderCell.delegate = self;
+        sliderCell.delegate = self;
         [self.sliderCells addObject:sliderCell];
         [self.scrollView addSubview:sliderCell];
     }
-    
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewCellSingleTap:)];
-    singleTap.numberOfTapsRequired = 1;
-    singleTap.enabled = YES;
-    singleTap.cancelsTouchesInView = NO;
-    [self.scrollView addGestureRecognizer:singleTap];
     
     [self addSubview:self.scrollView];
     [self updateCellFrames];
@@ -112,11 +106,15 @@
     }
 }
 
-- (void)imageViewCellSingleTap:(UITapGestureRecognizer *)tap {
+- (void)imageSliderViewSingleTap:(UITapGestureRecognizer *)tap {
     NSLog(@"tapped!");
     if (self.delegate && [self.delegate respondsToSelector:@selector(imageSliderViewSingleTap:)]) {
         [self.delegate imageSliderViewSingleTap:tap];
     }
+    
+}
+
+- (void)imageSliderViewImageDidSwitchToIndex:(NSInteger)index totalCount:(NSInteger)count{
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
