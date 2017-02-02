@@ -13,6 +13,9 @@
 #import "PNImageSliderDelegate.h"
 
 @interface MomentImageController : UIViewController<PNImageSliderDelegate>{
+    UIView *floatingView;
+    UITextView *momentTextView;
+    
     NSString *dateText;
     UILabel *dateLabel;
 }

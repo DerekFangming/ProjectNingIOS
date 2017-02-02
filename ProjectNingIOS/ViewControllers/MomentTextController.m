@@ -125,7 +125,7 @@
         MomentTextHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextHeaderCell" forIndexPath:indexPath];
         
         if(cell == nil) {
-            cell = [[MomentTextHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentImageCell"];
+            cell = [[MomentTextHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextHeaderCell"];
         }
         //Remove seperator?
         cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width, 0.f, 0.f);
@@ -133,14 +133,14 @@
         [cell.avatar setImage: self.avatar];
         cell.nameLabel.text = self.displayedName;
         cell.nameLabel.textColor = PURPLE_COLOR;
-        cell.momentTextField.text = [self.momentBody stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];
-        [cell.momentTextField sizeToFit];
-        [cell.momentTextField layoutIfNeeded];
-        CGSize size = [cell.momentTextField
-                       sizeThatFits:CGSizeMake(cell.momentTextField.frame.size.width, CGFLOAT_MAX)];
+        cell.momentTextView.text = [self.momentBody stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];
+        [cell.momentTextView sizeToFit];
+        [cell.momentTextView layoutIfNeeded];
+        CGSize size = [cell.momentTextView
+                       sizeThatFits:CGSizeMake(cell.momentTextView.frame.size.width, CGFLOAT_MAX)];
         self.headerCellHeight = size.height + 45;
         
-        [cell.momentTextField setContentSize:size];
+        [cell.momentTextView setContentSize:size];
         cell.dateLabel.text = [Utils processDateToText:self.createdAt withAbbreviation:NO];
         
         //Like button

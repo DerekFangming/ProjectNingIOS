@@ -41,6 +41,26 @@
     
     [self.view addSubview:self.imageSliderView];
     [self setImageSliderViewConstraints];
+    
+    //Process comment body text view
+    NSInteger viewWidth = self.view.frame.size.width;
+    NSInteger viewHeight = self.view.frame.size.height;
+    momentTextView = [[UITextView alloc] initWithFrame:CGRectMake(10, 0, viewWidth - 20, 10)];
+    momentTextView.backgroundColor = [UIColor redColor];
+    momentTextView.text = [self.momentBody stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];
+    [momentTextView sizeToFit];
+    [momentTextView layoutIfNeeded];
+    
+    CGSize size = [momentTextView
+                   sizeThatFits:CGSizeMake(momentTextView.frame.size.width, CGFLOAT_MAX)];
+    [momentTextView setContentSize:size];
+    
+    //Process floating view
+    floatingView = [[UIView alloc] initWithFrame:CGRectMake(0, viewHeight - 35 - size.height,
+                                                            viewWidth, 35 + size.height)];
+    [floatingView addSubview: momentTextView];
+    floatingView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+    [self.view addSubview: floatingView];
 }
 
 - (void)setImageSliderViewConstraints {

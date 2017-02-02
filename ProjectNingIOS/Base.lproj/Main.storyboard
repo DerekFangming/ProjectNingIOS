@@ -902,7 +902,7 @@
                                     <outlet property="commentBtn" destination="NbA-o5-v1i" id="sSu-gG-WEh"/>
                                     <outlet property="dateLabel" destination="OkH-e1-Rgk" id="wvw-zp-zgZ"/>
                                     <outlet property="likeBtn" destination="Q70-Vr-Uqr" id="JzD-TJ-Ovf"/>
-                                    <outlet property="momentTextField" destination="RsY-tY-nYw" id="DOX-s1-19U"/>
+                                    <outlet property="momentTextView" destination="RsY-tY-nYw" id="4WR-aa-P7R"/>
                                     <outlet property="nameLabel" destination="P7C-vp-uM9" id="y3h-8P-oyK"/>
                                 </connections>
                             </tableViewCell>
