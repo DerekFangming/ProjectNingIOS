@@ -29,6 +29,8 @@
 
 + (void)rotateLayerInfinite:(CALayer *)layer;
 
++ (NSString *) processDateToText: (NSDate *) date withAbbreviation:(BOOL) abbrev;
+
 + (NSString *) monthToString:(NSInteger) intMonth withAbbreviation:(BOOL) abbrev;
 
 @end

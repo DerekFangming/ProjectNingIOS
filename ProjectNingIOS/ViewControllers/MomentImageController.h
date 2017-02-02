@@ -7,15 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Utils.h"
 #import "PNService.h"
 #import "PNImageSliderView.h"
 #import "PNImageSliderDelegate.h"
 
-@interface MomentImageController : UIViewController<PNImageSliderDelegate>
+@interface MomentImageController : UIViewController<PNImageSliderDelegate>{
+    NSString *dateText;
+    UILabel *dateLabel;
+}
 
 @property(strong, nonatomic) NSArray *imageIdList;
 
 @property(strong, nonatomic) PNImageSliderView *imageSliderView;
-@property(strong, nonatomic) UILabel *displayLabel;
+
+@property (nonatomic, strong) NSNumber *userId;
+@property (nonatomic, strong) NSString *displayedName;
+@property (nonatomic, strong) UIImage *avatar;
+@property (nonatomic, strong) NSNumber *momentId;
+@property (nonatomic, strong) NSString *momentBody;
+@property (nonatomic, strong) NSDate *createdAt;
 
 @end

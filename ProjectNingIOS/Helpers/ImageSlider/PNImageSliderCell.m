@@ -64,7 +64,6 @@
     if (self.imageView.image || self.isImageLoading) {
         return;
     }
-    NSLog(@"image loading");
     
     self.scrollView.frame = self.bounds;
     [self resetZoomScale];

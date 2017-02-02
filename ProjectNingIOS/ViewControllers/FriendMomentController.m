@@ -197,8 +197,7 @@
     if ([segue.identifier isEqualToString:@"momentTextDetailSegue"]) {
         PNFeed *selectedMoment = [self.momentList objectAtIndex:[[self.tableView indexPathForCell:sender] row]];
         MomentTextController *destVC = segue.destinationViewController;
-        NSString * a =  self.displayedName;
-        destVC.displayedName = a;
+        destVC.displayedName = self.displayedName;
         destVC.avatar = self.avatar;
         destVC.userId = self.userId;
         destVC.momentId = [selectedMoment feedId];
@@ -208,6 +207,12 @@
         PNFeed *selectedMoment = [self.momentList objectAtIndex:[[self.tableView indexPathForCell:sender] row]];
         MomentImageController *destVC = segue.destinationViewController;
         destVC.imageIdList = selectedMoment.imgIdList;
+        destVC.displayedName = self.displayedName;
+        destVC.avatar = self.avatar;
+        destVC.userId = self.userId;
+        destVC.momentId = [selectedMoment feedId];
+        destVC.momentBody = [selectedMoment feedBody];
+        destVC.createdAt = [selectedMoment createdAt];
     }
 }
 

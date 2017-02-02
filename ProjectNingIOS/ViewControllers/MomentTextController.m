@@ -141,7 +141,7 @@
         self.headerCellHeight = size.height + 45;
         
         [cell.momentTextField setContentSize:size];
-        cell.dateLabel.text = [self processDateToText:self.createdAt withAbbreviation:NO];
+        cell.dateLabel.text = [Utils processDateToText:self.createdAt withAbbreviation:NO];
         
         //Like button
         if(self.likedByCurrentUser) [cell.likeBtn setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
@@ -283,7 +283,7 @@
         CGSize size = [cell.commentBody
                        sizeThatFits:CGSizeMake(cell.commentBody.frame.size.width, CGFLOAT_MAX)];
         comment.cellHeight = size.height + 31;
-        cell.commentCreatedAt.text = [self processDateToText:[[self.commentList objectAtIndex:indexPath.row] createdAt]
+        cell.commentCreatedAt.text = [Utils processDateToText:[[self.commentList objectAtIndex:indexPath.row] createdAt]
                                             withAbbreviation:YES];
         
         if(indexPath.row + 1 == [self.commentList count]){
@@ -583,23 +583,13 @@
 }
 #pragma mark - Helpers -
 
-- (NSString *) processDateToText: (NSDate *) date withAbbreviation: (BOOL) abbrev{
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute fromDate:date];
-    NSString *month = [Utils monthToString:[components month] withAbbreviation:abbrev];
-    NSString *dateStr = [NSString stringWithFormat:@"%@ %@, %@", month, [@([components day]) stringValue],
-                         [@([components year]) stringValue]];
-    dateStr = [NSString stringWithFormat:@"%@ %@:%@", dateStr, [@([components hour]) stringValue],
-               [@([components minute]) stringValue]];
-    return dateStr;
-}
-
 - (void)showDeleteCommentConfirmationForComment:(PNComment *) comment{
     UIAlertController * view=   [UIAlertController
                                  alertControllerWithTitle:@"Delete my comment "
                                  message:nil
                                  preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction* ok = [UIAlertAction
+    UIAlertAction* delete = [UIAlertAction
                          actionWithTitle:@"Delete"
                          style:UIAlertActionStyleDefault
                          handler:^(UIAlertAction * action)
@@ -617,7 +607,7 @@
                              [view dismissViewControllerAnimated:YES completion:nil];
                              
                          }];
-    [ok setValue:[UIColor redColor] forKey:@"titleTextColor"];
+    [delete setValue:[UIColor redColor] forKey:@"titleTextColor"];
     UIAlertAction* cancel = [UIAlertAction
                              actionWithTitle:@"Cancel"
                              style:UIAlertActionStyleDefault
@@ -628,7 +618,7 @@
                              }];
     
     
-    [view addAction:ok];
+    [view addAction:delete];
     [view addAction:cancel];
     [self presentViewController:view animated:YES completion:nil];
 }

@@ -1026,7 +1026,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Date" id="nkV-7c-QRj">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="sEW-wE-OwE"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="sEW-wE-OwE">
+                            <connections>
+                                <action selector="actionBtnTapped:" destination="GIw-wE-xnq" id="ojj-Mt-NZI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mQI-3N-SGv" userLabel="First Responder" sceneMemberID="firstResponder"/>

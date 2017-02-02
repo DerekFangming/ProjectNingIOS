@@ -17,18 +17,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 480, 44)];
-    label.backgroundColor = [UIColor clearColor];
-    label.numberOfLines = 2;
-    label.font = [UIFont boldSystemFontOfSize: 14.0f];
-    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = [UIColor whiteColor];
-    label.text = @"This is a\nmultiline string";
+    dateText = [Utils processDateToText:self.createdAt withAbbreviation:NO];
     
-    self.navigationItem.titleView = label;
+    dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
+    dateLabel.backgroundColor = [UIColor clearColor];
+    dateLabel.numberOfLines = 2;
+    dateLabel.font = [UIFont boldSystemFontOfSize: 14.0f];
+    dateLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    dateLabel.textAlignment = NSTextAlignmentCenter;
+    dateLabel.textColor = [UIColor whiteColor];
+    if([self.imageIdList count] == 1){
+        dateLabel.numberOfLines = 1;
+    }
     
-    //self.imageIdList = [NSArray arrayWithObjects:[NSNumber numberWithInt:14],[NSNumber numberWithInt:15],[NSNumber numberWithInt:16],[NSNumber numberWithInt:17],[NSNumber numberWithInt:18],nil];
+    self.navigationItem.titleView = dateLabel;
+    
     self.imageSliderView = [[PNImageSliderView alloc] initWithInitialIndex:0 imageIds:self.imageIdList];
     self.imageSliderView.delegate = self;
     self.imageSliderView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -59,9 +62,7 @@
 }
 
 - (void)imageSliderViewImageDidSwitchToIndex:(NSInteger)index totalCount:(NSInteger)count{
-    NSLog(@"hshs");
-    NSLog(@"%d / %d", index, count);
-    //[self.navigationController setNavigationBarHidden:YES animated:YES];
+    dateLabel.text = [NSString stringWithFormat:@"%@\n%d/%d", dateText, index + 1, count];
 }
 
 - (void)imageSliderViewSingleTap:(UITapGestureRecognizer *)tap{
@@ -71,6 +72,36 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)actionBtnTapped:(id)sender {
+    UIAlertController * view=   [UIAlertController
+                                 alertControllerWithTitle:nil
+                                 message:nil
+                                 preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"Delete"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             
+                             [view dismissViewControllerAnimated:YES completion:nil];
+                             
+                         }];
+    
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [view dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+    
+    
+    [view addAction:ok];
+    [view addAction:cancel];
+    [self presentViewController:view animated:YES completion:nil];
 }
 
 /*

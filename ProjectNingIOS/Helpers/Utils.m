@@ -23,6 +23,16 @@
     [layer addAnimation:rotation forKey:@"Spin"];
 }
 
++ (NSString *) processDateToText: (NSDate *) date withAbbreviation:(BOOL) abbrev{
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute fromDate:date];
+    NSString *month = [self monthToString:[components month] withAbbreviation:abbrev];
+    NSString *dateStr = [NSString stringWithFormat:@"%@ %@, %@", month, [@([components day]) stringValue],
+                         [@([components year]) stringValue]];
+    dateStr = [NSString stringWithFormat:@"%@ %@:%@", dateStr, [@([components hour]) stringValue],
+               [@([components minute]) stringValue]];
+    return dateStr;
+}
+
 + (NSString *) monthToString :(NSInteger) intMonth withAbbreviation:(BOOL) abbrev{
     switch (intMonth) {
         case 1:
