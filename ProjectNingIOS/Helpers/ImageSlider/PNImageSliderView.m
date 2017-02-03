@@ -107,7 +107,6 @@
 }
 
 - (void)imageSliderViewSingleTap:(UITapGestureRecognizer *)tap {
-    NSLog(@"tapped!");
     if (self.delegate && [self.delegate respondsToSelector:@selector(imageSliderViewSingleTap:)]) {
         [self.delegate imageSliderViewSingleTap:tap];
     }

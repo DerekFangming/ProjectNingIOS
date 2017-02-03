@@ -13,11 +13,15 @@
 #import "PNImageSliderDelegate.h"
 
 @interface MomentImageController : UIViewController<PNImageSliderDelegate>{
-    UIView *floatingView;
+    UIView *momentHolderView;
     UITextView *momentTextView;
+    
+    UIView *momentActionView;
     
     NSString *dateText;
     UILabel *dateLabel;
+    
+    BOOL isNavAndActionHidden;
 }
 
 @property(strong, nonatomic) NSArray *imageIdList;
