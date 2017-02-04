@@ -70,12 +70,14 @@
     likeLabelLeft.textColor = [UIColor whiteColor];
     likeLabelLeft.text = @"  Like";
     
-    UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likeTapped)];
-    UITapGestureRecognizer *labelTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likeTapped)];
+    UITapGestureRecognizer *likeImageLeftTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                       action:@selector(likeBtnTapped)];
+    UITapGestureRecognizer *likeLabelLeftTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                       action:@selector(likeBtnTapped)];
     [likeImageLeft setUserInteractionEnabled:YES];
     [likeLabelLeft setUserInteractionEnabled:YES];
-    [likeImageLeft addGestureRecognizer:imageTap];
-    [likeLabelLeft addGestureRecognizer:labelTap];
+    [likeImageLeft addGestureRecognizer:likeImageLeftTap];
+    [likeLabelLeft addGestureRecognizer:likeLabelLeftTap];
     
     UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(80, 10, 1, 15)];
     separator.backgroundColor = [UIColor colorWithRed:43/255.0 green:43/255.0 blue:43/255.0 alpha:0.8];
@@ -86,9 +88,18 @@
     commentLabelLeft.textColor = [UIColor whiteColor];
     commentLabelLeft.text = @"Comment";
     
-    UIImageView *likeImageRight = [[UIImageView alloc] initWithFrame:CGRectMake(viewWidth - 60, 7, 20, 20)];
+    UITapGestureRecognizer *commentImageLeftTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                          action:@selector(commentTapped)];
+    UITapGestureRecognizer *commentLabelLeftTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                          action:@selector(commentTapped)];
+    [commentImageLeft setUserInteractionEnabled:YES];
+    [commentLabelLeft setUserInteractionEnabled:YES];
+    [commentImageLeft addGestureRecognizer:commentImageLeftTap];
+    [commentLabelLeft addGestureRecognizer:commentLabelLeftTap];
+    
+    UIImageView *likeImageRight = [[UIImageView alloc] initWithFrame:CGRectMake(viewWidth - 55, 7, 20, 20)];
     likeImageRight.image = [UIImage imageNamed:@"notLikeWhite.png"];
-    UILabel *likeLabelRight = [[UILabel alloc] initWithFrame:CGRectMake(viewWidth - 40, 0, 0, 35)];
+    UILabel *likeLabelRight = [[UILabel alloc] initWithFrame:CGRectMake(viewWidth - 35, 0, 0, 35)];
     likeLabelRight.font = likeLabelLeft.font;
     likeLabelRight.textColor = [UIColor whiteColor];
     UIImageView *commentImageRight = [[UIImageView alloc] initWithFrame:CGRectMake(viewWidth - 30, 7, 20, 20)];
@@ -96,6 +107,23 @@
     UILabel *commentLabelRight = [[UILabel alloc] initWithFrame:CGRectMake(viewWidth - 10, 0, 0, 35)];
     commentLabelRight.font = likeLabelLeft.font;
     commentLabelRight.textColor = [UIColor whiteColor];
+    
+    UITapGestureRecognizer *likeImageRightTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                        action:@selector(detailsTapped)];
+    UITapGestureRecognizer *likeLabelRightTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                        action:@selector(detailsTapped)];
+    UITapGestureRecognizer *commentImageRightTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                           action:@selector(detailsTapped)];
+    UITapGestureRecognizer *commentLabelRightTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                           action:@selector(detailsTapped)];
+    [likeImageRight setUserInteractionEnabled:YES];
+    [likeLabelRight setUserInteractionEnabled:YES];
+    [commentImageRight setUserInteractionEnabled:YES];
+    [commentLabelRight setUserInteractionEnabled:YES];
+    [likeImageRight addGestureRecognizer:likeImageRightTap];
+    [likeLabelRight addGestureRecognizer:likeLabelRightTap];
+    [commentImageRight addGestureRecognizer:commentImageRightTap];
+    [commentLabelRight addGestureRecognizer:commentLabelRightTap];
     
     [momentActionView addSubview:likeImageLeft];
     [momentActionView addSubview:likeLabelLeft];
@@ -115,7 +143,28 @@
     [PNCommentManager getCommentCountForCommentMappingId:self.momentId
                                                 response:^(NSError *error, NSNumber *commentCount,
                                                            NSNumber *commentLikeCount, BOOL liked) {
-
+                                                    NSInteger offset;
+                                                    if(commentCount > 0){
+                                                        commentLabelRight.text = [commentCount stringValue];
+                                                        offset = commentLabelRight.intrinsicContentSize.width;
+                                                        CGRect currentFrame = commentLabelRight.frame;
+                                                        currentFrame.size.width += offset;
+                                                        currentFrame.origin.x -= offset;
+                                                        likeImageRight.frame = CGRectOffset(likeImageRight.frame, - offset, 0);
+                                                        likeLabelRight.frame = CGRectOffset(likeLabelRight.frame, - offset, 0);
+                                                        commentImageRight.frame = CGRectOffset(commentImageRight.frame, - offset, 0);
+                                                        commentLabelRight.frame = currentFrame;
+                                                    }
+                                                    
+                                                    if(commentLikeCount > 0){
+                                                        likeLabelRight.text = [commentLikeCount stringValue];
+                                                        offset = likeLabelRight.intrinsicContentSize.width;
+                                                        CGRect currentFrame = likeLabelRight.frame;
+                                                        currentFrame.size.width += offset;
+                                                        currentFrame.origin.x -= offset;
+                                                        likeImageRight.frame = CGRectOffset(likeImageRight.frame, - offset, 0);
+                                                        likeLabelRight.frame = currentFrame;
+                                                    }
                                                     likedByCurrentUser = liked;
                                                     if(liked){
                                                         likeImageLeft.image=[UIImage imageNamed:@"like.png"];
@@ -202,7 +251,7 @@
     [self presentViewController:view animated:YES completion:nil];
 }
 
-- (void) likeTapped {
+- (void) likeBtnTapped {
     if(likedByCurrentUser){
         likeImageLeft.image=[UIImage imageNamed:@"notLikeWhite.png"];
         likeLabelLeft.text = @"  Like";
@@ -212,6 +261,14 @@
         likeLabelLeft.text = @"Cancel";
         likedByCurrentUser = YES;
     }
+}
+
+- (void) commentTapped {
+    NSLog(@"123123");
+}
+
+- (void) detailsTapped {
+    NSLog(@"456456");
 }
 
 - (void)didReceiveMemoryWarning {
