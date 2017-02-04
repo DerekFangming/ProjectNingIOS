@@ -118,9 +118,40 @@
                   response([PNUtils createNSError:responseObject], nil, false);
               }
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-              response(error,nil, false);
+              response(error, nil, false);
               
           }];
     
 }
+
++ (void) getCommentCountForCommentMappingId:(NSNumber *) mappingId
+                                   response:(void (^)(NSError *, NSNumber * ,NSNumber *, BOOL)) response{
+    NSError *error = [PNUser checkUserLoginStatus];
+    if(error != nil){
+        response(error, nil, nil, NO);
+    }
+    
+    PNUser *user = [PNUser currentUser];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:mappingId forKey:@"mappingId"];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
+    
+    [manager POST:pathForRecentComments
+       parameters:parameters
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
+                  
+                  response(nil, [responseObject objectForKey:@"commentCount"], [responseObject objectForKey:@"commentLikeCount"], [[responseObject objectForKey:@"likedByCurrentUser"] boolValue]);
+              }else{
+                  response([PNUtils createNSError:responseObject], nil, nil, false);
+              }
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              response(error, nil, nil, false);
+              
+          }];
+}
+
 @end

@@ -17,11 +17,11 @@
 + (instancetype)imageManager;
 
 /**
- Upload an image to server
- If the response error is not nil, there is error in the upload process
- @param img the image in UIImage form
- @param type the type of the image. This will be validated by the server and may be changed
- @param typeMappingId the mapping if for the image type
+    Upload an image to server
+    If the response error is not nil, there is error in the upload process
+    @param img the image in UIImage form
+    @param type the type of the image. This will be validated by the server and may be changed
+    @param typeMappingId the mapping if for the image type
  */
 + (void) uploadImage:(UIImage *) img
               inType:(NSString *) type
@@ -29,11 +29,11 @@
             response:(void (^)(NSError *))response;
 
 /**
- Upload an image to server with a customized title
- If the response error is not nil, there is error in the upload process
- @param img the image in UIImage form
- @param type the type of the image. This will be validated by the server and may be changed
- @param typeMappingId the mapping if for the image type
+    Upload an image to server with a customized title
+    If the response error is not nil, there is error in the upload process
+    @param img the image in UIImage form
+    @param type the type of the image. This will be validated by the server and may be changed
+    @param typeMappingId the mapping if for the image type
  */
 + (void) uploadImage:(UIImage *) img
               inType:(NSString *) type

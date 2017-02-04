@@ -27,6 +27,7 @@
 #define pathForCreatingComment      @"create_comment"
 #define pathForDeletingComment      @"delete_comment"
 #define pathForRecentComments       @"get_recent_comment_from_friends"
+#define pathForCommentsCount        @"get_comment_counts_from_friends"
 
 
 @interface PNUtils : NSObject

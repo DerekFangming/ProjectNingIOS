@@ -63,27 +63,69 @@
     //Process action view
     momentActionView = [[UIView alloc] initWithFrame:CGRectMake(0, viewHeight - 35, viewWidth, 35)];
     momentActionView.backgroundColor = [UIColor colorWithRed:24/255.0 green:24/255.0 blue:24/255.0 alpha:0.8];
-    UIImageView *likeImage = [[UIImageView alloc] initWithFrame:CGRectMake(10,5,25,25)];
-    likeImage.image=[UIImage imageNamed:@"notLikeWhite.png"];
-    UILabel *likeLabel = [[UILabel alloc] initWithFrame:CGRectMake(35, 0, 42, 35)];
-    likeLabel.font=[likeLabel.font fontWithSize:13];
-    likeLabel.textColor = [UIColor whiteColor];
-    likeLabel.text = @"Cancel";
+    likeImageLeft = [[UIImageView alloc] initWithFrame:CGRectMake(10,5,25,25)];
+    likeImageLeft.image=[UIImage imageNamed:@"notLikeWhite.png"];
+    likeLabelLeft = [[UILabel alloc] initWithFrame:CGRectMake(35, 0, 42, 35)];
+    likeLabelLeft.font=[likeLabelLeft.font fontWithSize:12];
+    likeLabelLeft.textColor = [UIColor whiteColor];
+    likeLabelLeft.text = @"  Like";
     
     UITapGestureRecognizer *imageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likeTapped)];
     UITapGestureRecognizer *labelTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likeTapped)];
-    [likeImage setUserInteractionEnabled:YES];
-    [likeLabel setUserInteractionEnabled:YES];
-    [likeImage addGestureRecognizer:imageTap];
-    [likeLabel addGestureRecognizer:labelTap];
+    [likeImageLeft setUserInteractionEnabled:YES];
+    [likeLabelLeft setUserInteractionEnabled:YES];
+    [likeImageLeft addGestureRecognizer:imageTap];
+    [likeLabelLeft addGestureRecognizer:labelTap];
     
-    [momentActionView addSubview:likeImage];
-    [momentActionView addSubview:likeLabel];
+    UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(80, 10, 1, 15)];
+    separator.backgroundColor = [UIColor colorWithRed:43/255.0 green:43/255.0 blue:43/255.0 alpha:0.8];
+    UIImageView *commentImageLeft = [[UIImageView alloc] initWithFrame:CGRectMake(85, 5, 25, 25)];
+    commentImageLeft.image = [UIImage imageNamed:@"writeCommentWhite.png"];
+    UILabel *commentLabelLeft = [[UILabel alloc] initWithFrame:CGRectMake(110, 0, 55, 35)];
+    commentLabelLeft.font = likeLabelLeft.font;
+    commentLabelLeft.textColor = [UIColor whiteColor];
+    commentLabelLeft.text = @"Comment";
+    
+    UIImageView *likeImageRight = [[UIImageView alloc] initWithFrame:CGRectMake(viewWidth - 60, 7, 20, 20)];
+    likeImageRight.image = [UIImage imageNamed:@"notLikeWhite.png"];
+    UILabel *likeLabelRight = [[UILabel alloc] initWithFrame:CGRectMake(viewWidth - 40, 0, 0, 35)];
+    likeLabelRight.font = likeLabelLeft.font;
+    likeLabelRight.textColor = [UIColor whiteColor];
+    UIImageView *commentImageRight = [[UIImageView alloc] initWithFrame:CGRectMake(viewWidth - 30, 7, 20, 20)];
+    commentImageRight.image = [UIImage imageNamed:@"writeCommentWhite.png"];
+    UILabel *commentLabelRight = [[UILabel alloc] initWithFrame:CGRectMake(viewWidth - 10, 0, 0, 35)];
+    commentLabelRight.font = likeLabelLeft.font;
+    commentLabelRight.textColor = [UIColor whiteColor];
+    
+    [momentActionView addSubview:likeImageLeft];
+    [momentActionView addSubview:likeLabelLeft];
+    [momentActionView addSubview:separator];
+    [momentActionView addSubview:commentImageLeft];
+    [momentActionView addSubview:commentLabelLeft];
+    [momentActionView addSubview:likeImageRight];
+    [momentActionView addSubview:likeLabelRight];
+    [momentActionView addSubview:commentImageRight];
+    [momentActionView addSubview:commentLabelRight];
     
     //Adding views
     [self.view addSubview: momentHolderView];
     [self.view addSubview: momentActionView];
+    
+    //Update counts and likes
+    [PNCommentManager getCommentCountForCommentMappingId:self.momentId
+                                                response:^(NSError *error, NSNumber *commentCount,
+                                                           NSNumber *commentLikeCount, BOOL liked) {
+
+                                                    likedByCurrentUser = liked;
+                                                    if(liked){
+                                                        likeImageLeft.image=[UIImage imageNamed:@"like.png"];
+                                                        likeLabelLeft.text = @"Cancel";
+                                                    }
+                                                    
+                                                }];
 }
+
+#pragma mark - Image slider setup and helpers -
 
 - (void)setImageSliderViewConstraints {
     NSArray *imageSliderViewHConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[imageSliderView]-0-|"
@@ -161,7 +203,15 @@
 }
 
 - (void) likeTapped {
-    NSLog(@"1");
+    if(likedByCurrentUser){
+        likeImageLeft.image=[UIImage imageNamed:@"notLikeWhite.png"];
+        likeLabelLeft.text = @"  Like";
+        likedByCurrentUser = NO;
+    }else{
+        likeImageLeft.image=[UIImage imageNamed:@"like.png"];
+        likeLabelLeft.text = @"Cancel";
+        likedByCurrentUser = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -17,11 +17,14 @@
     UITextView *momentTextView;
     
     UIView *momentActionView;
+    UIImageView *likeImageLeft;
+    UILabel *likeLabelLeft;
     
     NSString *dateText;
     UILabel *dateLabel;
     
     BOOL isNavAndActionHidden;
+    BOOL likedByCurrentUser;
 }
 
 @property(strong, nonatomic) NSArray *imageIdList;
