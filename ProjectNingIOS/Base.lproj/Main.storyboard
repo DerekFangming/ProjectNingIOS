@@ -1032,10 +1032,44 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="BHW-dB-O3M" kind="showDetail" identifier="enterCommentSegue" id="COh-I5-hVg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mQI-3N-SGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3670" y="273"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="GSF-IF-k3Z">
+            <objects>
+                <viewController id="vlM-7L-WZH" customClass="MomentInputController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RMp-qR-7TV"/>
+                        <viewControllerLayoutGuide type="bottom" id="sfL-3Y-hCa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="py9-ku-pMo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="ouf-eH-4Xc">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="a6p-SY-hNa">
+                            <connections>
+                                <action selector="cancelBtnTapped:" destination="vlM-7L-WZH" id="9uR-qr-lry"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="tGl-U1-csy">
+                            <color key="tintColor" red="0.25098039215686274" green="0.50196078431372548" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sendBtn" destination="tGl-U1-csy" id="mDm-67-kaD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oWD-MO-Men" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5206" y="273"/>
         </scene>
         <!--Right Menu View Controller-->
         <scene sceneID="6K5-RU-jDf">
@@ -1090,6 +1124,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nTT-Ct-9er" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1128" y="414"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VTw-qA-dXQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BHW-dB-O3M" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Vj-Hz-cMO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vlM-7L-WZH" kind="relationship" relationship="rootViewController" id="45a-ie-O0S"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KcK-AK-zdp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4394" y="273"/>
         </scene>
     </scenes>
     <resources>

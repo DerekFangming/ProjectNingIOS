@@ -264,7 +264,7 @@
 }
 
 - (void) commentTapped {
-    NSLog(@"123123");
+    [self performSegueWithIdentifier:@"enterCommentSegue" sender:nil];
 }
 
 - (void) detailsTapped {

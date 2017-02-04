@@ -25,6 +25,8 @@
 
 #define GRAY_BG_COLOR       [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1]
 #define PURPLE_COLOR        [UIColor colorWithRed:87/255.0 green:107/255.0 blue:149/255.0 alpha:1]
+#define GREEN_COLOR         [UIColor colorWithRed:74/255.0 green:143/255.0 blue:40/255.0 alpha:1]
+
 @interface Utils : NSObject
 
 + (void)rotateLayerInfinite:(CALayer *)layer;

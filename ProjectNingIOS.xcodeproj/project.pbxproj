@@ -13,6 +13,7 @@
 		873238261E3ED9490057FCBB /* PNImageSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873238251E3ED9490057FCBB /* PNImageSliderView.m */; };
 		873238291E42B8830057FCBB /* notLikeWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 873238281E42B8830057FCBB /* notLikeWhite.png */; };
 		8732382D1E42B9C30057FCBB /* writeCommentWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 8732382C1E42B9C30057FCBB /* writeCommentWhite.png */; };
+		873238301E4583700057FCBB /* MomentInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8732382F1E4583700057FCBB /* MomentInputController.m */; };
 		87C9F3411DD9279500734504 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F33F1DD9279500734504 /* male.png */; };
 		87C9F3421DD9279500734504 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F3401DD9279500734504 /* female.png */; };
 		87C9F3461DDE9F0300734504 /* FriendOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9F3451DDE9F0300734504 /* FriendOverviewCell.m */; };
@@ -107,6 +108,8 @@
 		873238271E404E990057FCBB /* PNImageSliderDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PNImageSliderDelegate.h; path = Helpers/ImageSlider/PNImageSliderDelegate.h; sourceTree = "<group>"; };
 		873238281E42B8830057FCBB /* notLikeWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = notLikeWhite.png; path = Images/notLikeWhite.png; sourceTree = "<group>"; };
 		8732382C1E42B9C30057FCBB /* writeCommentWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = writeCommentWhite.png; path = Images/writeCommentWhite.png; sourceTree = "<group>"; };
+		8732382E1E4583700057FCBB /* MomentInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentInputController.h; path = ViewControllers/MomentInputController.h; sourceTree = "<group>"; };
+		8732382F1E4583700057FCBB /* MomentInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentInputController.m; path = ViewControllers/MomentInputController.m; sourceTree = "<group>"; };
 		87C9F33F1DD9279500734504 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = male.png; path = Images/male.png; sourceTree = "<group>"; };
 		87C9F3401DD9279500734504 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = female.png; path = Images/female.png; sourceTree = "<group>"; };
 		87C9F3441DDE9F0300734504 /* FriendOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendOverviewCell.h; path = ViewControllers/TableCells/FriendOverviewCell.h; sourceTree = "<group>"; };
@@ -352,6 +355,8 @@
 				912D2D6C1C86A26A0039AEF5 /* HomeViewController.m */,
 				8732381C1E3C46110057FCBB /* MomentImageController.h */,
 				8732381D1E3C46110057FCBB /* MomentImageController.m */,
+				8732382E1E4583700057FCBB /* MomentInputController.h */,
+				8732382F1E4583700057FCBB /* MomentInputController.m */,
 				87E5C0031E11F7AC00632391 /* MomentTextController.h */,
 				87E5C0041E11F7AC00632391 /* MomentTextController.m */,
 				912D2D671C86A26A0039AEF5 /* LeftMenuViewController.h */,
@@ -647,6 +652,7 @@
 				914431981C6E2353003FB63E /* AppDelegate.m in Sources */,
 				87E5C00E1E1EA46300632391 /* PNCommentManager.m in Sources */,
 				87ED6F7B1D9CAEF9004DB409 /* PNViewControllerHelper.m in Sources */,
+				873238301E4583700057FCBB /* MomentInputController.m in Sources */,
 				87E5BFFF1E0F77F200632391 /* MomentsCell.m in Sources */,
 				914431EA1C7244B7003FB63E /* PNDateFormater.m in Sources */,
 				914431E41C6E75A0003FB63E /* AFURLResponseSerialization.m in Sources */,
