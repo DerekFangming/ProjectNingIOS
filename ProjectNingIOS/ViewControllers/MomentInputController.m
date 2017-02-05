@@ -25,6 +25,8 @@
                                                 name:UIKeyboardWillShowNotification object:nil];
     self.commentInput = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
     self.commentInput.delegate = self;
+    self.commentInput.text = self.unsentComment;
+    [self.commentInput setReturnKeyType:UIReturnKeySend];
     [self.view addSubview:self.commentInput];
     
     [self.commentInput becomeFirstResponder];
@@ -53,10 +55,29 @@
     }
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if([text isEqualToString:@"\n"]) {
+        NSCharacterSet* charsToTrim = [NSCharacterSet characterSetWithCharactersInString:@" "];
+        NSString* trimmedStr = [self.commentInput.text stringByTrimmingCharactersInSet:charsToTrim];
+        
+        if([trimmedStr isEqualToString:@""]){
+            [UIAlertController showErrorAlertWithErrorMessage:@"Cannot send an empty comment" from:self];
+        }else{
+            self.commentInput.text = @"";
+            //send
+        }
+        
+        return NO;
+    }
+    
+    return YES;
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 
 
 - (void)didReceiveMemoryWarning {

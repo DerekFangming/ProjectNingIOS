@@ -1056,7 +1056,7 @@
                     <navigationItem key="navigationItem" title="Title" id="ouf-eH-4Xc">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="a6p-SY-hNa">
                             <connections>
-                                <action selector="cancelBtnTapped:" destination="vlM-7L-WZH" id="9uR-qr-lry"/>
+                                <segue destination="6Kv-AZ-cH7" kind="unwind" unwindAction="unwindFromModalViewController:" id="P1a-gy-xVP"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Send" id="tGl-U1-csy">
@@ -1068,6 +1068,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWD-MO-Men" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6Kv-AZ-cH7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5206" y="273"/>
         </scene>

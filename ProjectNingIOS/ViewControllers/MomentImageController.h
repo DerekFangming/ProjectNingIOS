@@ -11,6 +11,7 @@
 #import "PNService.h"
 #import "PNImageSliderView.h"
 #import "PNImageSliderDelegate.h"
+#import "MomentInputController.h"
 
 @interface MomentImageController : UIViewController<PNImageSliderDelegate>{
     UIView *momentHolderView;
@@ -28,6 +29,7 @@
 }
 
 @property(strong, nonatomic) NSArray *imageIdList;
+@property(strong, nonatomic) NSString *unsentComment;
 
 @property(strong, nonatomic) PNImageSliderView *imageSliderView;
 

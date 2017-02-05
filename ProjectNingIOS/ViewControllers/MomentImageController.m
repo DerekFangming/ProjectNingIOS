@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    NSLog(@"image view loaded");
     dateText = [Utils processDateToText:self.createdAt withAbbreviation:NO];
     
     dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
@@ -269,6 +269,28 @@
 
 - (void) detailsTapped {
     NSLog(@"456456");
+}
+
+#pragma mark - Segues methods -
+
+- (IBAction)unwindFromModalViewController:(UIStoryboardSegue *)segue
+{
+    if([segue.sourceViewController isKindOfClass:[MomentInputController class]])
+    {
+        MomentInputController *sourceVC = segue.sourceViewController;
+        NSCharacterSet* charsToTrim = [NSCharacterSet characterSetWithCharactersInString:@" "];
+        NSString* trimmedStr = [sourceVC.commentInput.text stringByTrimmingCharactersInSet:charsToTrim];
+        self.unsentComment = trimmedStr;
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"enterCommentSegue"]) {
+        
+        MomentInputController *destVC = (MomentInputController *)[segue.destinationViewController topViewController];
+        destVC.unsentComment = self.unsentComment;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
