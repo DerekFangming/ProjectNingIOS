@@ -32,9 +32,23 @@
     [self.commentInput becomeFirstResponder];
     
 }
-- (IBAction)cancelBtnTapped:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)sendBtnTapped:(id)sender {
+    [PNCommentManager createComment:self.commentInput.text
+                     forCommentType:@"Feed"
+                       andMappingId:self.momentId
+                       mentionsUser:nil
+                           response:^(NSError *error, NSNumber *commentId) {
+                               if(error != nil){
+                                   [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
+                                                                                from: self];
+                               }else{
+                                   self.commentInput.text = @"";
+                                   [self performSegueWithIdentifier:@"commentInputUnwind" sender:nil];
+                               }
+                           }];
 }
+
+#pragma mark - Keyboard and text view delegate methods -
 
 -(void)keyboardWillShow:(NSNotification *)notification
 {
@@ -63,8 +77,19 @@
         if([trimmedStr isEqualToString:@""]){
             [UIAlertController showErrorAlertWithErrorMessage:@"Cannot send an empty comment" from:self];
         }else{
-            self.commentInput.text = @"";
-            //send
+            [PNCommentManager createComment:self.commentInput.text
+                             forCommentType:@"Feed"
+                               andMappingId:self.momentId
+                               mentionsUser:nil
+                                   response:^(NSError *error, NSNumber *commentId) {
+                                       if(error != nil){
+                                           [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
+                                                                                        from: self];
+                                       }else{
+                                           self.commentInput.text = @"";
+                                           [self performSegueWithIdentifier:@"commentInputUnwind" sender:nil];
+                                       }
+                                   }];
         }
         
         return NO;

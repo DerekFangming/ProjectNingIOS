@@ -21,6 +21,11 @@
     UIImageView *likeImageLeft;
     UILabel *likeLabelLeft;
     
+    UIImageView *likeImageRight;
+    UILabel *likeLabelRight;
+    UIImageView *commentImageRight;
+    UILabel *commentLabelRight;
+    
     NSString *dateText;
     UILabel *dateLabel;
     
@@ -28,10 +33,11 @@
     BOOL likedByCurrentUser;
 }
 
-@property(strong, nonatomic) NSArray *imageIdList;
-@property(strong, nonatomic) NSString *unsentComment;
+@property (strong, nonatomic) NSArray *imageIdList;
+@property (strong, nonatomic) NSString *unsentComment;
+@property (strong, nonatomic) NSNumber *likedCommentId;
 
-@property(strong, nonatomic) PNImageSliderView *imageSliderView;
+@property (strong, nonatomic) PNImageSliderView *imageSliderView;
 
 @property (nonatomic, strong) NSNumber *userId;
 @property (nonatomic, strong) NSString *displayedName;

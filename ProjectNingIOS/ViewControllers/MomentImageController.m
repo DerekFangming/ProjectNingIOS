@@ -97,14 +97,14 @@
     [commentImageLeft addGestureRecognizer:commentImageLeftTap];
     [commentLabelLeft addGestureRecognizer:commentLabelLeftTap];
     
-    UIImageView *likeImageRight = [[UIImageView alloc] initWithFrame:CGRectMake(viewWidth - 55, 7, 20, 20)];
+    likeImageRight = [[UIImageView alloc] initWithFrame:CGRectMake(viewWidth - 55, 7, 20, 20)];
     likeImageRight.image = [UIImage imageNamed:@"notLikeWhite.png"];
-    UILabel *likeLabelRight = [[UILabel alloc] initWithFrame:CGRectMake(viewWidth - 35, 0, 0, 35)];
+    likeLabelRight = [[UILabel alloc] initWithFrame:CGRectMake(viewWidth - 35, 0, 0, 35)];
     likeLabelRight.font = likeLabelLeft.font;
     likeLabelRight.textColor = [UIColor whiteColor];
-    UIImageView *commentImageRight = [[UIImageView alloc] initWithFrame:CGRectMake(viewWidth - 30, 7, 20, 20)];
+    commentImageRight = [[UIImageView alloc] initWithFrame:CGRectMake(viewWidth - 30, 7, 20, 20)];
     commentImageRight.image = [UIImage imageNamed:@"writeCommentWhite.png"];
-    UILabel *commentLabelRight = [[UILabel alloc] initWithFrame:CGRectMake(viewWidth - 10, 0, 0, 35)];
+    commentLabelRight = [[UILabel alloc] initWithFrame:CGRectMake(viewWidth - 10, 0, 0, 35)];
     commentLabelRight.font = likeLabelLeft.font;
     commentLabelRight.textColor = [UIColor whiteColor];
     
@@ -142,31 +142,12 @@
     //Update counts and likes
     [PNCommentManager getCommentCountForCommentMappingId:self.momentId
                                                 response:^(NSError *error, NSNumber *commentCount,
-                                                           NSNumber *commentLikeCount, BOOL liked) {
-                                                    NSInteger offset;
-                                                    if(commentCount > 0){
-                                                        commentLabelRight.text = [commentCount stringValue];
-                                                        offset = commentLabelRight.intrinsicContentSize.width;
-                                                        CGRect currentFrame = commentLabelRight.frame;
-                                                        currentFrame.size.width += offset;
-                                                        currentFrame.origin.x -= offset;
-                                                        likeImageRight.frame = CGRectOffset(likeImageRight.frame, - offset, 0);
-                                                        likeLabelRight.frame = CGRectOffset(likeLabelRight.frame, - offset, 0);
-                                                        commentImageRight.frame = CGRectOffset(commentImageRight.frame, - offset, 0);
-                                                        commentLabelRight.frame = currentFrame;
-                                                    }
-                                                    
-                                                    if(commentLikeCount > 0){
-                                                        likeLabelRight.text = [commentLikeCount stringValue];
-                                                        offset = likeLabelRight.intrinsicContentSize.width;
-                                                        CGRect currentFrame = likeLabelRight.frame;
-                                                        currentFrame.size.width += offset;
-                                                        currentFrame.origin.x -= offset;
-                                                        likeImageRight.frame = CGRectOffset(likeImageRight.frame, - offset, 0);
-                                                        likeLabelRight.frame = currentFrame;
-                                                    }
+                                                           NSNumber *commentLikeCount, BOOL liked, NSNumber *likedId) {
+                                                    [self adjustCountsAndViewsForComments:commentCount
+                                                                          andCommentLikes:commentLikeCount];
                                                     likedByCurrentUser = liked;
                                                     if(liked){
+                                                        self.likedCommentId = likedId;
                                                         likeImageLeft.image=[UIImage imageNamed:@"like.png"];
                                                         likeLabelLeft.text = @"Cancel";
                                                     }
@@ -253,13 +234,40 @@
 
 - (void) likeBtnTapped {
     if(likedByCurrentUser){
-        likeImageLeft.image=[UIImage imageNamed:@"notLikeWhite.png"];
-        likeLabelLeft.text = @"  Like";
-        likedByCurrentUser = NO;
+        [PNCommentManager deleteCommentWithId:self.likedCommentId
+                                     response:^(NSError *error) {
+                                         if(error != nil){
+                                             [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
+                                                                                          from: self];
+                                         }else{
+                                             likeImageLeft.image=[UIImage imageNamed:@"notLikeWhite.png"];
+                                             likeLabelLeft.text = @"  Like";
+                                             likedByCurrentUser = NO;
+                                             NSInteger newLike = [likeLabelRight.text intValue] - 1;
+                                             [self adjustCountsAndViewsForComments:[NSNumber numberWithInt:-1]
+                                                                   andCommentLikes:[NSNumber numberWithInt:newLike]];
+                                         }
+                                     }];
     }else{
-        likeImageLeft.image=[UIImage imageNamed:@"like.png"];
-        likeLabelLeft.text = @"Cancel";
-        likedByCurrentUser = YES;
+        [PNCommentManager createComment:@"like"
+                         forCommentType:@"Feed Like"
+                           andMappingId:self.momentId
+                           mentionsUser:nil
+                               response:^(NSError *error, NSNumber *commentId) {
+                                   if(error != nil){
+                                       [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
+                                                                                    from: self];
+                                   }else{
+                                       self.likedCommentId = commentId;
+                                       likeImageLeft.image=[UIImage imageNamed:@"like.png"];
+                                       likeLabelLeft.text = @"Cancel";
+                                       likedByCurrentUser = YES;
+                                       NSInteger newLike = [likeLabelRight.text intValue] + 1;
+                                       [self adjustCountsAndViewsForComments:[NSNumber numberWithInt: -1]
+                                                             andCommentLikes:[NSNumber numberWithInt:newLike]];
+                                   }
+                               }];
+        
     }
 }
 
@@ -269,6 +277,44 @@
 
 - (void) detailsTapped {
     NSLog(@"456456");
+}
+
+#pragma mark - Helper -
+
+- (void) adjustCountsAndViewsForComments:(NSNumber *) commentCount andCommentLikes:(NSNumber *) commentLikeCount{
+    NSInteger offset;
+    if([commentCount intValue] >= 0){
+        NSInteger previousWidth = commentLabelRight.frame.size.width;
+        if([commentCount intValue] >= 0){
+            commentLabelRight.text = [commentCount stringValue];
+        }else{
+            commentLabelRight.text = @"";
+        }
+        offset = commentLabelRight.intrinsicContentSize.width - previousWidth;
+        CGRect currentFrame = commentLabelRight.frame;
+        currentFrame.size.width += offset;
+        currentFrame.origin.x -= offset;
+        likeImageRight.frame = CGRectOffset(likeImageRight.frame, - offset, 0);
+        likeLabelRight.frame = CGRectOffset(likeLabelRight.frame, - offset, 0);
+        commentImageRight.frame = CGRectOffset(commentImageRight.frame, - offset, 0);
+        commentLabelRight.frame = currentFrame;
+    }
+    
+    if([commentLikeCount intValue] >= 0){
+        NSInteger previousWidth = likeLabelRight.frame.size.width;
+        if([commentLikeCount intValue] > 0){
+            likeLabelRight.text = [commentLikeCount stringValue];
+        }else{
+            likeLabelRight.text = @"";
+        }
+        offset = likeLabelRight.intrinsicContentSize.width - previousWidth;
+        CGRect currentFrame = likeLabelRight.frame;
+        currentFrame.size.width += offset;
+        currentFrame.origin.x -= offset;
+        likeImageRight.frame = CGRectOffset(likeImageRight.frame, - offset, 0);
+        likeLabelRight.frame = currentFrame;
+    }
+    
 }
 
 #pragma mark - Segues methods -
@@ -290,6 +336,7 @@
         
         MomentInputController *destVC = (MomentInputController *)[segue.destinationViewController topViewController];
         destVC.unsentComment = self.unsentComment;
+        destVC.momentId = self.momentId;
     }
 }
 

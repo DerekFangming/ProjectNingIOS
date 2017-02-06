@@ -12,8 +12,10 @@
 
 @interface MomentInputController : UIViewController<UITextViewDelegate>
 
+@property (strong, nonatomic) NSNumber *momentId;
+
 @property (strong, nonatomic) UITextView *commentInput;
-@property(strong, nonatomic) NSString *unsentComment;
+@property (strong, nonatomic) NSString *unsentComment;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sendBtn;
 

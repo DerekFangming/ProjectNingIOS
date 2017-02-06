@@ -47,6 +47,6 @@
     @mappingIf the mapping id for the comment type. Type is specific to Feed and Feed Like as this is a specific method
  */
 + (void) getCommentCountForCommentMappingId:(NSNumber *) mappingId
-                                   response:(void (^)(NSError *, NSNumber * ,NSNumber *, BOOL)) response;
+                                   response:(void (^)(NSError *, NSNumber * ,NSNumber *, BOOL, NSNumber *)) response;
 
 @end

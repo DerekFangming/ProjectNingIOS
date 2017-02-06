@@ -1056,11 +1056,14 @@
                     <navigationItem key="navigationItem" title="Title" id="ouf-eH-4Xc">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="a6p-SY-hNa">
                             <connections>
-                                <segue destination="6Kv-AZ-cH7" kind="unwind" unwindAction="unwindFromModalViewController:" id="P1a-gy-xVP"/>
+                                <segue destination="6Kv-AZ-cH7" kind="unwind" identifier="commentInputUnwind" unwindAction="unwindFromModalViewController:" id="P1a-gy-xVP"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Send" id="tGl-U1-csy">
                             <color key="tintColor" red="0.25098039215686274" green="0.50196078431372548" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="sendBtnTapped:" destination="vlM-7L-WZH" id="1VA-Df-tMR"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
