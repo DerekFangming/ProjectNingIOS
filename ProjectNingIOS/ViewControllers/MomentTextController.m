@@ -17,6 +17,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if(self.seguedFromImageController){
+        self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+        [self.navigationController.navigationBar setTitleTextAttributes:
+         @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+        
+        UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                        style:UIBarButtonItemStyleDone
+                                                                       target:self
+                                                                       action:@selector(dismissSegue:)];
+        doneBtn.tintColor = GREEN_COLOR;
+        self.navigationItem.leftBarButtonItem = doneBtn;
+    }
+    
     selectedRow = -1;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -92,6 +105,9 @@
 #pragma mark - Section and list -
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    //Section 0 is header and like cell.
+    //Section 1 is all the text comment cells
+    //Section 2 is the blank fake cell
     return 3;
 }
 
@@ -624,6 +640,11 @@
     [view addAction:delete];
     [view addAction:cancel];
     [self presentViewController:view animated:YES completion:nil];
+}
+
+- (void) dismissSegue: (UIBarButtonItem*)btn{
+    NSLog(@"ok");
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 
 - (void)likeImgClick:(UITapGestureRecognizer *)recognizer{

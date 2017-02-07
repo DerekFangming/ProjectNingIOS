@@ -734,7 +734,7 @@
                                     <outlet property="backgroundView" destination="4Ap-mA-C32" id="7lu-lE-Luz"/>
                                     <outlet property="dateLabel" destination="5fZ-cG-xbA" id="GL3-Nn-j8h"/>
                                     <outlet property="momentBody" destination="ypt-Xx-H2d" id="wa5-vK-E1s"/>
-                                    <segue destination="tAQ-2l-9bv" kind="show" identifier="momentTextDetailSegue" id="4hu-hd-8u0"/>
+                                    <segue destination="tAQ-2l-9bv" kind="show" identifier="momentTextDetailSegue" id="E9I-Nw-9Ru"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="momentImageCell" rowHeight="64" id="rFS-lT-MuO" customClass="MomentImageCell">
@@ -1010,7 +1010,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oki-1h-Exh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3669" y="-434"/>
+            <point key="canvasLocation" x="4481" y="-434"/>
         </scene>
         <!--Date-->
         <scene sceneID="1f9-Ij-0h6">
@@ -1034,11 +1034,12 @@
                     </navigationItem>
                     <connections>
                         <segue destination="BHW-dB-O3M" kind="showDetail" identifier="enterCommentSegue" id="COh-I5-hVg"/>
+                        <segue destination="bJU-6T-S2a" kind="presentation" identifier="imageMomentToDetailSegue" modalTransitionStyle="flipHorizontal" id="taZ-U2-yxx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mQI-3N-SGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3670" y="273"/>
+            <point key="canvasLocation" x="3669" y="301"/>
         </scene>
         <!--Title-->
         <scene sceneID="GSF-IF-k3Z">
@@ -1147,8 +1148,29 @@
             </objects>
             <point key="canvasLocation" x="4394" y="273"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1zm-71-DwI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bJU-6T-S2a" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jOz-ZZ-8CG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tAQ-2l-9bv" kind="relationship" relationship="rootViewController" id="5qV-hR-QMB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xfE-uE-TwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3669" y="-434"/>
+        </scene>
     </scenes>
     <resources>
         <image name="writeComment.png" width="64" height="64"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="E9I-Nw-9Ru"/>
+    </inferredMetricsTieBreakers>
 </document>

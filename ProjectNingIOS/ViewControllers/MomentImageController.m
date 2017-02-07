@@ -276,7 +276,7 @@
 }
 
 - (void) detailsTapped {
-    NSLog(@"456456");
+    [self performSegueWithIdentifier:@"imageMomentToDetailSegue" sender:nil];
 }
 
 #pragma mark - Helper -
@@ -337,6 +337,15 @@
         MomentInputController *destVC = (MomentInputController *)[segue.destinationViewController topViewController];
         destVC.unsentComment = self.unsentComment;
         destVC.momentId = self.momentId;
+    }else if ([segue.identifier isEqualToString:@"imageMomentToDetailSegue"]) {
+        MomentTextController *destVC = (MomentTextController *)[segue.destinationViewController topViewController];
+        destVC.seguedFromImageController = YES;
+        destVC.displayedName = self.displayedName;
+        destVC.avatar = self.avatar;
+        destVC.userId = self.userId;
+        destVC.momentId = self.momentId;
+        destVC.momentBody = self.momentBody;
+        destVC.createdAt = self.createdAt;
     }
 }
 

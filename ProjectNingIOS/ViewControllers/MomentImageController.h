@@ -12,6 +12,7 @@
 #import "PNImageSliderView.h"
 #import "PNImageSliderDelegate.h"
 #import "MomentInputController.h"
+#import "MomentTextController.h"
 
 @interface MomentImageController : UIViewController<PNImageSliderDelegate>{
     UIView *momentHolderView;

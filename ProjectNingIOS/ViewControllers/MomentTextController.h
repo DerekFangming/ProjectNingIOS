@@ -38,6 +38,7 @@
 @property (nonatomic, strong) NSDate *createdAt;
 
 @property (nonatomic, assign) BOOL likedByCurrentUser;
+@property (nonatomic, assign) BOOL seguedFromImageController;
 
 @property (nonatomic, strong) NSMutableArray *likedList;
 @property (nonatomic, strong) NSMutableArray *commentList;
