@@ -330,10 +330,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"row selected");
-    PNComment *comment = [self.commentList objectAtIndex:indexPath.row];
-    if(comment.ownerId == [[PNUser currentUser] userId]){
-        [self showDeleteCommentConfirmationForComment:comment];
-    }else if(keyboardIsUp){
+    
+    if(keyboardIsUp){
         keyboardIsUp = NO;
         commentInput.placeholder = @"Enter comment";
         [commentInput resignFirstResponder];
@@ -343,10 +341,15 @@
             NSLog(@"Done!");
         }];
     }else if(indexPath.section == 1){
-        commentInput.placeholder = [@"Reply to " stringByAppendingString: comment.ownerDisplayedName];
-        selectedRow = indexPath.row;
-        mentionedUser = comment.ownerId;
-        [commentInput becomeFirstResponder];
+        PNComment *comment = [self.commentList objectAtIndex:indexPath.row];
+        if(comment.ownerId == [[PNUser currentUser] userId]){
+            [self showDeleteCommentConfirmationForComment:comment];
+        }else{
+            commentInput.placeholder = [@"Reply to " stringByAppendingString: comment.ownerDisplayedName];
+            selectedRow = indexPath.row;
+            mentionedUser = comment.ownerId;
+            [commentInput becomeFirstResponder];
+        }
     }
 }
 
