@@ -259,7 +259,7 @@
             sectionFriends = [friendList objectForKey:sectionTitle];
             friend = [sectionFriends objectAtIndex:indexPath.row];
         }
-        FriendsDetailViewController *destVC = segue.destinationViewController;
+        FriendDetailController *destVC = segue.destinationViewController;
         destVC.userId = friend.userId;
         destVC.displayedName = friend.name;
         destVC.avatar = friend.avatar;

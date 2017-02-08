@@ -11,6 +11,7 @@
 #import "Utils.h"
 #import "MomentTextHeaderCell.h"
 #import "MomentTextCommentCell.h"
+#import "FriendDetailController.h"
 
 @interface MomentTextController : UITableViewController <UITextFieldDelegate>{
     UIView *floatingView;

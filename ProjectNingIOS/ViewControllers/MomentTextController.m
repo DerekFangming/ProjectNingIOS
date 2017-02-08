@@ -276,6 +276,13 @@
         PNComment *comment = [self.commentList objectAtIndex:indexPath.row];
         cell.commentOwnerName.text = [comment ownerDisplayedName];
         cell.commentOwnerName.textColor = PURPLE_COLOR;
+        
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                               action:@selector(nameLabelTapped:)];
+        tapGestureRecognizer.numberOfTapsRequired = 1;
+        [cell.commentOwnerName addGestureRecognizer:tapGestureRecognizer];
+        cell.commentOwnerName.userInteractionEnabled = YES;
+        
         NSMutableAttributedString *attrBody;
         if (comment.mentionedUserId != nil){
             //Create user obj here
@@ -550,6 +557,28 @@
 
 #pragma mark - Comment user tap handling -
 
+- (void)nameLabelTapped:(UITapGestureRecognizer *)recognizer {
+    UITextField *nameLabel = (UITextField *)recognizer.view;
+    
+    if(keyboardIsUp){
+        keyboardIsUp = NO;
+        commentInput.placeholder = @"Enter comment";
+        [commentInput resignFirstResponder];
+        [UIView animateWithDuration:0.3f animations:^{
+            floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight);
+        } completion:^(BOOL finished) {
+            //NSLog(@"Done!");
+        }];
+    }else{
+        MomentTextCommentCell *cell = (MomentTextCommentCell *) nameLabel.superview.superview;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        PNComment *comment = [self.commentList objectAtIndex:indexPath.row];
+        
+        [self performSegueWithIdentifier:@"momentToFriendSegue" sender:comment];
+    }
+}
+
+
 - (void)textTapped:(UITapGestureRecognizer *)recognizer
 {
     UITextView *textView = (UITextView *)recognizer.view;
@@ -584,11 +613,18 @@
             [UIView animateWithDuration:0.3f animations:^{
                 floatingView.frame = CGRectOffset(floatingView.frame, 0, keyboardHeight);
             } completion:^(BOOL finished) {
-                NSLog(@"Done!");
+                //NSLog(@"Done!");
             }];
         }else if(range.location == 1){
-            //segue to friend view
-            NSLog(@"go to user page");
+            PNComment *fakedComment = [[PNComment alloc] initWithCommentId:nil
+                                                                   andBody:nil
+                                                                   andType:nil
+                                                              andMappingId:nil
+                                                                andOwnerId:comment.mentionedUserId
+                                                                   andDate:nil];
+            fakedComment.ownerDisplayedName = comment.mentionedUserName;
+            [self performSegueWithIdentifier:@"momentToFriendSegue" sender:fakedComment];
+            //NSLog(comment.mentionedUserName);
         }else if([comment ownerId] == [[PNUser currentUser] userId]){
             [self showDeleteCommentConfirmationForComment:comment];
         }else{
@@ -600,6 +636,7 @@
         }
     }
 }
+
 #pragma mark - Helpers -
 
 - (void)showDeleteCommentConfirmationForComment:(PNComment *) comment{
@@ -648,7 +685,20 @@
 }
 
 - (void)likeImgClick:(UITapGestureRecognizer *)recognizer{
-    NSLog(@"%d", recognizer.view.tag);
+    PNComment *comment = [self.likedList objectAtIndex:recognizer.view.tag];
+    [self performSegueWithIdentifier:@"momentToFriendSegue" sender:comment];
+    //NSLog(@"%d", recognizer.view.tag);
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"momentToFriendSegue"]) {
+        PNComment *comment = sender;
+        FriendDetailController *destVC = segue.destinationViewController;
+        destVC.userId = comment.ownerId;
+        destVC.displayedName = comment.ownerDisplayedName;
+        destVC.avatar = comment.ownerAvatar;
+    }
 }
 
 - (void)dealloc

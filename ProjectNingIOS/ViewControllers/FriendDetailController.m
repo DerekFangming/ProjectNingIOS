@@ -1,14 +1,14 @@
 //
-//  FriendsDetailViewController.m
+//  FriendDetailController.m
 //  ProjectNingIOS
 //
 //  Created by NingFangming on 11/11/16.
 //  Copyright © 2016 fangming. All rights reserved.
 //
 
-#import "FriendsDetailViewController.h"
+#import "FriendDetailController.h"
 
-@implementation FriendsDetailViewController
+@implementation FriendDetailController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,6 +43,17 @@
                                 [UIAlertController showErrorAlertWithErrorMessage:[err localizedDescription] from:self];
                             }
                         }];
+    if(self.avatar == nil){
+        [PNImageManager getSingletonImgForUser:self.userId withImgType:AVATAR
+                                      response:^(UIImage *img, NSError *err) {
+                                          if(err != nil){
+                                              self.avatar = [UIImage imageNamed:@"defaultAvatar.jpg"];
+                                          }else{
+                                              self.avatar = img;
+                                          }
+                                          [self.tableView reloadData];
+                                      }];
+    }
                          
 }
 

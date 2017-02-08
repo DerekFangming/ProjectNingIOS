@@ -1,5 +1,5 @@
 //
-//  FriendsDetailViewController.h
+//  FriendDetailController.h
 //  ProjectNingIOS
 //
 //  Created by NingFangming on 11/11/16.
@@ -15,7 +15,7 @@
 #import "MomentsCell.h"
 #import "FriendMomentController.h"
 
-@interface FriendsDetailViewController : UITableViewController{
+@interface FriendDetailController : UITableViewController{
     UIImageView *tempAvatar;
     UIImageView *fullScreenAvatar;
 }
