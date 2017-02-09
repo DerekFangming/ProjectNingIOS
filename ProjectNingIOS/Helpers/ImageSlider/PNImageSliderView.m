@@ -122,6 +122,16 @@
     }
 }
 
+- (NSArray *)gatherAllImagesOrIds{
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for(PNImageSliderCell *cell in self.sliderCells){
+        PNImage *image = [[PNImage alloc] initWithImageId:cell.imageId andImage:cell.imageView.image];
+        [array addObject:image];
+        
+    }
+    return [array copy];
+}
+
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"bounds"];
     [self.scrollView removeFromSuperview];

@@ -340,6 +340,7 @@
     }else if ([segue.identifier isEqualToString:@"imageMomentToDetailSegue"]) {
         MomentTextController *destVC = (MomentTextController *)[segue.destinationViewController topViewController];
         destVC.seguedFromImageController = YES;
+        destVC.imageList = [self.imageSliderView gatherAllImagesOrIds];
         destVC.displayedName = self.displayedName;
         destVC.avatar = self.avatar;
         destVC.userId = self.userId;

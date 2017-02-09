@@ -12,7 +12,6 @@
 #import "PNAlertHelper.h"
 #import "PNRelationship.h"
 #import "PNFriend.h"
-#import "PNFeed.h"
 #import "PNFeedManager.h"
 #import "PNCommentManager.h"
 

@@ -47,4 +47,6 @@
 @property (nonatomic, assign) CGFloat likeCellHeight;
 @property (nonatomic, assign) CGFloat headerCellHeight;
 
+@property (nonatomic, assign) NSArray *imageList;
+
 @end

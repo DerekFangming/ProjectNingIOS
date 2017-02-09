@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PNImage.h"
 #import "PNImageSliderCell.h"
 #import "PNImageSliderDelegate.h"
 
@@ -21,5 +22,12 @@
 @property(weak, nonatomic) id<PNImageSliderDelegate> delegate;
 
 - (instancetype)initWithInitialIndex:(NSInteger)currentIndex imageIds:(NSArray *)imageIds;
+
+/**
+    Gather as many imgaes as possible for the given image id list
+    If there is an image, the image id will be the tag number for the image
+    If there is no image, add the NSNumber id for the spot
+ */
+- (NSArray *)gatherAllImagesOrIds;
 
 @end
