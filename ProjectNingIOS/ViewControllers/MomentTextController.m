@@ -17,19 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if(self.seguedFromImageController){
-        self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
-        [self.navigationController.navigationBar setTitleTextAttributes:
-         @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-        
-        UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done"
-                                                                        style:UIBarButtonItemStyleDone
-                                                                       target:self
-                                                                       action:@selector(dismissSegue:)];
-        doneBtn.tintColor = GREEN_COLOR;
-        self.navigationItem.leftBarButtonItem = doneBtn;
-    }
-    
     selectedRow = -1;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -66,6 +53,35 @@
     tableViewHeight = self.tableView.frame.size.height;
     tableViewWidth = self.tableView.frame.size.width;
     commentInputHeight = 35;
+    
+    //Create and process images, update navigation bar if it's segued from comment image controller
+    if(self.seguedFromImageController){
+        self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+        [self.navigationController.navigationBar setTitleTextAttributes:
+         @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+        
+        UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                    style:UIBarButtonItemStyleDone
+                                                                   target:self
+                                                                   action:@selector(dismissSegue:)];
+        doneBtn.tintColor = GREEN_COLOR;
+        self.navigationItem.leftBarButtonItem = doneBtn;
+        NSInteger imageCount = [self.imageList count];
+        if(imageCount == 1){
+            imageSectionHeight = (tableViewWidth - 100) * 0.66;
+            imageSectionViewHeight = imageSectionHeight;
+        }else if(imageCount <= 3){
+            imageSectionHeight = (tableViewWidth - 100) * 0.33;
+            imageSectionViewHeight = imageSectionHeight;
+        }else if(imageCount <= 6){
+            imageSectionHeight = (tableViewWidth - 100) * 0.66;
+            imageSectionViewHeight = imageSectionHeight / 2;
+        }else{
+            imageSectionHeight = tableViewWidth - 100;
+            imageSectionViewHeight = imageSectionHeight / 3;
+        }
+        
+    }
     
     //Create comment input text field
     floatingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableViewWidth, commentInputHeight)];
@@ -124,7 +140,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0 && indexPath.row == 0){
-        return self.headerCellHeight;
+        return self.headerCellHeight + imageSectionHeight;
     }else if(indexPath.section == 0 && indexPath.row == 1){
         return self.likeCellHeight;
     }else if (indexPath.section == 1){
@@ -158,6 +174,20 @@
         
         [cell.momentTextView setContentSize:size];
         cell.dateLabel.text = [Utils processDateToText:self.createdAt withAbbreviation:NO];
+        
+        int imageCount = [self.imageList count];
+        //int totalRows = ceil( imageCount/ 3);
+        int picPerRow = imageCount == 1 ? 1 : (imageCount == 2 || imageCount == 4) ? 2 : 3;
+        for(int i = 0; i < imageCount; i ++){
+            int row = i / picPerRow;
+            int col = i % picPerRow;
+            UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(65 + col * imageSectionViewHeight,
+                                                                            row * imageSectionViewHeight + size.height + 25,
+                                                                            imageSectionViewHeight - 10,
+                                                                            imageSectionViewHeight - 10)];
+            [imv setImage:[UIImage imageNamed:@"defaultAvatar.jpg"]];
+            [cell.contentView addSubview:imv];
+        }
         
         //Like button
         if(self.likedByCurrentUser) [cell.likeBtn setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
@@ -228,7 +258,6 @@
             int row = i / picPerRow;
             int col = i % picPerRow;
             UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(58 + col * 35, 7 + row * 35, 30, 30)];
-            //imv.image=[UIImage imageNamed:@"defaultAvatar.jpg"];
             imv.tag = i;
             UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                         action:@selector(likeImgClick:)];

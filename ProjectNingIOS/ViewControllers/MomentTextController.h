@@ -26,6 +26,8 @@
     CGFloat commentInputHeight;
     CGFloat tableViewHeight;
     CGFloat tableViewWidth;
+    CGFloat imageSectionHeight;
+    CGFloat imageSectionViewHeight;
     
     BOOL keyboardIsUp;
     BOOL keyboardAdjusting;
@@ -47,6 +49,6 @@
 @property (nonatomic, assign) CGFloat likeCellHeight;
 @property (nonatomic, assign) CGFloat headerCellHeight;
 
-@property (nonatomic, assign) NSArray *imageList;
+@property (nonatomic, strong) NSArray *imageList;
 
 @end
