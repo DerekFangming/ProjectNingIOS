@@ -16,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"image view loaded");
     dateText = [Utils processDateToText:self.createdAt withAbbreviation:NO];
     
     dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];

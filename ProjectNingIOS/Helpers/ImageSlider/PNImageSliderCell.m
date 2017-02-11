@@ -43,6 +43,19 @@
     return self;
 }
 
+- (instancetype)initWithPNImage:(PNImage *)image{
+    self = [super init];
+    if (self) {
+        self.imageId = image.imageId;
+        if(image.image != nil){
+            self.imageView.image = image.image;
+        }
+        [self initialize];
+    }
+    
+    return self;
+}
+
 - (void)initialize {
     [self.scrollView addSubview:self.imageView];
     [self addSubview:self.scrollView];

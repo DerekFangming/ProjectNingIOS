@@ -11,6 +11,7 @@
 #import "PNUser.h"
 #import "PNStranger.h"
 #import "PNUtils.h"
+#import "PNImage.h"
 
 @interface PNImageManager : NSObject
 

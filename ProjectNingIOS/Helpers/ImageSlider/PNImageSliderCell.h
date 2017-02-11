@@ -21,6 +21,9 @@
 @property(assign, nonatomic) BOOL isImageLoading;
 
 - (instancetype)initWithPNImageId:(NSNumber *)imageId;
+
+- (instancetype)initWithPNImage:(PNImage *)image;
+
 - (void)loadImage;
 
 @end

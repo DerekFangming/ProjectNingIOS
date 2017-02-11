@@ -12,8 +12,10 @@
 #import "MomentTextHeaderCell.h"
 #import "MomentTextCommentCell.h"
 #import "FriendDetailController.h"
+#import "PNImageSliderView.h"
+#import "PNImageSliderDelegate.h"
 
-@interface MomentTextController : UITableViewController <UITextFieldDelegate>{
+@interface MomentTextController : UITableViewController <UITextFieldDelegate, PNImageSliderDelegate>{
     UIView *floatingView;
     UIView *separatorView;
     UITextField *commentInput;
@@ -39,6 +41,8 @@
 @property (nonatomic, strong) NSNumber *momentId;
 @property (nonatomic, strong) NSString *momentBody;
 @property (nonatomic, strong) NSDate *createdAt;
+
+@property (strong, nonatomic) PNImageSliderView *imageSliderView;
 
 @property (nonatomic, assign) BOOL likedByCurrentUser;
 @property (nonatomic, assign) BOOL seguedFromImageController;

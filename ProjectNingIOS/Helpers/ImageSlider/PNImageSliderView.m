@@ -35,29 +35,50 @@
 - (instancetype)initWithInitialIndex:(NSInteger)currentIndex imageIds:(NSArray *)imageIds {
     self = [super init];
     if (self) {
-        [self initialize:currentIndex imageIds:imageIds];
+        [self initialize:currentIndex imageIds:imageIds isPNImageList:NO];
     }
     
     return self;
 }
 
-- (void)initialize:(NSInteger)currentIndex imageIds:(NSArray *)imageIds {
+- (instancetype)initWithInitialIndex:(NSInteger)currentIndex pnImages:(NSArray *)imageIds {
+    self = [super init];
+    if (self) {
+        [self initialize:currentIndex imageIds:imageIds isPNImageList:YES];
+    }
+    
+    return self;
+}
+
+- (void)initialize:(NSInteger)currentIndex imageIds:(NSArray *)imageIds isPNImageList:(BOOL ) isPNList{
     self.isUpdatingCellFrames = NO;
     self.currentIndex = currentIndex;
     
     self.clipsToBounds = NO;
     
-    for (NSNumber *imageId in imageIds) {
-        PNImageSliderCell *sliderCell = [[PNImageSliderCell alloc] initWithPNImageId:imageId];
-        sliderCell.delegate = self;
-        [self.sliderCells addObject:sliderCell];
-        [self.scrollView addSubview:sliderCell];
+    if(isPNList){
+        for (PNImage *image in imageIds) {
+            NSLog(@"inited by pn");
+            PNImageSliderCell *sliderCell = [[PNImageSliderCell alloc] initWithPNImage:image];
+            sliderCell.delegate = self;
+            [self.sliderCells addObject:sliderCell];
+            [self.scrollView addSubview:sliderCell];
+        }
+    }else{
+        for (NSNumber *imageId in imageIds) {
+            NSLog(@"inited by id");
+            PNImageSliderCell *sliderCell = [[PNImageSliderCell alloc] initWithPNImageId:imageId];
+            sliderCell.delegate = self;
+            [self.sliderCells addObject:sliderCell];
+            [self.scrollView addSubview:sliderCell];
+        }
     }
     
     [self addSubview:self.scrollView];
     [self updateCellFrames];
     [self addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew context:@"imageSliderView"];
 }
+
 
 - (void)switchImage:(NSInteger)index {
     PNImageSliderCell *cell = [self.sliderCells objectAtIndex:index];

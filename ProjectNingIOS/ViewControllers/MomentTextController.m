@@ -185,8 +185,26 @@
                                                                             row * imageSectionViewHeight + size.height + 25,
                                                                             imageSectionViewHeight - 10,
                                                                             imageSectionViewHeight - 10)];
-            [imv setImage:[UIImage imageNamed:@"defaultAvatar.jpg"]];
+            imv.tag = i;
+            UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                        action:@selector(commentImgClick:)];
+            singleTap.numberOfTapsRequired = 1;
+            [imv setUserInteractionEnabled:YES];
+            [imv addGestureRecognizer:singleTap];
             [cell.contentView addSubview:imv];
+            
+            PNImage *image = [self.imageList objectAtIndex:i];
+            if(image.image){
+                imv.image = image.image;
+            }else{
+                [PNImageManager downloadImageWithId:image.imageId
+                                           response:^(UIImage *img, NSError *error) {
+                                               if(error == nil){
+                                                   imv.image = img;
+                                                   image.image = img;
+                                               }
+                                           }];
+            }
         }
         
         //Like button
@@ -477,12 +495,12 @@
     }else if (keyboardAdjusting){
         //NSLog(@"recal- kb up %f", self.tableView.contentOffset.y);
         CGRect frame = floatingView.frame;
-        NSLog(@"adjust keyboard");
+        //NSLog(@"adjust keyboard");
         frame.origin.y = scrollView.contentOffset.y + tableViewHeight - commentInputHeight - keyboardHeight;
         floatingView.frame = frame;
         
     }else if (keyboardIsUp){
-        NSLog(@"remove keyboard");
+        //NSLog(@"remove keyboard");
         commentInput.placeholder = @"Enter comment";
         [commentInput resignFirstResponder];
         [UIView animateWithDuration:0.3f animations:^{
@@ -708,15 +726,52 @@
     [self presentViewController:view animated:YES completion:nil];
 }
 
-- (void) dismissSegue: (UIBarButtonItem*)btn{
-    NSLog(@"ok");
-    [self dismissViewControllerAnimated: YES completion: nil];
-}
+#pragma mark - Image click events -
 
 - (void)likeImgClick:(UITapGestureRecognizer *)recognizer{
     PNComment *comment = [self.likedList objectAtIndex:recognizer.view.tag];
     [self performSegueWithIdentifier:@"momentToFriendSegue" sender:comment];
     //NSLog(@"%d", recognizer.view.tag);
+}
+
+- (void)commentImgClick:(UITapGestureRecognizer *)recognizer{
+    
+    self.imageSliderView = [[PNImageSliderView alloc] initWithInitialIndex:((UIImageView *)recognizer.view).tag
+                                                                  pnImages:self.imageList];
+    self.imageSliderView.delegate = self;
+    self.imageSliderView.translatesAutoresizingMaskIntoConstraints = NO;
+    CGRect point=[self.view convertRect:recognizer.view.bounds fromView:recognizer.view];
+    [self.imageSliderView setFrame:point];
+    
+    [self.navigationController.view addSubview:self.imageSliderView];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.imageSliderView setFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        
+        [[self navigationController] setNavigationBarHidden:YES animated:NO];
+    }];
+    /*
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                action:@selector(zoomOutAvatar:)];
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.numberOfTouchesRequired = 1;
+    [fullScreenAvatar addGestureRecognizer:singleTap];
+    [fullScreenAvatar setUserInteractionEnabled:YES];*/
+    NSLog(@"%d", ((UIImageView *)recognizer.view).tag);
+}
+
+- (void)imageSliderViewImageDidSwitchToIndex:(NSInteger)index totalCount:(NSInteger)count{
+    //dateLabel.text = [NSString stringWithFormat:@"%@\n%d/%d", dateText, index + 1, count];
+}
+
+- (void)imageSliderViewSingleTap:(UITapGestureRecognizer *)tap{
+    NSLog(@"tapped");
+}
+#pragma mark - Segues -
+
+- (void) dismissSegue: (UIBarButtonItem*)btn{
+    NSLog(@"ok");
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

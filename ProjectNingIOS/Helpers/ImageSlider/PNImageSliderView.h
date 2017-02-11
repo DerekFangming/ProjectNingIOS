@@ -23,6 +23,8 @@
 
 - (instancetype)initWithInitialIndex:(NSInteger)currentIndex imageIds:(NSArray *)imageIds;
 
+- (instancetype)initWithInitialIndex:(NSInteger)currentIndex pnImages:(NSArray *)imageIds;
+
 /**
     Gather as many imgaes as possible for the given image id list
     If there is an image, the image id will be the tag number for the image

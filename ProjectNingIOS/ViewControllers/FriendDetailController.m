@@ -219,7 +219,8 @@
         [fullScreenAvatar setFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     }];
     
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoomOutAvatar:)];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                action:@selector(zoomOutAvatar:)];
     singleTap.numberOfTapsRequired = 1;
     singleTap.numberOfTouchesRequired = 1;
     [fullScreenAvatar addGestureRecognizer:singleTap];
