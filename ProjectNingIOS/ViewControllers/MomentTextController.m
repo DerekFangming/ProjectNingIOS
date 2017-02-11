@@ -741,23 +741,37 @@
     self.imageSliderView.delegate = self;
     self.imageSliderView.translatesAutoresizingMaskIntoConstraints = NO;
     CGRect point=[self.view convertRect:recognizer.view.bounds fromView:recognizer.view];
-    [self.imageSliderView setFrame:point];
     
-    [self.navigationController.view addSubview:self.imageSliderView];
+    UIView *holderView = [[UIView alloc] initWithFrame:point];
+    [holderView setBackgroundColor:[UIColor redColor]];
+    holderView.clipsToBounds = YES;
+    
+    [holderView addSubview: self.imageSliderView];
+    
+    NSArray *imageSliderViewHConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[imageSliderView]-0-|"
+                                                                                   options:0
+                                                                                   metrics:nil
+                                                                                     views:@{@"imageSliderView": self.imageSliderView}];
+    
+    [holderView addConstraints:imageSliderViewHConstraints];
+    
+    
+    
+    NSArray *imageSliderViewVConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[imageSliderView]-0-|"
+                                                                                   options:0
+                                                                                   metrics:nil
+                                                                                     views:@{@"imageSliderView": self.imageSliderView}];
+    
+    [holderView addConstraints:imageSliderViewVConstraints];
+    
+    [self.navigationController.view addSubview:holderView];
     
     [UIView animateWithDuration:0.3 animations:^{
-        [self.imageSliderView setFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        [holderView setFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
         
         [[self navigationController] setNavigationBarHidden:YES animated:NO];
     }];
-    /*
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                action:@selector(zoomOutAvatar:)];
-    singleTap.numberOfTapsRequired = 1;
-    singleTap.numberOfTouchesRequired = 1;
-    [fullScreenAvatar addGestureRecognizer:singleTap];
-    [fullScreenAvatar setUserInteractionEnabled:YES];*/
-    NSLog(@"%d", ((UIImageView *)recognizer.view).tag);
+    
 }
 
 - (void)imageSliderViewImageDidSwitchToIndex:(NSInteger)index totalCount:(NSInteger)count{
