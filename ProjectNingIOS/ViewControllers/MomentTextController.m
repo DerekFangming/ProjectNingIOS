@@ -742,18 +742,18 @@
     self.imageSliderView.translatesAutoresizingMaskIntoConstraints = NO;
     CGRect point=[self.view convertRect:recognizer.view.bounds fromView:recognizer.view];
     
-    UIView *holderView = [[UIView alloc] initWithFrame:point];
-    [holderView setBackgroundColor:[UIColor redColor]];
-    holderView.clipsToBounds = YES;
+    self.sliderHolder = [[UIView alloc] initWithFrame:point];
+    [self.sliderHolder setBackgroundColor:[UIColor blackColor]];
+    self.sliderHolder.clipsToBounds = YES;
     
-    [holderView addSubview: self.imageSliderView];
+    [self.sliderHolder addSubview: self.imageSliderView];
     
     NSArray *imageSliderViewHConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[imageSliderView]-0-|"
                                                                                    options:0
                                                                                    metrics:nil
                                                                                      views:@{@"imageSliderView": self.imageSliderView}];
     
-    [holderView addConstraints:imageSliderViewHConstraints];
+    [self.sliderHolder addConstraints:imageSliderViewHConstraints];
     
     
     
@@ -762,24 +762,39 @@
                                                                                    metrics:nil
                                                                                      views:@{@"imageSliderView": self.imageSliderView}];
     
-    [holderView addConstraints:imageSliderViewVConstraints];
+    [self.sliderHolder addConstraints:imageSliderViewVConstraints];
     
-    [self.navigationController.view addSubview:holderView];
+    [self.navigationController.view addSubview:self.sliderHolder];
     
     [UIView animateWithDuration:0.3 animations:^{
-        [holderView setFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
-        
+        [self.sliderHolder setFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
         [[self navigationController] setNavigationBarHidden:YES animated:NO];
+    } completion:^(BOOL finished) {
+        self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width / 2 - 30,
+                                                                   self.view.bounds.size.height - 40, 60, 25)];
+        self.dateLabel.backgroundColor = [UIColor clearColor];
+        //dateLabel.numberOfLines = 2;
+        self.dateLabel.font = [UIFont boldSystemFontOfSize: 14.0f];
+        //dateLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        self.dateLabel.textAlignment = NSTextAlignmentCenter;
+        self.dateLabel.textColor = [UIColor whiteColor];
+        [self.sliderHolder addSubview:self.dateLabel];
+        self.dateLabel.text = [NSString stringWithFormat:@"%d/%d",
+                               ((UIImageView *)recognizer.view).tag + 1, [self.imageList count]];
     }];
     
 }
 
 - (void)imageSliderViewImageDidSwitchToIndex:(NSInteger)index totalCount:(NSInteger)count{
-    //dateLabel.text = [NSString stringWithFormat:@"%@\n%d/%d", dateText, index + 1, count];
+    self.dateLabel.text = [NSString stringWithFormat:@"%d/%d", index + 1, count];
 }
 
 - (void)imageSliderViewSingleTap:(UITapGestureRecognizer *)tap{
-    NSLog(@"tapped");
+    [[self navigationController] setNavigationBarHidden:NO animated:NO];
+    [self.sliderHolder removeFromSuperview];
+    self.imageSliderView = nil;
+    self.sliderHolder = nil;
+    self.dateLabel = nil;
 }
 #pragma mark - Segues -
 

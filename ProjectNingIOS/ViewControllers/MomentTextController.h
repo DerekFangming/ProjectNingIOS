@@ -42,7 +42,9 @@
 @property (nonatomic, strong) NSString *momentBody;
 @property (nonatomic, strong) NSDate *createdAt;
 
+@property (strong, nonatomic) UIView *sliderHolder;
 @property (strong, nonatomic) PNImageSliderView *imageSliderView;
+@property (strong, nonatomic) UILabel *dateLabel;
 
 @property (nonatomic, assign) BOOL likedByCurrentUser;
 @property (nonatomic, assign) BOOL seguedFromImageController;

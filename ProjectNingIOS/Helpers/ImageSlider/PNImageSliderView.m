@@ -58,7 +58,6 @@
     
     if(isPNList){
         for (PNImage *image in imageIds) {
-            NSLog(@"inited by pn");
             PNImageSliderCell *sliderCell = [[PNImageSliderCell alloc] initWithPNImage:image];
             sliderCell.delegate = self;
             [self.sliderCells addObject:sliderCell];
@@ -66,7 +65,6 @@
         }
     }else{
         for (NSNumber *imageId in imageIds) {
-            NSLog(@"inited by id");
             PNImageSliderCell *sliderCell = [[PNImageSliderCell alloc] initWithPNImageId:imageId];
             sliderCell.delegate = self;
             [self.sliderCells addObject:sliderCell];
@@ -154,11 +152,12 @@
 }
 
 - (void)dealloc {
+    NSLog(@"dealloced");
     [self removeObserver:self forKeyPath:@"bounds"];
     [self.scrollView removeFromSuperview];
     self.scrollView = nil;
     self.sliderCells = nil;
-    //self.delegate = nil;
+    self.delegate = nil;
 }
 
 @end
