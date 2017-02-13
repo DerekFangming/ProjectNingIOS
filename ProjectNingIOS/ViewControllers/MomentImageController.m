@@ -207,11 +207,11 @@
                                  preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction* ok = [UIAlertAction
-                         actionWithTitle:@"Delete"
+                         actionWithTitle:@"Save to Album"
                          style:UIAlertActionStyleDefault
                          handler:^(UIAlertAction * action)
                          {
-                             
+                             UIImageWriteToSavedPhotosAlbum([self.imageSliderView getCurrentImage], nil, nil, nil);
                              [view dismissViewControllerAnimated:YES completion:nil];
                              
                          }];

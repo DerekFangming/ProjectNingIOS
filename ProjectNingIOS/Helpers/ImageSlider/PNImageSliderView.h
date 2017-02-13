@@ -27,9 +27,11 @@
 
 /**
     Gather as many imgaes as possible for the given image id list
-    If there is an image, the image id will be the tag number for the image
-    If there is no image, add the NSNumber id for the spot
+    Return an array of PNImage, with image IDs
+    If the image is already loaded, add the UIImage to PNImage object
  */
 - (NSArray *)gatherAllImagesOrIds;
+
+- (UIImage *)getCurrentImage;
 
 @end

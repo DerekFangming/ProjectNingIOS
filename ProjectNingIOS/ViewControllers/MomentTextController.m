@@ -773,9 +773,7 @@
         self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width / 2 - 30,
                                                                    self.view.bounds.size.height - 40, 60, 25)];
         self.dateLabel.backgroundColor = [UIColor clearColor];
-        //dateLabel.numberOfLines = 2;
         self.dateLabel.font = [UIFont boldSystemFontOfSize: 14.0f];
-        //dateLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
         self.dateLabel.textAlignment = NSTextAlignmentCenter;
         self.dateLabel.textColor = [UIColor whiteColor];
         [self.sliderHolder addSubview:self.dateLabel];
@@ -799,7 +797,6 @@
 #pragma mark - Segues -
 
 - (void) dismissSegue: (UIBarButtonItem*)btn{
-    NSLog(@"ok");
     [self dismissViewControllerAnimated: YES completion: nil];
 }
 

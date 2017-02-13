@@ -151,8 +151,12 @@
     return [array copy];
 }
 
+- (UIImage *)getCurrentImage{
+    PNImageSliderCell *cell = [self.sliderCells objectAtIndex:self.currentIndex];
+    return cell.imageView.image;
+}
+
 - (void)dealloc {
-    NSLog(@"dealloced");
     [self removeObserver:self forKeyPath:@"bounds"];
     [self.scrollView removeFromSuperview];
     self.scrollView = nil;
