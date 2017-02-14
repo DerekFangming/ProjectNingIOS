@@ -10,18 +10,6 @@
 
 @implementation PNImageManager
 
-+ (instancetype)imageManager{
-    static PNImageManager *sharedInstance = nil;
-    
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken, ^{
-        sharedInstance = [[PNImageManager alloc] init];
-    });
-    return sharedInstance;
-    
-}
-
 + (void) uploadImage:(UIImage *) img
               inType:(NSString *) type
    withTypeMappingId:(NSNumber *) typeMappingId
@@ -53,9 +41,7 @@
         [parameters setObject:typeMappingId forKey:@"typeMappingId"];
     }
     
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     
     [manager POST:pathForImgUpload
        parameters:parameters
@@ -85,9 +71,7 @@
     [parameters setObject:[user accessToken] forKey:@"accessToken"];
     [parameters setObject:imageId forKey:@"imageId"];
     
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     
     [manager POST:pathForImgDelete
        parameters:parameters
@@ -119,9 +103,7 @@
     [parameters setObject:type forKey:@"type"];
     [parameters setObject:userId forKey:@"userId"];
     
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     
     [manager POST:pathForImgIdList
        parameters:parameters
@@ -153,9 +135,7 @@
     [parameters setObject:[user accessToken] forKey:@"accessToken"];
     [parameters setObject:imageId forKey:@"imageId"];
     
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     
     [manager POST:pathForImgDownload
        parameters:parameters
@@ -188,9 +168,7 @@
     [parameters setObject:userId forKey:@"userId"];
     [parameters setObject:imgType forKey:@"imgType"];
     
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     
     [manager POST:pathForSingletonTypeImg
        parameters:parameters
@@ -227,9 +205,7 @@
         [parameters setObject:userId forKey:@"userId"];
     }
     
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:requestBaseURL]];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     
     [manager POST:pathForNextAvatar
        parameters:parameters

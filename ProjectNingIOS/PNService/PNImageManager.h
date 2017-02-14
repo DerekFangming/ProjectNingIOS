@@ -15,8 +15,6 @@
 
 @interface PNImageManager : NSObject
 
-+ (instancetype)imageManager;
-
 /**
     Upload an image to server
     If the response error is not nil, there is error in the upload process
