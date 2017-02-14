@@ -15,14 +15,13 @@
           andMappingId:(NSNumber *) mappingId
           mentionsUser:(NSNumber *) mentionedUserId
               response:(void(^)(NSError *, NSNumber *)) response{
-    NSError *error = [PNUser checkUserLoginStatus];
+    NSError *error = [PNUserManager checkUserLoginStatus];
     if(error != nil){
         response(error, nil);
     }
     
-    PNUser *user = [PNUser currentUser];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:[PNUserManager getCurrentUserAccessToken] forKey:@"accessToken"];
     [parameters setObject:commentBody forKey:@"commentBody"];
     [parameters setObject:type forKey:@"type"];
     [parameters setObject:mappingId forKey:@"mappingId"];
@@ -48,14 +47,13 @@
 
 + (void) deleteCommentWithId:(NSNumber *) commentId
                     response:(void(^)(NSError *)) response{
-    NSError *error = [PNUser checkUserLoginStatus];
+    NSError *error = [PNUserManager checkUserLoginStatus];
     if(error != nil){
         response(error);
     }
     
-    PNUser *user = [PNUser currentUser];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:[PNUserManager getCurrentUserAccessToken] forKey:@"accessToken"];
     [parameters setObject:commentId forKey:@"commentId"];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
@@ -78,14 +76,13 @@
 + (void) getRecentCommentsForCurrentUserWithCommentType:(NSString *) type
                                            andMappingId:(NSNumber *) mappingId
                                                response:(void(^)(NSError *, NSMutableArray *, BOOL)) response{
-    NSError *error = [PNUser checkUserLoginStatus];
+    NSError *error = [PNUserManager checkUserLoginStatus];
     if(error != nil){
         response(error, nil, NO);
     }
     
-    PNUser *user = [PNUser currentUser];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:[PNUserManager getCurrentUserAccessToken] forKey:@"accessToken"];
     [parameters setObject:type forKey:@"type"];
     [parameters setObject:mappingId forKey:@"mappingId"];
     
@@ -126,14 +123,13 @@
 
 + (void) getCommentCountForCommentMappingId:(NSNumber *) mappingId
                                    response:(void (^)(NSError *, NSNumber * ,NSNumber *, BOOL, NSNumber *)) response{
-    NSError *error = [PNUser checkUserLoginStatus];
+    NSError *error = [PNUserManager checkUserLoginStatus];
     if(error != nil){
         response(error, nil, nil, NO, nil);
     }
     
-    PNUser *user = [PNUser currentUser];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:[PNUserManager getCurrentUserAccessToken] forKey:@"accessToken"];
     [parameters setObject:mappingId forKey:@"mappingId"];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];

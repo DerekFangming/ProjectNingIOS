@@ -412,7 +412,7 @@
         }];
     }else if(indexPath.section == 1){
         PNComment *comment = [self.commentList objectAtIndex:indexPath.row];
-        if(comment.ownerId == [[PNUser currentUser] userId]){
+        if(comment.ownerId == [[PNUserManager currentUser] userId]){
             [self showDeleteCommentConfirmationForComment:comment];
         }else{
             commentInput.placeholder = [@"Reply to " stringByAppendingString: comment.ownerDisplayedName];
@@ -428,7 +428,7 @@
 - (void)likeButtonTapped:(UIButton *)sender{
     if(self.likedByCurrentUser){
         PNComment *commentByCurrentUser;
-        NSNumber *currentUserId = [[PNUser currentUser] userId];
+        NSNumber *currentUserId = [[PNUserManager currentUser] userId];
         for(PNComment *comment in self.likedList){
             if(comment.ownerId == currentUserId){
                 commentByCurrentUser = comment;
@@ -463,7 +463,7 @@
                                                                                           andBody:@"like"
                                                                                           andType:@"Feed Like"
                                                                                      andMappingId:self.momentId
-                                                                                       andOwnerId:[[PNUser currentUser] userId]
+                                                                                       andOwnerId:[[PNUserManager currentUser] userId]
                                                                                           andDate:[NSDate date]];
                                        if(self.likedList == nil)
                                            self.likedList = [[NSMutableArray alloc] init];
@@ -541,11 +541,11 @@
                                                                                       andBody:commentBody
                                                                                       andType:@"Feed"
                                                                                  andMappingId:self.momentId
-                                                                                   andOwnerId:[[PNUser currentUser] userId]
+                                                                                   andOwnerId:[[PNUserManager currentUser] userId]
                                                                                       andDate:[NSDate date]];
                                    comment.mentionedUserId = mentionedUser;
                                    comment.mentionedUserName = clickedUserName;
-                                   comment.ownerDisplayedName = [[PNUser currentUser] username];
+                                   comment.ownerDisplayedName = [[PNUserManager currentUser] username];
                                    if (self.commentList == nil)
                                        self.commentList = [[NSMutableArray alloc] init];
                                    [self.commentList addObject:comment];
@@ -672,7 +672,7 @@
             fakedComment.ownerDisplayedName = comment.mentionedUserName;
             [self performSegueWithIdentifier:@"momentToFriendSegue" sender:fakedComment];
             //NSLog(comment.mentionedUserName);
-        }else if([comment ownerId] == [[PNUser currentUser] userId]){
+        }else if([comment ownerId] == [[PNUserManager currentUser] userId]){
             [self showDeleteCommentConfirmationForComment:comment];
         }else{
             NSString *name = [comment ownerDisplayedName];

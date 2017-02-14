@@ -11,13 +11,13 @@
 @implementation PNRelationship
 
 + (void) getDetailedFriendListWithResponse:(void (^)(NSArray *,NSError *))response{
-    NSError *error = [PNUser checkUserLoginStatus];
+    NSError *error = [PNUserManager checkUserLoginStatus];
     if(error != nil){
         response(nil, error);
     }
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:[[PNUser currentUser] accessToken] forKey:@"accessToken"];
+    [parameters setObject:[[PNUserManager currentUser] accessToken] forKey:@"accessToken"];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
     

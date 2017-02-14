@@ -15,6 +15,7 @@
 		8732382D1E42B9C30057FCBB /* writeCommentWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 8732382C1E42B9C30057FCBB /* writeCommentWhite.png */; };
 		873238301E4583700057FCBB /* MomentInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8732382F1E4583700057FCBB /* MomentInputController.m */; };
 		873238331E4BA7F20057FCBB /* PNImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 873238321E4BA7F20057FCBB /* PNImage.m */; };
+		873238361E52AD410057FCBB /* PNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 873238351E52AD410057FCBB /* PNUser.m */; };
 		87C9F3411DD9279500734504 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F33F1DD9279500734504 /* male.png */; };
 		87C9F3421DD9279500734504 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F3401DD9279500734504 /* female.png */; };
 		87C9F3461DDE9F0300734504 /* FriendOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9F3451DDE9F0300734504 /* FriendOverviewCell.m */; };
@@ -74,7 +75,7 @@
 		914431A31C6E2353003FB63E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914431A11C6E2353003FB63E /* LaunchScreen.storyboard */; };
 		914431AE1C6E2353003FB63E /* ProjectNingIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431AD1C6E2353003FB63E /* ProjectNingIOSTests.m */; };
 		914431BB1C6E240E003FB63E /* PNService.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431BA1C6E240E003FB63E /* PNService.m */; };
-		914431BE1C6E250B003FB63E /* PNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431BD1C6E250B003FB63E /* PNUser.m */; };
+		914431BE1C6E250B003FB63E /* PNUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431BD1C6E250B003FB63E /* PNUserManager.m */; };
 		914431E01C6E75A0003FB63E /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431D41C6E75A0003FB63E /* AFHTTPSessionManager.m */; };
 		914431E31C6E75A0003FB63E /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431DB1C6E75A0003FB63E /* AFURLRequestSerialization.m */; };
 		914431E41C6E75A0003FB63E /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 914431DD1C6E75A0003FB63E /* AFURLResponseSerialization.m */; };
@@ -113,6 +114,8 @@
 		8732382F1E4583700057FCBB /* MomentInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentInputController.m; path = ViewControllers/MomentInputController.m; sourceTree = "<group>"; };
 		873238311E4BA7F20057FCBB /* PNImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNImage.h; path = PNService/PNImage.h; sourceTree = "<group>"; };
 		873238321E4BA7F20057FCBB /* PNImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNImage.m; path = PNService/PNImage.m; sourceTree = "<group>"; };
+		873238341E52AD410057FCBB /* PNUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNUser.h; path = PNService/PNUser.h; sourceTree = "<group>"; };
+		873238351E52AD410057FCBB /* PNUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNUser.m; path = PNService/PNUser.m; sourceTree = "<group>"; };
 		87C9F33F1DD9279500734504 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = male.png; path = Images/male.png; sourceTree = "<group>"; };
 		87C9F3401DD9279500734504 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = female.png; path = Images/female.png; sourceTree = "<group>"; };
 		87C9F3441DDE9F0300734504 /* FriendOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendOverviewCell.h; path = ViewControllers/TableCells/FriendOverviewCell.h; sourceTree = "<group>"; };
@@ -216,8 +219,8 @@
 		914431AF1C6E2353003FB63E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		914431B91C6E240E003FB63E /* PNService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNService.h; path = PNService/PNService.h; sourceTree = "<group>"; };
 		914431BA1C6E240E003FB63E /* PNService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNService.m; path = PNService/PNService.m; sourceTree = "<group>"; };
-		914431BC1C6E250B003FB63E /* PNUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNUser.h; path = PNService/PNUser.h; sourceTree = "<group>"; };
-		914431BD1C6E250B003FB63E /* PNUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNUser.m; path = PNService/PNUser.m; sourceTree = "<group>"; };
+		914431BC1C6E250B003FB63E /* PNUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNUserManager.h; path = PNService/PNUserManager.h; sourceTree = "<group>"; };
+		914431BD1C6E250B003FB63E /* PNUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNUserManager.m; path = PNService/PNUserManager.m; sourceTree = "<group>"; };
 		914431D31C6E75A0003FB63E /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = PNService/HTTPHelper/AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		914431D41C6E75A0003FB63E /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = PNService/HTTPHelper/AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		914431D51C6E75A0003FB63E /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = PNService/HTTPHelper/AFNetworking.h; sourceTree = "<group>"; };
@@ -446,8 +449,6 @@
 				87E5BFF51E01A31700632391 /* PNFeed.m */,
 				87E5BFF71E01AF4400632391 /* PNFeedManager.h */,
 				87E5BFF81E01AF4400632391 /* PNFeedManager.m */,
-				87ED6F8D1DCC00C7004DB409 /* PNFriend.h */,
-				87ED6F8E1DCC00C7004DB409 /* PNFriend.m */,
 				873238311E4BA7F20057FCBB /* PNImage.h */,
 				873238321E4BA7F20057FCBB /* PNImage.m */,
 				91C532C11C9C68D0003E0CCB /* PNImageManager.h */,
@@ -458,8 +459,12 @@
 				914431BA1C6E240E003FB63E /* PNService.m */,
 				87ED6F641D834F1B004DB409 /* PNStranger.h */,
 				87ED6F651D834F1B004DB409 /* PNStranger.m */,
-				914431BC1C6E250B003FB63E /* PNUser.h */,
-				914431BD1C6E250B003FB63E /* PNUser.m */,
+				87ED6F8D1DCC00C7004DB409 /* PNFriend.h */,
+				87ED6F8E1DCC00C7004DB409 /* PNFriend.m */,
+				873238341E52AD410057FCBB /* PNUser.h */,
+				873238351E52AD410057FCBB /* PNUser.m */,
+				914431BC1C6E250B003FB63E /* PNUserManager.h */,
+				914431BD1C6E250B003FB63E /* PNUserManager.m */,
 				87ED6F871DC81F4B004DB409 /* PNUtils.h */,
 				87ED6F881DC81F4B004DB409 /* PNUtils.m */,
 				87ED6F791D9CAEF9004DB409 /* PNViewControllerHelper.h */,
@@ -647,6 +652,7 @@
 				9144319B1C6E2353003FB63E /* ViewController.m in Sources */,
 				912D2D651C86A0120039AEF5 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				914431BB1C6E240E003FB63E /* PNService.m in Sources */,
+				873238361E52AD410057FCBB /* PNUser.m in Sources */,
 				873238331E4BA7F20057FCBB /* PNImage.m in Sources */,
 				87E5C0051E11F7AC00632391 /* MomentTextController.m in Sources */,
 				912D2D631C86A0120039AEF5 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
@@ -682,7 +688,7 @@
 				87E5BFFC1E085AFD00632391 /* MomentImageCell.m in Sources */,
 				914431951C6E2353003FB63E /* main.m in Sources */,
 				912D2D751C86A26A0039AEF5 /* HomeViewController.m in Sources */,
-				914431BE1C6E250B003FB63E /* PNUser.m in Sources */,
+				914431BE1C6E250B003FB63E /* PNUserManager.m in Sources */,
 				87ED6F741D9314C2004DB409 /* GMDCircleLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

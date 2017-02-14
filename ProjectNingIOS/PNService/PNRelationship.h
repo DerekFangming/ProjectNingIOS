@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "PNUser.h"
+#import "PNUserManager.h"
 #import "PNUtils.h"
 #import "PNFriend.h"
 

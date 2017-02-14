@@ -40,14 +40,14 @@
     [self.view addGestureRecognizer:tap];
     
     
-    [PNUser loginUserWithUsername:@"synfm123@gmail.com"
+    [PNUserManager loginUserWithUsername:@"synfm123@gmail.com"
                        andPassword:@"flash"
                            response:^(PNUser *user, NSError *error) {
                                //NSLog([user username]);
                                //NSLog(@"%@", [error localizedDescription]);
     }];
     
-    [PNUser logoutCurrentUser];// reminder: This does not work because of the async
+    //[PNUserManager logoutCurrentUser];// reminder: This does not work because of the async
     
 }
 

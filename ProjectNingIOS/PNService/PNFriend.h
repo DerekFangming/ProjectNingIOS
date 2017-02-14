@@ -1,5 +1,5 @@
 //
-//  PNFriend.h
+//  PNUser.h
 //  ProjectNingIOS
 //
 //  Created by NingFangming on 11/3/16.

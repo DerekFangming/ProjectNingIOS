@@ -22,18 +22,16 @@
    withTypeMappingId:(NSNumber *) typeMappingId
            withTitle:(NSString *) title
             response:(void (^)(NSError *))response{
-    NSError *error = [PNUser checkUserLoginStatus];
+    NSError *error = [PNUserManager checkUserLoginStatus];
     if(error != nil){
         response(error);
     }
-    
-    PNUser *user = [PNUser currentUser];
     
     NSData *imageData = UIImagePNGRepresentation(img);;
     NSString *base64 = [imageData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:[PNUserManager getCurrentUserAccessToken] forKey:@"accessToken"];
     [parameters setObject:title forKey:@"title"];
     [parameters setObject:base64 forKey:@"image"];
     if(type != nil){
@@ -60,15 +58,13 @@
 
 + (void) deleteImageWithId:(NSNumber *) imageId
                   response:(void (^)(NSError *))response{
-    NSError *error = [PNUser checkUserLoginStatus];
+    NSError *error = [PNUserManager checkUserLoginStatus];
     if(error != nil){
         response(error);
     }
     
-    PNUser *user = [PNUser currentUser];
-    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:[PNUserManager getCurrentUserAccessToken] forKey:@"accessToken"];
     [parameters setObject:imageId forKey:@"imageId"];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
@@ -91,15 +87,13 @@
 +(void) getImageIdListByType:(NSString *) type
                      forUser:(NSNumber *) userId
                     response:(void (^)(NSMutableArray *list, NSError *error))response{
-    NSError *error = [PNUser checkUserLoginStatus];
+    NSError *error = [PNUserManager checkUserLoginStatus];
     if(error != nil){
         response(nil, error);
     }
     
-    PNUser *user = [PNUser currentUser];
-    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:[PNUserManager getCurrentUserAccessToken] forKey:@"accessToken"];
     [parameters setObject:type forKey:@"type"];
     [parameters setObject:userId forKey:@"userId"];
     
@@ -124,15 +118,13 @@
 
 + (void) downloadImageWithId:(NSNumber *) imageId
                     response:(void (^)(UIImage *, NSError *))response{
-    NSError *error = [PNUser checkUserLoginStatus];
+    NSError *error = [PNUserManager checkUserLoginStatus];
     if(error != nil){
         response(nil, error);
     }
     
-    PNUser *user = [PNUser currentUser];
-    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:[PNUserManager getCurrentUserAccessToken] forKey:@"accessToken"];
     [parameters setObject:imageId forKey:@"imageId"];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
@@ -156,15 +148,13 @@
 + (void) getSingletonImgForUser:(NSNumber *) userId
                     withImgType:(NSString *) imgType
                        response:(void (^)(UIImage *, NSError *))response{
-    NSError *error = [PNUser checkUserLoginStatus];
+    NSError *error = [PNUserManager checkUserLoginStatus];
     if(error != nil){
         response(nil, error);
     }
     
-    PNUser *user = [PNUser currentUser];
-    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:[PNUserManager getCurrentUserAccessToken] forKey:@"accessToken"];
     [parameters setObject:userId forKey:@"userId"];
     [parameters setObject:imgType forKey:@"imgType"];
     
@@ -190,16 +180,13 @@
 + (void) getNextAvatarWithAction:(NSString *) action
             forCurrentUserWithId:(NSNumber *) userId
                         response:(void (^)(PNStranger *, bool, NSError *))response{
-    NSError *error = [PNUser checkUserLoginStatus];
+    NSError *error = [PNUserManager checkUserLoginStatus];
     if(error != nil){
         response(nil, nil, error);
     }
     
-    PNUser *user = [PNUser currentUser];
-    NSString *pathForNextAvatar = @"get_next_avatar";
-    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:[PNUserManager getCurrentUserAccessToken] forKey:@"accessToken"];
     if (action != nil && userId != nil) {
         [parameters setObject:action forKey:@"action"];
         [parameters setObject:userId forKey:@"userId"];

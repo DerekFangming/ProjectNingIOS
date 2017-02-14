@@ -19,7 +19,7 @@
     self.tableView.backgroundColor = GRAY_BG_COLOR;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    [PNUser getDetailInfoForUser:self.userId
+    [PNUserManager getDetailInfoForUser:self.userId
                         response:^(NSDictionary *details, NSError *err) {
                             if(err == nil){
                                 if([[details objectForKey:@"nickname"] isEqualToString:@""]){

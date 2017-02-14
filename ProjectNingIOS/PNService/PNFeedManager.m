@@ -14,15 +14,14 @@
                           beforeDte: (NSDate *) date
                           withLimit: (NSNumber *) limit
                            response:(void(^)(NSError *, NSArray *, NSDate *)) response{
-    NSError *error = [PNUser checkUserLoginStatus];
+    NSError *error = [PNUserManager checkUserLoginStatus];
     if(error != nil){
         response(error, nil, nil);
     }
     
-    PNUser *user = [PNUser currentUser];
     ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:[PNUserManager getCurrentUserAccessToken] forKey:@"accessToken"];
     [parameters setObject:userId forKey:@"userId"];
     if(date != nil)
         [parameters setObject:[formatter stringFromDate:date] forKey:@"checkPoint"];
@@ -64,14 +63,13 @@
 + (void) getFeedCoverImgForUser:(NSNumber *) userId
                          onFeed: (NSNumber *) feedId
                           response:(void(^)(NSError *, UIImage *)) response{
-    NSError *error = [PNUser checkUserLoginStatus];
+    NSError *error = [PNUserManager checkUserLoginStatus];
     if(error != nil){
         response(error, nil);
     }
     
-    PNUser *user = [PNUser currentUser];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:[PNUserManager getCurrentUserAccessToken] forKey:@"accessToken"];
     [parameters setObject:userId forKey:@"userId"];
     [parameters setObject:feedId forKey:@"feedId"];
     
@@ -95,14 +93,13 @@
 
 + (void) getFeedPreviewImageIdListForUser:(NSNumber *) userId
                                    response:(void(^)(NSError *, NSArray *)) response{
-    NSError *error = [PNUser checkUserLoginStatus];
+    NSError *error = [PNUserManager checkUserLoginStatus];
     if(error != nil){
         response(error, nil);
     }
     
-    PNUser *user = [PNUser currentUser];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:[user accessToken] forKey:@"accessToken"];
+    [parameters setObject:[PNUserManager getCurrentUserAccessToken] forKey:@"accessToken"];
     [parameters setObject:userId forKey:@"userId"];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];

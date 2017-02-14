@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "PNUser.h"
+#import "PNUserManager.h"
 #import "PNStranger.h"
 #import "PNUtils.h"
 #import "PNImage.h"
