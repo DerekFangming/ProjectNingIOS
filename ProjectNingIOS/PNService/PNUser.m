@@ -10,6 +10,10 @@
 
 @implementation PNUser
 
+- (id)initWithUserId:(NSNumber *) userId{
+    return [self initWithUserId:userId andUsername:nil andAccessToken:nil];
+}
+
 - (id)initWithUserId:(NSNumber *) userId andUsername:(NSString *) username andAccessToken:(NSString *) accessToken{
     self = [super init];
     

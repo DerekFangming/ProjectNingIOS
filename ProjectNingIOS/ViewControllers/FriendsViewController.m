@@ -132,7 +132,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FriendTableCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"friendCell"];
-    PNFriend *friend;
+    PNUser *friend;
     NSString *sectionTitle;
     NSMutableArray *sectionFriends;
     if (self.searchController.active) {
@@ -152,7 +152,7 @@
         cell = [[FriendTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"friendCell"];
     }
     
-    cell.name.text = friend.name;
+    cell.name.text = friend.displayedName;
     cell.avatar.contentMode = UIViewContentModeScaleAspectFit;
     if(friend.avatar == nil){
         [PNImageManager getSingletonImgForUser:friend.userId withImgType:AVATAR
@@ -209,8 +209,8 @@
 - (NSMutableDictionary *) processFriendListToDictionary :(NSArray *)newFriendList{
     NSMutableDictionary * result = [[NSMutableDictionary alloc] init];
     
-    for(PNFriend *f in newFriendList){
-        NSString *index = [f.name substringToIndex:1];
+    for(PNUser *f in newFriendList){
+        NSString *index = [f.displayedName substringToIndex:1];
         NSMutableArray *list = [result objectForKey:index];
         if(list == nil) {
             NSMutableArray *newList = [[NSMutableArray alloc] init];
@@ -247,7 +247,7 @@
     
     if ([segue.identifier isEqualToString:@"friendDetailSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        PNFriend *friend;
+        PNUser *friend;
         NSString *sectionTitle;
         NSMutableArray *sectionFriends;
         if (self.searchController.active) {
@@ -261,7 +261,7 @@
         }
         FriendDetailController *destVC = segue.destinationViewController;
         destVC.userId = friend.userId;
-        destVC.displayedName = friend.name;
+        destVC.displayedName = friend.displayedName;
         destVC.avatar = friend.avatar;
     }
 }

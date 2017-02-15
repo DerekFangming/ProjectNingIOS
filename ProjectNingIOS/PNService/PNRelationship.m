@@ -30,8 +30,8 @@
                   NSMutableArray *result = [[NSMutableArray alloc] init];
                   
                   for(NSDictionary *d in friendList){
-                      PNFriend *friend = [[PNFriend alloc] initWithName:[d objectForKey:@"name"]
-                                                                  andId:[d objectForKey:@"id"]];
+                      PNUser *friend = [[PNUser alloc] initWithUserId: [d objectForKey:@"id"]];
+                      friend.displayedName = [d objectForKey:@"displayedName"];
                       [result addObject:friend];
                   }
                   

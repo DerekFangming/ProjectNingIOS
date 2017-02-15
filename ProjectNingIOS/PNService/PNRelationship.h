@@ -10,7 +10,6 @@
 
 #import "PNUserManager.h"
 #import "PNUtils.h"
-#import "PNFriend.h"
 
 @interface PNRelationship : NSObject
 
