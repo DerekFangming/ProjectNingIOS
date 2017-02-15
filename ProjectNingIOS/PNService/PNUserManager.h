@@ -45,7 +45,7 @@
                       response:(void (^)(PNUser *, NSError *))response;
 
 + (void) getDetailInfoForUser:(NSNumber *)userId
-                     response:(void (^)(NSDictionary *, NSError *))response;
+                     response:(void (^)(PNUser *, NSError *))response;
 
 /**
     Method to log out a user. Remove all the infomation of singleton current user.

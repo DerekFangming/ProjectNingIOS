@@ -137,7 +137,7 @@
 }
 
 + (void) getDetailInfoForUser:(NSNumber *)userId
-                     response:(void (^)(NSDictionary *, NSError *))response{
+                     response:(void (^)(PNUser *, NSError *))response{
     
     NSError *error = [self checkUserLoginStatus];
     if(error != nil){
@@ -159,7 +159,15 @@
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
-                  response(responseObject, nil);
+                  PNUser *user = [[PNUser alloc] initWithUserId:userId];
+                  user.nickname = [responseObject objectForKey:@"nickname"];
+                  user.gender = [responseObject objectForKey:@"gender"];
+                  user.name = [responseObject objectForKey:@"name"];
+                  user.age = [responseObject objectForKey:@"age"];
+                  user.location = [responseObject objectForKey:@"location"];
+                  user.whatsUp = [responseObject objectForKey:@"whatsUp"];
+                  
+                  response(user, nil);
                   
               }else{
                   response(nil, [PNUtils createNSError:responseObject]);

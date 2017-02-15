@@ -20,22 +20,22 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [PNUserManager getDetailInfoForUser:self.userId
-                        response:^(NSDictionary *details, NSError *err) {
+                        response:^(PNUser *user, NSError *err) {
                             if(err == nil){
-                                if([[details objectForKey:@"nickname"] isEqualToString:@""]){
+                                if([user.nickname isEqualToString:@""]){
                                     self.nickname = @"";
                                 }else{
-                                    self.nickname = [@"Nickname : " stringByAppendingString:[details objectForKey:@"nickname"]];
+                                    self.nickname = [@"Nickname : " stringByAppendingString: user.nickname];
                                 }
-                                self.gender = [details objectForKey:@"gender"];
-                                if(![[details objectForKey:@"name"] isEqualToString:@""])
-                                    [self.friendDetails addObject:[@"Name        " stringByAppendingString:[details objectForKey:@"name"]]];
-                                if(![[details objectForKey:@"age"] isEqual:@0])
-                                    [self.friendDetails addObject:[@"Age            " stringByAppendingString:[[details objectForKey:@"age"] stringValue]]];
-                                if(![[details objectForKey:@"location"] isEqualToString:@""])
-                                    [self.friendDetails addObject:[@"Location    " stringByAppendingString:[details objectForKey:@"location"]]];
-                                if(![[details objectForKey:@"whatsUp"] isEqualToString:@""])
-                                    [self.friendDetails addObject:[@"What's up  " stringByAppendingString:[details objectForKey:@"whatsUp"]]];
+                                self.gender = user.gender;
+                                if(![user.name isEqualToString:@""])
+                                    [self.friendDetails addObject:[@"Name        " stringByAppendingString:user.name]];
+                                if(![user.age isEqual:@0])
+                                    [self.friendDetails addObject:[@"Age            " stringByAppendingString:[user.age stringValue]]];
+                                if(![user.location isEqualToString:@""])
+                                    [self.friendDetails addObject:[@"Location    " stringByAppendingString:user.location]];
+                                if(![user.whatsUp isEqualToString:@""])
+                                    [self.friendDetails addObject:[@"What's up  " stringByAppendingString:user.whatsUp]];
                                 [self.tableView reloadData];
                             }else if([[err localizedDescription] isEqualToString:NO_DETAIL_ERR_MSG]){
                                 NSLog(@"No details");
