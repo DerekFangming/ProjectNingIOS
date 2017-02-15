@@ -18,7 +18,7 @@
 #import "FriendsViewController.h"
 
 @interface HomeViewController : UIViewController{
-    PNStranger *currentStranger;
+    PNUser *currentStranger;
 }
 //
 //@property (nonatomic, strong) IBOutlet UISwitch *limitPanGestureSwitch;

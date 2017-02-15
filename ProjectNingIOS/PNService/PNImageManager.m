@@ -179,7 +179,7 @@
 
 + (void) getNextAvatarWithAction:(NSString *) action
             forCurrentUserWithId:(NSNumber *) userId
-                        response:(void (^)(PNStranger *, bool, NSError *))response{
+                        response:(void (^)(PNUser *, bool, NSError *))response{
     NSError *error = [PNUserManager checkUserLoginStatus];
     if(error != nil){
         response(nil, nil, error);
@@ -200,12 +200,10 @@
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
                   UIImage* image = [PNUtils base64ToImage:[responseObject objectForKey:@"image"]];
+                  PNUser *user = [[PNUser alloc] initWithUserId:[responseObject objectForKey:@"userId"]];
+                  user.avatar = image;
                   
-                  PNStranger *stranger = [[PNStranger alloc]
-                                          initWithAvatar:image
-                                               andUserId:
-                                          [NSNumber numberWithInt:[[responseObject objectForKey:@"userId"] intValue]]];
-                  response(stranger, [responseObject objectForKey:@"status"], nil);
+                  response(user, [responseObject objectForKey:@"status"], nil);
               }else{
                   response(nil, nil, [PNUtils createNSError:responseObject]);
               }

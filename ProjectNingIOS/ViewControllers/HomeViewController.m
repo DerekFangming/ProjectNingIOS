@@ -99,12 +99,12 @@
     [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
     [PNImageManager getNextAvatarWithAction:ACCEPT_ACTION
                 forCurrentUserWithId:[currentStranger userId]
-                            response:^(PNStranger * stranger, bool status, NSError *error) {
+                            response:^(PNUser * stranger, bool status, NSError *error) {
                                 [self enableAllBtns];
                                 [GMDCircleLoader hideFromView:self.view animated:YES];
                                 if(error == nil){
                                     currentStranger = stranger;
-                                    [avatarView setImage:[stranger avatar]];
+                                    [avatarView setImage: stranger.avatar];
                                 }else{
                                     [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
                                 }
@@ -116,14 +116,14 @@
     [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
     [PNImageManager getNextAvatarWithAction:DENY_ACTION
                 forCurrentUserWithId:[currentStranger userId]
-                            response:^(PNStranger * stranger, bool status, NSError *error) {
+                            response:^(PNUser * stranger, bool status, NSError *error) {
                                 [self enableAllBtns];
                                 [GMDCircleLoader hideFromView:self.view animated:YES];
                                 if(error == nil){
                                     
                                     
                                     currentStranger = stranger;
-                                    [avatarView setImage:[stranger avatar]];
+                                    [avatarView setImage:stranger.avatar];
                                 }else{
                                     [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
                                 }
@@ -135,13 +135,13 @@
     [GMDCircleLoader setOnView:self.view withTitle:@"Loading..." animated:YES];
     [PNImageManager getNextAvatarWithAction:nil
                 forCurrentUserWithId:nil
-                            response:^(PNStranger * stranger, bool status, NSError *error) {
+                            response:^(PNUser * stranger, bool status, NSError *error) {
                                 [self enableAllBtns];
                                 [GMDCircleLoader hideFromView:self.view animated:YES];
                                 if(error == nil){
                                     [self enableAllBtns];
                                     currentStranger = stranger;
-                                    [avatarView setImage:[stranger avatar]];
+                                    [avatarView setImage:stranger.avatar];
                                 }else{
                                     [refreshBtn setHidden:NO];
                                     [self disableAllBtns];

@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "PNUserManager.h"
-#import "PNStranger.h"
 #import "PNUtils.h"
 #import "PNImage.h"
 
@@ -80,5 +79,5 @@
  */
 + (void) getNextAvatarWithAction:(NSString *) action
             forCurrentUserWithId:(NSNumber *) userId
-                        response:(void (^)(PNStranger *, bool, NSError *))response;
+                        response:(void (^)(PNUser *, bool, NSError *))response;
 @end
