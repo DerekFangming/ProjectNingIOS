@@ -21,7 +21,10 @@
 
 #define NULL_VC             -1
 #define HOME_VC             0
-#define FRIEND_VC           1
+#define CHAT_VC             1
+#define FRIEND_VC           2
+#define MOMENT_VC           3
+#define ME_VC               4
 
 #define GRAY_BG_COLOR       [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1]
 #define PURPLE_COLOR        [UIColor colorWithRed:87/255.0 green:107/255.0 blue:149/255.0 alpha:1]

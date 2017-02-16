@@ -41,6 +41,10 @@
             vc = homeViewController;
             break;
             
+        case CHAT_VC:
+            
+            break;
+            
         case FRIEND_VC:
             if(friendViewController == nil){
                 vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"FriendsViewController"];
@@ -50,13 +54,13 @@
             }
             break;
             
-        case 2:
+        case MOMENT_VC:
             //[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
             //[[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
             //return;
             break;
             
-        case 3:
+        case ME_VC:
             vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"ProfileViewController"];
             //			[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
             //			[[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];

@@ -38,7 +38,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 5;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -64,15 +64,19 @@
             break;
             
         case 1:
-            cell.textLabel.text = @"Friends";
-            break;
-            
-        case 2:
             cell.textLabel.text = @"Chat";
             break;
             
+        case 2:
+            cell.textLabel.text = @"Friends";
+            break;
+            
         case 3:
-            cell.textLabel.text = @"Profile";
+            cell.textLabel.text = @"Moment";
+            break;
+            
+        case 4:
+            cell.textLabel.text = @"Me";
             break;
     }
     
