@@ -42,7 +42,12 @@
             break;
             
         case CHAT_VC:
-            
+            if(chatViewController == nil){
+                vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"ChatViewController"];
+                chatViewController = vc;
+            }else{
+                vc = chatViewController;
+            }
             break;
             
         case FRIEND_VC:
@@ -55,13 +60,17 @@
             break;
             
         case MOMENT_VC:
-            //[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-            //[[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
-            //return;
+            if(momentViewController == nil){
+                vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"MomentViewController"];
+                momentViewController = vc;
+            }else{
+                vc = momentViewController;
+            }
             break;
             
         case ME_VC:
             vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"ProfileViewController"];
+            // log out method
             //			[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
             //			[[SlideNavigationController sharedInstance] popToRootViewControllerAnimated:YES];
             //			return;

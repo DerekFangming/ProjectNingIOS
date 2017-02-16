@@ -147,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8H-Uo-Au6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1448" y="-788"/>
+            <point key="canvasLocation" x="372" y="-1060"/>
         </scene>
         <!--Login-->
         <scene sceneID="GyY-MU-nf4">
@@ -225,6 +225,8 @@
                         <segue destination="iPW-cI-2gN" kind="show" identifier="profileSegue" id="KFz-0g-OkQ"/>
                         <segue destination="bRD-NV-saN" kind="show" identifier="friendSegue" id="d0c-8I-p5E"/>
                         <segue destination="84R-kT-nX4" kind="show" identifier="homeSegue" id="yJr-mQ-Rwd"/>
+                        <segue destination="Gkb-0U-oQ8" kind="show" identifier="chatSegue" id="Fqa-qC-0du"/>
+                        <segue destination="thS-2v-oI8" kind="show" identifier="momentSegue" id="9tv-Be-RKi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lxn-Rl-I8L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -434,6 +436,34 @@
             </objects>
             <point key="canvasLocation" x="366" y="1884"/>
         </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="Dbc-YQ-k0j">
+            <objects>
+                <tableViewController storyboardIdentifier="ChatViewController" id="Gkb-0U-oQ8" customClass="ChatViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="C39-VF-AAD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ph1-si-nbr">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ph1-si-nbr" id="rnR-nO-Ono">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Gkb-0U-oQ8" id="e0U-66-SIY"/>
+                            <outlet property="delegate" destination="Gkb-0U-oQ8" id="Ksd-8r-7aU"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BGb-Jm-4kV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1448" y="-1060"/>
+        </scene>
         <!--Friends-->
         <scene sceneID="mIz-Ix-FnG">
             <objects>
@@ -516,6 +546,34 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1448" y="-80"/>
+        </scene>
+        <!--Moment View Controller-->
+        <scene sceneID="dAm-kc-N8V">
+            <objects>
+                <tableViewController storyboardIdentifier="MomentViewController" id="thS-2v-oI8" customClass="MomentViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wy5-25-l53">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qxD-dT-oaH">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qxD-dT-oaH" id="Zaz-OH-K7B">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="thS-2v-oI8" id="3rA-Js-Oik"/>
+                            <outlet property="delegate" destination="thS-2v-oI8" id="Ncz-HZ-edL"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ioY-1z-9xW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1448" y="978"/>
         </scene>
         <!--FriendDetail-->
         <scene sceneID="XwE-yj-0Qg">
@@ -708,7 +766,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentCoverCell" rowHeight="240" id="o4j-ul-Ino" customClass="MomentCoverCell">
-                                <rect key="frame" x="0.0" y="28" width="600" height="240"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o4j-ul-Ino" id="8EA-6D-gzu">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="240"/>
@@ -755,7 +813,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="momentTextCell" rowHeight="45" id="fJt-yn-0e2" customClass="MomentTextCell">
-                                <rect key="frame" x="0.0" y="268" width="600" height="45"/>
+                                <rect key="frame" x="0.0" y="332" width="600" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fJt-yn-0e2" id="l4w-mG-Rsg">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
@@ -826,7 +884,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="momentImageCell" rowHeight="64" id="rFS-lT-MuO" customClass="MomentImageCell">
-                                <rect key="frame" x="0.0" y="313" width="600" height="64"/>
+                                <rect key="frame" x="0.0" y="377" width="600" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rFS-lT-MuO" id="GsR-Sd-Smf">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
@@ -913,7 +971,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentTextHeaderCell" rowHeight="120" id="P1I-uz-yDB" customClass="MomentTextHeaderCell">
-                                <rect key="frame" x="0.0" y="28" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P1I-uz-yDB" id="DvM-EY-3wI">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
@@ -995,7 +1053,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentTextLikeCell" id="9cb-Hd-Kvc">
-                                <rect key="frame" x="0.0" y="148" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="212" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9cb-Hd-Kvc" id="lC6-oD-Tvg">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1004,7 +1062,7 @@
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="10" maxY="0.0"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentTextCommentCell" rowHeight="50" id="mbe-gZ-lqb" customClass="MomentTextCommentCell">
-                                <rect key="frame" x="0.0" y="192" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="256" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mbe-gZ-lqb" id="7r2-5j-Ljg">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
@@ -1081,7 +1139,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentTextFooterCell" id="NSe-tL-zG7">
-                                <rect key="frame" x="0.0" y="242" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="306" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NSe-tL-zG7" id="f4c-Rg-6Xa">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1262,7 +1320,7 @@
         <image name="writeComment.png" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IL1-70-vCs"/>
+        <segue reference="b2W-zH-4gZ"/>
         <segue reference="E9I-Nw-9Ru"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,6 +16,8 @@
 		873238301E4583700057FCBB /* MomentInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8732382F1E4583700057FCBB /* MomentInputController.m */; };
 		873238331E4BA7F20057FCBB /* PNImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 873238321E4BA7F20057FCBB /* PNImage.m */; };
 		873238361E52AD410057FCBB /* PNUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 873238351E52AD410057FCBB /* PNUser.m */; };
+		873238391E5561110057FCBB /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 873238381E5561110057FCBB /* ChatViewController.m */; };
+		8732383C1E5561570057FCBB /* MomentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8732383B1E5561570057FCBB /* MomentViewController.m */; };
 		87C9F3411DD9279500734504 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F33F1DD9279500734504 /* male.png */; };
 		87C9F3421DD9279500734504 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F3401DD9279500734504 /* female.png */; };
 		87C9F3461DDE9F0300734504 /* FriendOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9F3451DDE9F0300734504 /* FriendOverviewCell.m */; };
@@ -114,6 +116,10 @@
 		873238321E4BA7F20057FCBB /* PNImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNImage.m; path = PNService/PNImage.m; sourceTree = "<group>"; };
 		873238341E52AD410057FCBB /* PNUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNUser.h; path = PNService/PNUser.h; sourceTree = "<group>"; };
 		873238351E52AD410057FCBB /* PNUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNUser.m; path = PNService/PNUser.m; sourceTree = "<group>"; };
+		873238371E5561110057FCBB /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChatViewController.h; path = ViewControllers/ChatViewController.h; sourceTree = "<group>"; };
+		873238381E5561110057FCBB /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatViewController.m; path = ViewControllers/ChatViewController.m; sourceTree = "<group>"; };
+		8732383A1E5561570057FCBB /* MomentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MomentViewController.h; path = ViewControllers/MomentViewController.h; sourceTree = "<group>"; };
+		8732383B1E5561570057FCBB /* MomentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MomentViewController.m; path = ViewControllers/MomentViewController.m; sourceTree = "<group>"; };
 		87C9F33F1DD9279500734504 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = male.png; path = Images/male.png; sourceTree = "<group>"; };
 		87C9F3401DD9279500734504 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = female.png; path = Images/female.png; sourceTree = "<group>"; };
 		87C9F3441DDE9F0300734504 /* FriendOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendOverviewCell.h; path = ViewControllers/TableCells/FriendOverviewCell.h; sourceTree = "<group>"; };
@@ -345,6 +351,8 @@
 			isa = PBXGroup;
 			children = (
 				87E5BFD91DE7F97300632391 /* TableCells */,
+				873238371E5561110057FCBB /* ChatViewController.h */,
+				873238381E5561110057FCBB /* ChatViewController.m */,
 				871D68731DD69BAD00728AD6 /* FriendDetailController.h */,
 				871D68741DD69BAD00728AD6 /* FriendDetailController.m */,
 				87E5BFE21DEB42E200632391 /* FriendMomentController.h */,
@@ -359,6 +367,8 @@
 				8732382F1E4583700057FCBB /* MomentInputController.m */,
 				87E5C0031E11F7AC00632391 /* MomentTextController.h */,
 				87E5C0041E11F7AC00632391 /* MomentTextController.m */,
+				8732383A1E5561570057FCBB /* MomentViewController.h */,
+				8732383B1E5561570057FCBB /* MomentViewController.m */,
 				912D2D671C86A26A0039AEF5 /* LeftMenuViewController.h */,
 				912D2D681C86A26A0039AEF5 /* LeftMenuViewController.m */,
 				912D2D711C86A26A0039AEF5 /* ProfileDetailViewController.h */,
@@ -672,6 +682,8 @@
 				87E5BFF91E01AF4400632391 /* PNFeedManager.m in Sources */,
 				91C532C31C9C68D0003E0CCB /* PNImageManager.m in Sources */,
 				87ED6F891DC81F4B004DB409 /* PNUtils.m in Sources */,
+				8732383C1E5561570057FCBB /* MomentViewController.m in Sources */,
+				873238391E5561110057FCBB /* ChatViewController.m in Sources */,
 				914431E01C6E75A0003FB63E /* AFHTTPSessionManager.m in Sources */,
 				87E5BFFC1E085AFD00632391 /* MomentImageCell.m in Sources */,
 				914431951C6E2353003FB63E /* main.m in Sources */,

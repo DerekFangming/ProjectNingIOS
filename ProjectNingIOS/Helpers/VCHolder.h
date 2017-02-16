@@ -16,7 +16,10 @@
     NSInteger currentVC;
     
     UIViewController *homeViewController;
+    UIViewController *chatViewController;
     UIViewController *friendViewController;
+    UIViewController *momentViewController;
+    UIViewController *profileViewController;
 }
 
 + (instancetype)sharedInstance;
