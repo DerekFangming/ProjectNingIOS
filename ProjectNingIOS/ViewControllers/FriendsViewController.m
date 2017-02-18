@@ -160,14 +160,8 @@
                              if(err != nil){
                                  friend.avatar = [UIImage imageNamed:@"defaultAvatar.jpg"];
                              }else{
-                                 //Cache image for syncing into friend array, which is used in searching
-                                 //[imageCache setObject:img forKey:friend.userId]; --- Why not needed? ... Search already has image
-                                 //Store image locally and avoid loading them everytime a cell is returned
-                                 friend.avatar = img;
+                                 friend.avatar = friend.avatar;
                              }
-                             [sectionFriends setObject:friend atIndexedSubscript:indexPath.row];
-                             [friendList setObject:sectionFriends forKey:sectionTitle];
-                             //Set image for this cell
                              [cell.avatar setImage:img];
                          }];
     }else{

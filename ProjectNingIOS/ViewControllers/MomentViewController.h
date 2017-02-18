@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MomentCoverCell.h"
 
-@interface MomentViewController : UITableViewController
+@interface MomentViewController : UITableViewController{
+    NSInteger row;
+}
 
 @end
