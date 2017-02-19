@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PNService.h"
 #import "MomentCoverCell.h"
 
-@interface MomentViewController : UITableViewController{
+@interface MomentViewController : UITableViewController<UINavigationControllerDelegate ,UIImagePickerControllerDelegate>{
     NSInteger row;
 }
 
