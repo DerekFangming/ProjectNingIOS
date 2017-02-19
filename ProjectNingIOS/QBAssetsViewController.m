@@ -494,7 +494,7 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
         UICollectionReusableView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter
                                                                                   withReuseIdentifier:@"FooterView"
                                                                                          forIndexPath:indexPath];
-        
+        /*
         // Number of assets
         UILabel *label = (UILabel *)[footerView viewWithTag:1];
         
@@ -539,7 +539,7 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
                 label.text = [NSString stringWithFormat:format, numberOfVideos];
             }
                 break;
-        }
+        }*/
         
         return footerView;
     }

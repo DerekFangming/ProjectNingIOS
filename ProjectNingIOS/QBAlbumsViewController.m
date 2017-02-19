@@ -41,12 +41,14 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
 {
     [super viewDidLoad];
     self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     [self setUpToolbarItems];
     
     // Fetch user albums and smart albums
-    PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAny options:nil];
-    PHFetchResult *userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAny options:nil];
+    PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil];
+    PHFetchResult *userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil];
     self.fetchResults = @[smartAlbums, userAlbums];
     
     [self updateAssetCollections];
@@ -60,7 +62,7 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     [super viewWillAppear:animated];
     
     // Configure navigation item
-    self.navigationItem.title = NSLocalizedStringFromTableInBundle(@"albums.title", @"QBImagePicker", self.imagePickerController.assetBundle, nil);
+    self.navigationItem.title = NSLocalizedStringFromTableInBundle(@"Albums", @"QBImagePicker", self.imagePickerController.assetBundle, nil);
     self.navigationItem.prompt = self.imagePickerController.prompt;
     
     // Show/hide 'Done' button
@@ -98,6 +100,7 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     if ([self.imagePickerController.delegate respondsToSelector:@selector(qb_imagePickerControllerDidCancel:)]) {
         [self.imagePickerController.delegate qb_imagePickerControllerDidCancel:self.imagePickerController];
     }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)done:(id)sender
