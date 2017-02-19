@@ -88,11 +88,14 @@
                                style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction * action)
                                {
-                                   UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-                                   [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-                                   [imagePickerController setDelegate:self];
+                                   QBImagePickerController *imagePickerController = [QBImagePickerController new];
+                                   imagePickerController.delegate = self;
+                                   imagePickerController.allowsMultipleSelection = YES;
+                                   imagePickerController.maximumNumberOfSelection = 6;
+                                   imagePickerController.showsNumberOfSelectedAssets = YES;
+                                   
                                    [view dismissViewControllerAnimated:YES completion:nil];
-                                   [self presentViewController:imagePickerController animated:YES completion:nil];
+                                   [self presentViewController:imagePickerController animated:YES completion:NULL];
                                }];
     
     UIAlertAction* enterText = [UIAlertAction
@@ -122,19 +125,12 @@
     [self presentViewController:view animated:YES completion:nil];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    
-    [self dismissViewControllerAnimated:YES completion:nil]; //Do this first!!
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    if(image != nil){
+- (void)qb_imagePickerController:(QBImagePickerController *)imagePickerController didFinishPickingAssets:(NSArray *)assets {
+    for (PHAsset *asset in assets) {
         NSLog(@"1");
-    }else{
-        NSLog(@"2");
     }
-    //image = [ImageHelpers imageWithImage:image scaledToSize:CGSizeMake(480, 640)];
     
-    //[imageView setImage:image];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark - SlideNavigationController Methods -

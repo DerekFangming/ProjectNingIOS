@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "PNService.h"
+#import "QBImagePickerController.h"
 #import "MomentCoverCell.h"
 
-@interface MomentViewController : UITableViewController<UINavigationControllerDelegate ,UIImagePickerControllerDelegate>{
+@interface MomentViewController : UITableViewController<QBImagePickerControllerDelegate,
+                                                        UINavigationControllerDelegate,
+                                                        UIImagePickerControllerDelegate>{
     NSInteger row;
 }
 
