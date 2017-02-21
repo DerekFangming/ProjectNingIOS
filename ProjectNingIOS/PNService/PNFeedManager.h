@@ -15,6 +15,12 @@
 @interface PNFeedManager : NSObject
 
 /**
+ Create feed for the current user
+ */
++ (void) createFeedForCurrentUserWithFeedBody:(NSString *) feedBody
+                                    response :(void(^)(NSError *, NSNumber *)) response;
+
+/**
  Get a list of most recent feeds for a user.
  All feeds are created before the date and will be limited by the limit input.
  If entering nil, for date and limit, they will be defaulted to now and 10.

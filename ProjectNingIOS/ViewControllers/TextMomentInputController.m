@@ -1,14 +1,14 @@
 //
-//  MomentInputController.m
+//  TextMomentInputController.m
 //  ProjectNingIOS
 //
-//  Created by NingFangming on 2/3/17.
+//  Created by NingFangming on 2/19/17.
 //  Copyright © 2017 fangming. All rights reserved.
 //
 
-#import "MomentInputController.h"
+#import "TextMomentInputController.h"
 
-@implementation MomentInputController
+@implementation TextMomentInputController
 
 - (void)viewDidLoad
 {
@@ -30,22 +30,22 @@
     [self.view addSubview:self.commentInput];
     
     [self.commentInput becomeFirstResponder];
-    
 }
+
 - (IBAction)sendBtnTapped:(id)sender {
-    [PNCommentManager createComment:self.commentInput.text
-                     forCommentType:@"Feed"
-                       andMappingId:self.momentId
-                       mentionsUser:nil
-                           response:^(NSError *error, NSNumber *commentId) {
-                               if(error != nil){
-                                   [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
-                                                                                from: self];
-                               }else{
-                                   self.commentInput.text = @"";
-                                   [self performSegueWithIdentifier:@"commentInputUnwind" sender:nil];
-                               }
-                           }];
+    
+    [PNFeedManager createFeedForCurrentUserWithFeedBody:self.commentInput.text
+                                               response:^(NSError *error, NSNumber *feedId) {
+                                                   if(error != nil){
+                                                       [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from: self];
+                                                   }else{
+                                                       [self dismissViewControllerAnimated:YES completion:nil];
+                                                   }
+                                               }];
+}
+
+- (IBAction)cancelBtnTapped:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Keyboard and text view delegate methods -
@@ -77,37 +77,20 @@
         if([trimmedStr isEqualToString:@""]){
             [UIAlertController showErrorAlertWithErrorMessage:@"Cannot send an empty comment" from:self];
         }else{
-            [PNCommentManager createComment:self.commentInput.text
-                             forCommentType:@"Feed"
-                               andMappingId:self.momentId
-                               mentionsUser:nil
-                                   response:^(NSError *error, NSNumber *commentId) {
-                                       if(error != nil){
-                                           [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
-                                                                                        from: self];
-                                       }else{
-                                           self.commentInput.text = @"";
-                                           [self performSegueWithIdentifier:@"commentInputUnwind" sender:nil];
-                                       }
-                                   }];
+            [PNFeedManager createFeedForCurrentUserWithFeedBody:self.commentInput.text
+                                                       response:^(NSError *error, NSNumber *feedId) {
+                                                           if(error != nil){
+                                                               [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from: self];
+                                                           }else{
+                                                               [self dismissViewControllerAnimated:YES completion:nil];
+                                                           }
+                                                       }];
         }
         
         return NO;
     }
     
     return YES;
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

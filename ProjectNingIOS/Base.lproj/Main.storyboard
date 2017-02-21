@@ -699,6 +699,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="AYY-d6-VWq" kind="showDetail" identifier="createTextMomentSegue" id="2vI-Ji-w9g"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ioY-1z-9xW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -895,7 +898,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentCoverCell" rowHeight="240" id="o4j-ul-Ino" customClass="MomentCoverCell">
-                                <rect key="frame" x="0.0" y="92" width="600" height="240"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o4j-ul-Ino" id="8EA-6D-gzu">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="240"/>
@@ -942,7 +945,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="momentTextCell" rowHeight="45" id="fJt-yn-0e2" customClass="MomentTextCell">
-                                <rect key="frame" x="0.0" y="332" width="600" height="45"/>
+                                <rect key="frame" x="0.0" y="268" width="600" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fJt-yn-0e2" id="l4w-mG-Rsg">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
@@ -1013,7 +1016,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="momentImageCell" rowHeight="64" id="rFS-lT-MuO" customClass="MomentImageCell">
-                                <rect key="frame" x="0.0" y="377" width="600" height="64"/>
+                                <rect key="frame" x="0.0" y="313" width="600" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rFS-lT-MuO" id="GsR-Sd-Smf">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
@@ -1100,7 +1103,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentTextHeaderCell" rowHeight="120" id="P1I-uz-yDB" customClass="MomentTextHeaderCell">
-                                <rect key="frame" x="0.0" y="92" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P1I-uz-yDB" id="DvM-EY-3wI">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
@@ -1182,7 +1185,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentTextLikeCell" id="9cb-Hd-Kvc">
-                                <rect key="frame" x="0.0" y="212" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="148" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9cb-Hd-Kvc" id="lC6-oD-Tvg">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1191,7 +1194,7 @@
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="10" maxY="0.0"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentTextCommentCell" rowHeight="50" id="mbe-gZ-lqb" customClass="MomentTextCommentCell">
-                                <rect key="frame" x="0.0" y="256" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="192" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mbe-gZ-lqb" id="7r2-5j-Ljg">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
@@ -1268,7 +1271,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentTextFooterCell" id="NSe-tL-zG7">
-                                <rect key="frame" x="0.0" y="306" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="242" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NSe-tL-zG7" id="f4c-Rg-6Xa">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1319,10 +1322,44 @@
             </objects>
             <point key="canvasLocation" x="3669" y="301"/>
         </scene>
-        <!--Title-->
+        <!--Create text moment-->
+        <scene sceneID="3ff-FZ-1tI">
+            <objects>
+                <viewController id="FgO-qF-qF4" customClass="TextMomentInputController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k4n-e4-fZU"/>
+                        <viewControllerLayoutGuide type="bottom" id="IEu-6S-Dy0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ovK-je-YS8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create text moment" id="bzu-HS-7bh">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="bDJ-rf-ZzH">
+                            <connections>
+                                <action selector="cancelBtnTapped:" destination="FgO-qF-qF4" id="OHN-yt-ceZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="1Sy-vl-1Ue">
+                            <color key="tintColor" red="0.25098039220000001" green="0.50196078430000002" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="sendBtnTapped:" destination="FgO-qF-qF4" id="CgU-hU-OI4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sendBtn" destination="1Sy-vl-1Ue" id="CNR-ye-aez"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PSP-jn-08E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2151" y="1884"/>
+        </scene>
+        <!--Comment-->
         <scene sceneID="GSF-IF-k3Z">
             <objects>
-                <viewController id="vlM-7L-WZH" customClass="MomentInputController" sceneMemberID="viewController">
+                <viewController id="vlM-7L-WZH" customClass="CommentInputController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RMp-qR-7TV"/>
                         <viewControllerLayoutGuide type="bottom" id="sfL-3Y-hCa"/>
@@ -1332,7 +1369,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="ouf-eH-4Xc">
+                    <navigationItem key="navigationItem" title="Comment" id="ouf-eH-4Xc">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="a6p-SY-hNa">
                             <connections>
                                 <segue destination="6Kv-AZ-cH7" kind="unwind" identifier="commentInputUnwind" unwindAction="unwindFromModalViewController:" id="P1a-gy-xVP"/>
@@ -1352,7 +1389,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWD-MO-Men" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="6Kv-AZ-cH7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5206" y="273"/>
+            <point key="canvasLocation" x="5162" y="301"/>
         </scene>
         <!--Right Menu View Controller-->
         <scene sceneID="6K5-RU-jDf">
@@ -1424,7 +1461,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KcK-AK-zdp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4394" y="273"/>
+            <point key="canvasLocation" x="4481" y="301"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1zm-71-DwI">
@@ -1443,6 +1480,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfE-uE-TwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3669" y="-434"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ktm-eg-QZA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AYY-d6-VWq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uAV-fL-9MZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FgO-qF-qF4" kind="relationship" relationship="rootViewController" id="bja-tm-7lu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zXd-Cd-aVW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1448" y="1884"/>
         </scene>
     </scenes>
     <resources>

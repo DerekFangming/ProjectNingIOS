@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "PNService.h"
+#import "Utils.h"
 #import "QBImagePickerController.h"
 #import "MomentCoverCell.h"
+#import "MomentTextHeaderCell.h"
 
 @interface MomentViewController : UITableViewController<QBImagePickerControllerDelegate,
                                                         UINavigationControllerDelegate,
                                                         UIImagePickerControllerDelegate>{
     NSInteger row;
 }
+
+@property (nonatomic, strong) UIImage *coverImg;
 
 @end

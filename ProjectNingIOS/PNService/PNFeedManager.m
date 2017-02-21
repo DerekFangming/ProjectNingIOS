@@ -10,6 +10,34 @@
 
 @implementation PNFeedManager
 
++ (void) createFeedForCurrentUserWithFeedBody:(NSString *) feedBody
+                                    response :(void(^)(NSError *, NSNumber *)) response{
+    NSError *error = [PNUserManager checkUserLoginStatus];
+    if(error != nil){
+        response(error, nil);
+    }
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:[PNUserManager getCurrentUserAccessToken] forKey:@"accessToken"];
+    [parameters setObject:feedBody forKey:@"feedBody"];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initJSONManagerWithBaseURL:[NSURL URLWithString:requestBaseURL]];
+    
+    [manager POST:pathForCreatingFeed
+       parameters:parameters
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              if ([[responseObject objectForKey:@"error"] isEqualToString:@""]) {
+                  response(nil, [responseObject objectForKey:@"feedId"]);
+              }else{
+                  response([PNUtils createNSError:responseObject], nil);
+              }
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              response(error,nil);
+              
+          }];
+}
+
 + (void) getRecentFeedListForUser:(NSNumber *) userId
                           beforeDte: (NSDate *) date
                           withLimit: (NSNumber *) limit

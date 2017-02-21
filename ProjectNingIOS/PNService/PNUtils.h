@@ -22,6 +22,7 @@
 #define pathForImgDownload          @"download_image_by_id"
 #define pathForSingletonTypeImg     @"get_singleton_img_by_type"
 #define pathForNextAvatar           @"get_next_avatar"
+#define pathForCreatingFeed         @"create_feed"
 #define pathForRecentFeedList       @"get_recent_feeds"
 #define pathForFeedCoverImg         @"get_feed_cover_img"
 #define pathForFeedPreviewIds       @"get_feed_preview_images"

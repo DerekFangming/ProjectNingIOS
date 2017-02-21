@@ -136,6 +136,27 @@
     
 }
 
++ (void) getDetailInfoForCurrentUser:(void (^)(NSError *))response{
+    [self getDetailInfoForUser:self.currentUser.userId
+                      response:^(PNUser *user, NSError *error) {
+                          if(error != nil){
+                              response(error);
+                          }else{
+                              PNUser* currentUser = [self currentUser];
+                              currentUser.nickname = user.nickname;
+                              currentUser.gender = user.gender;
+                              currentUser.name = user.name;
+                              currentUser.age = user.age;
+                              currentUser.location = user.location;
+                              currentUser.whatsUp = user.whatsUp;
+                              currentUser.displayedName = ![user.nickname isEqualToString:@""] ? user.nickname :
+                                                                  ![user.name isEqualToString:@""] ? user.name :
+                                                                                                  user.username;
+                              response(nil);
+                          }
+                      }];
+}
+
 + (void) getDetailInfoForUser:(NSNumber *)userId
                      response:(void (^)(PNUser *, NSError *))response{
     

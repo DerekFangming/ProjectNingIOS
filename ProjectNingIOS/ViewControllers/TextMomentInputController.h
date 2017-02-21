@@ -1,18 +1,16 @@
 //
-//  MomentInputController.h
+//  TextMomentInputController.h
 //  ProjectNingIOS
 //
-//  Created by NingFangming on 2/3/17.
+//  Created by NingFangming on 2/19/17.
 //  Copyright © 2017 fangming. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "Utils.h"
 #import "PNService.h"
+#import "Utils.h"
 
-@interface MomentInputController : UIViewController<UITextViewDelegate>
-
-@property (strong, nonatomic) NSNumber *momentId;
+@interface TextMomentInputController : UIViewController<UITextViewDelegate>
 
 @property (strong, nonatomic) UITextView *commentInput;
 @property (strong, nonatomic) NSString *unsentComment;

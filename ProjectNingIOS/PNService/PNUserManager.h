@@ -43,7 +43,15 @@
 + (void) loginUserWithUsername:(NSString *)loginUsername
                    andPassword:(NSString *)loginPassword
                       response:(void (^)(PNUser *, NSError *))response;
+/**
+    Get detailed information for current user and update the fields
+ */
++ (void) getDetailInfoForCurrentUser:(void (^)(NSError *))response;
 
+/**
+    Method to get detailed information for a user
+    @param userId the id of them user
+ */
 + (void) getDetailInfoForUser:(NSNumber *)userId
                      response:(void (^)(PNUser *, NSError *))response;
 

@@ -320,9 +320,9 @@
 
 - (IBAction)unwindFromModalViewController:(UIStoryboardSegue *)segue
 {
-    if([segue.sourceViewController isKindOfClass:[MomentInputController class]])
+    if([segue.sourceViewController isKindOfClass:[CommentInputController class]])
     {
-        MomentInputController *sourceVC = segue.sourceViewController;
+        CommentInputController *sourceVC = segue.sourceViewController;
         NSCharacterSet* charsToTrim = [NSCharacterSet characterSetWithCharactersInString:@" "];
         NSString* trimmedStr = [sourceVC.commentInput.text stringByTrimmingCharactersInSet:charsToTrim];
         self.unsentComment = trimmedStr;
@@ -333,7 +333,7 @@
     
     if ([segue.identifier isEqualToString:@"enterCommentSegue"]) {
         
-        MomentInputController *destVC = (MomentInputController *)[segue.destinationViewController topViewController];
+        CommentInputController *destVC = (CommentInputController *)[segue.destinationViewController topViewController];
         destVC.unsentComment = self.unsentComment;
         destVC.momentId = self.momentId;
     }else if ([segue.identifier isEqualToString:@"imageMomentToDetailSegue"]) {

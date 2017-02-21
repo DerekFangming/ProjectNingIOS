@@ -11,7 +11,7 @@
 #import "PNService.h"
 #import "PNImageSliderView.h"
 #import "PNImageSliderDelegate.h"
-#import "MomentInputController.h"
+#import "CommentInputController.h"
 #import "MomentTextController.h"
 
 @interface MomentImageController : UIViewController<PNImageSliderDelegate>{
