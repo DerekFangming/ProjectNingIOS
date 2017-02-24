@@ -16,9 +16,12 @@
 @property (nonatomic, strong)NSDate *createdAt;
 
 @property (nonatomic, strong)NSMutableArray *imgIdList;
+@property (nonatomic, strong)NSMutableArray *commentList;
+@property (nonatomic, strong)NSMutableArray *commentLikeList;
 
 @property (nonatomic, assign)BOOL hasCoverImg;
 @property (nonatomic, strong)UIImage *coverImg;
+@property (nonatomic, assign)BOOL likedByCurrentUser;
 
 @property (nonatomic, assign)BOOL isLastFeedOfTheDay;
 @property (nonatomic, strong)NSMutableAttributedString *dateText;

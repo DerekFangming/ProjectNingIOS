@@ -284,7 +284,7 @@
     NSInteger offset;
     if([commentCount intValue] >= 0){
         NSInteger previousWidth = commentLabelRight.frame.size.width;
-        if([commentCount intValue] >= 0){
+        if([commentCount intValue] > 0){
             commentLabelRight.text = [commentCount stringValue];
         }else{
             commentLabelRight.text = @"";

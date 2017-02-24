@@ -11,6 +11,7 @@
 #import "PNUserManager.h"
 #import "PNUtils.h"
 #import "PNFeed.h"
+#import "PNComment.h"
 
 @interface PNFeedManager : NSObject
 
@@ -48,5 +49,16 @@
  */
 + (void) getFeedPreviewImageIdListForUser:(NSNumber *) userId
                                    response:(void(^)(NSError *, NSArray *)) response;
+
+/**
+ Get recent feeds for a user from himself and all his friends.
+ All feeds are created before the date and will be limited by the limit input.
+ If entering nil, for date and limit, they will be defaulted to now and 10.
+ @param date the check point date
+ @param limit this will limit the number of feeds that are retrived at a time
+ */
++ (void) getRecentFullFeedListForCurrentUserBeforeDate:(NSDate *) date
+                                             withLimit:(NSNumber *) limit
+                                              response:(void(^)(NSError *, NSArray *, NSDate *)) response;
 
 @end
