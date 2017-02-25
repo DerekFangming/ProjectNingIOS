@@ -14,6 +14,7 @@
 @property (nonatomic, strong)NSNumber *feedId;
 @property (nonatomic, strong)NSString *feedBody;
 @property (nonatomic, strong)NSDate *createdAt;
+@property (nonatomic, strong)NSNumber *ownerId;
 
 @property (nonatomic, strong)NSMutableArray *imgIdList;
 @property (nonatomic, strong)NSMutableArray *commentList;

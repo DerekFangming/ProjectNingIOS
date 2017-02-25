@@ -177,6 +177,7 @@
                       PNFeed *feed = [[PNFeed alloc] initWithFeedId:[dic objectForKey:@"feedId"]
                                                             andBody:[dic objectForKey:@"feedBody"]
                                                             andDate:[formatter dateFromString:[dic objectForKey:@"createdAt"]]];
+                      feed.ownerId = [dic objectForKey:@"ownerId"];
                       feed.hasCoverImg = [[dic objectForKey:@"hasImage"] boolValue];
                       if(feed.hasCoverImg){
                           feed.imgIdList = [dic objectForKey:@"imageIdList"];

@@ -12,6 +12,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.feedList = [[NSMutableArray alloc] init];
+    
     [PNImageManager getSingletonImgForUser:[[PNUserManager currentUser] userId]
                                withImgType:COVER_IMG
                                   response:^(UIImage *img, NSError *err) {
@@ -53,6 +55,8 @@
         if(cell == nil) {
             cell = [[MomentCoverCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentCoverCell"];
         }
+        
+        cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width, 0.f, 0.f);
         
         [cell.coverImage setImage:self.coverImg];
         [cell.coverImage setContentMode:UIViewContentModeScaleAspectFill];
@@ -103,8 +107,7 @@
         if(cell == nil) {
             cell = [[MomentTextHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextHeaderCell"];
         }
-        //Remove seperator?
-        cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width, 0.f, 0.f);
+        
         /*
         [cell.avatar setImage: self.avatar];
         cell.nameLabel.text = self.displayedName;
@@ -185,6 +188,23 @@
     }
     
 }
+
+#pragma mark - Feed loading helper -
+- (void)loadNextSetOfFeedsBeforeCheckpoint:(NSDate *) date withLimit:(NSNumber *) limit{
+    [PNFeedManager
+     getRecentFullFeedListForCurrentUserBeforeDate:date
+     withLimit:limit response:^(NSError *error, NSArray *newFeeds, NSDate *checkPoint) {
+         if(error != nil){
+             [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription] from:self];
+         }else{
+             [self.feedList addObjectsFromArray:newFeeds];
+             [self.tableView reloadData];
+         }
+     }
+     ];
+}
+
+#pragma mark - Button action -
 
 - (IBAction)createMomentTapped:(id)sender {
     UIAlertController * view=   [UIAlertController

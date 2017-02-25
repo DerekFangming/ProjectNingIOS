@@ -21,4 +21,6 @@
 
 @property (nonatomic, strong) UIImage *coverImg;
 
+@property (nonatomic, strong) NSMutableArray *feedList;
+
 @end
