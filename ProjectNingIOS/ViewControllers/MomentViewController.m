@@ -109,6 +109,15 @@
         if(cell == nil) {
             cell = [[MomentTextHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextHeaderCell"];
         }
+        //Clean up image views
+        for (UIView *subview in [cell.contentView subviews])
+        {
+            if([subview isKindOfClass:[UIImageView class]]){
+                if(subview.tag != 10){
+                    [subview removeFromSuperview];
+                }
+            }
+        }
         
         PNFeed *feed = [self.feedList objectAtIndex:indexPath.section - 1];
         
@@ -139,9 +148,7 @@
         cell.dateLabel.text = [Utils processDateToText:feed.createdAt withAbbreviation:NO];
         
         //Process header images
-        NSLog(@"NO IMG");
         if(feed.imgList){
-            NSLog(@"HAS IMAGE");
             int imageCount = [feed.imgList count];
             CGFloat imageSectionHeight;
             CGFloat imageSectionViewHeight;

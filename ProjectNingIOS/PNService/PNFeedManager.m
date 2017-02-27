@@ -181,7 +181,6 @@
                       feed.ownerName = [dic objectForKey:@"ownerDisplayedName"];
                       feed.hasCoverImg = [[dic objectForKey:@"hasImage"] boolValue];
                       if(feed.hasCoverImg){
-                          NSLog(@"1111111");
                           feed.imgList = [[NSMutableArray alloc] init];
                           NSArray *imgIdList = [dic objectForKey:@"imageIdList"];
                           for(NSNumber *n in imgIdList){
