@@ -72,7 +72,7 @@
                                                                     andDate:[formatter dateFromString:[dic objectForKey:@"createdAt"]]];
                       feed.hasCoverImg = [[dic objectForKey:@"hasImage"] boolValue];
                       if(feed.hasCoverImg){
-                          feed.imgIdList = [dic objectForKey:@"imageIdList"];
+                          feed.imgList = [dic objectForKey:@"imageIdList"];
                       }
                       [feedList addObject:feed];
                   }
@@ -178,9 +178,16 @@
                                                             andBody:[dic objectForKey:@"feedBody"]
                                                             andDate:[formatter dateFromString:[dic objectForKey:@"createdAt"]]];
                       feed.ownerId = [dic objectForKey:@"ownerId"];
+                      feed.ownerName = [dic objectForKey:@"ownerDisplayedName"];
                       feed.hasCoverImg = [[dic objectForKey:@"hasImage"] boolValue];
                       if(feed.hasCoverImg){
-                          feed.imgIdList = [dic objectForKey:@"imageIdList"];
+                          NSLog(@"1111111");
+                          feed.imgList = [[NSMutableArray alloc] init];
+                          NSArray *imgIdList = [dic objectForKey:@"imageIdList"];
+                          for(NSNumber *n in imgIdList){
+                              PNImage *pnImg = [[PNImage alloc] initWithImageId:n andImage:nil];
+                              [feed.imgList addObject:pnImg];
+                          }
                       }
                       //Process comments
                       NSArray *commentArray = [dic objectForKey:@"processedCommentList"];
@@ -221,7 +228,7 @@
                           }
                           feed.commentLikeList = processedComments;
                       }
-                      feed.likedByCurrentUser = [[dic objectForKey:@"processedCommentLikeList"] boolValue];
+                      feed.likedByCurrentUser = [[dic objectForKey:@"likedByCurrentUser"] boolValue];
                       
                       [feedList addObject:feed];
                   }

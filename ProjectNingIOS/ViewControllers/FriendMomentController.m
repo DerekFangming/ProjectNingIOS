@@ -206,7 +206,7 @@
     }else if([segue.identifier isEqualToString:@"momentImageDetailSegue"]){
         PNFeed *selectedMoment = [self.momentList objectAtIndex:[[self.tableView indexPathForCell:sender] row]];
         MomentImageController *destVC = segue.destinationViewController;
-        destVC.imageIdList = selectedMoment.imgIdList;
+        destVC.imageIdList = selectedMoment.imgList;
         destVC.displayedName = self.displayedName;
         destVC.avatar = self.avatar;
         destVC.userId = self.userId;

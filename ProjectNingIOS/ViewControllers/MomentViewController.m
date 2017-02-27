@@ -27,25 +27,33 @@
                                       }
                                       [self.tableView reloadData];
                                   }];
+    [self loadNextSetOfFeedsBeforeCheckpoint:nil withLimit: [NSNumber numberWithInt:5]];
     
-    row = 5;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return [self.feedList count] + 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(section == 0){
         return 1;
     }else{
-        return row;
+        return 1; //Header only for now
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 240;
+    if(indexPath.section == 0){
+        return 240;
+    }else{
+        if(indexPath.row == 0){
+            return [[self.feedList objectAtIndex:indexPath.section -1] headerCellHeight];
+        }else{
+            return 50;
+        }
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -94,12 +102,6 @@
             }];
         }
         
-        if(indexPath.row == row - 1){
-            NSLog(@"reload");
-            row += 5;
-            [self.tableView reloadData];
-        }
-        
         return cell;
     }else{
         MomentTextHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextHeaderCell" forIndexPath:indexPath];
@@ -108,20 +110,89 @@
             cell = [[MomentTextHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextHeaderCell"];
         }
         
-        /*
-        [cell.avatar setImage: self.avatar];
-        cell.nameLabel.text = self.displayedName;
+        PNFeed *feed = [self.feedList objectAtIndex:indexPath.section - 1];
+        
+        //Process feed basic information
+        if(feed.ownerAvatar){
+            [cell.avatar setImage: feed.ownerAvatar];
+        }else{
+            [PNImageManager getSingletonImgForUser:feed.ownerId
+                                       withImgType:AVATAR
+                                          response:^(UIImage *img, NSError *err) {
+                                              if(err != nil){
+                                                  cell.avatar.image = [UIImage imageNamed:@"defaultAvatar.jpg"];
+                                              }else{
+                                                  cell.avatar.image = img;
+                                              }
+                                              feed.ownerAvatar = cell.avatar.image;
+                                          }];
+        }
+        cell.nameLabel.text = feed.ownerName;
         cell.nameLabel.textColor = PURPLE_COLOR;
-        cell.momentTextView.text = [self.momentBody stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];
+        cell.momentTextView.text = [feed.feedBody stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];
         [cell.momentTextView sizeToFit];
         [cell.momentTextView layoutIfNeeded];
         CGSize size = [cell.momentTextView
                        sizeThatFits:CGSizeMake(cell.momentTextView.frame.size.width, CGFLOAT_MAX)];
-        self.headerCellHeight = size.height + 45;
-        
+        feed.headerCellHeight = size.height + 45;
         [cell.momentTextView setContentSize:size];
-        cell.dateLabel.text = [Utils processDateToText:self.createdAt withAbbreviation:NO];
+        cell.dateLabel.text = [Utils processDateToText:feed.createdAt withAbbreviation:NO];
         
+        //Process header images
+        NSLog(@"NO IMG");
+        if(feed.imgList){
+            NSLog(@"HAS IMAGE");
+            int imageCount = [feed.imgList count];
+            CGFloat imageSectionHeight;
+            CGFloat imageSectionViewHeight;
+            
+            if(imageCount == 1){
+                imageSectionHeight = (self.tableView.frame.size.width - 100) * 0.66;
+                imageSectionViewHeight = imageSectionHeight;
+            }else if(imageCount <= 3){
+                imageSectionHeight = (self.tableView.frame.size.width - 100) * 0.33;
+                imageSectionViewHeight = imageSectionHeight;
+            }else if(imageCount <= 6){
+                imageSectionHeight = (self.tableView.frame.size.width - 100) * 0.66;
+                imageSectionViewHeight = imageSectionHeight / 2;
+            }else{
+                imageSectionHeight = self.tableView.frame.size.width - 100;
+                imageSectionViewHeight = imageSectionHeight / 3;
+            }
+            feed.headerCellHeight += imageSectionHeight;
+            
+            int picPerRow = imageCount == 1 ? 1 : (imageCount == 2 || imageCount == 4) ? 2 : 3;
+            for(int i = 0; i < imageCount; i ++){
+                int row = i / picPerRow;
+                int col = i % picPerRow;
+                UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(65 + col * imageSectionViewHeight,
+                                                                                row * imageSectionViewHeight + size.height + 25,
+                                                                                imageSectionViewHeight - 10,
+                                                                                imageSectionViewHeight - 10)];
+                imv.tag = i;
+                UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                            action:@selector(commentImgClick:)];
+                singleTap.numberOfTapsRequired = 1;
+                [imv setUserInteractionEnabled:YES];
+                [imv addGestureRecognizer:singleTap];
+                [cell.contentView addSubview:imv];
+                
+                PNImage *image = [feed.imgList objectAtIndex:i];
+                if(image.image){
+                    imv.image = image.image;
+                }else{
+                    [PNImageManager downloadImageWithId:image.imageId
+                                               response:^(UIImage *img, NSError *error) {
+                                                   if(error == nil){
+                                                       imv.image = img;
+                                                       image.image = img;
+                                                   }
+                                               }];
+                }
+            }
+        }
+        
+        /*
         int imageCount = [self.imageList count];
         //int totalRows = ceil( imageCount/ 3);
         int picPerRow = imageCount == 1 ? 1 : (imageCount == 2 || imageCount == 4) ? 2 : 3;
@@ -271,6 +342,57 @@
     [view addAction:cancel];
     [self presentViewController:view animated:YES completion:nil];
 }
+
+- (void)commentImgClick:(UITapGestureRecognizer *)recognizer{
+    /*
+    self.imageSliderView = [[PNImageSliderView alloc] initWithInitialIndex:((UIImageView *)recognizer.view).tag
+                                                                  pnImages:self.imageList];
+    self.imageSliderView.delegate = self;
+    self.imageSliderView.translatesAutoresizingMaskIntoConstraints = NO;
+    CGRect point=[self.view convertRect:recognizer.view.bounds fromView:recognizer.view];
+    
+    self.sliderHolder = [[UIView alloc] initWithFrame:point];
+    [self.sliderHolder setBackgroundColor:[UIColor blackColor]];
+    self.sliderHolder.clipsToBounds = YES;
+    
+    [self.sliderHolder addSubview: self.imageSliderView];
+    
+    NSArray *imageSliderViewHConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[imageSliderView]-0-|"
+                                                                                   options:0
+                                                                                   metrics:nil
+                                                                                     views:@{@"imageSliderView": self.imageSliderView}];
+    
+    [self.sliderHolder addConstraints:imageSliderViewHConstraints];
+    
+    
+    
+    NSArray *imageSliderViewVConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[imageSliderView]-0-|"
+                                                                                   options:0
+                                                                                   metrics:nil
+                                                                                     views:@{@"imageSliderView": self.imageSliderView}];
+    
+    [self.sliderHolder addConstraints:imageSliderViewVConstraints];
+    
+    [self.navigationController.view addSubview:self.sliderHolder];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.sliderHolder setFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        [[self navigationController] setNavigationBarHidden:YES animated:NO];
+    } completion:^(BOOL finished) {
+        self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width / 2 - 30,
+                                                                   self.view.bounds.size.height - 40, 60, 25)];
+        self.dateLabel.backgroundColor = [UIColor clearColor];
+        self.dateLabel.font = [UIFont boldSystemFontOfSize: 14.0f];
+        self.dateLabel.textAlignment = NSTextAlignmentCenter;
+        self.dateLabel.textColor = [UIColor whiteColor];
+        [self.sliderHolder addSubview:self.dateLabel];
+        self.dateLabel.text = [NSString stringWithFormat:@"%d/%d",
+                               ((UIImageView *)recognizer.view).tag + 1, [self.imageList count]];
+    }];
+     */
+    
+}
+
 
 - (void)qb_imagePickerController:(QBImagePickerController *)imagePickerController didFinishPickingAssets:(NSArray *)assets {
     for (PHAsset *asset in assets) {

@@ -12,6 +12,7 @@
 #import "PNUtils.h"
 #import "PNFeed.h"
 #import "PNComment.h"
+#import "PNImage.h"
 
 @interface PNFeedManager : NSObject
 

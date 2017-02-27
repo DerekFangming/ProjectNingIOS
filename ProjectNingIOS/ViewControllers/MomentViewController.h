@@ -12,15 +12,19 @@
 #import "QBImagePickerController.h"
 #import "MomentCoverCell.h"
 #import "MomentTextHeaderCell.h"
+#import "PNImageSliderView.h"
+#import "PNImageSliderDelegate.h"
 
-@interface MomentViewController : UITableViewController<QBImagePickerControllerDelegate,
+@interface MomentViewController : UITableViewController<PNImageSliderDelegate,
+                                                        QBImagePickerControllerDelegate,
                                                         UINavigationControllerDelegate,
-                                                        UIImagePickerControllerDelegate>{
-    NSInteger row;
-}
+                                                        UIImagePickerControllerDelegate>
 
 @property (nonatomic, strong) UIImage *coverImg;
 
 @property (nonatomic, strong) NSMutableArray *feedList;
+
+@property (strong, nonatomic) UIView *sliderHolder;
+@property (strong, nonatomic) PNImageSliderView *imageSliderView;
 
 @end
