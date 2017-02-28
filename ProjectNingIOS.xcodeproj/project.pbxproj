@@ -28,6 +28,7 @@
 		873238591E594A2C0057FCBB /* QBSlomoIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8732384D1E594A2B0057FCBB /* QBSlomoIconView.m */; };
 		8732385A1E594A2C0057FCBB /* QBVideoIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8732384F1E594A2B0057FCBB /* QBVideoIconView.m */; };
 		8732385B1E594A2C0057FCBB /* QBVideoIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 873238511E594A2B0057FCBB /* QBVideoIndicatorView.m */; };
+		87BE667E1E653BE000614E1D /* PlainTextCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BE667D1E653BE000614E1D /* PlainTextCommentCell.m */; };
 		87C9F3411DD9279500734504 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F33F1DD9279500734504 /* male.png */; };
 		87C9F3421DD9279500734504 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C9F3401DD9279500734504 /* female.png */; };
 		87C9F3461DDE9F0300734504 /* FriendOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87C9F3451DDE9F0300734504 /* FriendOverviewCell.m */; };
@@ -151,6 +152,8 @@
 		8732384F1E594A2B0057FCBB /* QBVideoIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBVideoIconView.m; sourceTree = "<group>"; };
 		873238501E594A2B0057FCBB /* QBVideoIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBVideoIndicatorView.h; sourceTree = "<group>"; };
 		873238511E594A2B0057FCBB /* QBVideoIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBVideoIndicatorView.m; sourceTree = "<group>"; };
+		87BE667C1E653BE000614E1D /* PlainTextCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlainTextCommentCell.h; path = ViewControllers/TableCells/PlainTextCommentCell.h; sourceTree = "<group>"; };
+		87BE667D1E653BE000614E1D /* PlainTextCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlainTextCommentCell.m; path = ViewControllers/TableCells/PlainTextCommentCell.m; sourceTree = "<group>"; };
 		87C9F33F1DD9279500734504 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = male.png; path = Images/male.png; sourceTree = "<group>"; };
 		87C9F3401DD9279500734504 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = female.png; path = Images/female.png; sourceTree = "<group>"; };
 		87C9F3441DDE9F0300734504 /* FriendOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendOverviewCell.h; path = ViewControllers/TableCells/FriendOverviewCell.h; sourceTree = "<group>"; };
@@ -370,6 +373,8 @@
 				87E5C0131E273AF800632391 /* MomentTextCommentCell.m */,
 				87E5C0001E11EF4600632391 /* MomentTextHeaderCell.h */,
 				87E5C0011E11EF4600632391 /* MomentTextHeaderCell.m */,
+				87BE667C1E653BE000614E1D /* PlainTextCommentCell.h */,
+				87BE667D1E653BE000614E1D /* PlainTextCommentCell.m */,
 			);
 			name = TableCells;
 			sourceTree = "<group>";
@@ -727,6 +732,7 @@
 				912D2D651C86A0120039AEF5 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				914431BB1C6E240E003FB63E /* PNService.m in Sources */,
 				873238541E594A2C0057FCBB /* QBAssetCell.m in Sources */,
+				87BE667E1E653BE000614E1D /* PlainTextCommentCell.m in Sources */,
 				873238361E52AD410057FCBB /* PNUser.m in Sources */,
 				873238331E4BA7F20057FCBB /* PNImage.m in Sources */,
 				87E5C0051E11F7AC00632391 /* MomentTextController.m in Sources */,

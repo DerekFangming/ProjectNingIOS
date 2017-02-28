@@ -685,19 +685,38 @@
                                     <outlet property="nameLabel" destination="bAL-q0-cds" id="Pdq-1b-tbH"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Q7j-L7-Wet">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="plainTextCommentCell" id="Q7j-L7-Wet" customClass="PlainTextCommentCell">
                                 <rect key="frame" x="0.0" y="452" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q7j-L7-Wet" id="Q7X-XP-PjO">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6vk-B2-88t">
-                                            <rect key="frame" x="185" y="-42" width="240" height="128"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6vk-B2-88t">
+                                            <rect key="frame" x="15" y="0.0" width="575" height="44"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qvR-Jj-39s">
+                                                    <rect key="frame" x="20" y="0.0" width="535" height="44"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="6vk-B2-88t" secondAttribute="trailing" constant="2" id="6zM-Yp-X3a"/>
+                                        <constraint firstItem="6vk-B2-88t" firstAttribute="top" secondItem="Q7X-XP-PjO" secondAttribute="topMargin" constant="-8" id="B0G-hB-M8i"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="6vk-B2-88t" secondAttribute="bottom" constant="-9" id="D1C-YF-Nud"/>
+                                        <constraint firstItem="6vk-B2-88t" firstAttribute="leading" secondItem="Q7X-XP-PjO" secondAttribute="leadingMargin" constant="7" id="rSV-K8-pZl"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bgView" destination="6vk-B2-88t" id="vTY-8P-cJx"/>
+                                    <outlet property="commentText" destination="qvR-Jj-39s" id="YeW-VB-ZHw"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
