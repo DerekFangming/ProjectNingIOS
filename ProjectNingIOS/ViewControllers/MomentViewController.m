@@ -199,41 +199,8 @@
             }
         }
         
-        /*
-        int imageCount = [self.imageList count];
-        //int totalRows = ceil( imageCount/ 3);
-        int picPerRow = imageCount == 1 ? 1 : (imageCount == 2 || imageCount == 4) ? 2 : 3;
-        for(int i = 0; i < imageCount; i ++){
-            int row = i / picPerRow;
-            int col = i % picPerRow;
-            UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(65 + col * imageSectionViewHeight,
-                                                                            row * imageSectionViewHeight + size.height + 25,
-                                                                            imageSectionViewHeight - 10,
-                                                                            imageSectionViewHeight - 10)];
-            imv.tag = i;
-            UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                        action:@selector(commentImgClick:)];
-            singleTap.numberOfTapsRequired = 1;
-            [imv setUserInteractionEnabled:YES];
-            [imv addGestureRecognizer:singleTap];
-            [cell.contentView addSubview:imv];
-            
-            PNImage *image = [self.imageList objectAtIndex:i];
-            if(image.image){
-                imv.image = image.image;
-            }else{
-                [PNImageManager downloadImageWithId:image.imageId
-                                           response:^(UIImage *img, NSError *error) {
-                                               if(error == nil){
-                                                   imv.image = img;
-                                                   image.image = img;
-                                               }
-                                           }];
-            }
-        }
-        
-        //Like button
-        if(self.likedByCurrentUser) [cell.likeBtn setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
+        //Process like button
+        if(feed.likedByCurrentUser) [cell.likeBtn setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
         else [cell.likeBtn setBackgroundImage:[UIImage imageNamed:@"notLike.png"] forState:UIControlStateNormal];
         
         [cell.likeBtn addTarget:self action:@selector(likeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -241,8 +208,8 @@
         //Comment button
         [cell.commentBtn addTarget:self action:@selector(commentButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
         
-        //Triangle view
-        if([self.likedList count] > 0 || [self.commentList count] > 0){
+        //Process triangle view
+        if([feed.commentLikeList count] > 0 || [feed.commentList count] > 0){
             UIBezierPath* trianglePath = [UIBezierPath bezierPath];
             [trianglePath moveToPoint:CGPointMake(0, 5)];
             [trianglePath addLineToPoint:CGPointMake(5,0)];
@@ -252,16 +219,21 @@
             CAShapeLayer *triangleMaskLayer = [CAShapeLayer layer];
             [triangleMaskLayer setPath:trianglePath.CGPath];
             
-            UIView *triangleView = [[UIView alloc] initWithFrame:CGRectMake(20,self.headerCellHeight - 5, 10, 5)];
+            UIView *triangleView = [[UIView alloc] initWithFrame:CGRectMake(20, feed.headerCellHeight - 5, 10, 5)];
             
             triangleView.backgroundColor = GRAY_BG_COLOR;
             triangleView.layer.mask = triangleMaskLayer;
-            triangleView.tag = 1;
+            triangleView.tag = 11;
             [cell.contentView addSubview:triangleView];
         }else if ([cell.contentView subviews]){
-            UIView * triagnleView = [cell.contentView viewWithTag:1];
+            UIView * triagnleView = [cell.contentView viewWithTag:11];
             [triagnleView removeFromSuperview];
-        }*/
+        }
+        
+        cell.preservesSuperviewLayoutMargins = false;
+        cell.separatorInset = UIEdgeInsetsZero;
+        cell.layoutMargins = UIEdgeInsetsZero;
+        
         return cell;
     }
     
@@ -398,8 +370,68 @@
     }];
      */
     
+    
 }
 
+- (void)likeButtonTapped:(UIButton *)sender{
+    /*
+    if(self.likedByCurrentUser){
+        PNComment *commentByCurrentUser;
+        NSNumber *currentUserId = [[PNUserManager currentUser] userId];
+        for(PNComment *comment in self.likedList){
+            if(comment.ownerId == currentUserId){
+                commentByCurrentUser = comment;
+                break;
+            }
+        }
+        [PNCommentManager deleteCommentWithId:commentByCurrentUser.commentId
+                                     response:^(NSError *error) {
+                                         if(error != nil){
+                                             [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
+                                                                                          from: self];
+                                         }else{
+                                             [sender setBackgroundImage:[UIImage imageNamed:@"notLike.png"] forState:UIControlStateNormal];
+                                             self.likedByCurrentUser = NO;
+                                             [self.likedList removeObject:commentByCurrentUser];
+                                             [self.tableView reloadData];
+                                         }
+                                     }];
+    }else{
+        [PNCommentManager createComment:@"like"
+                         forCommentType:@"Feed Like"
+                           andMappingId:self.momentId
+                           mentionsUser:nil
+                               response:^(NSError *error, NSNumber *commentId) {
+                                   if(error != nil){
+                                       [UIAlertController showErrorAlertWithErrorMessage:[error localizedDescription]
+                                                                                    from: self];
+                                   }else{
+                                       [sender setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
+                                       self.likedByCurrentUser = YES;
+                                       PNComment * comment = [[PNComment alloc] initWithCommentId:commentId
+                                                                                          andBody:@"like"
+                                                                                          andType:@"Feed Like"
+                                                                                     andMappingId:self.momentId
+                                                                                       andOwnerId:[[PNUserManager currentUser] userId]
+                                                                                          andDate:[NSDate date]];
+                                       if(self.likedList == nil)
+                                           self.likedList = [[NSMutableArray alloc] init];
+                                       [self.likedList addObject:comment];
+                                       [self.tableView reloadData];
+                                   }
+                               }];
+    }*/
+}
+
+- (void)commentButtonTapped:(UIButton *)sender{
+    /*
+    if(!keyboardIsUp){
+        NSLog(@"%ld", (long)floadtingViewOffset);
+        NSLog(@"%f", floatingView.frame.origin.x);
+        mentionedUser = nil;
+        [commentInput becomeFirstResponder];
+    }*/
+}
 
 - (void)qb_imagePickerController:(QBImagePickerController *)imagePickerController didFinishPickingAssets:(NSArray *)assets {
     for (PHAsset *asset in assets) {
