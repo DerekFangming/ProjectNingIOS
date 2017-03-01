@@ -188,6 +188,10 @@
                               [feed.imgList addObject:pnImg];
                           }
                       }
+                      feed.rowCount = 1;
+                      
+                      NSInteger newRows = 0;
+                      
                       //Process comments
                       NSArray *commentArray = [dic objectForKey:@"processedCommentList"];
                       NSMutableArray *processedComments = [[NSMutableArray alloc] init];
@@ -204,8 +208,11 @@
                               comment.mentionedUserId = [d objectForKey:@"mentionedUserId"];
                               comment.mentionedUserName = [d objectForKey:@"mentionedUserName"];
                               [processedComments addObject:comment];
+                              newRows += 1;
                           }
                           feed.commentList = processedComments;
+                          feed.rowCount += newRows;
+                          newRows = 0;
                       }
                       
                       //Process comment likes
@@ -224,8 +231,10 @@
                               comment.mentionedUserId = [d objectForKey:@"mentionedUserId"];
                               comment.mentionedUserName = [d objectForKey:@"mentionedUserName"];
                               [processedComments addObject:comment];
+                              newRows = 1;
                           }
                           feed.commentLikeList = processedComments;
+                          feed.rowCount += newRows;
                       }
                       feed.likedByCurrentUser = [[dic objectForKey:@"likedByCurrentUser"] boolValue];
                       

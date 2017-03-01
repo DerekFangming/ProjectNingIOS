@@ -11,6 +11,7 @@
 #import "Utils.h"
 #import "QBImagePickerController.h"
 #import "MomentCoverCell.h"
+#import "PlainTextCommentCell.h"
 #import "MomentTextHeaderCell.h"
 #import "PNImageSliderView.h"
 #import "PNImageSliderDelegate.h"

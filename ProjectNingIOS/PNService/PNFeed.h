@@ -26,6 +26,7 @@
 @property (nonatomic, strong)UIImage *coverImg;
 @property (nonatomic, assign)BOOL likedByCurrentUser;
 @property (nonatomic, assign)NSInteger headerCellHeight;
+@property (nonatomic, assign)NSInteger rowCount;
 
 @property (nonatomic, assign)BOOL isLastFeedOfTheDay;
 @property (nonatomic, strong)NSMutableAttributedString *dateText;

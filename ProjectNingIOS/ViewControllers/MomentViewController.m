@@ -39,7 +39,7 @@
     if(section == 0){
         return 1;
     }else{
-        return 1; //Header only for now
+        return [[self.feedList objectAtIndex:section - 1] rowCount];
     }
 }
 
@@ -48,10 +48,15 @@
     if(indexPath.section == 0){
         return 240;
     }else{
-        if(indexPath.row == 0){
-            return [[self.feedList objectAtIndex:indexPath.section -1] headerCellHeight];
-        }else{
-            return 50;
+        PNFeed * feed = [self.feedList objectAtIndex:indexPath.section -1];
+        if(indexPath.row == 0){//Header cell
+            return [feed headerCellHeight];
+        }else if(indexPath.row == 1 && [feed commentLikeList]){//Feed like cell
+            return [[feed.commentLikeList objectAtIndex:0] cellHeight];
+        }else if(indexPath.row == feed.rowCount){//Footer cell
+            return 30;
+        }else{//Comment cell
+            return [[feed.commentList objectAtIndex:indexPath.row - 1] cellHeight];
         }
     }
 }
@@ -103,7 +108,7 @@
         }
         
         return cell;
-    }else{
+    }else if(indexPath.row == 0){
         MomentTextHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextHeaderCell" forIndexPath:indexPath];
         
         if(cell == nil) {
@@ -219,7 +224,7 @@
             CAShapeLayer *triangleMaskLayer = [CAShapeLayer layer];
             [triangleMaskLayer setPath:trianglePath.CGPath];
             
-            UIView *triangleView = [[UIView alloc] initWithFrame:CGRectMake(20, feed.headerCellHeight - 5, 10, 5)];
+            UIView *triangleView = [[UIView alloc] initWithFrame:CGRectMake(75, feed.headerCellHeight - 5, 10, 5)];
             
             triangleView.backgroundColor = GRAY_BG_COLOR;
             triangleView.layer.mask = triangleMaskLayer;
@@ -233,6 +238,48 @@
         cell.preservesSuperviewLayoutMargins = false;
         cell.separatorInset = UIEdgeInsetsZero;
         cell.layoutMargins = UIEdgeInsetsZero;
+        
+        return cell;
+    }else if(indexPath.row == [[self.feedList objectAtIndex:indexPath.section - 1] rowCount]){
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextFooterCell"
+                                                                forIndexPath:indexPath];
+        if(cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier:@"momentTextFooterCell"];
+        }
+        cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width , 0, 0);
+        return cell;
+    }else{
+        PlainTextCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"plainTextCommentCell" forIndexPath:indexPath];
+        
+        if(cell == nil) {
+            cell = [[PlainTextCommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"plainTextCommentCell"];
+        }
+        
+        [cell.bgView setBackgroundColor:GRAY_BG_COLOR];
+        cell.commentText.backgroundColor = [UIColor clearColor];
+        
+        PNComment *comment;
+        if(indexPath.row == 1 && [[self.feedList objectAtIndex:indexPath.section - 1] commentLikeList]){
+            comment = [[[self.feedList objectAtIndex:indexPath.section - 1] commentList]
+                       objectAtIndex:0];
+            cell.commentText.text = @"Like cell";
+        }else{
+            comment = [[[self.feedList objectAtIndex:indexPath.section - 1] commentList]
+                                  objectAtIndex:indexPath.row -1];
+            cell.commentText.text = comment.commentBody;
+        
+        }
+        
+        cell.commentText.textContainer.lineFragmentPadding = 0;
+        cell.commentText.textContainerInset = UIEdgeInsetsZero;
+        [cell.commentText sizeToFit];
+        [cell.commentText layoutIfNeeded];
+        CGSize size = [cell.commentText
+                       sizeThatFits:CGSizeMake(cell.commentText.frame.size.width, CGFLOAT_MAX)];
+        comment.cellHeight = size.height + 31;
+        
+        
         
         return cell;
     }
