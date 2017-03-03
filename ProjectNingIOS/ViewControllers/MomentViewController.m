@@ -51,11 +51,13 @@
         PNFeed * feed = [self.feedList objectAtIndex:indexPath.section -1];
         if(indexPath.row == 0){//Header cell
             return [feed headerCellHeight];
-        }else if(indexPath.row == 1 && [feed commentLikeList]){//Feed like cell
-            return [[feed.commentLikeList objectAtIndex:0] cellHeight];
-        }else if(indexPath.row == feed.rowCount){//Footer cell
+        }else if(indexPath.row == 1 && [feed commentLikeCellHeight]){//Feed like cell
+            return [feed commentLikeCellHeight];
+        }else if(indexPath.row == feed.rowCount - 1){//Footer cell
             return 30;
-        }else{//Comment cell
+        }else if ([feed commentLikeCellHeight]){//Comment cell
+            return [[feed.commentList objectAtIndex:indexPath.row - 2] cellHeight];
+        }else{
             return [[feed.commentList objectAtIndex:indexPath.row - 1] cellHeight];
         }
     }
@@ -240,6 +242,27 @@
         cell.layoutMargins = UIEdgeInsetsZero;
         
         return cell;
+    }else if(indexPath.row == 1 && [[self.feedList objectAtIndex:indexPath.section -1] commentLikeCellHeight]){
+        PlainTextCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"plainTextCommentCell" forIndexPath:indexPath];
+        
+        if(cell == nil) {
+            cell = [[PlainTextCommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"plainTextCommentCell"];
+        }
+        
+        [cell.bgView setBackgroundColor:GRAY_BG_COLOR];
+        cell.commentText.backgroundColor = [UIColor clearColor];
+        cell.commentText.text = @"Like cell";
+        cell.commentText.textContainer.lineFragmentPadding = 0;
+        cell.commentText.textContainerInset = UIEdgeInsetsZero;
+        [cell.commentText sizeToFit];
+        [cell.commentText layoutIfNeeded];
+        CGSize size = [cell.commentText
+                       sizeThatFits:CGSizeMake(cell.commentText.frame.size.width, CGFLOAT_MAX)];
+        PNFeed *feed = [self.feedList objectAtIndex:indexPath.section - 1];
+        feed.commentLikeCellHeight = size.height + 10;
+        
+        return cell;
+        
     }else if(indexPath.row == [[self.feedList objectAtIndex:indexPath.section - 1] rowCount]){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextFooterCell"
                                                                 forIndexPath:indexPath];
@@ -259,16 +282,18 @@
         [cell.bgView setBackgroundColor:GRAY_BG_COLOR];
         cell.commentText.backgroundColor = [UIColor clearColor];
         
+        PNFeed *feed = [self.feedList objectAtIndex:indexPath.section - 1];
         PNComment *comment;
-        if(indexPath.row == 1 && [[self.feedList objectAtIndex:indexPath.section - 1] commentLikeList]){
-            comment = [[[self.feedList objectAtIndex:indexPath.section - 1] commentList]
+        if(indexPath.row == 1 && [feed commentLikeCellHeight]){
+            comment = [[feed commentList]
                        objectAtIndex:0];
             cell.commentText.text = @"Like cell";
-        }else{
-            comment = [[[self.feedList objectAtIndex:indexPath.section - 1] commentList]
-                                  objectAtIndex:indexPath.row -1];
+        }else if([feed commentLikeCellHeight]){
+            comment = [[feed commentList] objectAtIndex:indexPath.row - 2];
             cell.commentText.text = comment.commentBody;
-        
+        }else{
+            comment = [[feed commentList] objectAtIndex:indexPath.row - 1];
+            cell.commentText.text = comment.commentBody;
         }
         
         cell.commentText.textContainer.lineFragmentPadding = 0;
@@ -277,9 +302,11 @@
         [cell.commentText layoutIfNeeded];
         CGSize size = [cell.commentText
                        sizeThatFits:CGSizeMake(cell.commentText.frame.size.width, CGFLOAT_MAX)];
-        comment.cellHeight = size.height + 31;
-        
-        
+        if(indexPath.row == 1 && [feed commentLikeCellHeight]){
+            feed.commentLikeCellHeight = size.height + 10;
+        }else{
+            comment.cellHeight = size.height + 10;
+        }
         
         return cell;
     }

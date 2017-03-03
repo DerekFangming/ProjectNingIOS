@@ -188,7 +188,7 @@
                               [feed.imgList addObject:pnImg];
                           }
                       }
-                      feed.rowCount = 1;
+                      feed.rowCount = 2; //Header and footer count
                       
                       NSInteger newRows = 0;
                       
@@ -232,6 +232,7 @@
                               comment.mentionedUserName = [d objectForKey:@"mentionedUserName"];
                               [processedComments addObject:comment];
                               newRows = 1;
+                              feed.commentLikeCellHeight = 1; //mark that there are comment likes
                           }
                           feed.commentLikeList = processedComments;
                           feed.rowCount += newRows;
