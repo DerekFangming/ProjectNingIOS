@@ -189,6 +189,7 @@
                           }
                       }
                       feed.rowCount = 2; //Header and footer count
+                      feed.indexOffset = 1;//Assume for now only header counts for the offset
                       
                       NSInteger newRows = 0;
                       
@@ -232,7 +233,7 @@
                               comment.mentionedUserName = [d objectForKey:@"mentionedUserName"];
                               [processedComments addObject:comment];
                               newRows = 1;
-                              feed.commentLikeCellHeight = 1; //mark that there are comment likes
+                              feed.indexOffset = 2; //mark that there are comment likes
                           }
                           feed.commentLikeList = processedComments;
                           feed.rowCount += newRows;

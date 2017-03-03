@@ -27,6 +27,7 @@
 @property (nonatomic, assign)BOOL likedByCurrentUser;
 @property (nonatomic, assign)NSInteger headerCellHeight;
 @property (nonatomic, assign)NSInteger commentLikeCellHeight;
+@property (nonatomic, assign)NSInteger indexOffset;
 @property (nonatomic, assign)NSInteger rowCount;
 
 @property (nonatomic, assign)BOOL isLastFeedOfTheDay;
