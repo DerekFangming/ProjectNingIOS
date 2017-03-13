@@ -54,7 +54,7 @@
         }else if(indexPath.row == 1 && [feed indexOffset] == 2){//Feed like cell
             return [feed commentLikeCellHeight];
         }else if(indexPath.row == feed.rowCount - 1){//Footer cell
-            return 30;
+            return 90;
         }else{//Feed cell
             return [[feed.commentList objectAtIndex:indexPath.row - feed.indexOffset] cellHeight];
         }
@@ -114,6 +114,8 @@
         if(cell == nil) {
             cell = [[MomentTextHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"momentTextHeaderCell"];
         }
+        cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width, 0.f, 0.f);
+        
         //Clean up image views
         for (UIView *subview in [cell.contentView subviews])
         {
@@ -235,10 +237,6 @@
             [triagnleView removeFromSuperview];
         }
         
-        cell.preservesSuperviewLayoutMargins = false;
-        cell.separatorInset = UIEdgeInsetsZero;
-        cell.layoutMargins = UIEdgeInsetsZero;
-        
         return cell;
     }else if(indexPath.row == [[self.feedList objectAtIndex:indexPath.section - 1] rowCount] - 1){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"momentTextFooterCell"
@@ -247,7 +245,10 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                           reuseIdentifier:@"momentTextFooterCell"];
         }
-        cell.separatorInset = UIEdgeInsetsMake(0, cell.bounds.size.width , 0, 0);
+        cell.preservesSuperviewLayoutMargins = false;
+        cell.separatorInset = UIEdgeInsetsZero;
+        cell.layoutMargins = UIEdgeInsetsZero;
+        
         return cell;
     }else{
         PlainTextCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"plainTextCommentCell" forIndexPath:indexPath];
@@ -256,12 +257,14 @@
             cell = [[PlainTextCommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"plainTextCommentCell"];
         }
         
-        [cell.bgView setBackgroundColor:GRAY_BG_COLOR];
+        cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width, 0.f, 0.f);
+        
+        [cell.bgView setBackgroundColor: [UIColor redColor]];//GRAY_BG_COLOR];
         cell.commentText.backgroundColor = [UIColor clearColor];
         
         PNFeed *feed = [self.feedList objectAtIndex:indexPath.section - 1];
         PNComment *comment;
-        if(indexPath.row == 1 && [feed indexOffset] == 2){
+        if(indexPath.row == 1 && feed.indexOffset == 2){
             //comment = [[feed commentList] objectAtIndex:0];
             cell.commentText.text = @"Like cell";
         }else{
@@ -275,10 +278,10 @@
         [cell.commentText layoutIfNeeded];
         CGSize size = [cell.commentText
                        sizeThatFits:CGSizeMake(cell.commentText.frame.size.width, CGFLOAT_MAX)];
-        if(indexPath.row == 1 && [feed commentLikeCellHeight]){
-            feed.commentLikeCellHeight = size.height + 10;
+        if(indexPath.row == 1 && feed.indexOffset == 2){
+            feed.commentLikeCellHeight = size.height + 2;
         }else{
-            comment.cellHeight = size.height + 10;
+            comment.cellHeight = size.height + 2;
         }
         
         return cell;
