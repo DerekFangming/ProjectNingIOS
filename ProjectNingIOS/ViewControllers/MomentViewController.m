@@ -54,7 +54,7 @@
         }else if(indexPath.row == 1 && [feed indexOffset] == 2){//Feed like cell
             return [feed commentLikeCellHeight];
         }else if(indexPath.row == feed.rowCount - 1){//Footer cell
-            return 90;
+            return 30;
         }else{//Feed cell
             return [[feed.commentList objectAtIndex:indexPath.row - feed.indexOffset] cellHeight];
         }
@@ -259,7 +259,7 @@
         
         cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width, 0.f, 0.f);
         
-        [cell.bgView setBackgroundColor: [UIColor redColor]];//GRAY_BG_COLOR];
+        [cell.bgView setBackgroundColor: GRAY_BG_COLOR];
         cell.commentText.backgroundColor = [UIColor clearColor];
         
         PNFeed *feed = [self.feedList objectAtIndex:indexPath.section - 1];
@@ -269,7 +269,20 @@
             cell.commentText.text = @"Like cell";
         }else{
             comment = [[feed commentList] objectAtIndex:indexPath.row - feed.indexOffset];
-            cell.commentText.text = comment.commentBody;
+            NSMutableAttributedString *attrBody;
+            if (comment.mentionedUserId != nil){
+                NSString *body = [NSString stringWithFormat:@"%@: @%@: %@", comment.ownerDisplayedName,
+                                  comment.mentionedUserName, comment.commentBody];
+                attrBody = [[NSMutableAttributedString alloc]initWithString:body attributes:@{ @"commentTag" : @(YES) }];
+                [attrBody addAttribute:NSForegroundColorAttributeName value:PURPLE_COLOR
+                                 range:NSMakeRange(0, comment.ownerDisplayedName.length)];
+                [attrBody addAttribute:NSForegroundColorAttributeName value:PURPLE_COLOR
+                                 range:NSMakeRange(comment.ownerDisplayedName.length + 3,
+                                                   comment.mentionedUserName.length)];
+            }
+            
+            //cell.commentBody.attributedText =attrBody;
+            cell.commentText.attributedText = attrBody;
         }
         
         cell.commentText.textContainer.lineFragmentPadding = 0;
@@ -300,7 +313,7 @@
              [self.feedList addObjectsFromArray:newFeeds];
              [self.tableView reloadData];
          }
-     }
+       }
      ];
 }
 
