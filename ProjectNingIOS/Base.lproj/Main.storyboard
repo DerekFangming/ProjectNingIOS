@@ -555,6 +555,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="60" minY="0.0" maxX="10" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="momentCoverCell" rowHeight="240" id="H26-FZ-b9n" customClass="MomentCoverCell">
                                 <rect key="frame" x="0.0" y="92" width="600" height="240"/>
@@ -693,10 +694,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6vk-B2-88t">
-                                            <rect key="frame" x="63" y="0.0" width="527" height="44"/>
+                                            <rect key="frame" x="58" y="0.0" width="532" height="44"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvR-Jj-39s">
-                                                    <rect key="frame" x="0.0" y="0.0" width="527" height="44"/>
+                                                    <rect key="frame" x="5" y="0.0" width="527" height="44"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -707,7 +708,7 @@
                                             <constraints>
                                                 <constraint firstItem="qvR-Jj-39s" firstAttribute="top" secondItem="6vk-B2-88t" secondAttribute="top" id="8AJ-GJ-BOF"/>
                                                 <constraint firstAttribute="bottom" secondItem="qvR-Jj-39s" secondAttribute="bottom" id="IyW-1m-5T8"/>
-                                                <constraint firstItem="qvR-Jj-39s" firstAttribute="leading" secondItem="6vk-B2-88t" secondAttribute="leading" id="WiE-SZ-ndJ"/>
+                                                <constraint firstItem="qvR-Jj-39s" firstAttribute="leading" secondItem="6vk-B2-88t" secondAttribute="leading" constant="5" id="WiE-SZ-ndJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="qvR-Jj-39s" secondAttribute="trailing" id="YXR-E1-AKz"/>
                                             </constraints>
                                         </view>
@@ -716,7 +717,7 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="6vk-B2-88t" secondAttribute="trailing" constant="2" id="6zM-Yp-X3a"/>
                                         <constraint firstItem="6vk-B2-88t" firstAttribute="top" secondItem="Q7X-XP-PjO" secondAttribute="topMargin" constant="-8" id="B0G-hB-M8i"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="6vk-B2-88t" secondAttribute="bottom" constant="-9" id="D1C-YF-Nud"/>
-                                        <constraint firstItem="6vk-B2-88t" firstAttribute="leading" secondItem="Q7X-XP-PjO" secondAttribute="leadingMargin" constant="55" id="rSV-K8-pZl"/>
+                                        <constraint firstItem="6vk-B2-88t" firstAttribute="leading" secondItem="Q7X-XP-PjO" secondAttribute="leadingMargin" constant="50" id="rSV-K8-pZl"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

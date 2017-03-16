@@ -54,7 +54,7 @@
         }else if(indexPath.row == 1 && [feed indexOffset] == 2){//Feed like cell
             return [feed commentLikeCellHeight];
         }else if(indexPath.row == feed.rowCount - 1){//Footer cell
-            return 30;
+            return 10;
         }else{//Feed cell
             return [[feed.commentList objectAtIndex:indexPath.row - feed.indexOffset] cellHeight];
         }
@@ -257,17 +257,45 @@
             cell = [[PlainTextCommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"plainTextCommentCell"];
         }
         
-        cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width, 0.f, 0.f);
+        cell.separatorInset = UIEdgeInsetsMake(0.f, 60.f, 0.f, 10.f);
         
         [cell.bgView setBackgroundColor: GRAY_BG_COLOR];
         cell.commentText.backgroundColor = [UIColor clearColor];
         
         PNFeed *feed = [self.feedList objectAtIndex:indexPath.section - 1];
         PNComment *comment;
-        if(indexPath.row == 1 && feed.indexOffset == 2){
-            //comment = [[feed commentList] objectAtIndex:0];
+        if(indexPath.row == 1 && feed.indexOffset == 2){ //This is a like cell
+            if(feed.likeUserText){
+                cell.commentText.attributedText = feed.likeUserText;
+            }else{
+                feed.likeUserText = [[NSMutableAttributedString alloc] init];
+                NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+                textAttachment.image = [UIImage imageNamed:@"notLike.png"];
+                NSAttributedString *likeImg = [NSAttributedString attributedStringWithAttachment:textAttachment];
+                NSString *nameList = [[NSString alloc] init];
+                
+                NSMutableArray *nameArray = [[NSMutableArray alloc] init];
+                for(PNComment *c in feed.commentLikeList)
+                    [nameArray addObject: c.ownerDisplayedName];
+                for(NSString *s in nameArray)
+                    nameList = [nameList stringByAppendingString: [s stringByAppendingString:@", "]];
+                nameList = [nameList substringToIndex:[nameList length] - 2];
+                NSMutableAttributedString *namePart = [[NSMutableAttributedString alloc]
+                                                       initWithString:nameList attributes:@{ @"commentTag" : @(YES) }];
+                for(NSString *s in nameArray){
+                    [namePart addAttribute:NSForegroundColorAttributeName value:PURPLE_COLOR
+                                     range:NSMakeRange(0, comment.ownerDisplayedName.length)];
+                }
+                
+                
+            }
             cell.commentText.text = @"Like cell";
-        }else{
+            if(!feed.commentList){
+                cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width, 0.f, 0.f);
+            }
+        }else{ // This is a text comment cell
+            cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width, 0.f, 0.f);
+            
             comment = [[feed commentList] objectAtIndex:indexPath.row - feed.indexOffset];
             NSMutableAttributedString *attrBody;
             if (comment.mentionedUserId != nil){
@@ -279,9 +307,13 @@
                 [attrBody addAttribute:NSForegroundColorAttributeName value:PURPLE_COLOR
                                  range:NSMakeRange(comment.ownerDisplayedName.length + 3,
                                                    comment.mentionedUserName.length)];
+            }else{
+                NSString *body = [NSString stringWithFormat:@"%@: %@", comment.ownerDisplayedName, comment.commentBody];
+                attrBody = [[NSMutableAttributedString alloc]initWithString:body attributes:@{ @"commentTag" : @(YES) }];
+                [attrBody addAttribute:NSForegroundColorAttributeName value:PURPLE_COLOR
+                                 range:NSMakeRange(0, comment.ownerDisplayedName.length)];
             }
             
-            //cell.commentBody.attributedText =attrBody;
             cell.commentText.attributedText = attrBody;
         }
         

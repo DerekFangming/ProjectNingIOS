@@ -32,6 +32,8 @@
 
 @property (nonatomic, assign)BOOL isLastFeedOfTheDay;
 @property (nonatomic, strong)NSMutableAttributedString *dateText;
+@property (nonatomic, strong)NSMutableAttributedString *likeUserText;
+
 
 - (id)initWithFeedId:(NSNumber *) feedId
                andBody:(NSString *) feedBody
