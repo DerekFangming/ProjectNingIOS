@@ -271,25 +271,32 @@
                 feed.likeUserText = [[NSMutableAttributedString alloc] init];
                 NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
                 textAttachment.image = [UIImage imageNamed:@"notLike.png"];
+                textAttachment.bounds = CGRectMake(-5, -2, 12, 12);
                 NSAttributedString *likeImg = [NSAttributedString attributedStringWithAttachment:textAttachment];
                 NSString *nameList = [[NSString alloc] init];
                 
                 NSMutableArray *nameArray = [[NSMutableArray alloc] init];
                 for(PNComment *c in feed.commentLikeList)
                     [nameArray addObject: c.ownerDisplayedName];
-                for(NSString *s in nameArray)
+                for(NSString *s in nameArray){
                     nameList = [nameList stringByAppendingString: [s stringByAppendingString:@", "]];
+                }
                 nameList = [nameList substringToIndex:[nameList length] - 2];
                 NSMutableAttributedString *namePart = [[NSMutableAttributedString alloc]
                                                        initWithString:nameList attributes:@{ @"commentTag" : @(YES) }];
+                int position = -2;
                 for(NSString *s in nameArray){
+                    position += 2;
                     [namePart addAttribute:NSForegroundColorAttributeName value:PURPLE_COLOR
-                                     range:NSMakeRange(0, comment.ownerDisplayedName.length)];
+                                     range:NSMakeRange(position, s.length)];
+                    position += s.length;
                 }
-                
+                [feed.likeUserText appendAttributedString:likeImg];
+                [feed.likeUserText appendAttributedString:namePart];
+                cell.commentText.attributedText = feed.likeUserText;
                 
             }
-            cell.commentText.text = @"Like cell";
+            //cell.commentText.text = @"Like cell";
             if(!feed.commentList){
                 cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width, 0.f, 0.f);
             }
