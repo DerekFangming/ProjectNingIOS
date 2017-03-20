@@ -425,9 +425,14 @@
 }
 
 - (void)commentImgClick:(UITapGestureRecognizer *)recognizer{
-    /*
+    
+    MomentTextHeaderCell *cell = (MomentTextHeaderCell*)recognizer.view.superview.superview;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    PNFeed *feed = [self.feedList objectAtIndex:indexPath.section - 1];
+    
+    
     self.imageSliderView = [[PNImageSliderView alloc] initWithInitialIndex:((UIImageView *)recognizer.view).tag
-                                                                  pnImages:self.imageList];
+                                                                  pnImages:feed.imgList];
     self.imageSliderView.delegate = self;
     self.imageSliderView.translatesAutoresizingMaskIntoConstraints = NO;
     CGRect point=[self.view convertRect:recognizer.view.bounds fromView:recognizer.view];
@@ -460,27 +465,19 @@
         [self.sliderHolder setFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
         [[self navigationController] setNavigationBarHidden:YES animated:NO];
     } completion:^(BOOL finished) {
-        self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width / 2 - 30,
-                                                                   self.view.bounds.size.height - 40, 60, 25)];
-        self.dateLabel.backgroundColor = [UIColor clearColor];
-        self.dateLabel.font = [UIFont boldSystemFontOfSize: 14.0f];
-        self.dateLabel.textAlignment = NSTextAlignmentCenter;
-        self.dateLabel.textColor = [UIColor whiteColor];
-        [self.sliderHolder addSubview:self.dateLabel];
-        self.dateLabel.text = [NSString stringWithFormat:@"%d/%d",
-                               ((UIImageView *)recognizer.view).tag + 1, [self.imageList count]];
     }];
-     */
-    
     
 }
 
 - (void)likeButtonTapped:(UIButton *)sender{
-    /*
-    if(self.likedByCurrentUser){
+    MomentTextHeaderCell *cell = (MomentTextHeaderCell *) sender.superview.superview;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    PNFeed *feed = [self.feedList objectAtIndex:indexPath.section - 1];
+    
+    if(feed.likedByCurrentUser){
         PNComment *commentByCurrentUser;
         NSNumber *currentUserId = [[PNUserManager currentUser] userId];
-        for(PNComment *comment in self.likedList){
+        for(PNComment *comment in feed.commentLikeList){
             if(comment.ownerId == currentUserId){
                 commentByCurrentUser = comment;
                 break;
@@ -493,15 +490,20 @@
                                                                                           from: self];
                                          }else{
                                              [sender setBackgroundImage:[UIImage imageNamed:@"notLike.png"] forState:UIControlStateNormal];
-                                             self.likedByCurrentUser = NO;
-                                             [self.likedList removeObject:commentByCurrentUser];
+                                             feed.likedByCurrentUser = NO;
+                                             [feed.commentLikeList removeObject:commentByCurrentUser];
+                                             if([feed.commentLikeList count] == 0){
+                                                 feed.commentLikeList = nil;
+                                                 feed.indexOffset = 1;
+                                             }
+                                             feed.likeUserText = nil;
                                              [self.tableView reloadData];
                                          }
                                      }];
     }else{
         [PNCommentManager createComment:@"like"
                          forCommentType:@"Feed Like"
-                           andMappingId:self.momentId
+                           andMappingId:feed.feedId
                            mentionsUser:nil
                                response:^(NSError *error, NSNumber *commentId) {
                                    if(error != nil){
@@ -509,20 +511,26 @@
                                                                                     from: self];
                                    }else{
                                        [sender setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal];
-                                       self.likedByCurrentUser = YES;
+                                       feed.likedByCurrentUser = YES;
                                        PNComment * comment = [[PNComment alloc] initWithCommentId:commentId
                                                                                           andBody:@"like"
                                                                                           andType:@"Feed Like"
-                                                                                     andMappingId:self.momentId
+                                                                                     andMappingId:feed.feedId
                                                                                        andOwnerId:[[PNUserManager currentUser] userId]
                                                                                           andDate:[NSDate date]];
-                                       if(self.likedList == nil)
-                                           self.likedList = [[NSMutableArray alloc] init];
-                                       [self.likedList addObject:comment];
+                                       comment.ownerDisplayedName = [[PNUserManager currentUser] displayedName];
+                                       if(feed.commentLikeList == nil){
+                                           feed.commentLikeList = [[NSMutableArray alloc] init];
+                                           feed.indexOffset = 2;
+                                       }
+                                       [feed.commentLikeList addObject:comment];
+                                       feed.likedByCurrentUser = YES;
+                                       feed.likeUserText = nil;
                                        [self.tableView reloadData];
                                    }
                                }];
-    }*/
+    }
+
 }
 
 - (void)commentButtonTapped:(UIButton *)sender{
@@ -533,6 +541,16 @@
         mentionedUser = nil;
         [commentInput becomeFirstResponder];
     }*/
+}
+
+- (void)imageSliderViewImageDidSwitchToIndex:(NSInteger)index totalCount:(NSInteger)count{
+}
+
+- (void)imageSliderViewSingleTap:(UITapGestureRecognizer *)tap{
+    [[self navigationController] setNavigationBarHidden:NO animated:NO];
+    [self.sliderHolder removeFromSuperview];
+    self.imageSliderView = nil;
+    self.sliderHolder = nil;
 }
 
 - (void)qb_imagePickerController:(QBImagePickerController *)imagePickerController didFinishPickingAssets:(NSArray *)assets {
